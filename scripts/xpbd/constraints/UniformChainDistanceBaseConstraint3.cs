@@ -4,24 +4,24 @@ using StarWreck.scripts.xpbd.particles;
 namespace StarWreck.scripts.xpbd.constraints;
 
 [GlobalClass]
-public partial class UniformChainDistanceConstraint : Constraint
+public partial class UniformChainDistanceBaseConstraint3 : BaseConstraint3
 {
     [Export(PropertyHint.Range, "0,100,or_greater")]
     private float _restDistance;
     
-    public UniformChainDistanceConstraint()
+    public UniformChainDistanceBaseConstraint3()
     {
     }
     
-    public UniformChainDistanceConstraint(float restDistance)
+    public UniformChainDistanceBaseConstraint3(float restDistance)
     {
         this._restDistance = restDistance;
     }
 
-    public override void Constrain(ParticleBatch particleBatch)
+    public override void Constrain(Particle3Batch particle3Batch)
     {
-        var positions = particleBatch.Positions;
-        var inverseMasses = particleBatch.InverseMasses;
+        var positions = particle3Batch.Positions;
+        var inverseMasses = particle3Batch.InverseMasses;
         
         for (int i = 0; i < positions.Length - 1; i++)
         {

@@ -2,7 +2,7 @@ using Godot;
 
 namespace StarWreck.scripts.xpbd.vector_fields;
 
-public abstract partial class VectorField : Resource
+public abstract partial class VectorField<T> : Resource
 {
-    public abstract Vector3 Sample(Vector3 position);
+    public abstract T Sample(T position);
 }

@@ -2,7 +2,8 @@ using Godot;
 
 namespace StarWreck.scripts.xpbd.vector_fields;
 
-public partial class ConstantVectorField : VectorField
+[GlobalClass]
+public partial class ConstantVector3Field : VectorField<Vector3>
 {
     [Export] private Vector3 _constant;
     
