@@ -4,7 +4,7 @@ using StarWreck.scripts.xpbd.particles;
 namespace StarWreck.scripts.xpbd.constraints;
 
 [GlobalClass]
-public partial class ConstraintBatch2D : BaseConstraint<Vector2>
+public partial class ConstraintBatch2D : Constraint2D
 {
     [Export]
     private BaseConstraint<Vector2>[] _constraints;

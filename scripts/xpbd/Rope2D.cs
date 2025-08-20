@@ -20,6 +20,7 @@ public partial class Rope2D : Node2D
     [Export(PropertyHint.ResourceType, nameof(VectorField2D))]
     private BaseVectorField<Vector2> _vectorField;
     
+    [Export(PropertyHint.ResourceType, nameof(Constraint2D))]
     private BaseConstraint<Vector2> _constraint;
     private BaseSolver<Vector2> _solver2D;
 

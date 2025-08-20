@@ -4,7 +4,7 @@ using StarWreck.scripts.xpbd.particles;
 namespace StarWreck.scripts.xpbd.constraints;
 
 [GlobalClass]
-public partial class UniformChainDistanceBaseConstraint2D : BaseConstraint<Vector2>
+public partial class UniformChainDistanceBaseConstraint2D : Constraint2D
 {
     [Export(PropertyHint.Range, "0,100,or_greater")]
     private float _restDistance;
