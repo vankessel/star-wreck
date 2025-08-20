@@ -31,7 +31,7 @@ public partial class Rope2D : Node2D
     public override void _EnterTree()
     {
         base._EnterTree();
-        
+
         _particleBatch2D = _particleBatchBuilder2D.Build();
     }
 

@@ -17,12 +17,12 @@ public partial class UniformChainedMaxDistanceConstraint2D : Constraint2D
     {
         Vector2[] positions = particle2Batch.Positions;
         float[] inverseMasses = particle2Batch.InverseMasses;
-        
+
         for (int i = 0; i < positions.Length - 1; i++)
         {
             Vector2 p1 = positions[i];
             Vector2 p2 = positions[i + 1];
-            
+
             float distance = p1.DistanceTo(p2);
 
             float constraintError = distance - _segmentLength;
@@ -30,10 +30,10 @@ public partial class UniformChainedMaxDistanceConstraint2D : Constraint2D
 
             float w1 = inverseMasses[i];
             float w2 = inverseMasses[i + 1];
-            
+
             Vector2 gradient1 = (p1 - p2) / distance;
             // var gradient2 = -gradient1;
-            
+
             float lambda = -constraintError / (w1 + w2);
 
             Vector2 unweightedDelta1 = lambda * gradient1;
