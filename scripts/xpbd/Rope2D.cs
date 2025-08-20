@@ -11,7 +11,7 @@ public partial class Rope2D : Node2D
     [Export(PropertyHint.Range, "0,64,or_greater")]
     private float _length;
     
-    [Export(PropertyHint.Range, "1,64,or_greater")]
+    [Export(PropertyHint.Range, "2,64,or_greater")]
     private int _particleCount;
     
     [Export(PropertyHint.ResourceType, nameof(ParticleBatch2D))]
