@@ -22,6 +22,8 @@ public partial class Rope2D : Node2D
     
     [Export(PropertyHint.ResourceType, nameof(Constraint2D))]
     private BaseConstraint<Vector2> _constraint;
+    
+    [Export(PropertyHint.ResourceType, nameof(Solver2D))]
     private BaseSolver<Vector2> _solver2D;
 
     public override void _EnterTree()
