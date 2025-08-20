@@ -2,7 +2,6 @@ using Godot;
 
 namespace StarWreck.scripts.xpbd.particles;
 
-[GlobalClass]
 public partial class ParticleBatch3D(int particleCount) : BaseParticleBatch<Vector3>
 {
     public override int ParticleCount { get; } = particleCount;
