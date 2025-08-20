@@ -31,7 +31,7 @@ public partial class Rope2D : Node2D
         base._EnterTree();
 
         _particleBatch2D = new ParticleBatch2D(_particleCount);
-        _constraint = new UniformChainDistanceBaseConstraint2D(_length / (_particleCount - 1));
+        _constraint = new UniformChainedMaxDistanceConstraint2D(_length / (_particleCount - 1));
         _solver2D = new Solver2D();
     }
 
