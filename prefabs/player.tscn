@@ -10,30 +10,26 @@ points = PackedVector2Array(0, -28, -30, 19, 30, 19)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_72ieh"]
 
-[node name="PlayerContainer" type="Node"]
-
-[node name="Player" type="RigidBody2D" parent="."]
+[node name="Player" type="RigidBody2D"]
 script = ExtResource("1_4dohe")
 metadata/_edit_group_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_sugp2")
 }
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_72ieh")
 
-[node name="CollisionHitbox" type="CollisionShape2D" parent="Player"]
+[node name="CollisionHitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("ConvexPolygonShape2D_72ieh")
 
-[node name="Area2D" type="Area2D" parent="Player"]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="DamageHitbox" type="CollisionShape2D" parent="Player/Area2D"]
+[node name="DamageHitbox" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_72ieh")
 debug_color = Color(0.7, 0, 0, 0.419608)
 
-[node name="RopeStart" type="Node2D" parent="Player"]
+[node name="RopeStart" type="Node2D" parent="."]
 position = Vector2(0, 24)
-
-[node name="Camera2D" type="Camera2D" parent="."]
