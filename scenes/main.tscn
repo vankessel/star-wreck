@@ -1,36 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsrd3np32lxtf"]
+[gd_scene load_steps=2 format=3 uid="uid://dsrd3np32lxtf"]
 
-[ext_resource type="Script" uid="uid://dsift4eskdx0d" path="res://scripts/xpbd/Rope2D.cs" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://byvdby8yhdl5i" path="res://prefabs/player.tscn" id="1_o5qli"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_sgp6g"]
-size = Vector3(1, 1, 0.25)
+[node name="Node" type="Node"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_sgp6g"]
-
-[node name="Node3D" type="Node"]
-
-[node name="Player Container" type="Node3D" parent="."]
-
-[node name="Player" type="Node3D" parent="Player Container"]
-
-[node name="Player Mesh Instance" type="MeshInstance3D" parent="Player Container/Player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_sgp6g")
-skeleton = NodePath("../../..")
-
-[node name="Rope" type="Node3D" parent="Player Container/Player"]
-script = ExtResource("1_o5qli")
-
-[node name="Rope Start" type="Node3D" parent="Player Container/Player/Rope"]
-
-[node name="Camera3D" type="Camera3D" parent="Player Container/Player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
-
-[node name="Ball" type="Node3D" parent="Player Container"]
-
-[node name="Ball Mesh Instance" type="MeshInstance3D" parent="Player Container/Ball"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
-mesh = SubResource("SphereMesh_sgp6g")
-skeleton = NodePath("../..")
-
-[node name="Rope End" type="Node3D" parent="Player Container/Ball"]
+[node name="Player" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(556, 369)
