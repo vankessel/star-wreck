@@ -1,19 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://byvdby8yhdl5i"]
+[gd_scene load_steps=6 format=3 uid="uid://byvdby8yhdl5i"]
 
+[ext_resource type="Script" uid="uid://bbkqjku6bxwj" path="res://scripts/Player.cs" id="1_4dohe"]
 [ext_resource type="Texture2D" uid="uid://djv15ylli4mny" path="res://sprites/player-ship.png" id="1_72ieh"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sugp2"]
 
-[node name="Player" type="Node2D"]
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_72ieh"]
+points = PackedVector2Array(0, -28, -30, 19, 30, 19)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_72ieh"]
+
+[node name="PlayerContainer" type="Node"]
+
+[node name="Player" type="RigidBody2D" parent="."]
+script = ExtResource("1_4dohe")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_72ieh")
-
-[node name="RopeStart" type="Node2D" parent="."]
-position = Vector2(0, 24)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 libraries = {
 &"": SubResource("AnimationLibrary_sugp2")
 }
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_72ieh")
+
+[node name="CollisionHitbox" type="CollisionShape2D" parent="Player"]
+shape = SubResource("ConvexPolygonShape2D_72ieh")
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="DamageHitbox" type="CollisionShape2D" parent="Player/Area2D"]
+shape = SubResource("CircleShape2D_72ieh")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="RopeStart" type="Node2D" parent="Player"]
+position = Vector2(0, 24)
+
+[node name="Camera2D" type="Camera2D" parent="."]
