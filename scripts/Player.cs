@@ -1,4 +1,3 @@
-using System;
 using Godot;
 using Action = StarWreck.scripts.input.Action;
 
@@ -6,6 +5,9 @@ namespace StarWreck.scripts;
 
 public partial class Player : RigidBody2D
 {
+    [Export]
+    private PlayerCamera _camera;
+
     [Export(PropertyHint.Range, "0,2048,16,or_greater")]
     private float _maxSpeed = 1024f;
 
@@ -27,14 +29,27 @@ public partial class Player : RigidBody2D
     [Export(PropertyHint.Range, "0,1024,64,or_greater")]
     private float _friction = 256f;
 
+    public override void _Ready()
+    {
+        base._Ready();
+        if (_camera == null) GD.PushWarning("Player camera not set.");
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
 
-        Vector2 movementDirection = GetMovementDirection();
+        Vector2 force = MovementForce();
+
+        ApplyCentralForce(force);
+    }
+
+    private Vector2 MovementForce()
+    {
+        Vector2 movementInput = MovementDirection();
 
         Vector2 force;
-        if (movementDirection == Vector2.Zero)
+        if (movementInput == Vector2.Zero)
         {
             force = -Mass * _friction * LinearVelocity.Normalized();
         }
@@ -43,7 +58,7 @@ public partial class Player : RigidBody2D
             // We want acceleration to slow to 0 as we approach max speed.
             // Must consider speed against attempted movement direction.
             // It would otherwise be hard to change direction due to little acceleration near max speed.
-            float speedInMovementDirection = LinearVelocity.Dot(movementDirection);
+            float speedInMovementDirection = LinearVelocity.Dot(movementInput);
 
             // If we direct movement against velocity, this speed will be negative, allowing a greater acceleration than intended in not clamped.
             // This might provide snappy movement when changing direction. Worth testing.
@@ -92,13 +107,13 @@ public partial class Player : RigidBody2D
                     break;
             }
 
-            force = Mass * acceleration * movementDirection;
+            force = Mass * acceleration * movementInput;
         }
 
-        ApplyCentralForce(force);
+        return force;
     }
 
-    private static Vector2 GetMovementDirection()
+    private static Vector2 MovementDirection()
     {
         return new Vector2(Input.GetAxis(Action.Left, Action.Right), Input.GetAxis(Action.Up, Action.Down)).LimitLength();
     }

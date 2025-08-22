@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4r5jdkf2amv8"]
+
+[ext_resource type="Script" uid="uid://ol2bhqo6iinj" path="res://scripts/PlayerCamera.cs" id="1_y260w"]
+
+[node name="PlayerCamera" type="Camera2D" node_paths=PackedStringArray("_player")]
+ignore_rotation = false
+script = ExtResource("1_y260w")
+_player = NodePath("")
+_rotationSpeed = 3.14159
+metadata/_edit_lock_ = true
