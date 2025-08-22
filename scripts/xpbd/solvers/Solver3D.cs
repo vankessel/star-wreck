@@ -20,9 +20,9 @@ public partial class Solver3D : BaseSolver<Vector3>
         }
     }
 
-    protected override void ApplyConstraints(BaseParticleBatch<Vector3> particleBatch, BaseConstraint<Vector3> constraint3)
+    protected override void ApplyConstraints(BaseParticleBatch<Vector3> particleBatch, BaseConstraint<Vector3> constraint3D)
     {
-        constraint3.Constrain(particleBatch);
+        constraint3D.Constrain(particleBatch);
     }
 
     protected override void IntegrateVelocities(float delta, BaseParticleBatch<Vector3> particleBatch)

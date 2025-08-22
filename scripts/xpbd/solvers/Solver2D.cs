@@ -20,9 +20,9 @@ public partial class Solver2D : BaseSolver<Vector2>
         }
     }
 
-    protected override void ApplyConstraints(BaseParticleBatch<Vector2> particleBatch, BaseConstraint<Vector2> constraint2)
+    protected override void ApplyConstraints(BaseParticleBatch<Vector2> particleBatch, BaseConstraint<Vector2> constraint2D)
     {
-        constraint2.Constrain(particleBatch);
+        constraint2D.Constrain(particleBatch);
     }
 
     protected override void IntegrateVelocities(float delta, BaseParticleBatch<Vector2> particleBatch)
