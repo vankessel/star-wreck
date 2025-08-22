@@ -8,15 +8,18 @@ public partial class UniformChainedMaxDistanceConstraint2D : Constraint2D
 {
     [Export(PropertyHint.Range, "0,100,or_greater")]
     private float _segmentLength;
-    
+
+    [Export]
+    private BaseParticleBatch<Vector2> _particleBatch2D;
+
     public UniformChainedMaxDistanceConstraint2D() {}
-    
+
     public UniformChainedMaxDistanceConstraint2D(float segmentLength) => _segmentLength = segmentLength;
 
-    public override void Constrain(BaseParticleBatch<Vector2> particleBatch2D)
+    public override void Constrain()
     {
-        Vector2[] positions = particleBatch2D.Positions;
-        float[] inverseMasses = particleBatch2D.InverseMasses;
+        Vector2[] positions = _particleBatch2D.Positions;
+        float[] inverseMasses = _particleBatch2D.InverseMasses;
 
         for (int i = 0; i < positions.Length - 1; i++)
         {
