@@ -6,22 +6,15 @@
 
 [node name="Node" type="Node"]
 
-[node name="Node2D" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
-
-[node name="TextureRect" type="TextureRect" parent="Node2D"]
+[node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -627.0
 offset_top = -464.0
 offset_right = 673.0
 offset_bottom = 536.0
 texture = ExtResource("1_88i7p")
 
-[node name="Player" parent="Node2D" node_paths=PackedStringArray("_camera") instance=ExtResource("1_o5qli")]
+[node name="Player" parent="." node_paths=PackedStringArray("_camera") instance=ExtResource("1_o5qli")]
 _camera = NodePath("../PlayerCamera")
-metadata/_edit_lock_ = true
 
-[node name="PlayerCamera" parent="Node2D" node_paths=PackedStringArray("_player") instance=ExtResource("2_0wfyh")]
+[node name="PlayerCamera" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("2_0wfyh")]
 _player = NodePath("../Player")
-
-[node name="Origin Visual Reference" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(0, 0, 16, 0, 0, 16)
