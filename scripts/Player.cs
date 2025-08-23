@@ -46,7 +46,7 @@ public partial class Player : RigidBody2D
 
     private Vector2 MovementForce()
     {
-        Vector2 movementInput = MovementDirection();
+        Vector2 movementInput = MovementInput();
 
         Vector2 force;
         if (movementInput == Vector2.Zero)
@@ -113,8 +113,9 @@ public partial class Player : RigidBody2D
         return force;
     }
 
-    private static Vector2 MovementDirection()
+    private Vector2 MovementInput()
     {
-        return new Vector2(Input.GetAxis(Action.Left, Action.Right), Input.GetAxis(Action.Up, Action.Down)).LimitLength();
+        Vector2 movementInput = new Vector2(Input.GetAxis(Action.Left, Action.Right), Input.GetAxis(Action.Up, Action.Down)).LimitLength();
+        return _camera.Transform.BasisXform(movementInput);
     }
 }
