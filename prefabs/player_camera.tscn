@@ -5,5 +5,4 @@
 [node name="PlayerCamera" type="Camera2D"]
 ignore_rotation = false
 script = ExtResource("1_y260w")
-_rotationSpeed = 3.14159
 metadata/_edit_lock_ = true
