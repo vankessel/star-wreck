@@ -55,7 +55,7 @@ public partial class PlayerCamera : Camera2D
 
     private void HandleInput(float dt)
     {
-        float rotationInput = Input.GetAxis(Action.RotateRight, Action.RotateLeft);
+        float rotationInput = Input.GetAxis(Action.RotateLeft, Action.RotateRight);
         float zoomInput = Input.GetAxis(Action.ZoomOut, Action.ZoomIn);
 
         float radians = rotationInput * _rotationSpeed * dt;
