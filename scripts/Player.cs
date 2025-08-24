@@ -55,8 +55,6 @@ public partial class Player : RigidBody2D
     private float CameraAlignmentTorque()
     {
         float inertia = (float)PhysicsServer2D.BodyGetParam(GetRid(), PhysicsServer2D.BodyParameter.Inertia);
-        GD.Print(inertia);
-        GD.Print(Mass);
         // Spring acceleration calculated with fake inertia
         float damping = _rotationDampingRatio * 2f * Mathf.Sqrt(_rotationSpringConstant / _rotationSpringInertia);
         float angleDelta = Transform[0].AngleTo(_camera.Transform[0]);
