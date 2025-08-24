@@ -12,9 +12,9 @@ public partial class ParticlePhysicsSystem2D : Node2D
     private int _particleCount;
 
     [Export(PropertyHint.ResourceType, nameof(ParticleBatch2D))]
-    private BaseParticleBatchBuilder<Vector2> _particleBatchBuilder2D;
+    private ParticleBatchBuilder2D _particleBatchBuilder2D;
 
-    private BaseParticleBatch<Vector2> _particleBatch2D;
+    private ParticleBatch2D _particleBatch2D;
 
     [Export(PropertyHint.ResourceType, nameof(VectorField2D))]
     private BaseVectorField<Vector2> _vectorField2D;
@@ -30,6 +30,7 @@ public partial class ParticlePhysicsSystem2D : Node2D
         base._EnterTree();
 
         _particleBatch2D = _particleBatchBuilder2D.Build();
+        _particleBatch2D.SpaceGlobalTransform = GlobalTransform;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -37,5 +38,17 @@ public partial class ParticlePhysicsSystem2D : Node2D
         base._PhysicsProcess(delta);
 
         _solver2D.Update((float)delta, _particleBatch2D, _vectorField2D, _constraint2D);
+    }
+
+    public override void _Draw()
+    {
+        base._Draw();
+
+        Vector2[] positions = _particleBatch2D.Positions;
+        for (int index = 0; index < positions.Length; index++)
+        {
+            if (index == positions.Length - 1) return;
+            DrawLine(positions[index], positions[index+1], Colors.Red);
+        }
     }
 }

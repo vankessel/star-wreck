@@ -18,3 +18,5 @@ _camera = NodePath("../PlayerCamera")
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("2_0wfyh")]
 _player = NodePath("../Player")
+
+[editable path="Player"]

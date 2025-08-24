@@ -7,6 +7,6 @@ public partial class ParticleBatch3D(int particleCount) : BaseParticleBatch<Vect
     public override int ParticleCount { get; } = particleCount;
     public override float[] InverseMasses { get; } = new float[particleCount];
     public override Vector3[] Positions { get; } = new Vector3[particleCount];
-    public override Vector3[] PredictedPositions { get; } = new Vector3[particleCount];
-    public override Vector3[] HalfStepPrevVelocities { get; } = new Vector3[particleCount];
+    public override Vector3[] PreviousPositions { get; } = new Vector3[particleCount];
+    public override Vector3[] HalfStepPreviousVelocities { get; } = new Vector3[particleCount];
 }

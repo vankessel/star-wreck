@@ -11,12 +11,13 @@ public partial class Solver3D : BaseSolver<Vector3>
     protected override void PredictPositions(float delta, BaseParticleBatch<Vector3> particleBatch, BaseVectorField<Vector3> vectorField)
     {
         Vector3[] positions = particleBatch.Positions;
-        Vector3[] predictedPositions = particleBatch.PredictedPositions;
-        Vector3[] halfStepPrevVelocities = particleBatch.HalfStepPrevVelocities;
+        Vector3[] previousPositions = particleBatch.PreviousPositions;
+        Vector3[] halfStepPrevVelocities = particleBatch.HalfStepPreviousVelocities;
         for (int i = 0; i < particleBatch.ParticleCount; i++)
         {
             Vector3 accel = vectorField.Sample(positions[i]);
-            predictedPositions[i] = positions[i] + (halfStepPrevVelocities[i] + accel * delta) * delta;
+            previousPositions[i] = positions[i];
+            positions[i] += (halfStepPrevVelocities[i] + accel * delta) * delta;
         }
     }
 
@@ -28,12 +29,11 @@ public partial class Solver3D : BaseSolver<Vector3>
     protected override void IntegrateVelocities(float delta, BaseParticleBatch<Vector3> particleBatch)
     {
         Vector3[] positions = particleBatch.Positions;
-        Vector3[] predictedPositions = particleBatch.PredictedPositions;
-        Vector3[] halfStepPrevVelocities = particleBatch.HalfStepPrevVelocities;
+        Vector3[] previousPositions = particleBatch.PreviousPositions;
+        Vector3[] halfStepPrevVelocities = particleBatch.HalfStepPreviousVelocities;
         for (int i = 0; i < particleBatch.ParticleCount; i++)
         {
-            halfStepPrevVelocities[i] = (predictedPositions[i] - positions[i]) / delta;
-            positions[i] = predictedPositions[i];
+            halfStepPrevVelocities[i] = (positions[i] - previousPositions[i]) / delta;
         }
     }
 }
