@@ -5,9 +5,19 @@ namespace StarWreck.scripts.xpbd.particles;
 [GlobalClass]
 public partial class Particle2D : Resource
 {
-    [Export] public ParticleBatch2D ParticleBatch2D { get; protected set; }
+    [Export]
+    private ParticleBatchBuilder2D _particleBatchBuilder2D;
 
+    private ParticleBatch2D ParticleBatch2D => _particleBatchBuilder2D.ParticleBatch2D;
+
+    [Export]
     private int _particleIndex;
+
+    private int ParticleIndex
+    {
+        get => Mathf.PosMod(_particleIndex, ParticleBatch2D.ParticleCount);
+        set => _particleIndex = value;
+    }
 
     public float InverseMass
     {
@@ -21,25 +31,27 @@ public partial class Particle2D : Resource
         set => ParticleBatch2D.Positions[ParticleIndex] = value;
     }
 
-    public Transform2D SpaceGlobalTransform
+    public Vector2 PreviousPosition
     {
-        get => ParticleBatch2D.SpaceGlobalTransform;
+        get => ParticleBatch2D.PreviousPositions[ParticleIndex];
+        set => ParticleBatch2D.PreviousPositions[ParticleIndex] = value;
     }
 
-    [Export]
-    public int ParticleIndex
+    public Vector2 HalfStepPreviousVelocity
     {
-        get => _particleIndex;
-        set => _particleIndex = Mathf.PosMod(value, ParticleBatch2D.ParticleCount);
+        get => ParticleBatch2D.HalfStepPreviousVelocities[ParticleIndex];
+        set => ParticleBatch2D.HalfStepPreviousVelocities[ParticleIndex] = value;
     }
+
+    public Transform2D SpaceGlobalTransform => ParticleBatch2D.SpaceGlobalTransform;
 
     public Particle2D()
     {
     }
 
-    public Particle2D(ParticleBatch2D particleBatch2D, int particleIndex)
+    public Particle2D(ParticleBatchBuilder2D particleBatchBuilder2D2D, int particleIndex)
     {
-        ParticleBatch2D = particleBatch2D;
+        _particleBatchBuilder2D = particleBatchBuilder2D2D;
         _particleIndex = particleIndex;
     }
 }

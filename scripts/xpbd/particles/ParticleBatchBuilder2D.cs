@@ -5,19 +5,21 @@ namespace StarWreck.scripts.xpbd.particles;
 [GlobalClass]
 public partial class ParticleBatchBuilder2D : BaseParticleBatchBuilder<Vector2>
 {
-    [Export] private Transform2D _spaceGlobalTransform;
+    public ParticleBatch2D ParticleBatch2D { get; protected set; }
+
+    private Transform2D _spaceGlobalTransform;
 
     [Export] private Vector2 _startPosition;
 
     [Export] private Vector2 _endPosition;
 
-    [Export(PropertyHint.Range, "2")] private int _count;
+    [Export(PropertyHint.Range, "2,10,or_greater")] private int _count = 2;
 
-    [Export(PropertyHint.Range, "0,10,or_greater")] private float _inverseMass;
+    [Export(PropertyHint.Range, "0,10,or_greater")] private float _inverseMass = 1f;
 
     public override ParticleBatch2D Build()
     {
-        ParticleBatch2D particleBatch2D = new(_count, _spaceGlobalTransform);
+        ParticleBatch2D = new ParticleBatch2D(_count, _spaceGlobalTransform);
 
         Vector2 delta = _endPosition - _startPosition;
         float fraction = 1f / (_count - 1);
@@ -25,14 +27,14 @@ public partial class ParticleBatchBuilder2D : BaseParticleBatchBuilder<Vector2>
         for (int i = 0; i < _count; i++)
         {
             Vector2 nextPosition = _startPosition + delta * (i * fraction);
-            particleBatch2D.Positions[i] = nextPosition;
+            ParticleBatch2D.Positions[i] = nextPosition;
         }
 
         for (int i = 0; i < _count; i++)
         {
-            particleBatch2D.InverseMasses[i] = _inverseMass;
+            ParticleBatch2D.InverseMasses[i] = _inverseMass;
         }
 
-        return particleBatch2D;
+        return ParticleBatch2D;
     }
 }

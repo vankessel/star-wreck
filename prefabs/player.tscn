@@ -10,8 +10,9 @@ points = PackedVector2Array(0, -28, -30, 19, 30, 19)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_72ieh"]
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("_anchorPoint")]
 script = ExtResource("1_4dohe")
+_anchorPoint = NodePath("RopeStart")
 metadata/_edit_group_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

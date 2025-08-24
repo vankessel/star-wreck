@@ -17,7 +17,7 @@ public partial class ParticleRigidBody2D : RigidBody2D
     {
         base._Ready();
         _directState = PhysicsServer2D.BodyGetDirectState(GetRid());
-        CustomIntegrator = true;
+        CustomIntegrator = false;
         _particle2D.InverseMass = _directState.InverseMass;
         _particle2D.Position = _anchorPoint.GlobalPosition * _particle2D.SpaceGlobalTransform;
 
@@ -37,12 +37,35 @@ public partial class ParticleRigidBody2D : RigidBody2D
         return _directState.InverseMass + distanceFromCenterOfMass * distanceFromCenterOfMass * _directState.InverseInertia;
     }
 
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
+
+        PinPosition();
+    }
+
+    private void PinPosition()
+    {
+        _particle2D.Position = _anchorPoint.GlobalPosition * _particle2D.SpaceGlobalTransform;
+        _particle2D.PreviousPosition = _particle2D.Position;
+        QueueRedraw();
+    }
+
     public override void _IntegrateForces(PhysicsDirectBodyState2D state)
     {
         base._IntegrateForces(state);
 
-        Vector2 delta = _particle2D.Position - _anchorPoint.GlobalPosition * _particle2D.SpaceGlobalTransform;
-        Vector2 offset = _anchorPoint.GlobalPosition - GlobalPosition;
-        ApplyImpulse(delta, offset);
+        // Vector2 delta = _particle2D.Position - _anchorPoint.GlobalPosition * _particle2D.SpaceGlobalTransform;
+        // Vector2 offset = _anchorPoint.GlobalPosition - GlobalPosition;
+        // ApplyImpulse(0.5f * delta, offset);
+        // _particle2D.HalfStepPreviousVelocity -= 0.5f * delta;
+    }
+
+    public override void _Draw()
+    {
+        base._Draw();
+
+        DrawCircle(_anchorPoint.GlobalPosition * GlobalTransform, 5f, Colors.Green);
+        DrawCircle((_particle2D.SpaceGlobalTransform * _particle2D.Position) * GlobalTransform, 10f, Colors.Purple);
     }
 }

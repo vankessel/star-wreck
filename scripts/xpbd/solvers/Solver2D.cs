@@ -17,7 +17,8 @@ public partial class Solver2D : BaseSolver<Vector2>
         {
             Vector2 accel = vectorField.Sample(positions[i]);
             previousPositions[i] = positions[i];
-            positions[i] += (halfStepPrevVelocities[i] + accel * delta) * delta;
+            Vector2 step = (halfStepPrevVelocities[i] + accel * delta) * delta;
+            positions[i] += step;
         }
     }
 

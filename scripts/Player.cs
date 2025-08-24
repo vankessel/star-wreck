@@ -1,12 +1,12 @@
 using Godot;
+using StarWreck.scripts.xpbd;
 using Action = StarWreck.scripts.input.Action;
 
 namespace StarWreck.scripts;
 
-public partial class Player : RigidBody2D
+public partial class Player : ParticleRigidBody2D
 {
-    [Export]
-    private PlayerCamera _camera;
+    [Export] private PlayerCamera _camera;
 
     [Export(PropertyHint.Range, "0,2048,16,or_greater")]
     private float _maxSpeed = 1024f;
@@ -29,11 +29,14 @@ public partial class Player : RigidBody2D
     [Export(PropertyHint.Range, "0,1024,64,or_greater")]
     private float _friction = 256f;
 
-    [Export(PropertyHint.Range, "0,10,or_greater")] private float _rotationSpringInertia = 1f;
+    [Export(PropertyHint.Range, "0,10,or_greater")]
+    private float _rotationSpringInertia = 1f;
 
-    [Export(PropertyHint.Range, "0,256,or_greater")] private float _rotationSpringConstant = 32f;
+    [Export(PropertyHint.Range, "0,256,or_greater")]
+    private float _rotationSpringConstant = 32f;
 
-    [Export(PropertyHint.Range, "0,2,or_greater")] private float _rotationDampingRatio = 0.3333333333f;
+    [Export(PropertyHint.Range, "0,2,or_greater")]
+    private float _rotationDampingRatio = 0.3333333333f;
 
     public override void _Ready()
     {

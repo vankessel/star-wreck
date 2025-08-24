@@ -8,11 +8,10 @@ namespace StarWreck.scripts.xpbd;
 
 public partial class ParticlePhysicsSystem2D : Node2D
 {
-    [Export(PropertyHint.Range, "2,64,or_greater")]
-    private int _particleCount;
+    [Export(PropertyHint.Range, "0,5,or_greater")]
+    private int _substeps;
 
-    [Export(PropertyHint.ResourceType, nameof(ParticleBatch2D))]
-    private ParticleBatchBuilder2D _particleBatchBuilder2D;
+    [Export] private ParticleBatchBuilder2D _particleBatchBuilder2D;
 
     private ParticleBatch2D _particleBatch2D;
 
@@ -37,7 +36,19 @@ public partial class ParticlePhysicsSystem2D : Node2D
     {
         base._PhysicsProcess(delta);
 
-        _solver2D.Update((float)delta, _particleBatch2D, _vectorField2D, _constraint2D);
+        float dt = (float)(delta / _substeps);
+
+        for (int i = 0; i < _substeps; i++)
+        {
+            _solver2D.Update(dt, _particleBatch2D, _vectorField2D, _constraint2D);
+        }
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+
+        QueueRedraw();
     }
 
     public override void _Draw()
@@ -47,8 +58,9 @@ public partial class ParticlePhysicsSystem2D : Node2D
         Vector2[] positions = _particleBatch2D.Positions;
         for (int index = 0; index < positions.Length; index++)
         {
+            DrawCircle(positions[index], 5f, Colors.Red);
             if (index == positions.Length - 1) return;
-            DrawLine(positions[index], positions[index+1], Colors.Red);
+            DrawLine(positions[index], positions[index + 1], Colors.Red);
         }
     }
 }
