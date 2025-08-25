@@ -5,11 +5,12 @@ namespace StarWreck.scripts.xpbd;
 
 public partial class ParticleRigidBody2D : RigidBody2D
 {
-    [Export]
-    private Node2D _anchorPoint;
+    [Export] private Node2D _anchorPoint;
 
-    [Export]
-    private Particle2D _particle2D;
+    [Export] private Particle2D _particle2D;
+
+    [Export(PropertyHint.Range, "0,10,or_greater")]
+    private int _substeps = 1;
 
     private PhysicsDirectBodyState2D _directState;
 
@@ -20,7 +21,6 @@ public partial class ParticleRigidBody2D : RigidBody2D
         CustomIntegrator = false;
         _particle2D.InverseMass = _directState.InverseMass;
         _particle2D.Position = _anchorPoint.GlobalPosition * _particle2D.SpaceGlobalTransform;
-
     }
 
     /// <summary>
@@ -30,18 +30,22 @@ public partial class ParticleRigidBody2D : RigidBody2D
     /// https://physics.stackexchange.com/a/669262 <br/>
     /// https://matthias-research.github.io/pages/tenMinutePhysics/22-rigidBodies.pdf (Slide 20)
     /// </summary>
-    /// <param name="distanceFromCenterOfMass"></param>
+    /// <param name="forceOffset">Position of force relative to center of mass in global coordinates</param>
+    /// <param name="forceDirection">Force direction unit vector in global basis</param>
     /// <returns></returns>
-    private float EffectiveInverseMass(float distanceFromCenterOfMass)
+    private float EffectiveInverseMass(Vector2 forceOffset, Vector2 forceDirection)
     {
-        return _directState.InverseMass + distanceFromCenterOfMass * distanceFromCenterOfMass * _directState.InverseInertia;
+        float unitTorque = forceOffset.Cross(forceDirection);
+        return _directState.InverseMass + unitTorque * unitTorque * _directState.InverseInertia;
     }
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
 
-        PinPosition();
+        // Seems to work here
+        // Can't use _IntegrateForces because we need it running after ParticlePhysicsSystem2D's _PhysicsProcess
+        UpdateParticles();
     }
 
     private void PinPosition()
@@ -51,14 +55,41 @@ public partial class ParticleRigidBody2D : RigidBody2D
         QueueRedraw();
     }
 
-    public override void _IntegrateForces(PhysicsDirectBodyState2D state)
+    private void UpdateParticles()
     {
-        base._IntegrateForces(state);
+        // float dt = 1f / Engine.PhysicsTicksPerSecond;
+        float dtInv = _substeps * Engine.PhysicsTicksPerSecond;
 
-        // Vector2 delta = _particle2D.Position - _anchorPoint.GlobalPosition * _particle2D.SpaceGlobalTransform;
-        // Vector2 offset = _anchorPoint.GlobalPosition - GlobalPosition;
-        // ApplyImpulse(0.5f * delta, offset);
-        // _particle2D.HalfStepPreviousVelocity -= 0.5f * delta;
+        Vector2 localPrevPos = _particle2D.PreviousPosition;
+
+        for (int i = 0; i < _substeps; i++)
+        {
+            Vector2 delta = _particle2D.SpaceGlobalTransform * _particle2D.Position - _anchorPoint.GlobalPosition;
+            Vector2 anchorPointCenterOfMassOffset = _anchorPoint.GlobalPosition - GlobalPosition;
+
+            Vector2 deltaDir = delta.Normalized();
+            float constraintError = delta.Length();
+
+            float effectiveInverseMass = EffectiveInverseMass(anchorPointCenterOfMassOffset, deltaDir);
+            float lambda = -constraintError / (_particle2D.InverseMass + effectiveInverseMass);
+
+            float f1 = -lambda * effectiveInverseMass;
+            float f2 = lambda * _particle2D.InverseMass;
+
+            Vector2 d1 = f1 * deltaDir; // This
+            Vector2 d2 = f2 * deltaDir; // Particle
+
+            Position += d1;
+            _particle2D.Position += d2;
+
+            ApplyImpulse(d1 * dtInv, anchorPointCenterOfMassOffset);
+            _particle2D.HalfStepPreviousVelocity = (_particle2D.Position - localPrevPos) * dtInv;
+
+            localPrevPos = _particle2D.Position;
+        }
+        _particle2D.PreviousPosition = localPrevPos;
+
+        QueueRedraw();
     }
 
     public override void _Draw()

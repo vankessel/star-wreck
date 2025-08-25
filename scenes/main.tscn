@@ -49,6 +49,7 @@ offset_bottom = 536.0
 texture = ExtResource("1_88i7p")
 
 [node name="ParticleSystem" type="Node2D" parent="."]
+process_physics_priority = -1
 script = ExtResource("4_tbgi4")
 _substeps = 4
 _particleBatchBuilder2D = SubResource("Resource_85g3d")
@@ -57,6 +58,7 @@ _constraint2D = SubResource("Resource_eb6dy")
 _solver2D = SubResource("Resource_trceg")
 
 [node name="Player" parent="." node_paths=PackedStringArray("_camera") instance=ExtResource("1_o5qli")]
+mass = 20.0
 _camera = NodePath("../PlayerCamera")
 _particle2D = SubResource("Resource_choun")
 
