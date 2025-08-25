@@ -1,44 +1,24 @@
-[gd_scene load_steps=15 format=3 uid="uid://dsrd3np32lxtf"]
+[gd_scene load_steps=9 format=3 uid="uid://dsrd3np32lxtf"]
 
 [ext_resource type="Texture2D" uid="uid://cuydipn50mwqd" path="res://sprites/background.png" id="1_88i7p"]
 [ext_resource type="PackedScene" uid="uid://byvdby8yhdl5i" path="res://prefabs/player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://c4r5jdkf2amv8" path="res://prefabs/player_camera.tscn" id="2_0wfyh"]
-[ext_resource type="Script" uid="uid://d02wp6vmsg0dh" path="res://scripts/xpbd/particles/Particle2D.cs" id="4_85g3d"]
-[ext_resource type="Script" uid="uid://bfqbja0hou8ad" path="res://scripts/xpbd/ParticlePhysicsSystem2D.cs" id="4_tbgi4"]
-[ext_resource type="Script" uid="uid://dir3jc6uopfru" path="res://scripts/xpbd/particles/ParticleBatchBuilder2D.cs" id="5_tefeu"]
-[ext_resource type="Script" uid="uid://cvruol1k08qeh" path="res://scripts/xpbd/vector_fields/ConstantVectorField2D.cs" id="6_tipki"]
-[ext_resource type="Script" uid="uid://cql4at5i3h6c0" path="res://scripts/xpbd/constraints/UniformChainedMaxDistanceConstraint2D.cs" id="7_85g3d"]
-[ext_resource type="Script" uid="uid://b6sber7me8g45" path="res://scripts/xpbd/solvers/Solver2D.cs" id="8_choun"]
+[ext_resource type="Script" uid="uid://b2shq2gjd4fvt" path="res://addons/ropesim/Rope.gd" id="10_choun"]
+[ext_resource type="Script" uid="uid://dvxegqp0cf77n" path="res://addons/ropesim/RopeInteraction.gd" id="11_ya4ey"]
 
-[sub_resource type="Resource" id="Resource_85g3d"]
-script = ExtResource("5_tefeu")
-_startPosition = Vector2(0, 0)
-_endPosition = Vector2(0, 400)
-_count = 10
-_inverseMass = 1.0
-metadata/_custom_type_script = "uid://dir3jc6uopfru"
+[sub_resource type="CircleShape2D" id="CircleShape2D_85g3d"]
+radius = 32.0
 
-[sub_resource type="Resource" id="Resource_ya4ey"]
-script = ExtResource("6_tipki")
-_constant = Vector2(0, 0)
-metadata/_custom_type_script = "uid://cvruol1k08qeh"
+[sub_resource type="Gradient" id="Gradient_choun"]
+interpolation_mode = 1
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
 
-[sub_resource type="Resource" id="Resource_eb6dy"]
-script = ExtResource("7_85g3d")
-_segmentLength = 50.0
-_constraintStyle = 1
-_particleBatchBuilder2D = SubResource("Resource_85g3d")
-metadata/_custom_type_script = "uid://cql4at5i3h6c0"
-
-[sub_resource type="Resource" id="Resource_trceg"]
-script = ExtResource("8_choun")
-metadata/_custom_type_script = "uid://b6sber7me8g45"
-
-[sub_resource type="Resource" id="Resource_choun"]
-script = ExtResource("4_85g3d")
-_particleBatchBuilder2D = SubResource("Resource_85g3d")
-_particleIndex = 0
-metadata/_custom_type_script = "uid://d02wp6vmsg0dh"
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ya4ey"]
+gradient = SubResource("Gradient_choun")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
 
 [node name="Node" type="Node"]
 
@@ -49,19 +29,57 @@ offset_right = 673.0
 offset_bottom = 536.0
 texture = ExtResource("1_88i7p")
 
-[node name="ParticleSystem" type="Node2D" parent="."]
-process_physics_priority = -1
-script = ExtResource("4_tbgi4")
-_substeps = 4
-_particleBatchBuilder2D = SubResource("Resource_85g3d")
-_vectorField2D = SubResource("Resource_ya4ey")
-_constraint2D = SubResource("Resource_eb6dy")
-_solver2D = SubResource("Resource_trceg")
-
 [node name="Player" parent="." node_paths=PackedStringArray("_camera") instance=ExtResource("1_o5qli")]
-mass = 20.0
+mass = 100.0
 _camera = NodePath("../PlayerCamera")
-_particle2D = SubResource("Resource_choun")
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("2_0wfyh")]
 _player = NodePath("../Player")
+
+[node name="Ball" type="RigidBody2D" parent="."]
+position = Vector2(0, 200)
+mass = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_85g3d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture = SubResource("GradientTexture2D_ya4ey")
+
+[node name="Marker2D" type="Marker2D" parent="Ball"]
+position = Vector2(0, -32)
+
+[node name="RopeEndBody" type="CharacterBody2D" parent="Ball/Marker2D"]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Ball/Marker2D"]
+node_a = NodePath("../..")
+node_b = NodePath("../RopeEndBody")
+softness = 0.05
+
+[node name="Rope" type="Node2D" parent="."]
+position = Vector2(0, 24)
+script = ExtResource("10_choun")
+rope_length = 300.0
+gravity = 0.0
+gravity_direction = Vector2(0, 0)
+fixate_begin = false
+
+[node name="PlayerAttachment" type="Node" parent="Rope" node_paths=PackedStringArray("target_node", "input_node_override", "rope")]
+script = ExtResource("11_ya4ey")
+disable_in_editor = true
+position_update_mode = 0
+target_node = NodePath("../../Player/RopeStart/RopeStartBody")
+input_node_override = NodePath("../../Player/RopeStart/PinJoint2D")
+rope = NodePath("..")
+rope_position = 0.0
+
+[node name="BallAttachment" type="Node" parent="Rope" node_paths=PackedStringArray("target_node", "input_node_override", "rope")]
+script = ExtResource("11_ya4ey")
+disable_in_editor = true
+position_update_mode = 0
+target_node = NodePath("../../Ball/Marker2D/RopeEndBody")
+input_node_override = NodePath("../../Ball/Marker2D/PinJoint2D")
+rope = NodePath("..")

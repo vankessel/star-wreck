@@ -4,7 +4,7 @@ using Action = StarWreck.scripts.input.Action;
 
 namespace StarWreck.scripts;
 
-public partial class Player : ParticleRigidBody2D
+public partial class Player : RigidBody2D
 {
     [Export] private PlayerCamera _camera;
 
