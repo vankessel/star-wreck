@@ -26,6 +26,7 @@ metadata/_custom_type_script = "uid://cvruol1k08qeh"
 [sub_resource type="Resource" id="Resource_eb6dy"]
 script = ExtResource("7_85g3d")
 _segmentLength = 50.0
+_constraintStyle = 1
 _particleBatchBuilder2D = SubResource("Resource_85g3d")
 metadata/_custom_type_script = "uid://cql4at5i3h6c0"
 
