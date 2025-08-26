@@ -1,4 +1,5 @@
 using Godot;
+using Godot.NativeInterop;
 
 namespace StarWreck.scripts;
 
@@ -9,7 +10,11 @@ public partial class HealthComponent : Node
 
     private float _health = 100f;
 
-    public float MaxHealth => _maxHealth;
+    public float MaxHealth
+    {
+        get => _maxHealth;
+        set => _maxHealth = SetMaxHealth(value);
+    }
 
     public float Health
     {
@@ -28,6 +33,13 @@ public partial class HealthComponent : Node
 
     [Signal]
     public delegate void MaxHealthChangedEventHandler(HealthComponent healthComponent, float oldMaxHealth);
+
+    public override void _EnterTree()
+    {
+        base._EnterTree();
+
+        _health = _initialHealth;
+    }
 
     public float SetMaxHealth(float maxHealth)
     {
@@ -70,12 +82,12 @@ public partial class HealthComponent : Node
 
         if (healthDelta < 0f)
         {
-            EmitSignal(SignalName.HealthChanged, healthDelta, excess);
+            EmitSignal(SignalName.HealthChanged, this, healthDelta, excess);
         }
 
         if (_health <= 0f)
         {
-            EmitSignal(SignalName.HealthFullyDepleted, -healthDelta, -excess);
+            EmitSignal(SignalName.HealthFullyDepleted, this, -healthDelta, -excess);
         }
 
         return _health;
@@ -91,12 +103,12 @@ public partial class HealthComponent : Node
 
         if (0 != healthDelta)
         {
-            EmitSignal(SignalName.HealthChanged, healthDelta, excess);
+            EmitSignal(SignalName.HealthChanged, this, healthDelta, excess);
         }
 
         if (_maxHealth <= _health)
         {
-            EmitSignal(SignalName.HealthFullyRestored, healthDelta, excess);
+            EmitSignal(SignalName.HealthFullyRestored, this, healthDelta, excess);
         }
 
         return _health;
