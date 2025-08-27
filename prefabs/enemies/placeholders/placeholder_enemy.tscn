@@ -9,7 +9,7 @@ radius = 32.0
 
 [sub_resource type="Gradient" id="Gradient_yfjof"]
 interpolation_mode = 1
-colors = PackedColorArray(0.234875, 0.350017, 0.136888, 1, 1, 1, 1, 0)
+colors = PackedColorArray(0.48, 0.1536, 0.22432, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tbgi4"]
 gradient = SubResource("Gradient_yfjof")
@@ -18,7 +18,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
 
-[node name="Enemy" type="RigidBody2D" node_paths=PackedStringArray("_healthComponent")]
+[node name="PlaceholderEnemy" type="RigidBody2D" node_paths=PackedStringArray("_healthComponent")]
 script = ExtResource("1_yfjof")
 _healthComponent = NodePath("HealthComponent")
 _enemyDebris = ExtResource("2_a7d0n")

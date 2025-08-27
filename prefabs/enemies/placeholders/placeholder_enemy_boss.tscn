@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqgvxabuvesax"]
+
+[ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/placeholders/placeholder_enemy.tscn" id="1_xucc6"]
+
+[sub_resource type="Gradient" id="Gradient_u4pxy"]
+interpolation_mode = 1
+colors = PackedColorArray(0.19, 0.1463, 0.154312, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l8cc2"]
+gradient = SubResource("Gradient_u4pxy")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[node name="PlaceholderEnemyBoss" instance=ExtResource("1_xucc6")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = SubResource("GradientTexture2D_l8cc2")
+
+[node name="HealthComponent" parent="." index="2"]
+_maxHealth = 500.0
+_initialHealth = 500.0

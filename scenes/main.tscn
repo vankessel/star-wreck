@@ -1,30 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsrd3np32lxtf"]
+[gd_scene load_steps=7 format=3 uid="uid://dsrd3np32lxtf"]
 
 [ext_resource type="Texture2D" uid="uid://cuydipn50mwqd" path="res://sprites/background.png" id="1_88i7p"]
 [ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player/player_container.tscn" id="2_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/enemy.tscn" id="3_sugp2"]
-
-[sub_resource type="Gradient" id="Gradient_sugp2"]
-interpolation_mode = 1
-colors = PackedColorArray(0.270809, 0.272165, 0.544641, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jyhfs"]
-gradient = SubResource("Gradient_sugp2")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
-metadata/_snap_enabled = true
-
-[sub_resource type="Gradient" id="Gradient_tbgi4"]
-interpolation_mode = 1
-colors = PackedColorArray(0.363951, 0.300168, 0.198065, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tefeu"]
-gradient = SubResource("Gradient_tbgi4")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
-metadata/_snap_enabled = true
+[ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/placeholders/placeholder_enemy.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://wqixl0tvnuvh" path="res://prefabs/enemies/placeholders/placeholder_enemy_weak.tscn" id="4_tefeu"]
+[ext_resource type="PackedScene" uid="uid://coo3msuspoab" path="res://prefabs/enemies/placeholders/placeholder_enemy_intermediate.tscn" id="5_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://cqgvxabuvesax" path="res://prefabs/enemies/placeholders/placeholder_enemy_boss.tscn" id="6_tipki"]
 
 [node name="Node" type="Node"]
 
@@ -40,30 +21,42 @@ texture = ExtResource("1_88i7p")
 [node name="Ball" parent="PlayerContainer" index="2"]
 max_contacts_reported = 4
 
-[node name="Enemy" parent="." instance=ExtResource("3_sugp2")]
-position = Vector2(0, -200)
+[node name="Enemies" type="Node" parent="."]
 
-[node name="HealthComponent" parent="Enemy" index="2"]
-_maxHealth = 1.0
-_initialHealth = 1.0
+[node name="PlaceholderEnemy" parent="Enemies" instance=ExtResource("3_sugp2")]
+position = Vector2(104, -354)
 
-[node name="Enemy2" parent="." instance=ExtResource("3_sugp2")]
-position = Vector2(-85, -294)
+[node name="PlaceholderEnemyWeak" parent="Enemies" instance=ExtResource("4_tefeu")]
+position = Vector2(101, -172)
 
-[node name="Sprite2D" parent="Enemy2" index="1"]
-texture = SubResource("GradientTexture2D_jyhfs")
+[node name="PlaceholderEnemyWeak2" parent="Enemies" instance=ExtResource("4_tefeu")]
+position = Vector2(10, -127)
 
-[node name="HealthComponent" parent="Enemy2" index="2"]
-_maxHealth = 25.0
-_initialHealth = 25.0
+[node name="PlaceholderEnemyWeak3" parent="Enemies" instance=ExtResource("4_tefeu")]
+position = Vector2(-99, -175)
 
-[node name="Enemy3" parent="." instance=ExtResource("3_sugp2")]
-position = Vector2(79, -294)
+[node name="PlaceholderEnemyWeak4" parent="Enemies" instance=ExtResource("4_tefeu")]
+position = Vector2(197, -123)
 
-[node name="Sprite2D" parent="Enemy3" index="1"]
-texture = SubResource("GradientTexture2D_tefeu")
+[node name="PlaceholderEnemyIntermediate" parent="Enemies" instance=ExtResource("5_o6xl0")]
+position = Vector2(9, -227)
+
+[node name="PlaceholderEnemyIntermediate2" parent="Enemies" instance=ExtResource("5_o6xl0")]
+position = Vector2(102, -261)
+
+[node name="PlaceholderEnemyIntermediate3" parent="Enemies" instance=ExtResource("5_o6xl0")]
+position = Vector2(-93, -268)
+
+[node name="PlaceholderEnemyWeak5" parent="Enemies" instance=ExtResource("4_tefeu")]
+position = Vector2(-188, -123)
+
+[node name="PlaceholderEnemy2" parent="Enemies" instance=ExtResource("3_sugp2")]
+position = Vector2(6, -390)
+
+[node name="PlaceholderEnemy3" parent="Enemies" instance=ExtResource("3_sugp2")]
+position = Vector2(-91, -360)
+
+[node name="PlaceholderEnemyBoss" parent="Enemies" instance=ExtResource("6_tipki")]
+position = Vector2(1, -308)
 
 [editable path="PlayerContainer"]
-[editable path="Enemy"]
-[editable path="Enemy2"]
-[editable path="Enemy3"]
