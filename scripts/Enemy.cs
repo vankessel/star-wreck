@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
 using Godot;
+using Godot.NativeInterop;
 using StarWreck.scripts.health;
 
 namespace StarWreck.scripts;
@@ -8,35 +11,35 @@ public partial class Enemy : RigidBody2D
     [Export] private HealthComponent _healthComponent;
     [Export] private PackedScene _enemyDebris;
 
-    public override void _Ready()
+    private readonly Queue<Vector2> _velocityHistory = new([Vector2.Zero, Vector2.Zero, Vector2.Zero]);
+    // private readonly Queue<Vector2> _calculatedAccelerations = new([Vector2.Zero, Vector2.Zero, Vector2.Zero]);
+    private Vector2 _calculatedVelocityChange;
+
+    public override void _PhysicsProcess(double delta)
     {
-        base._Ready();
-        BodyEntered += OnBodyEntered;
+        base._PhysicsProcess(delta);
+        Vector2 vm3 = _velocityHistory.Dequeue();
+        Vector2 vm2 = _velocityHistory.Dequeue();
+        Vector2 vm1 = _velocityHistory.Dequeue();
+        _calculatedVelocityChange = ((-1f / 3f) * vm3 + 1.5f * vm2 - 3f * vm1 + (11f / 6f) * LinearVelocity);
+        _velocityHistory.Enqueue(vm2);
+        _velocityHistory.Enqueue(vm1);
+        _velocityHistory.Enqueue(LinearVelocity);
+        TakeKineticDamage();
     }
 
-    public override void _ExitTree()
+    private void TakeKineticDamage()
     {
-        base._ExitTree();
-        BodyEntered -= OnBodyEntered;
-    }
-
-    private void OnBodyEntered(Node node)
-    {
-        if (node is RigidBody2D otherRigidBody)
+        float impulse = (_calculatedVelocityChange).Length() * Mass;
+        float damage = impulse / 200f;
+        if (damage > 2f)
         {
-            TakeKineticDamage(otherRigidBody);
+            _healthComponent.Hurt(damage);
         }
-    }
 
-    private void TakeKineticDamage(RigidBody2D other)
-    {
-        float kineticEnergy = 0.5f * (other.LinearVelocity - LinearVelocity).LengthSquared() * Mass;
-        float damage = kineticEnergy / 10000f;
-        float health = _healthComponent.Hurt(damage);
+        if (0f < _healthComponent.Health) return;
 
-        if (0f < health) return;
-
-        CallDeferred(MethodName.SpawnDebris, Position, other.LinearVelocity, GetParent(), 3, 5);
+        CallDeferred(MethodName.SpawnDebris, Position, LinearVelocity, GetParent(), 3, 5);
 
         QueueFree();
     }
