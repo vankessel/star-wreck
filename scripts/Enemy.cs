@@ -1,6 +1,6 @@
-using System;
 using Godot;
-using StarWreck.scripts;
+
+namespace StarWreck.scripts;
 
 public partial class Enemy : RigidBody2D
 {
