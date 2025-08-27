@@ -37,7 +37,6 @@ max_contacts_reported = 4
 metadata/_edit_lock_ = true
 
 [node name="PlaceholderEnemy" parent="Enemies" instance=ExtResource("3_sugp2")]
-visible = false
 position = Vector2(104, -354)
 
 [node name="PlaceholderEnemyWeak" parent="Enemies" instance=ExtResource("4_tefeu")]
@@ -53,30 +52,24 @@ position = Vector2(-99, -175)
 position = Vector2(197, -123)
 
 [node name="PlaceholderEnemyIntermediate" parent="Enemies" instance=ExtResource("5_o6xl0")]
-visible = false
 position = Vector2(9, -227)
 
 [node name="PlaceholderEnemyIntermediate2" parent="Enemies" instance=ExtResource("5_o6xl0")]
-visible = false
 position = Vector2(102, -261)
 
 [node name="PlaceholderEnemyIntermediate3" parent="Enemies" instance=ExtResource("5_o6xl0")]
-visible = false
 position = Vector2(-93, -268)
 
 [node name="PlaceholderEnemyWeak5" parent="Enemies" instance=ExtResource("4_tefeu")]
 position = Vector2(-188, -123)
 
 [node name="PlaceholderEnemy2" parent="Enemies" instance=ExtResource("3_sugp2")]
-visible = false
 position = Vector2(6, -390)
 
 [node name="PlaceholderEnemy3" parent="Enemies" instance=ExtResource("3_sugp2")]
-visible = false
 position = Vector2(-91, -360)
 
 [node name="PlaceholderEnemyBoss" parent="Enemies" instance=ExtResource("6_tipki")]
-visible = false
 position = Vector2(1, -308)
 
 [node name="Walls" type="Node2D" parent="."]
