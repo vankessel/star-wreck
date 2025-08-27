@@ -10,7 +10,7 @@ public partial class Enemy : RigidBody2D
 
     public void TakeKineticDamage(RigidBody2D other)
     {
-        float kineticEnergy = 0.5f * other.LinearVelocity.LengthSquared() * Mass;
+        float kineticEnergy = 0.5f * (other.LinearVelocity - LinearVelocity).LengthSquared() * Mass;
         float damage = kineticEnergy / 10000f;
         float health = _healthComponent.Hurt(damage);
 
