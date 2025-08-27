@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5ttiwj4yhikt" path="res://scripts/Enemy.cs" id="1_yfjof"]
 [ext_resource type="PackedScene" uid="uid://ca4485syaahao" path="res://prefabs/enemy_debris.tscn" id="2_a7d0n"]
-[ext_resource type="PackedScene" uid="uid://bi75kfc75t4jg" path="res://prefabs/health_bar.tscn" id="3_utqn2"]
+[ext_resource type="PackedScene" uid="uid://b63hup5adayan" path="res://prefabs/health_bar.tscn" id="3_stf37"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyhfs"]
 radius = 32.0
@@ -20,7 +20,7 @@ metadata/_snap_enabled = true
 
 [node name="PlaceholderEnemy" type="RigidBody2D" node_paths=PackedStringArray("_healthComponent")]
 script = ExtResource("1_yfjof")
-_healthComponent = NodePath("HealthComponent")
+_healthComponent = NodePath("HealthBar/HealthComponentParent/HealthComponent")
 _enemyDebris = ExtResource("2_a7d0n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -29,5 +29,6 @@ shape = SubResource("CircleShape2D_jyhfs")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_tbgi4")
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_utqn2")]
-position = Vector2(0, -40)
+[node name="HealthBar" parent="." instance=ExtResource("3_stf37")]
+
+[editable path="HealthBar"]

@@ -18,6 +18,8 @@ metadata/_snap_enabled = true
 [node name="Sprite2D" parent="." index="1"]
 texture = SubResource("GradientTexture2D_l8cc2")
 
-[node name="HealthComponent" parent="." index="2"]
+[node name="HealthComponent" parent="HealthBar/HealthComponentParent" index="0"]
 _maxHealth = 500.0
 _initialHealth = 500.0
+
+[editable path="HealthBar"]

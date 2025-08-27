@@ -1,12 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi75kfc75t4jg"]
+[gd_scene load_steps=3 format=3 uid="uid://b63hup5adayan"]
 
 [ext_resource type="Script" uid="uid://oi5w421v7itb" path="res://scripts/health/HealthComponent.cs" id="1_xqnaj"]
 [ext_resource type="Script" uid="uid://b3uk1sfyh304j" path="res://scripts/health/HealthBar.cs" id="2_30skv"]
 
-[node name="HealthComponent" type="Node2D"]
+[node name="HealthBar" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="HealthComponentParentRemote" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../HealthComponentParent")
+update_rotation = false
+metadata/_edit_lock_ = true
+
+[node name="HealthComponentParent" type="Node2D" parent="."]
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="HealthComponent" type="Node2D" parent="HealthComponentParent"]
+position = Vector2(0, -45)
 script = ExtResource("1_xqnaj")
 
-[node name="ProgressBar" type="ProgressBar" parent="." node_paths=PackedStringArray("_healthComponent")]
+[node name="ProgressBar" type="ProgressBar" parent="HealthComponentParent/HealthComponent" node_paths=PackedStringArray("_healthComponent")]
 custom_minimum_size = Vector2(120, 0)
 anchors_preset = 8
 anchor_left = 0.5

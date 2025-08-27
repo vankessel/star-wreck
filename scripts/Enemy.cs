@@ -1,10 +1,11 @@
 using Godot;
+using StarWreck.scripts.health;
 
 namespace StarWreck.scripts;
 
 public partial class Enemy : RigidBody2D
 {
-    [Export] private health.HealthComponent _healthComponent;
+    [Export] private HealthComponent _healthComponent;
     [Export] private PackedScene _enemyDebris;
 
     public void TakeKineticDamage(RigidBody2D other)

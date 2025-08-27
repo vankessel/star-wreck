@@ -2,7 +2,8 @@ using Godot;
 
 namespace StarWreck.scripts.health;
 
-public partial class HealthComponent : Node
+[GlobalClass]
+public partial class HealthComponent : Node2D
 {
     [Export] private float _maxHealth = 100f;
     [Export] private float _initialHealth = 100f;
