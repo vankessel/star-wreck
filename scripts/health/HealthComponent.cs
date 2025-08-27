@@ -1,7 +1,6 @@
 using Godot;
-using Godot.NativeInterop;
 
-namespace StarWreck.scripts;
+namespace StarWreck.scripts.health;
 
 public partial class HealthComponent : Node
 {

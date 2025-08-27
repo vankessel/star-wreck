@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://blk3gc0sn3d5d"]
+[gd_scene load_steps=7 format=3 uid="uid://blk3gc0sn3d5d"]
 
 [ext_resource type="Script" uid="uid://5ttiwj4yhikt" path="res://scripts/Enemy.cs" id="1_yfjof"]
 [ext_resource type="PackedScene" uid="uid://ca4485syaahao" path="res://prefabs/enemy_debris.tscn" id="2_a7d0n"]
-[ext_resource type="Script" uid="uid://oi5w421v7itb" path="res://scripts/HealthComponent.cs" id="2_cypye"]
-[ext_resource type="Script" uid="uid://brflipomntcq5" path="res://scripts/HealthLabel.cs" id="4_a7d0n"]
+[ext_resource type="PackedScene" uid="uid://bi75kfc75t4jg" path="res://prefabs/health_bar.tscn" id="3_utqn2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyhfs"]
 radius = 32.0
@@ -24,27 +23,11 @@ script = ExtResource("1_yfjof")
 _healthComponent = NodePath("HealthComponent")
 _enemyDebris = ExtResource("2_a7d0n")
 
-[node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("2_cypye")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jyhfs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_tbgi4")
 
-[node name="Label" type="Label" parent="." node_paths=PackedStringArray("_healthComponent")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-script = ExtResource("4_a7d0n")
-_healthComponent = NodePath("../HealthComponent")
+[node name="HealthComponent" parent="." instance=ExtResource("3_utqn2")]
+position = Vector2(0, -40)

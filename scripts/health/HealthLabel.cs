@@ -1,7 +1,6 @@
-using System.Globalization;
 using Godot;
 
-namespace StarWreck.scripts;
+namespace StarWreck.scripts.health;
 
 public partial class HealthLabel : Label
 {

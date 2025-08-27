@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dsrd3np32lxtf"]
 
 [ext_resource type="Texture2D" uid="uid://cuydipn50mwqd" path="res://sprites/background.png" id="1_88i7p"]
-[ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player_container.tscn" id="2_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemy.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player/player_container.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/enemy.tscn" id="3_sugp2"]
 
 [sub_resource type="Gradient" id="Gradient_sugp2"]
 interpolation_mode = 1
@@ -43,24 +43,24 @@ max_contacts_reported = 4
 [node name="Enemy" parent="." instance=ExtResource("3_sugp2")]
 position = Vector2(0, -200)
 
-[node name="HealthComponent" parent="Enemy" index="0"]
+[node name="HealthComponent" parent="Enemy" index="2"]
 _maxHealth = 1.0
 _initialHealth = 1.0
 
 [node name="Enemy2" parent="." instance=ExtResource("3_sugp2")]
 position = Vector2(-85, -294)
 
-[node name="HealthComponent" parent="Enemy2" index="0"]
+[node name="Sprite2D" parent="Enemy2" index="1"]
+texture = SubResource("GradientTexture2D_jyhfs")
+
+[node name="HealthComponent" parent="Enemy2" index="2"]
 _maxHealth = 25.0
 _initialHealth = 25.0
-
-[node name="Sprite2D" parent="Enemy2" index="2"]
-texture = SubResource("GradientTexture2D_jyhfs")
 
 [node name="Enemy3" parent="." instance=ExtResource("3_sugp2")]
 position = Vector2(79, -294)
 
-[node name="Sprite2D" parent="Enemy3" index="2"]
+[node name="Sprite2D" parent="Enemy3" index="1"]
 texture = SubResource("GradientTexture2D_tefeu")
 
 [editable path="PlayerContainer"]

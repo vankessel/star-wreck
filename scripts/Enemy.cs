@@ -4,7 +4,7 @@ namespace StarWreck.scripts;
 
 public partial class Enemy : RigidBody2D
 {
-    [Export] private HealthComponent _healthComponent;
+    [Export] private health.HealthComponent _healthComponent;
     [Export] private PackedScene _enemyDebris;
 
     public void TakeKineticDamage(RigidBody2D other)
