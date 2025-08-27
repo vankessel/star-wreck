@@ -19,6 +19,8 @@ fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
 
 [node name="PlaceholderEnemy" type="RigidBody2D" node_paths=PackedStringArray("_healthComponent")]
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_yfjof")
 _healthComponent = NodePath("HealthBar/HealthComponentParent/HealthComponent")
 _enemyDebris = ExtResource("2_a7d0n")

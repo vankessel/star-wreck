@@ -8,8 +8,32 @@ public partial class Enemy : RigidBody2D
     [Export] private HealthComponent _healthComponent;
     [Export] private PackedScene _enemyDebris;
 
-    public void TakeKineticDamage(RigidBody2D other)
+    public override void _Ready()
     {
+        base._Ready();
+        BodyEntered += OnBodyEntered;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        BodyEntered -= OnBodyEntered;
+    }
+
+    private void OnBodyEntered(Node node)
+    {
+        if (node is RigidBody2D otherRigidBody)
+        {
+            TakeKineticDamage(otherRigidBody);
+        }
+    }
+
+    private void TakeKineticDamage(RigidBody2D other)
+    {
+        GD.Print(other.Name);
+        GD.Print(other.LinearVelocity);
+        GD.Print(LinearVelocity);
+        GD.Print((other.LinearVelocity - LinearVelocity).LengthSquared());
         float kineticEnergy = 0.5f * (other.LinearVelocity - LinearVelocity).LengthSquared() * Mass;
         float damage = kineticEnergy / 10000f;
         float health = _healthComponent.Hurt(damage);
