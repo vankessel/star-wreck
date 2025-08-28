@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using Godot;
-using Godot.Collections;
 
 namespace StarWreck.scripts;
 
 public partial class Ball : TrackedRigidBody2D
 {
     private bool _checkedBreakables;
-    private List<IBreakable> _breakables = new(4);
+    private readonly List<IBreakable> _breakables = new(4);
 
     public override void _Ready()
     {
@@ -33,19 +32,10 @@ public partial class Ball : TrackedRigidBody2D
     {
         base._PhysicsProcess(delta);
 
-        // if (_checkedBreakables) return;
         if (_breakables.Count == 0) return;
         IBreakable[] breakables = _breakables.ToArray();
         _breakables.Clear();
         CheckBreakables(breakables);
-        // _checkedBreakables = true;
-    }
-
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-
-        // _checkedBreakables = false;
     }
 
     public void CheckBreakables(IBreakable[] breakables)

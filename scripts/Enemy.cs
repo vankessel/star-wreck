@@ -27,6 +27,8 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
 
         Vector2 hitVelocity = (GlobalPosition - other.GlobalPosition).Normalized() * otherVelocityChangeFraction.Length();
 
+        // TODO: Increasing mass of ball will decrease change in velocity. Multiply by mass and adjust parameters.
+        // TODO: Or pass plain fraction so calculations can be changed? Perhaps to fraction of energy lost?
         KineticDamageCheck(otherVelocityChangeFraction.Length(), hitVelocity, 100f);
     }
 
