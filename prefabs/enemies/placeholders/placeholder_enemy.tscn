@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5ttiwj4yhikt" path="res://scripts/Enemy.cs" id="1_yfjof"]
 [ext_resource type="PackedScene" uid="uid://ca4485syaahao" path="res://prefabs/enemy_debris.tscn" id="2_a7d0n"]
-[ext_resource type="PackedScene" uid="uid://b63hup5adayan" path="res://prefabs/health_bar.tscn" id="3_stf37"]
+[ext_resource type="PackedScene" uid="uid://b63hup5adayan" path="res://prefabs/floating_health_bar.tscn" id="3_stf37"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyhfs"]
 radius = 32.0
