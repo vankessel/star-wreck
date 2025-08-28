@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dsrd3np32lxtf"]
 
-[ext_resource type="Texture2D" uid="uid://cuydipn50mwqd" path="res://sprites/background.png" id="1_88i7p"]
+[ext_resource type="PackedScene" uid="uid://dieelo3dwbmad" path="res://prefabs/background.tscn" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player/player_container.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/placeholders/placeholder_enemy.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://wqixl0tvnuvh" path="res://prefabs/enemies/placeholders/placeholder_enemy_weak.tscn" id="4_tefeu"]
@@ -12,20 +12,7 @@ size = Vector2(32, 32)
 
 [node name="Node" type="Node"]
 
-[node name="Background" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
-
-[node name="Parallax2D" type="Parallax2D" parent="Background"]
-scroll_scale = Vector2(0.01, 0.01)
-scroll_offset = Vector2(-75, -175)
-repeat_size = Vector2(1300, 1000)
-repeat_times = 6
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D"]
-texture = ExtResource("1_88i7p")
-centered = false
-metadata/_edit_lock_ = true
+[node name="Background" parent="." instance=ExtResource("1_tefeu")]
 
 [node name="PlayerContainer" parent="." instance=ExtResource("2_0wfyh")]
 metadata/_edit_lock_ = true

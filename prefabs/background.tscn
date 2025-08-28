@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dieelo3dwbmad"]
+
+[ext_resource type="Texture2D" uid="uid://cuydipn50mwqd" path="res://sprites/background.png" id="1_pfihi"]
+
+[node name="Background" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.01, 0.01)
+scroll_offset = Vector2(-75, -175)
+repeat_size = Vector2(1300, 1000)
+repeat_times = 6
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_pfihi")
+centered = false
+metadata/_edit_lock_ = true
