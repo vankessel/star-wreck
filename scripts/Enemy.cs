@@ -1,37 +1,44 @@
-using System.Collections.Generic;
-using System.Linq;
 using Godot;
-using Godot.NativeInterop;
 using StarWreck.scripts.health;
 
 namespace StarWreck.scripts;
 
-public partial class Enemy : RigidBody2D
+public partial class Enemy : TrackedRigidBody2D, IBreakable
 {
     [Export] private HealthComponent _healthComponent;
     [Export] private PackedScene _enemyDebris;
 
-    private readonly Queue<Vector2> _velocityHistory = new([Vector2.Zero, Vector2.Zero, Vector2.Zero]);
-    // private readonly Queue<Vector2> _calculatedAccelerations = new([Vector2.Zero, Vector2.Zero, Vector2.Zero]);
-    private Vector2 _calculatedVelocityChange;
+    public HealthComponent HealthComponent => _healthComponent;
+
+    private Vector2 _otherVelocityChangeFraction = Vector2.Zero;
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        Vector2 vm3 = _velocityHistory.Dequeue();
-        Vector2 vm2 = _velocityHistory.Dequeue();
-        Vector2 vm1 = _velocityHistory.Dequeue();
-        _calculatedVelocityChange = ((-1f / 3f) * vm3 + 1.5f * vm2 - 3f * vm1 + (11f / 6f) * LinearVelocity);
-        _velocityHistory.Enqueue(vm2);
-        _velocityHistory.Enqueue(vm1);
-        _velocityHistory.Enqueue(LinearVelocity);
-        TakeKineticDamage();
+
+        Vector2 otherVelocityChangeFraction = _otherVelocityChangeFraction;
+        _otherVelocityChangeFraction = Vector2.Zero;
+        KineticDamageCheck(otherVelocityChangeFraction);
     }
 
-    private void TakeKineticDamage()
+    public void Damage(Vector2 otherVelocityChangeFraction, TrackedRigidBody2D other)
     {
-        float impulse = (_calculatedVelocityChange).Length() * Mass;
-        float damage = impulse / 200f;
+        _otherVelocityChangeFraction += otherVelocityChangeFraction;
+
+        Vector2 hitVelocity = (GlobalPosition - other.GlobalPosition).Normalized() * otherVelocityChangeFraction.Length();
+
+        KineticDamageCheck(otherVelocityChangeFraction.Length(), hitVelocity, 100f);
+    }
+
+    private void KineticDamageCheck(Vector2 otherVelocityChange)
+    {
+        KineticDamageCheck((VelocityChange + otherVelocityChange).Length(), -otherVelocityChange, 100f);
+    }
+
+    private void KineticDamageCheck(float impulseMagnitude, Vector2 addedDebrisVelocity, float divisor = 100f)
+    {
+        float multiplier = 1f / (divisor * (1f + PhysicsMaterialOverride?.Bounce ?? 0f));
+        float damage = impulseMagnitude * multiplier;
         if (damage > 2f)
         {
             _healthComponent.Hurt(damage);
@@ -39,7 +46,7 @@ public partial class Enemy : RigidBody2D
 
         if (0f < _healthComponent.Health) return;
 
-        CallDeferred(MethodName.SpawnDebris, Position, LinearVelocity, GetParent(), 3, 5);
+        CallDeferred(MethodName.SpawnDebris, Position, LinearVelocity + addedDebrisVelocity, GetParent(), 3, 5);
 
         QueueFree();
     }

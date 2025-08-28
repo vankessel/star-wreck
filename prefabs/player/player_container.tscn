@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b65k21s135m71"]
+[gd_scene load_steps=9 format=3 uid="uid://b65k21s135m71"]
 
 [ext_resource type="PackedScene" uid="uid://byvdby8yhdl5i" path="res://prefabs/player/player.tscn" id="1_cw2ll"]
 [ext_resource type="PackedScene" uid="uid://c4r5jdkf2amv8" path="res://prefabs/player/player_camera.tscn" id="2_18wxr"]
 [ext_resource type="Script" uid="uid://b2shq2gjd4fvt" path="res://addons/ropesim/Rope.gd" id="3_khvhc"]
+[ext_resource type="Script" uid="uid://c11a7rm5pwqle" path="res://scripts/Ball.cs" id="3_nx1cc"]
 [ext_resource type="Script" uid="uid://dvxegqp0cf77n" path="res://addons/ropesim/RopeInteraction.gd" id="4_kjst6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_85g3d"]
@@ -29,9 +30,12 @@ _camera = NodePath("../PlayerCamera")
 _player = NodePath("../Player")
 
 [node name="Ball" type="RigidBody2D" parent="."]
+process_physics_priority = -1
 position = Vector2(0, 200)
 mass = 10.0
-max_contacts_reported = 1
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("3_nx1cc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
 shape = SubResource("CircleShape2D_85g3d")

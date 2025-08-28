@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b63hup5adayan"]
+
+[ext_resource type="PackedScene" uid="uid://ne38m2cinidj" path="res://prefabs/health_bar.tscn" id="1_7tfxf"]
+
+[node name="FloatingHealthBar" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="HealthComponentParentRemote" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../HealthComponentParent")
+update_rotation = false
+metadata/_edit_lock_ = true
+
+[node name="HealthComponentParent" type="Node2D" parent="."]
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="HealthComponent" parent="HealthComponentParent" instance=ExtResource("1_7tfxf")]
+position = Vector2(0, -45)

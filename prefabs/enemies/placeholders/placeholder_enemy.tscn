@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://blk3gc0sn3d5d"]
+[gd_scene load_steps=8 format=3 uid="uid://blk3gc0sn3d5d"]
 
 [ext_resource type="Script" uid="uid://5ttiwj4yhikt" path="res://scripts/Enemy.cs" id="1_yfjof"]
 [ext_resource type="PackedScene" uid="uid://ca4485syaahao" path="res://prefabs/enemy_debris.tscn" id="2_a7d0n"]
 [ext_resource type="PackedScene" uid="uid://b63hup5adayan" path="res://prefabs/floating_health_bar.tscn" id="3_stf37"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_stf37"]
+bounce = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyhfs"]
 radius = 32.0
@@ -19,6 +22,7 @@ fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
 
 [node name="PlaceholderEnemy" type="RigidBody2D" node_paths=PackedStringArray("_healthComponent")]
+physics_material_override = SubResource("PhysicsMaterial_stf37")
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_yfjof")

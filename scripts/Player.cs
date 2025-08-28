@@ -1,5 +1,4 @@
 using Godot;
-using StarWreck.scripts.xpbd;
 using Action = StarWreck.scripts.input.Action;
 
 namespace StarWreck.scripts;

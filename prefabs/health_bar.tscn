@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ne38m2cinidj"]
+
+[ext_resource type="Script" uid="uid://oi5w421v7itb" path="res://scripts/health/HealthComponent.cs" id="1_xqnaj"]
+[ext_resource type="Script" uid="uid://b3uk1sfyh304j" path="res://scripts/health/HealthBar.cs" id="2_30skv"]
+
+[node name="HealthComponent" type="Node2D"]
+z_index = 1
+script = ExtResource("1_xqnaj")
+
+[node name="ProgressBar" type="ProgressBar" parent="." node_paths=PackedStringArray("_healthComponent")]
+custom_minimum_size = Vector2(120, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -27.0
+offset_right = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(60, 13.5)
+value = 100.0
+rounded = true
+script = ExtResource("2_30skv")
+_healthComponent = NodePath("..")
