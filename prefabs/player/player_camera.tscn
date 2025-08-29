@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4r5jdkf2amv8"]
+[gd_scene load_steps=3 format=3 uid="uid://c4r5jdkf2amv8"]
 
 [ext_resource type="Script" uid="uid://ol2bhqo6iinj" path="res://scripts/PlayerCamera.cs" id="1_y260w"]
+[ext_resource type="PackedScene" uid="uid://ne38m2cinidj" path="res://prefabs/health_bar.tscn" id="2_phc30"]
 
 [node name="PlayerCamera" type="Camera2D"]
 ignore_rotation = false
 script = ExtResource("1_y260w")
 metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthComponent" parent="CanvasLayer" instance=ExtResource("2_phc30")]
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ProgressBar" parent="CanvasLayer/HealthComponent" index="0"]
+_alwaysShow = true
+
+[editable path="CanvasLayer/HealthComponent"]

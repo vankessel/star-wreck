@@ -5,6 +5,7 @@ namespace StarWreck.scripts;
 
 public partial class Player : RigidBody2D
 {
+	public static Player Instance { get; protected set; }
 	[Export] private PlayerCamera _camera;
 
 	[Export(PropertyHint.Range, "0,2048,16,or_greater")]
@@ -36,6 +37,12 @@ public partial class Player : RigidBody2D
 
 	[Export(PropertyHint.Range, "0,2,or_greater")]
 	private float _rotationDampingRatio = 0.3333333333f;
+
+	public override void _EnterTree()
+	{
+		base._EnterTree();
+		Instance = this;
+	}
 
 	public override void _Ready()
 	{

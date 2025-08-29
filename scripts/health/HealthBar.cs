@@ -5,6 +5,7 @@ namespace StarWreck.scripts.health;
 public partial class HealthBar : ProgressBar
 {
     [Export] private HealthComponent _healthComponent;
+    [Export] private bool _alwaysShow;
 
     private float _inverseMaxHealthPercent;
 
@@ -32,7 +33,7 @@ public partial class HealthBar : ProgressBar
     private void UpdateProgress()
     {
         Value = _healthComponent.Health * _inverseMaxHealthPercent;
-        Visible = Value < 100f - Mathf.Epsilon;
+        Visible = _alwaysShow || Value < 100f - Mathf.Epsilon;
     }
 
     private void OnMaxHealthChanged(HealthComponent healthComponent, float oldMaxHealth)

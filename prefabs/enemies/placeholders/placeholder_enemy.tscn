@@ -37,4 +37,12 @@ texture = SubResource("GradientTexture2D_tbgi4")
 
 [node name="HealthBar" parent="." instance=ExtResource("3_stf37")]
 
+[node name="HealthComponent" parent="HealthBar/HealthComponentParent" index="0"]
+offset_left = -60.0
+offset_top = -65.0
+offset_right = 60.0
+offset_bottom = -38.0
+
+[node name="Gun" type="Node2D" parent="."]
+
 [editable path="HealthBar"]
