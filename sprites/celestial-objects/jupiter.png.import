@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4txv8om88icm"
-path="res://.godot/imported/Neptune.png-cb93da619a03fb6d85d82d560ba17260.ctex"
+uid="uid://dk1xe2gdoavuv"
+path="res://.godot/imported/jupiter.png-4e394641f5fd3cd1e75fa4b83875a6de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Planets/Neptune.png"
-dest_files=["res://.godot/imported/Neptune.png-cb93da619a03fb6d85d82d560ba17260.ctex"]
+source_file="res://sprites/celestial-objects/jupiter.png"
+dest_files=["res://.godot/imported/jupiter.png-4e394641f5fd3cd1e75fa4b83875a6de.ctex"]
 
 [params]
 

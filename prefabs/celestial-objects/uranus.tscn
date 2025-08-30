@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbfsuq7ogcr5g"]
+
+[ext_resource type="Texture2D" uid="uid://djfejtke50mxb" path="res://sprites/celestial-objects/uranus.png" id="1_lnqcv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jkv2x"]
+radius = 110.0
+
+[node name="Uranus" type="AnimatableBody2D"]
+metadata/_edit_group_ = true
+
+[node name="AnimatableBody2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, -6)
+shape = SubResource("CircleShape2D_jkv2x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lnqcv")

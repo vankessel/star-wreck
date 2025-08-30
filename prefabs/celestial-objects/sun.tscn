@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvefs4mw02vou"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jscy8"]
+radius = 1280.0
+
+[sub_resource type="Gradient" id="Gradient_pm3ni"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.99814)
+colors = PackedColorArray(1, 0.898667, 0.24, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y6deb"]
+gradient = SubResource("Gradient_pm3ni")
+width = 2560
+height = 2560
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[node name="Sun" type="AnimatableBody2D"]
+metadata/_edit_group_ = true
+
+[node name="AnimatableBody2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jscy8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_y6deb")

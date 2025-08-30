@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crpp6ikq3d5pi"
-path="res://.godot/imported/saturn.png-44b834a9244dfedbd9fdf267116834cd.ctex"
+uid="uid://bl6yaxwn2gnh0"
+path="res://.godot/imported/mercury.png-9d63112685a33cff09989dcb796e237d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Planets/saturn.png"
-dest_files=["res://.godot/imported/saturn.png-44b834a9244dfedbd9fdf267116834cd.ctex"]
+source_file="res://sprites/celestial-objects/mercury.png"
+dest_files=["res://.godot/imported/mercury.png-9d63112685a33cff09989dcb796e237d.ctex"]
 
 [params]
 

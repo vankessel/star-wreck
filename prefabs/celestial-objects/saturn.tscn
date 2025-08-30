@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn808o1jpmbwa"]
+
+[ext_resource type="Texture2D" uid="uid://crpp6ikq3d5pi" path="res://sprites/celestial-objects/saturn.png" id="1_m3f4a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ld40"]
+radius = 156.0
+
+[node name="Saturn" type="AnimatableBody2D"]
+metadata/_edit_group_ = true
+
+[node name="AnimatableBody2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 3)
+shape = SubResource("CircleShape2D_0ld40")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_m3f4a")

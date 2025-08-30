@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnnm8xqx3p8d8"]
+
+[ext_resource type="Texture2D" uid="uid://mnxfpbwgvlr8" path="res://sprites/celestial-objects/venus.png" id="1_jdp2w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eb6dy"]
+radius = 130.0
+
+[node name="Venus" type="AnimatableBody2D"]
+metadata/_edit_group_ = true
+
+[node name="AnimatableBody2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_eb6dy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jdp2w")

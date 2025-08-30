@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo6622dr8frdf"]
+
+[ext_resource type="Texture2D" uid="uid://qcxdnfdmw81o" path="res://sprites/celestial-objects/earth.png" id="1_tj1aj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o6xl0"]
+radius = 130.0
+
+[node name="Earth" type="AnimatableBody2D"]
+metadata/_edit_group_ = true
+
+[node name="AnimatableBody2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o6xl0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tj1aj")

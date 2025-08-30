@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl6yaxwn2gnh0"
-path="res://.godot/imported/mercury.png-ffb9857bd7d535dd32c82d6b00f78ab2.ctex"
+uid="uid://mnxfpbwgvlr8"
+path="res://.godot/imported/venus.png-96e62ba7dbdfcdc6f87c7ee80708c9f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Planets/mercury.png"
-dest_files=["res://.godot/imported/mercury.png-ffb9857bd7d535dd32c82d6b00f78ab2.ctex"]
+source_file="res://sprites/celestial-objects/venus.png"
+dest_files=["res://.godot/imported/venus.png-96e62ba7dbdfcdc6f87c7ee80708c9f0.ctex"]
 
 [params]
 

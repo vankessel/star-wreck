@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7boiw66lwinj"
-path="res://.godot/imported/mars.png-4f89d08fa565007344c4e7f914aeee1d.ctex"
+uid="uid://qcxdnfdmw81o"
+path="res://.godot/imported/earth.png-c5e7236a98d3f12b4724359fbf69aefd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Planets/mars.png"
-dest_files=["res://.godot/imported/mars.png-4f89d08fa565007344c4e7f914aeee1d.ctex"]
+source_file="res://sprites/celestial-objects/earth.png"
+dest_files=["res://.godot/imported/earth.png-c5e7236a98d3f12b4724359fbf69aefd.ctex"]
 
 [params]
 

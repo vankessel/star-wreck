@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djfejtke50mxb"
-path="res://.godot/imported/uranus.png-3992e7a49af3c5397592e0030dcf6a37.ctex"
+uid="uid://b4txv8om88icm"
+path="res://.godot/imported/Neptune.png-eee0c6fbd85d7f4c215d5a4279681ac6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Planets/uranus.png"
-dest_files=["res://.godot/imported/uranus.png-3992e7a49af3c5397592e0030dcf6a37.ctex"]
+source_file="res://sprites/celestial-objects/Neptune.png"
+dest_files=["res://.godot/imported/Neptune.png-eee0c6fbd85d7f4c215d5a4279681ac6.ctex"]
 
 [params]
 
