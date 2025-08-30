@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD:sprites/Planets/Neptune.png.import
-uid="uid://cjc0s3fc4nqfj"
-path="res://.godot/imported/Neptune.png-cb93da619a03fb6d85d82d560ba17260.ctex"
-=======
-uid="uid://b4txv8om88icm"
+uid="uid://dj7e1fhy1nco8"
 path="res://.godot/imported/Neptune.png-eee0c6fbd85d7f4c215d5a4279681ac6.ctex"
->>>>>>> staging:sprites/celestial-objects/Neptune.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<< HEAD:sprites/Planets/Neptune.png.import
-source_file="res://sprites/Planets/Neptune.png"
-dest_files=["res://.godot/imported/Neptune.png-cb93da619a03fb6d85d82d560ba17260.ctex"]
-=======
 source_file="res://sprites/celestial-objects/Neptune.png"
 dest_files=["res://.godot/imported/Neptune.png-eee0c6fbd85d7f4c215d5a4279681ac6.ctex"]
->>>>>>> staging:sprites/celestial-objects/Neptune.png.import
 
 [params]
 
