@@ -6,10 +6,13 @@
 radius = 130.0
 
 [node name="Mars" type="AnimatableBody2D"]
+scale = Vector2(1.25, 1.25)
 metadata/_edit_group_ = true
 
 [node name="AnimatableBody2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_muem4")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_fmkoh")
+metadata/_edit_lock_ = true

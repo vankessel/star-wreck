@@ -25,6 +25,7 @@ metadata/_edit_lock_ = true
 
 [node name="Enemies" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="PlaceholderEnemy" parent="Enemies" instance=ExtResource("3_sugp2")]
 position = Vector2(104, -354)
@@ -69,28 +70,37 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Sun" parent="Environment/Celestial Objects" instance=ExtResource("7_jkv2x")]
-position = Vector2(-1839, -4860)
+position = Vector2(-3750, -5457)
+metadata/_edit_lock_ = true
 
 [node name="Mercury" parent="Environment/Celestial Objects" instance=ExtResource("7_a8y0u")]
-position = Vector2(1162, -368)
+position = Vector2(18, -3275)
+metadata/_edit_lock_ = true
 
 [node name="Venus" parent="Environment/Celestial Objects" instance=ExtResource("8_jkv2x")]
-position = Vector2(3371, -390)
+position = Vector2(2153, -3468)
+metadata/_edit_lock_ = true
 
 [node name="Earth" parent="Environment/Celestial Objects" instance=ExtResource("9_jbj1t")]
-position = Vector2(2603, 1205)
+position = Vector2(-1873, 984)
+metadata/_edit_lock_ = true
 
 [node name="Mars" parent="Environment/Celestial Objects" instance=ExtResource("10_muem4")]
-position = Vector2(3105, 2338)
+position = Vector2(-305, 2336)
+metadata/_edit_lock_ = true
 
 [node name="Jupiter" parent="Environment/Celestial Objects" instance=ExtResource("11_dp3eg")]
-position = Vector2(-1567, 2391)
+position = Vector2(6550, 956)
+metadata/_edit_lock_ = true
 
 [node name="Saturn" parent="Environment/Celestial Objects" instance=ExtResource("12_0ld40")]
-position = Vector2(-836, 3644)
+position = Vector2(6620, 3756)
+metadata/_edit_lock_ = true
 
 [node name="Neptune" parent="Environment/Celestial Objects" instance=ExtResource("13_gqmmt")]
-position = Vector2(1810, 4314)
+position = Vector2(7070, 8764)
+metadata/_edit_lock_ = true
 
 [node name="Uranus" parent="Environment/Celestial Objects" instance=ExtResource("14_yc10j")]
-position = Vector2(3214, 4786)
+position = Vector2(4709, 7970)
+metadata/_edit_lock_ = true

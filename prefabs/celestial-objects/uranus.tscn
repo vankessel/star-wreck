@@ -6,11 +6,14 @@
 radius = 110.0
 
 [node name="Uranus" type="AnimatableBody2D"]
+scale = Vector2(2.8, 2.8)
 metadata/_edit_group_ = true
 
 [node name="AnimatableBody2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, -6)
 shape = SubResource("CircleShape2D_jkv2x")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_lnqcv")
+metadata/_edit_lock_ = true
