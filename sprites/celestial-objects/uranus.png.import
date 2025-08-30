@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD:sprites/Planets/uranus.png.import
 uid="uid://ddu2qbokc4xok"
 path="res://.godot/imported/uranus.png-3992e7a49af3c5397592e0030dcf6a37.ctex"
+=======
+uid="uid://djfejtke50mxb"
+path="res://.godot/imported/uranus.png-9a64bf6c72557e948689dfcdd8039c4b.ctex"
+>>>>>>> staging:sprites/celestial-objects/uranus.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< HEAD:sprites/Planets/uranus.png.import
 source_file="res://sprites/Planets/uranus.png"
 dest_files=["res://.godot/imported/uranus.png-3992e7a49af3c5397592e0030dcf6a37.ctex"]
+=======
+source_file="res://sprites/celestial-objects/uranus.png"
+dest_files=["res://.godot/imported/uranus.png-9a64bf6c72557e948689dfcdd8039c4b.ctex"]
+>>>>>>> staging:sprites/celestial-objects/uranus.png.import
 
 [params]
 

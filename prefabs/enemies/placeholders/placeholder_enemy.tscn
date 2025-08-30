@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://blk3gc0sn3d5d"]
+[gd_scene load_steps=11 format=3 uid="uid://blk3gc0sn3d5d"]
 
 [ext_resource type="Script" uid="uid://5ttiwj4yhikt" path="res://scripts/Enemy.cs" id="1_yfjof"]
 [ext_resource type="PackedScene" uid="uid://ca4485syaahao" path="res://prefabs/enemy_debris.tscn" id="2_a7d0n"]
 [ext_resource type="PackedScene" uid="uid://b63hup5adayan" path="res://prefabs/floating_health_bar.tscn" id="3_stf37"]
+[ext_resource type="Script" uid="uid://bwejv1ya3myr2" path="res://scripts/EnemyGunLogic.cs" id="4_s4k8l"]
+[ext_resource type="Script" uid="uid://cg2vikmy1lkll" path="res://scripts/Gun.cs" id="5_afksu"]
+[ext_resource type="PackedScene" uid="uid://cl4t7dhxgufj3" path="res://prefabs/bullet.tscn" id="6_fwfv4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_stf37"]
 bounce = 0.5
@@ -31,10 +34,27 @@ _enemyDebris = ExtResource("2_a7d0n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jyhfs")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_tbgi4")
+metadata/_edit_lock_ = true
 
 [node name="HealthBar" parent="." instance=ExtResource("3_stf37")]
+
+[node name="HealthComponent" parent="HealthBar/HealthComponentParent" index="0"]
+offset_left = -60.0
+offset_top = -65.0
+offset_right = 60.0
+offset_bottom = -38.0
+
+[node name="GunLogic" type="Node2D" parent="." node_paths=PackedStringArray("_gun")]
+position = Vector2(0, 40)
+script = ExtResource("4_s4k8l")
+_gun = NodePath("Gun")
+
+[node name="Gun" type="Node2D" parent="GunLogic"]
+script = ExtResource("5_afksu")
+_bullet = ExtResource("6_fwfv4")
 
 [editable path="HealthBar"]

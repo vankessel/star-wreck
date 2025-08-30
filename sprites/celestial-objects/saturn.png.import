@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD:sprites/Planets/saturn.png.import
 uid="uid://jksge0qldnuk"
 path="res://.godot/imported/saturn.png-44b834a9244dfedbd9fdf267116834cd.ctex"
+=======
+uid="uid://crpp6ikq3d5pi"
+path="res://.godot/imported/saturn.png-b1edad1caa7448bf4bbb7ea36b986aa0.ctex"
+>>>>>>> staging:sprites/celestial-objects/saturn.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< HEAD:sprites/Planets/saturn.png.import
 source_file="res://sprites/Planets/saturn.png"
 dest_files=["res://.godot/imported/saturn.png-44b834a9244dfedbd9fdf267116834cd.ctex"]
+=======
+source_file="res://sprites/celestial-objects/saturn.png"
+dest_files=["res://.godot/imported/saturn.png-b1edad1caa7448bf4bbb7ea36b986aa0.ctex"]
+>>>>>>> staging:sprites/celestial-objects/saturn.png.import
 
 [params]
 

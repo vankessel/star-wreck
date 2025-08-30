@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsrd3np32lxtf"]
+[gd_scene load_steps=16 format=3 uid="uid://dsrd3np32lxtf"]
 
 [ext_resource type="PackedScene" uid="uid://dieelo3dwbmad" path="res://prefabs/background.tscn" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player/player_container.tscn" id="2_0wfyh"]
@@ -6,9 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://wqixl0tvnuvh" path="res://prefabs/enemies/placeholders/placeholder_enemy_weak.tscn" id="4_tefeu"]
 [ext_resource type="PackedScene" uid="uid://coo3msuspoab" path="res://prefabs/enemies/placeholders/placeholder_enemy_intermediate.tscn" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://cqgvxabuvesax" path="res://prefabs/enemies/placeholders/placeholder_enemy_boss.tscn" id="6_tipki"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
-size = Vector2(32, 32)
+[ext_resource type="PackedScene" uid="uid://c2bsoydfo38vx" path="res://prefabs/celestial-objects/mercury.tscn" id="7_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://bvefs4mw02vou" path="res://prefabs/celestial-objects/sun.tscn" id="7_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://dnnm8xqx3p8d8" path="res://prefabs/celestial-objects/venus.tscn" id="8_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://bo6622dr8frdf" path="res://prefabs/celestial-objects/earth.tscn" id="9_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://2818y43n8d7y" path="res://prefabs/celestial-objects/mars.tscn" id="10_muem4"]
+[ext_resource type="PackedScene" uid="uid://dlldgqfqnvl0q" path="res://prefabs/celestial-objects/jupiter.tscn" id="11_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://cn808o1jpmbwa" path="res://prefabs/celestial-objects/saturn.tscn" id="12_0ld40"]
+[ext_resource type="PackedScene" uid="uid://bmuu5u7qal6a8" path="res://prefabs/celestial-objects/neptune.tscn" id="13_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://dbfsuq7ogcr5g" path="res://prefabs/celestial-objects/uranus.tscn" id="14_yc10j"]
 
 [node name="Node" type="Node"]
 
@@ -19,6 +25,7 @@ metadata/_edit_lock_ = true
 
 [node name="Enemies" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="PlaceholderEnemy" parent="Enemies" instance=ExtResource("3_sugp2")]
 position = Vector2(104, -354)
@@ -56,66 +63,44 @@ position = Vector2(-91, -360)
 [node name="PlaceholderEnemyBoss" parent="Enemies" instance=ExtResource("6_tipki")]
 position = Vector2(1, -308)
 
-[node name="Walls" type="Node2D" parent="."]
-
-[node name="WallLeft" type="Node2D" parent="Walls"]
-position = Vector2(-1008, 0)
-scale = Vector2(1, 64)
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/WallLeft"]
+[node name="Environment" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallLeft/StaticBody2D"]
-shape = SubResource("RectangleShape2D_tefeu")
+[node name="Celestial Objects" type="Node2D" parent="Environment"]
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Walls/WallLeft"]
-polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
-
-[node name="WallRight" type="Node2D" parent="Walls"]
-position = Vector2(1008, 0)
-scale = Vector2(1, 64)
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/WallRight"]
+[node name="Sun" parent="Environment/Celestial Objects" instance=ExtResource("7_jkv2x")]
+position = Vector2(-3750, -5457)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallRight/StaticBody2D"]
-shape = SubResource("RectangleShape2D_tefeu")
+[node name="Mercury" parent="Environment/Celestial Objects" instance=ExtResource("7_a8y0u")]
+position = Vector2(18, -3275)
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Walls/WallRight"]
-polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
-
-[node name="WallTop" type="Node2D" parent="Walls"]
-position = Vector2(0, -1008)
-scale = Vector2(64, 1)
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/WallTop"]
+[node name="Venus" parent="Environment/Celestial Objects" instance=ExtResource("8_jkv2x")]
+position = Vector2(2153, -3468)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallTop/StaticBody2D"]
-shape = SubResource("RectangleShape2D_tefeu")
+[node name="Earth" parent="Environment/Celestial Objects" instance=ExtResource("9_jbj1t")]
+position = Vector2(-1873, 984)
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Walls/WallTop"]
-polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
-
-[node name="WallBottom" type="Node2D" parent="Walls"]
-position = Vector2(0, 1008)
-scale = Vector2(64, 1)
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/WallBottom"]
+[node name="Mars" parent="Environment/Celestial Objects" instance=ExtResource("10_muem4")]
+position = Vector2(-305, 2336)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottom/StaticBody2D"]
-shape = SubResource("RectangleShape2D_tefeu")
+[node name="Jupiter" parent="Environment/Celestial Objects" instance=ExtResource("11_dp3eg")]
+position = Vector2(6550, 956)
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Walls/WallBottom"]
-polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+[node name="Saturn" parent="Environment/Celestial Objects" instance=ExtResource("12_0ld40")]
+position = Vector2(6620, 3756)
+metadata/_edit_lock_ = true
 
-[editable path="PlayerContainer"]
+[node name="Neptune" parent="Environment/Celestial Objects" instance=ExtResource("13_gqmmt")]
+position = Vector2(7070, 8764)
+metadata/_edit_lock_ = true
+
+[node name="Uranus" parent="Environment/Celestial Objects" instance=ExtResource("14_yc10j")]
+position = Vector2(4709, 7970)
+metadata/_edit_lock_ = true

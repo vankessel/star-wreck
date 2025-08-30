@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD:sprites/Planets/venus.png.import
 uid="uid://bhhhmpw21c43p"
 path="res://.godot/imported/venus.png-398916bba1781cb8596dd5556bbc6be1.ctex"
+=======
+uid="uid://mnxfpbwgvlr8"
+path="res://.godot/imported/venus.png-96e62ba7dbdfcdc6f87c7ee80708c9f0.ctex"
+>>>>>>> staging:sprites/celestial-objects/venus.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< HEAD:sprites/Planets/venus.png.import
 source_file="res://sprites/Planets/venus.png"
 dest_files=["res://.godot/imported/venus.png-398916bba1781cb8596dd5556bbc6be1.ctex"]
+=======
+source_file="res://sprites/celestial-objects/venus.png"
+dest_files=["res://.godot/imported/venus.png-96e62ba7dbdfcdc6f87c7ee80708c9f0.ctex"]
+>>>>>>> staging:sprites/celestial-objects/venus.png.import
 
 [params]
 

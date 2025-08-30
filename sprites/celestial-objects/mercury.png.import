@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD:sprites/Planets/mercury.png.import
 uid="uid://1a63tk04jcg7"
 path="res://.godot/imported/mercury.png-ffb9857bd7d535dd32c82d6b00f78ab2.ctex"
+=======
+uid="uid://bl6yaxwn2gnh0"
+path="res://.godot/imported/mercury.png-9d63112685a33cff09989dcb796e237d.ctex"
+>>>>>>> staging:sprites/celestial-objects/mercury.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< HEAD:sprites/Planets/mercury.png.import
 source_file="res://sprites/Planets/mercury.png"
 dest_files=["res://.godot/imported/mercury.png-ffb9857bd7d535dd32c82d6b00f78ab2.ctex"]
+=======
+source_file="res://sprites/celestial-objects/mercury.png"
+dest_files=["res://.godot/imported/mercury.png-9d63112685a33cff09989dcb796e237d.ctex"]
+>>>>>>> staging:sprites/celestial-objects/mercury.png.import
 
 [params]
 

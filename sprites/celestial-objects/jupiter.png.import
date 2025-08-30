@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD:sprites/Planets/jupiter.png.import
 uid="uid://df2pdm3pyb7ht"
 path="res://.godot/imported/jupiter.png-8ca0e2babe23fdc146e1d76fad36bd7f.ctex"
+=======
+uid="uid://dk1xe2gdoavuv"
+path="res://.godot/imported/jupiter.png-4e394641f5fd3cd1e75fa4b83875a6de.ctex"
+>>>>>>> staging:sprites/celestial-objects/jupiter.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< HEAD:sprites/Planets/jupiter.png.import
 source_file="res://sprites/Planets/jupiter.png"
 dest_files=["res://.godot/imported/jupiter.png-8ca0e2babe23fdc146e1d76fad36bd7f.ctex"]
+=======
+source_file="res://sprites/celestial-objects/jupiter.png"
+dest_files=["res://.godot/imported/jupiter.png-4e394641f5fd3cd1e75fa4b83875a6de.ctex"]
+>>>>>>> staging:sprites/celestial-objects/jupiter.png.import
 
 [params]
 

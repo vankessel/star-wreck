@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD:sprites/Planets/earth.png.import
 uid="uid://duji2ecuiq8f3"
 path="res://.godot/imported/earth.png-a27ea00ac6e59bfcc6dcc40d6c28e40e.ctex"
+=======
+uid="uid://qcxdnfdmw81o"
+path="res://.godot/imported/earth.png-c5e7236a98d3f12b4724359fbf69aefd.ctex"
+>>>>>>> staging:sprites/celestial-objects/earth.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< HEAD:sprites/Planets/earth.png.import
 source_file="res://sprites/Planets/earth.png"
 dest_files=["res://.godot/imported/earth.png-a27ea00ac6e59bfcc6dcc40d6c28e40e.ctex"]
+=======
+source_file="res://sprites/celestial-objects/earth.png"
+dest_files=["res://.godot/imported/earth.png-c5e7236a98d3f12b4724359fbf69aefd.ctex"]
+>>>>>>> staging:sprites/celestial-objects/earth.png.import
 
 [params]
 

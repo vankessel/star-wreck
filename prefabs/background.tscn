@@ -9,7 +9,7 @@ metadata/_edit_lock_ = true
 scroll_scale = Vector2(0.01, 0.01)
 scroll_offset = Vector2(-75, -175)
 repeat_size = Vector2(1300, 1000)
-repeat_times = 6
+repeat_times = 16
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]

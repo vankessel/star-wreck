@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD:sprites/Planets/mars.png.import
 uid="uid://cl87bpbmvsimc"
 path="res://.godot/imported/mars.png-4f89d08fa565007344c4e7f914aeee1d.ctex"
+=======
+uid="uid://b7boiw66lwinj"
+path="res://.godot/imported/mars.png-291af2c04ff43c7fcfad598a0e5d8964.ctex"
+>>>>>>> staging:sprites/celestial-objects/mars.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< HEAD:sprites/Planets/mars.png.import
 source_file="res://sprites/Planets/mars.png"
 dest_files=["res://.godot/imported/mars.png-4f89d08fa565007344c4e7f914aeee1d.ctex"]
+=======
+source_file="res://sprites/celestial-objects/mars.png"
+dest_files=["res://.godot/imported/mars.png-291af2c04ff43c7fcfad598a0e5d8964.ctex"]
+>>>>>>> staging:sprites/celestial-objects/mars.png.import
 
 [params]
 

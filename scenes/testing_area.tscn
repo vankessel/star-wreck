@@ -1,0 +1,119 @@
+[gd_scene load_steps=8 format=3 uid="uid://enq5j8euao5h"]
+
+[ext_resource type="PackedScene" uid="uid://dieelo3dwbmad" path="res://prefabs/background.tscn" id="1_mmyom"]
+[ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player/player_container.tscn" id="2_467br"]
+[ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/placeholders/placeholder_enemy.tscn" id="3_amuii"]
+[ext_resource type="PackedScene" uid="uid://wqixl0tvnuvh" path="res://prefabs/enemies/placeholders/placeholder_enemy_weak.tscn" id="4_g87el"]
+[ext_resource type="PackedScene" uid="uid://coo3msuspoab" path="res://prefabs/enemies/placeholders/placeholder_enemy_intermediate.tscn" id="5_q8f10"]
+[ext_resource type="PackedScene" uid="uid://cqgvxabuvesax" path="res://prefabs/enemies/placeholders/placeholder_enemy_boss.tscn" id="6_sgqq3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
+size = Vector2(32, 32)
+
+[node name="Node" type="Node"]
+
+[node name="Background" parent="." instance=ExtResource("1_mmyom")]
+
+[node name="PlayerContainer" parent="." instance=ExtResource("2_467br")]
+metadata/_edit_lock_ = true
+
+[node name="Enemies" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="PlaceholderEnemy" parent="Enemies" instance=ExtResource("3_amuii")]
+position = Vector2(104, -354)
+
+[node name="PlaceholderEnemyWeak" parent="Enemies" instance=ExtResource("4_g87el")]
+position = Vector2(101, -172)
+
+[node name="PlaceholderEnemyWeak2" parent="Enemies" instance=ExtResource("4_g87el")]
+position = Vector2(10, -127)
+
+[node name="PlaceholderEnemyWeak3" parent="Enemies" instance=ExtResource("4_g87el")]
+position = Vector2(-99, -175)
+
+[node name="PlaceholderEnemyWeak4" parent="Enemies" instance=ExtResource("4_g87el")]
+position = Vector2(197, -123)
+
+[node name="PlaceholderEnemyIntermediate" parent="Enemies" instance=ExtResource("5_q8f10")]
+position = Vector2(9, -227)
+
+[node name="PlaceholderEnemyIntermediate2" parent="Enemies" instance=ExtResource("5_q8f10")]
+position = Vector2(102, -261)
+
+[node name="PlaceholderEnemyIntermediate3" parent="Enemies" instance=ExtResource("5_q8f10")]
+position = Vector2(-93, -268)
+
+[node name="PlaceholderEnemyWeak5" parent="Enemies" instance=ExtResource("4_g87el")]
+position = Vector2(-188, -123)
+
+[node name="PlaceholderEnemy2" parent="Enemies" instance=ExtResource("3_amuii")]
+position = Vector2(6, -390)
+
+[node name="PlaceholderEnemy3" parent="Enemies" instance=ExtResource("3_amuii")]
+position = Vector2(-91, -360)
+
+[node name="PlaceholderEnemyBoss" parent="Enemies" instance=ExtResource("6_sgqq3")]
+position = Vector2(1, -308)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="WallLeft" type="Node2D" parent="Walls"]
+position = Vector2(-1008, 0)
+scale = Vector2(1, 64)
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/WallLeft"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallLeft/StaticBody2D"]
+shape = SubResource("RectangleShape2D_tefeu")
+metadata/_edit_lock_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Walls/WallLeft"]
+polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+
+[node name="WallRight" type="Node2D" parent="Walls"]
+position = Vector2(1008, 0)
+scale = Vector2(1, 64)
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/WallRight"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallRight/StaticBody2D"]
+shape = SubResource("RectangleShape2D_tefeu")
+metadata/_edit_lock_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Walls/WallRight"]
+polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+
+[node name="WallTop" type="Node2D" parent="Walls"]
+position = Vector2(0, -1008)
+scale = Vector2(64, 1)
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/WallTop"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallTop/StaticBody2D"]
+shape = SubResource("RectangleShape2D_tefeu")
+metadata/_edit_lock_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Walls/WallTop"]
+polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+
+[node name="WallBottom" type="Node2D" parent="Walls"]
+position = Vector2(0, 1008)
+scale = Vector2(64, 1)
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/WallBottom"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottom/StaticBody2D"]
+shape = SubResource("RectangleShape2D_tefeu")
+metadata/_edit_lock_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Walls/WallBottom"]
+polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
