@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb6j7aqls5im"]
+
+[ext_resource type="Script" uid="uid://m56bpg21460d" path="res://scripts/autoloads/DebrisSettings.cs" id="1_8tepf"]
+
+[node name="Autoloads" type="Node"]
+
+[node name="DebrisManager" type="Node" parent="."]
+script = ExtResource("1_8tepf")

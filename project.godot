@@ -15,6 +15,10 @@ run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Autoloads="res://scenes/autoloads.tscn"
+
 [dotnet]
 
 project/assembly_name="Star Wreck"

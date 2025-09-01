@@ -104,3 +104,7 @@ metadata/_edit_lock_ = true
 [node name="Uranus" parent="Environment/Celestial Objects" instance=ExtResource("14_yc10j")]
 position = Vector2(4709, 7970)
 metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
