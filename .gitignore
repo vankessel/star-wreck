@@ -1,3 +1,5 @@
+**/*windows.template_debug.x86_64.dll
+
 # Godot 4+ specific ignores
 .godot/
 /android/
