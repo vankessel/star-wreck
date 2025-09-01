@@ -11,8 +11,8 @@ public abstract partial class BaseParticleBatch<T> : Resource
     public abstract T[] PreviousPositions { get; }
 
     /// <summary>
-    /// XPBD is similar to Verlet integration. <br/> That means these velocities are a half-step behind. <br/>
-    /// v_(n-1/2) = ( x_n - x_(n-1) ) / dt
+    ///     XPBD is similar to Verlet integration. <br /> That means these velocities are a half-step behind. <br />
+    ///     v_(n-1/2) = ( x_n - x_(n-1) ) / dt
     /// </summary>
     public abstract T[] HalfStepPreviousVelocities { get; }
 }

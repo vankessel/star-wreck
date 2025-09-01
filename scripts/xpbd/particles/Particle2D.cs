@@ -5,13 +5,11 @@ namespace StarWreck.scripts.xpbd.particles;
 [GlobalClass]
 public partial class Particle2D : Resource
 {
-    [Export]
-    private ParticleBatchBuilder2D _particleBatchBuilder2D;
+    [Export] private ParticleBatchBuilder2D _particleBatchBuilder2D;
 
     private ParticleBatch2D ParticleBatch2D => _particleBatchBuilder2D.ParticleBatch2D;
 
-    [Export]
-    private int _particleIndex;
+    [Export] private int _particleIndex;
 
     private int ParticleIndex
     {

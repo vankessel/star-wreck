@@ -13,9 +13,11 @@ public partial class ParticleBatchBuilder2D : BaseParticleBatchBuilder<Vector2>
 
     [Export] private Vector2 _endPosition;
 
-    [Export(PropertyHint.Range, "2,10,or_greater")] private int _count = 2;
+    [Export(PropertyHint.Range, "2,10,or_greater")]
+    private int _count = 2;
 
-    [Export(PropertyHint.Range, "0,10,or_greater")] private float _inverseMass = 1f;
+    [Export(PropertyHint.Range, "0,10,or_greater")]
+    private float _inverseMass = 1f;
 
     public override ParticleBatch2D Build()
     {
@@ -30,10 +32,7 @@ public partial class ParticleBatchBuilder2D : BaseParticleBatchBuilder<Vector2>
             ParticleBatch2D.Positions[i] = nextPosition;
         }
 
-        for (int i = 0; i < _count; i++)
-        {
-            ParticleBatch2D.InverseMasses[i] = _inverseMass;
-        }
+        for (int i = 0; i < _count; i++) ParticleBatch2D.InverseMasses[i] = _inverseMass;
 
         return ParticleBatch2D;
     }

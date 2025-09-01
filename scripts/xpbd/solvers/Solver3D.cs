@@ -31,9 +31,6 @@ public partial class Solver3D : BaseSolver<Vector3>
         Vector3[] positions = particleBatch.Positions;
         Vector3[] previousPositions = particleBatch.PreviousPositions;
         Vector3[] halfStepPrevVelocities = particleBatch.HalfStepPreviousVelocities;
-        for (int i = 0; i < particleBatch.ParticleCount; i++)
-        {
-            halfStepPrevVelocities[i] = (positions[i] - previousPositions[i]) / delta;
-        }
+        for (int i = 0; i < particleBatch.ParticleCount; i++) halfStepPrevVelocities[i] = (positions[i] - previousPositions[i]) / delta;
     }
 }

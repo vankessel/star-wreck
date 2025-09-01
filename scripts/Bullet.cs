@@ -53,9 +53,6 @@ public partial class Bullet : Area2D
     {
         base._Process(delta);
 
-        if (_despawnTime < Time.GetTicksMsec())
-        {
-            QueueFree();
-        }
+        if (_despawnTime < Time.GetTicksMsec()) QueueFree();
     }
 }

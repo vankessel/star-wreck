@@ -24,11 +24,11 @@ public partial class ParticleRigidBody2D : RigidBody2D
     }
 
     /// <summary>
-    /// While the dynamics of the whole body (or the point at the center of mass) can typically be calculated using the usual mass,
-    /// the dynamics of a particular point on the body may be different. <br/>
-    /// This calculates the effective mass for that point. <br/>
-    /// https://physics.stackexchange.com/a/669262 <br/>
-    /// https://matthias-research.github.io/pages/tenMinutePhysics/22-rigidBodies.pdf (Slide 20)
+    ///     While the dynamics of the whole body (or the point at the center of mass) can typically be calculated using the usual mass,
+    ///     the dynamics of a particular point on the body may be different. <br />
+    ///     This calculates the effective mass for that point. <br />
+    ///     https://physics.stackexchange.com/a/669262 <br />
+    ///     https://matthias-research.github.io/pages/tenMinutePhysics/22-rigidBodies.pdf (Slide 20)
     /// </summary>
     /// <param name="forceOffset">Position of force relative to center of mass in global coordinates</param>
     /// <param name="forceDirection">Force direction unit vector in global basis</param>
@@ -87,6 +87,7 @@ public partial class ParticleRigidBody2D : RigidBody2D
 
             localPrevPos = _particle2D.Position;
         }
+
         _particle2D.PreviousPosition = localPrevPos;
 
         QueueRedraw();
@@ -97,6 +98,6 @@ public partial class ParticleRigidBody2D : RigidBody2D
         base._Draw();
 
         DrawCircle(_anchorPoint.GlobalPosition * GlobalTransform, 5f, Colors.Green);
-        DrawCircle((_particle2D.SpaceGlobalTransform * _particle2D.Position) * GlobalTransform, 10f, Colors.Purple);
+        DrawCircle(_particle2D.SpaceGlobalTransform * _particle2D.Position * GlobalTransform, 10f, Colors.Purple);
     }
 }

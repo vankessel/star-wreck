@@ -24,7 +24,10 @@ public partial class UniformChainedMaxDistanceConstraint2D : Constraint2D
     {
     }
 
-    public UniformChainedMaxDistanceConstraint2D(float segmentLength) => _segmentLength = segmentLength;
+    public UniformChainedMaxDistanceConstraint2D(float segmentLength)
+    {
+        _segmentLength = segmentLength;
+    }
 
     public override void Constrain()
     {
@@ -113,9 +116,6 @@ public partial class UniformChainedMaxDistanceConstraint2D : Constraint2D
         positions[0] = newPositions[0];
         positions[segments] = newPositions[segments];
 
-        for (int i = 1; i < segments; i++)
-        {
-            positions[i] = 0.5f * newPositions[i];
-        }
+        for (int i = 1; i < segments; i++) positions[i] = 0.5f * newPositions[i];
     }
 }

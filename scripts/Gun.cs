@@ -32,7 +32,10 @@ public partial class Gun : Node2D
         CooledDown -= OnCooledDown;
     }
 
-    private void OnCooledDown() => CanShoot = true;
+    private void OnCooledDown()
+    {
+        CanShoot = true;
+    }
 
     public override void _Process(double delta)
     {

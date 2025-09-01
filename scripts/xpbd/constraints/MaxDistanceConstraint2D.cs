@@ -9,18 +9,20 @@ public partial class MaxDistanceConstraint2D : Constraint2D
     [Export(PropertyHint.Range, "0,100,or_greater")]
     private float _segmentLength;
 
-    [Export]
-    private BaseParticleBatch<Vector2> _particleBatch2D;
+    [Export] private BaseParticleBatch<Vector2> _particleBatch2D;
 
-    [Export(PropertyHint.Range, "0")]
-    private int _particle1Index;
+    [Export(PropertyHint.Range, "0")] private int _particle1Index;
 
-    [Export(PropertyHint.Range, "0")]
-    private int _particle2Index;
+    [Export(PropertyHint.Range, "0")] private int _particle2Index;
 
-    public MaxDistanceConstraint2D() {}
+    public MaxDistanceConstraint2D()
+    {
+    }
 
-    public MaxDistanceConstraint2D(float segmentLength) => _segmentLength = segmentLength;
+    public MaxDistanceConstraint2D(float segmentLength)
+    {
+        _segmentLength = segmentLength;
+    }
 
     public override void Constrain()
     {

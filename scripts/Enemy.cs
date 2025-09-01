@@ -29,22 +29,19 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
 
         // TODO: Increasing mass of ball will decrease change in velocity. Multiply by mass and adjust parameters.
         // TODO: Or pass plain fraction so calculations can be changed? Perhaps to fraction of energy lost?
-        KineticDamageCheck(otherVelocityChangeFraction.Length(), hitVelocity, 100f);
+        KineticDamageCheck(otherVelocityChangeFraction.Length(), hitVelocity);
     }
 
     private void KineticDamageCheck(Vector2 otherVelocityChange)
     {
-        KineticDamageCheck((VelocityChange + otherVelocityChange).Length(), -otherVelocityChange, 100f);
+        KineticDamageCheck((VelocityChange + otherVelocityChange).Length(), -otherVelocityChange);
     }
 
     private void KineticDamageCheck(float impulseMagnitude, Vector2 addedDebrisVelocity, float divisor = 100f)
     {
         float multiplier = 1f / (divisor * (1f + PhysicsMaterialOverride?.Bounce ?? 0f));
         float damage = impulseMagnitude * multiplier;
-        if (damage > 2f)
-        {
-            _healthComponent.Hurt(damage);
-        }
+        if (damage > 2f) _healthComponent.Hurt(damage);
 
         if (0f < _healthComponent.Health) return;
 
