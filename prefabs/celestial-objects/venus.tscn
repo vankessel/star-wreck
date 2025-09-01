@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnnm8xqx3p8d8"]
 
-[ext_resource type="Texture2D" uid="uid://mnxfpbwgvlr8" path="res://sprites/celestial-objects/venus.png" id="1_jdp2w"]
+[ext_resource type="Texture2D" uid="uid://cgnshf842pp2a" path="res://sprites/celestial-objects/venus.png" id="1_jdp2w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eb6dy"]
 radius = 130.0

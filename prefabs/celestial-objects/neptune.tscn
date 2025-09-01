@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmuu5u7qal6a8"]
 
-[ext_resource type="Texture2D" uid="uid://b4txv8om88icm" path="res://sprites/celestial-objects/Neptune.png" id="1_wp8yw"]
+[ext_resource type="Texture2D" uid="uid://dj7e1fhy1nco8" path="res://sprites/celestial-objects/Neptune.png" id="1_wp8yw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gqmmt"]
 radius = 130.0

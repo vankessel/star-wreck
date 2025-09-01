@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbfsuq7ogcr5g"]
 
-[ext_resource type="Texture2D" uid="uid://djfejtke50mxb" path="res://sprites/celestial-objects/uranus.png" id="1_lnqcv"]
+[ext_resource type="Texture2D" uid="uid://cayqgwiotw4qf" path="res://sprites/celestial-objects/uranus.png" id="1_lnqcv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jkv2x"]
 radius = 110.0

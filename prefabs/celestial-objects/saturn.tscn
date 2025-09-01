@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cn808o1jpmbwa"]
 
-[ext_resource type="Texture2D" uid="uid://crpp6ikq3d5pi" path="res://sprites/celestial-objects/saturn.png" id="1_m3f4a"]
+[ext_resource type="Texture2D" uid="uid://btvjnbjc5ivlh" path="res://sprites/celestial-objects/saturn.png" id="1_m3f4a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ld40"]
 radius = 156.0

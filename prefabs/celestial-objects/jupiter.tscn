@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlldgqfqnvl0q"]
 
-[ext_resource type="Texture2D" uid="uid://dk1xe2gdoavuv" path="res://sprites/celestial-objects/jupiter.png" id="1_q3nnp"]
+[ext_resource type="Texture2D" uid="uid://by65u0s0qq7hm" path="res://sprites/celestial-objects/jupiter.png" id="1_q3nnp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dp3eg"]
 radius = 208.002
