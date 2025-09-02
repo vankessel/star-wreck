@@ -59,15 +59,16 @@ position = Vector2(-91, -360)
 position = Vector2(1, -308)
 
 [node name="ForceField" parent="." instance=ExtResource("7_467br")]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ForceField"]
 position = Vector2(866.025, 0)
 shape = SubResource("CapsuleShape2D_467br")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="ForceField"]
+[node name="Polygon2D" type="Polygon2D" parent="ForceField/CollisionShape2D"]
 color = Color(0, 1, 1, 0.5)
-polygon = PackedVector2Array(887.676, -512.5, 844.375, -487.5, 844.375, 487.5, 887.676, 512.5)
+polygon = PackedVector2Array(21.6506, -512.5, -21.6506, -487.5, -21.6506, 487.5, 21.6506, 512.5)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="ForceField"]
@@ -76,9 +77,9 @@ rotation = 1.0472
 shape = SubResource("CapsuleShape2D_467br")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D2" type="Polygon2D" parent="ForceField"]
+[node name="Polygon2D" type="Polygon2D" parent="ForceField/CollisionShape2D2"]
 color = Color(0, 1, 1, 0.5)
-polygon = PackedVector2Array(887.676, 512.5, 844.375, 487.5, -4.26186e-05, 975, -4.48042e-05, 1025)
+polygon = PackedVector2Array(21.6506, -512.5, -21.6506, -487.5, -21.6506, 487.5, 21.6506, 512.5)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="ForceField"]
@@ -87,9 +88,9 @@ rotation = 2.0944
 shape = SubResource("CapsuleShape2D_467br")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D3" type="Polygon2D" parent="ForceField"]
+[node name="Polygon2D" type="Polygon2D" parent="ForceField/CollisionShape2D3"]
 color = Color(0, 1, 1, 0.5)
-polygon = PackedVector2Array(-4.48042e-05, 1025, -4.26186e-05, 975, -844.375, 487.5, -887.676, 512.5)
+polygon = PackedVector2Array(21.6506, -512.5, -21.6506, -487.5, -21.6506, 487.5, 21.6506, 512.5)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="ForceField"]
@@ -98,9 +99,9 @@ rotation = 3.14159
 shape = SubResource("CapsuleShape2D_467br")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D4" type="Polygon2D" parent="ForceField"]
+[node name="Polygon2D" type="Polygon2D" parent="ForceField/CollisionShape2D4"]
 color = Color(0, 1, 1, 0.5)
-polygon = PackedVector2Array(-887.676, 512.5, -844.375, 487.5, -844.375, -487.5, -887.676, -512.5)
+polygon = PackedVector2Array(21.6506, -512.5, -21.6506, -487.5, -21.6506, 487.5, 21.6506, 512.5)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="ForceField"]
@@ -109,9 +110,9 @@ rotation = 4.18879
 shape = SubResource("CapsuleShape2D_467br")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D5" type="Polygon2D" parent="ForceField"]
+[node name="Polygon2D" type="Polygon2D" parent="ForceField/CollisionShape2D5"]
 color = Color(0, 1, 1, 0.5)
-polygon = PackedVector2Array(-887.676, -512.5, -844.375, -487.5, 1.16268e-05, -975, 1.2223e-05, -1025)
+polygon = PackedVector2Array(21.6506, -512.5, -21.6506, -487.5, -21.6506, 487.5, 21.6506, 512.5)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="ForceField"]
@@ -120,7 +121,7 @@ rotation = 5.23599
 shape = SubResource("CapsuleShape2D_467br")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D6" type="Polygon2D" parent="ForceField"]
+[node name="Polygon2D" type="Polygon2D" parent="ForceField/CollisionShape2D6"]
 color = Color(0, 1, 1, 0.5)
-polygon = PackedVector2Array(1.2223e-05, -1025, 1.16268e-05, -975, 844.375, -487.5, 887.676, -512.5)
+polygon = PackedVector2Array(21.6506, -512.5, -21.6506, -487.5, -21.6506, 487.5, 21.6506, 512.5)
 metadata/_edit_lock_ = true

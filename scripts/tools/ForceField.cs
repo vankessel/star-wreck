@@ -93,11 +93,35 @@ public partial class ForceField : AnimatableBody2D
                        || _collisionShapes.Count != _polygons.Count;
         if (invalid) RecreateChildren();
 
-        float inRadius = Mathf.Cos(HalfSideSubtendedRadians) * _radius;
-        Vector2 firstPosition = Vector2.Right * inRadius;
+        // Polygon will be child of collider so the data only needs to be set for the initial position.
+        // The transform inheritance of the parent collider will do the rest.
         float wallRadius = 0.5f * _thickness;
+        float cos = MathF.Cos(HalfSideSubtendedRadians);
+        Vector2[] polygonData;
+        {
+            float innerRadius = _radius - wallRadius;
+            float outerRadius = _radius + wallRadius;
+            float sinEnd = MathF.Sin(HalfSideSubtendedRadians);
+            float outerX = wallRadius * cos;
+            float innerY = innerRadius * sinEnd;
+            float outerY = outerRadius * sinEnd;
+            polygonData =
+            [
+                new Vector2(outerX, -outerY),
+                new Vector2(-outerX, -innerY),
+                new Vector2(-outerX, innerY),
+                new Vector2(outerX, outerY)
+            ];
+        }
+
+        float inradius = cos * _radius;
+        Vector2 firstPosition = Vector2.Right * inradius;
         for (int i = 0; i < _collisionShapes.Count; i++)
         {
+            Polygon2D polygon2D = _polygons[i];
+            polygon2D.Polygon = polygonData;
+            polygon2D.Color = _color;
+
             CollisionShape2D collisionShape2D = _collisionShapes[i];
             float radians = i * SideSubtendedRadians;
             Vector2 position = firstPosition.Rotated(radians);
@@ -112,24 +136,6 @@ public partial class ForceField : AnimatableBody2D
             {
                 GD.PushError($"Shape2D is not CapsuleShape2D. Iter: {{i}}, Name: {collisionShape2D.Name}");
             }
-
-            Polygon2D polygon2D = _polygons[i];
-            float startRadians = radians - HalfSideSubtendedRadians;
-            float endRadians = radians + HalfSideSubtendedRadians;
-            float innerRadius = _radius - wallRadius;
-            float outerRadius = _radius + wallRadius;
-            float cosStart = MathF.Cos(startRadians);
-            float sinStart = MathF.Sin(startRadians);
-            float cosEnd = MathF.Cos(endRadians);
-            float sinEnd = MathF.Sin(endRadians);
-            polygon2D.Polygon =
-            [
-                new Vector2(outerRadius * cosStart, outerRadius * sinStart),
-                new Vector2(innerRadius * cosStart, innerRadius * sinStart),
-                new Vector2(innerRadius * cosEnd, innerRadius * sinEnd),
-                new Vector2(outerRadius * cosEnd, outerRadius * sinEnd)
-            ];
-            polygon2D.Color = _color;
         }
     }
 
@@ -162,7 +168,7 @@ public partial class ForceField : AnimatableBody2D
             Polygon2D polygon2D = new();
             polygon2D.SetMeta("_edit_lock_", true);
             polygon2D.Polygon = polygonData;
-            AddChild(polygon2D, true);
+            collisionShape.AddChild(polygon2D, true);
             polygon2D.SetOwner(GetTree().EditedSceneRoot);
             _polygons.Add(polygon2D);
         }
