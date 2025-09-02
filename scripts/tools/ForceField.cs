@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
@@ -22,13 +23,26 @@ public partial class ForceField : AnimatableBody2D
         set => SetThickness(value);
     }
 
+    [Export]
+    public Color Color
+    {
+        get => _color;
+        set => SetColor(value);
+    }
+
+    private Color _color = new(0f, 1f, 1f, 0.5f);
+
     private float _radius = 1000f;
     private float _thickness = 50f;
 
-    private readonly List<CollisionShape2D> _collisionShapes = new(6);
-    private const int Sides = 6;
+    private readonly List<CollisionShape2D> _collisionShapes = new(Sides);
+    private readonly List<Polygon2D> _polygons = new(Sides);
 
-    public void SetRadius(float radius)
+    private const int Sides = 6;
+    private const float SideSubtendedRadians = Mathf.Tau / Sides;
+    private const float HalfSideSubtendedRadians = 0.5f * SideSubtendedRadians;
+
+    private void SetRadius(float radius)
     {
         // ReSharper disable once CompareOfFloatsByEqualityOperator
         if (_radius == radius) return;
@@ -36,7 +50,7 @@ public partial class ForceField : AnimatableBody2D
         Update();
     }
 
-    public void SetThickness(float thickness)
+    private void SetThickness(float thickness)
     {
         // ReSharper disable once CompareOfFloatsByEqualityOperator
         if (_thickness == thickness) return;
@@ -44,8 +58,13 @@ public partial class ForceField : AnimatableBody2D
         Update();
     }
 
-    private const float SideSubtendedRadians = Mathf.Tau / Sides;
-    private const float HalfSideSubtendedRadians = 0.5f * SideSubtendedRadians;
+    private void SetColor(Color color)
+    {
+        // ReSharper disable once CompareOfFloatsByEqualityOperator
+        if (_color == color) return;
+        _color = color;
+        Update();
+    }
 
     public override void _Ready()
     {
@@ -54,12 +73,13 @@ public partial class ForceField : AnimatableBody2D
         // Being a tool, things act weird. Ready is called the moment scene is dragged over viewport.
         // And again when released and added to editor's scene tree.
         // Neither has node's owner set so it complains. Defer update to another frame.
-        CallDeferred(MethodName.UpdateIfOwnerExists);
+        CallDeferred(MethodName.ToolReady);
     }
 
-    private void UpdateIfOwnerExists()
+    private void ToolReady()
     {
         if (Owner == null) return;
+
         Update();
     }
 
@@ -67,44 +87,69 @@ public partial class ForceField : AnimatableBody2D
     {
         if (!IsInsideTree() || GetTree().EditedSceneRoot == this) return;
 
-        bool invalid = _collisionShapes.Any(t => !t.IsPartOfEditedScene());
-        if (invalid || _collisionShapes.Count != Sides) RecreateChildren();
+        bool invalid = _collisionShapes.Any(t => !t.IsPartOfEditedScene())
+                       || _polygons.Any(t => !t.IsPartOfEditedScene())
+                       || _collisionShapes.Count != Sides
+                       || _collisionShapes.Count != _polygons.Count;
+        if (invalid) RecreateChildren();
 
+        float inRadius = Mathf.Cos(HalfSideSubtendedRadians) * _radius;
+        Vector2 firstPosition = Vector2.Right * inRadius;
+        float wallRadius = 0.5f * _thickness;
         for (int i = 0; i < _collisionShapes.Count; i++)
         {
             CollisionShape2D collisionShape2D = _collisionShapes[i];
             float radians = i * SideSubtendedRadians;
-            float inRadius = Mathf.Cos(HalfSideSubtendedRadians) * _radius;
-            Vector2 position = (Vector2.Right * inRadius).Rotated(radians);
+            Vector2 position = firstPosition.Rotated(radians);
             collisionShape2D.Rotation = radians;
             collisionShape2D.Position = position;
             if (collisionShape2D.Shape is CapsuleShape2D capsuleShape2D)
             {
                 capsuleShape2D.Height = _radius + 2f * capsuleShape2D.Radius;
-                capsuleShape2D.Radius = 0.5f * _thickness;
+                capsuleShape2D.Radius = wallRadius;
             }
             else
             {
                 GD.PushError($"Shape2D is not CapsuleShape2D. Iter: {{i}}, Name: {collisionShape2D.Name}");
             }
+
+            Polygon2D polygon2D = _polygons[i];
+            float startRadians = radians - HalfSideSubtendedRadians;
+            float endRadians = radians + HalfSideSubtendedRadians;
+            float innerRadius = _radius - wallRadius;
+            float outerRadius = _radius + wallRadius;
+            float cosStart = MathF.Cos(startRadians);
+            float sinStart = MathF.Sin(startRadians);
+            float cosEnd = MathF.Cos(endRadians);
+            float sinEnd = MathF.Sin(endRadians);
+            polygon2D.Polygon =
+            [
+                new Vector2(outerRadius * cosStart, outerRadius * sinStart),
+                new Vector2(innerRadius * cosStart, innerRadius * sinStart),
+                new Vector2(innerRadius * cosEnd, innerRadius * sinEnd),
+                new Vector2(outerRadius * cosEnd, outerRadius * sinEnd)
+            ];
+            polygon2D.Color = _color;
         }
     }
 
     private void RecreateChildren()
     {
         _collisionShapes.Clear();
+        _polygons.Clear();
 
         int childCount = GetChildCount();
         for (int i = 0; i < childCount; i++)
         {
             Node child = GetChild(i);
-            if (child is CollisionShape2D collisionShape2D)
+            if (child is CollisionShape2D or Polygon2D)
             {
-                collisionShape2D.QueueFree();
+                child.QueueFree();
             }
         }
 
         CapsuleShape2D newSharedShape = new();
+        Vector2[] polygonData = [Vector2.Zero, Vector2.Zero, Vector2.Zero, Vector2.Zero];
         for (int i = 0; i < Sides; i++)
         {
             CollisionShape2D collisionShape = new();
@@ -113,6 +158,13 @@ public partial class ForceField : AnimatableBody2D
             AddChild(collisionShape, true);
             collisionShape.SetOwner(GetTree().EditedSceneRoot);
             _collisionShapes.Add(collisionShape);
+
+            Polygon2D polygon2D = new();
+            polygon2D.SetMeta("_edit_lock_", true);
+            polygon2D.Polygon = polygonData;
+            AddChild(polygon2D, true);
+            polygon2D.SetOwner(GetTree().EditedSceneRoot);
+            _polygons.Add(polygon2D);
         }
     }
 }
