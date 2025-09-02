@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://007v3ch3boci"]
+
+[ext_resource type="Script" uid="uid://dbhqmakmuv1ve" path="res://scripts/tools/ForceField.cs" id="1_16or2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_16or2"]
+friction = 0.0
+bounce = 0.67
+
+[node name="ForceField" type="AnimatableBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_16or2")
+script = ExtResource("1_16or2")

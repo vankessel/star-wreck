@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://enq5j8euao5h"]
+[gd_scene load_steps=9 format=3 uid="uid://enq5j8euao5h"]
 
 [ext_resource type="PackedScene" uid="uid://dieelo3dwbmad" path="res://prefabs/background.tscn" id="1_mmyom"]
 [ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player/player_container.tscn" id="2_467br"]
@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://wqixl0tvnuvh" path="res://prefabs/enemies/placeholders/placeholder_enemy_weak.tscn" id="4_g87el"]
 [ext_resource type="PackedScene" uid="uid://coo3msuspoab" path="res://prefabs/enemies/placeholders/placeholder_enemy_intermediate.tscn" id="5_q8f10"]
 [ext_resource type="PackedScene" uid="uid://cqgvxabuvesax" path="res://prefabs/enemies/placeholders/placeholder_enemy_boss.tscn" id="6_sgqq3"]
+[ext_resource type="PackedScene" uid="uid://007v3ch3boci" path="res://prefabs/force_field.tscn" id="7_467br"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
-size = Vector2(32, 32)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_467br"]
+radius = 25.0
+height = 1050.0
 
 [node name="Node" type="Node"]
 
@@ -56,64 +58,39 @@ position = Vector2(-91, -360)
 [node name="PlaceholderEnemyBoss" parent="Enemies" instance=ExtResource("6_sgqq3")]
 position = Vector2(1, -308)
 
-[node name="Walls" type="Node2D" parent="."]
+[node name="ForceField" parent="." instance=ExtResource("7_467br")]
 
-[node name="WallLeft" type="Node2D" parent="Walls"]
-position = Vector2(-1008, 0)
-scale = Vector2(1, 64)
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/WallLeft"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForceField"]
+position = Vector2(866.025, 0)
+shape = SubResource("CapsuleShape2D_467br")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallLeft/StaticBody2D"]
-shape = SubResource("RectangleShape2D_tefeu")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ForceField"]
+position = Vector2(433.013, 750)
+rotation = 1.0472
+shape = SubResource("CapsuleShape2D_467br")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Walls/WallLeft"]
-polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
-
-[node name="WallRight" type="Node2D" parent="Walls"]
-position = Vector2(1008, 0)
-scale = Vector2(1, 64)
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/WallRight"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ForceField"]
+position = Vector2(-433.013, 750)
+rotation = 2.0944
+shape = SubResource("CapsuleShape2D_467br")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallRight/StaticBody2D"]
-shape = SubResource("RectangleShape2D_tefeu")
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ForceField"]
+position = Vector2(-866.025, -7.57103e-05)
+rotation = 3.14159
+shape = SubResource("CapsuleShape2D_467br")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Walls/WallRight"]
-polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
-
-[node name="WallTop" type="Node2D" parent="Walls"]
-position = Vector2(0, -1008)
-scale = Vector2(64, 1)
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/WallTop"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="ForceField"]
+position = Vector2(-433.013, -750)
+rotation = 4.18879
+shape = SubResource("CapsuleShape2D_467br")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallTop/StaticBody2D"]
-shape = SubResource("RectangleShape2D_tefeu")
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="ForceField"]
+position = Vector2(433.013, -750)
+rotation = 5.23599
+shape = SubResource("CapsuleShape2D_467br")
 metadata/_edit_lock_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="Walls/WallTop"]
-polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
-
-[node name="WallBottom" type="Node2D" parent="Walls"]
-position = Vector2(0, 1008)
-scale = Vector2(64, 1)
-metadata/_edit_group_ = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/WallBottom"]
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottom/StaticBody2D"]
-shape = SubResource("RectangleShape2D_tefeu")
-metadata/_edit_lock_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="Walls/WallBottom"]
-polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
