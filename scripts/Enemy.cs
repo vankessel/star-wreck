@@ -6,6 +6,7 @@ namespace StarWreck.scripts;
 public partial class Enemy : TrackedRigidBody2D, IBreakable
 {
     [Export] private HealthComponent _healthComponent;
+    [Export] private BaseMotor _motor;
     [Export] private PackedScene _enemyDebris;
 
     public HealthComponent HealthComponent => _healthComponent;
@@ -19,6 +20,8 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
         Vector2 otherVelocityChangeFraction = _otherVelocityChangeFraction;
         _otherVelocityChangeFraction = Vector2.Zero;
         KineticDamageCheck(otherVelocityChangeFraction);
+
+        ApplyCentralForce(_motor.GetMotorForce(this));
     }
 
     public void Damage(Vector2 otherVelocityChangeFraction, TrackedRigidBody2D other)
