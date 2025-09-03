@@ -25,6 +25,8 @@ fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
 
 [node name="PlaceholderEnemy" type="RigidBody2D" node_paths=PackedStringArray("_healthComponent")]
+collision_layer = 8
+collision_mask = 239
 physics_material_override = SubResource("PhysicsMaterial_stf37")
 contact_monitor = true
 max_contacts_reported = 1
