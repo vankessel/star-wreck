@@ -23,9 +23,12 @@ collision_layer = 32
 collision_mask = 239
 mass = 0.25
 script = ExtResource("1_j7dij")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lsslh")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_j7dij")
+metadata/_edit_lock_ = true
