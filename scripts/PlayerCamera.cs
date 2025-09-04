@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Godot;
-using StarWreck.scripts.input;
+using Action = StarWreck.scripts.input.Action;
 
 namespace StarWreck.scripts;
 
@@ -14,7 +14,7 @@ public partial class PlayerCamera : Camera2D
     [Export(PropertyHint.Range, "0,2,or_greater")]
     private float _maxZoom = 2f;
 
-    [Export(PropertyHint.Range, "0,1")] private float _minZoom = 0.055f;
+    [Export(PropertyHint.Range, "0,1,0.0001")] private float _minZoom = 0.09f;
 
     [Export(PropertyHint.Range, "0,4,or_greater")]
     private float _zoomSpeed = 2f;
@@ -42,7 +42,9 @@ public partial class PlayerCamera : Camera2D
             Zoom *= Mathf.Max(0f, 1f - _zoomSpeed * _zoomMouseWheelSensitivity);
         else if (@event.IsActionPressed(Action.ZoomIn)) Zoom *= Mathf.Max(0f, 1f + _zoomSpeed * _zoomMouseWheelSensitivity);
 
-        Zoom = Zoom.Clamp(_minZoom, _maxZoom);
+        // Makes background texture filtering more sparkly this way
+        float phi = 0.5f * (1f + Mathf.Sqrt(5f));
+        Zoom = Zoom.Clamp(_minZoom + _minZoom * phi * 0.001f, _maxZoom);
     }
 
     public override void _PhysicsProcess(double delta)
