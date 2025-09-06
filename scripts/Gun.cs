@@ -11,7 +11,7 @@ public partial class Gun : Node2D
     [Export] private float _bulletDamage = 10f;
     [Export] private PackedScene _bullet;
 
-    private ulong _nextShotTime;
+    private float _nextShotTime;
 
     public bool CanShoot { get; private set; }
 
@@ -22,7 +22,7 @@ public partial class Gun : Node2D
     {
         base._EnterTree();
 
-        _nextShotTime = (ulong)(new Random().NextSingle() * 1000f * SecondsPerBullet);
+        _nextShotTime = new Random().NextSingle() * SecondsPerBullet;
         CooledDown += OnCooledDown;
     }
 
@@ -41,7 +41,7 @@ public partial class Gun : Node2D
     {
         base._Process(delta);
 
-        if (CanShoot || Time.GetTicksMsec() <= _nextShotTime) return;
+        if (CanShoot || PauseManager.UnpausedSeconds <= _nextShotTime) return;
 
         EmitSignal(SignalName.CooledDown);
     }
@@ -50,7 +50,7 @@ public partial class Gun : Node2D
     {
         if (!CanShoot) return;
         CanShoot = false;
-        _nextShotTime = Time.GetTicksMsec() + (ulong)(1000f * SecondsPerBullet);
+        _nextShotTime = PauseManager.UnpausedSeconds + SecondsPerBullet;
 
         Bullet bullet = _bullet.Instantiate<Bullet>();
         bullet.Init(GlobalPosition, direction.Normalized() * _bulletSpeed, _bulletDamage);

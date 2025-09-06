@@ -15,7 +15,7 @@ public partial class EnemySpawner : Node2D
     private EnemyQueue _currentEnemyQueue;
     private int _remainingInQueue = 0;
     private int _index = 0;
-    private ulong _lastSpawnTime = 0u;
+    private float _lastSpawnTime = 0f;
 
     public override void _Process(double delta)
     {
@@ -30,9 +30,9 @@ public partial class EnemySpawner : Node2D
         }
         else
         {
-            ulong currentTime = Time.GetTicksMsec();
-            if (currentTime <= 1000f / _currentEnemyQueue.SpawnRate + _lastSpawnTime) return;
-            _lastSpawnTime = currentTime;
+            float currentSeconds = PauseManager.UnpausedSeconds;
+            if (currentSeconds <= 1f / _currentEnemyQueue.SpawnRate + _lastSpawnTime) return;
+            _lastSpawnTime = currentSeconds;
             PackedScene enemyScene = _currentPriorityQueue.Dequeue();
             Spawn(enemyScene);
         }

@@ -5,10 +5,10 @@ namespace StarWreck.scripts;
 public partial class Bullet : Area2D
 {
     public float Damage { get; private set; }
-    public float Lifetime => (_despawnTime - _spawnTime) / 1000f;
+    public float Lifetime => _despawnTime - _spawnTime;
 
-    private ulong _spawnTime;
-    private ulong _despawnTime;
+    private float _spawnTime;
+    private float _despawnTime;
 
     private Vector2 _velocity;
 
@@ -38,8 +38,8 @@ public partial class Bullet : Area2D
         GlobalPosition = position;
         _velocity = velocity;
         Damage = damage;
-        _spawnTime = Time.GetTicksMsec();
-        _despawnTime = _spawnTime + (ulong)(lifetimeSeconds * 1000f);
+        _spawnTime = PauseManager.UnpausedSeconds;
+        _despawnTime = _spawnTime + lifetimeSeconds;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -53,6 +53,6 @@ public partial class Bullet : Area2D
     {
         base._Process(delta);
 
-        if (_despawnTime < Time.GetTicksMsec()) QueueFree();
+        if (_despawnTime < PauseManager.UnpausedSeconds) QueueFree();
     }
 }
