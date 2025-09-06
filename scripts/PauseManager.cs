@@ -20,15 +20,14 @@ public partial class PauseManager : Node
     {
         base._Input(@event);
 
-        if (@event.IsActionPressed(Action.Pause))
-        {
-            GetTree().Paused = GetTree().IsPaused();
-        }
+        if (!@event.IsActionPressed(Action.Pause)) return;
+        GetTree().Paused = !GetTree().IsPaused();
     }
 
     public override void _Process(double delta)
     {
         base._Process(delta);
+        if (GetTree().IsPaused()) return;
         UnpausedPhysicsTicks += 1ul;
     }
 }
