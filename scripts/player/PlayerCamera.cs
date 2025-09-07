@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Godot;
 using Action = StarWreck.scripts.input.Action;
 
-namespace StarWreck.scripts;
+namespace StarWreck.scripts.player;
 
 public partial class PlayerCamera : Camera2D
 {

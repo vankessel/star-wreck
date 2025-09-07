@@ -1,4 +1,4 @@
-namespace StarWreck.scripts;
+namespace StarWreck.scripts.shooting;
 
 public interface IShootable
 {

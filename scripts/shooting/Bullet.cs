@@ -1,6 +1,6 @@
 using Godot;
 
-namespace StarWreck.scripts;
+namespace StarWreck.scripts.shooting;
 
 public partial class Bullet : Area2D
 {

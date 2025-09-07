@@ -1,19 +1,19 @@
 using Godot;
 
-namespace StarWreck.scripts;
+namespace StarWreck.scripts.enemy;
 
 public partial class EnemyGunLogic : Node
 {
-    [Export] private Gun _gun;
+    [Export] private shooting.Gun _gun;
 
-    private Player _player;
+    private player.Player _player;
 
 
     public override void _Ready()
     {
         base._Ready();
 
-        _player = Player.Instance;
+        _player = player.Player.Instance;
         _gun.CooledDown += ShootAtPlayer;
     }
 

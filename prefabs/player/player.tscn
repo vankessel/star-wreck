@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://byvdby8yhdl5i"]
 
-[ext_resource type="Script" uid="uid://bbkqjku6bxwj" path="res://scripts/Player.cs" id="1_4dohe"]
+[ext_resource type="Script" uid="uid://bbkqjku6bxwj" path="res://scripts/player/Player.cs" id="1_4dohe"]
 [ext_resource type="Texture2D" uid="uid://djv15ylli4mny" path="res://sprites/player-ship.png" id="1_72ieh"]
 [ext_resource type="PackedScene" uid="uid://ne38m2cinidj" path="res://prefabs/health_bar.tscn" id="3_wv1mm"]
 

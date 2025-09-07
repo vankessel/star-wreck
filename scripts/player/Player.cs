@@ -1,8 +1,9 @@
 using Godot;
 using StarWreck.scripts.health;
+using StarWreck.scripts.shooting;
 using Action = StarWreck.scripts.input.Action;
 
-namespace StarWreck.scripts;
+namespace StarWreck.scripts.player;
 
 public partial class Player : RigidBody2D, IShootable
 {
@@ -53,7 +54,7 @@ public partial class Player : RigidBody2D, IShootable
         if (_camera == null) GD.PushWarning("Player camera not set.");
     }
 
-    public void GetShot(Bullet bullet)
+    public void GetShot(shooting.Bullet bullet)
     {
         _healthComponent.Hurt(bullet.Damage);
     }

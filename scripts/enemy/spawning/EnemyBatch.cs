@@ -1,6 +1,6 @@
 using Godot;
 
-namespace StarWreck.scripts;
+namespace StarWreck.scripts.enemy.spawning;
 
 [GlobalClass]
 public partial class EnemyBatch : Resource

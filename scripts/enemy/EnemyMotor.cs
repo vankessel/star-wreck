@@ -1,6 +1,6 @@
 using Godot;
 
-namespace StarWreck.scripts;
+namespace StarWreck.scripts.enemy;
 
 [GlobalClass]
 public partial class EnemyMotor : BaseMotor
@@ -20,12 +20,12 @@ public partial class EnemyMotor : BaseMotor
 	[Export(PropertyHint.Range, "0,256,8,or_greater")]
 	private float _minFrictionSpeed = 128f;
 
-	private Player _player;
+	private player.Player _player;
 
 	public override void _Ready()
 	{
 		base._Ready();
-		_player = Player.Instance;
+		_player = player.Player.Instance;
 	}
 
 	public override Vector2 GetMotorForce(RigidBody2D rigidBody2D)

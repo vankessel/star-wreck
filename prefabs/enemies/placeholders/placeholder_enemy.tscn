@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://blk3gc0sn3d5d"]
 
-[ext_resource type="Script" uid="uid://5ttiwj4yhikt" path="res://scripts/Enemy.cs" id="1_yfjof"]
+[ext_resource type="Script" uid="uid://5ttiwj4yhikt" path="res://scripts/enemy/Enemy.cs" id="1_yfjof"]
 [ext_resource type="PackedScene" uid="uid://ca4485syaahao" path="res://prefabs/enemy_debris.tscn" id="2_a7d0n"]
 [ext_resource type="PackedScene" uid="uid://b63hup5adayan" path="res://prefabs/floating_health_bar.tscn" id="3_stf37"]
-[ext_resource type="Script" uid="uid://bwejv1ya3myr2" path="res://scripts/EnemyGunLogic.cs" id="4_s4k8l"]
-[ext_resource type="Script" uid="uid://cg2vikmy1lkll" path="res://scripts/Gun.cs" id="5_afksu"]
+[ext_resource type="Script" uid="uid://bwejv1ya3myr2" path="res://scripts/enemy/EnemyGunLogic.cs" id="4_s4k8l"]
+[ext_resource type="Script" uid="uid://cg2vikmy1lkll" path="res://scripts/shooting/Gun.cs" id="5_afksu"]
 [ext_resource type="PackedScene" uid="uid://cl4t7dhxgufj3" path="res://prefabs/bullet.tscn" id="6_fwfv4"]
-[ext_resource type="Script" uid="uid://dlaqc4emcrrha" path="res://scripts/EnemyMotor.cs" id="7_afksu"]
+[ext_resource type="Script" uid="uid://dlaqc4emcrrha" path="res://scripts/enemy/EnemyMotor.cs" id="7_afksu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_stf37"]
 bounce = 0.5

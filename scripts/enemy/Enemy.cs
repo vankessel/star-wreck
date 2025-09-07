@@ -1,7 +1,7 @@
 using Godot;
 using StarWreck.scripts.health;
 
-namespace StarWreck.scripts;
+namespace StarWreck.scripts.enemy;
 
 public partial class Enemy : TrackedRigidBody2D, IBreakable
 {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 
-namespace StarWreck.scripts;
+namespace StarWreck.scripts.enemy.spawning;
 
 public partial class EnemySpawner : Node2D
 {

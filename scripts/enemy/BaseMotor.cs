@@ -1,6 +1,6 @@
 using Godot;
 
-namespace StarWreck.scripts;
+namespace StarWreck.scripts.enemy;
 
 [GlobalClass]
 public partial class BaseMotor : Node2D

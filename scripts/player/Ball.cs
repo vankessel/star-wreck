@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using Godot;
+using StarWreck.scripts.shooting;
 
-namespace StarWreck.scripts;
+namespace StarWreck.scripts.player;
 
 public partial class Ball : TrackedRigidBody2D, IShootable
 {
@@ -67,7 +68,7 @@ public partial class Ball : TrackedRigidBody2D, IShootable
         }
     }
 
-    public void GetShot(Bullet bullet)
+    public void GetShot(shooting.Bullet bullet)
     {
     }
 }

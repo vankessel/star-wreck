@@ -11,12 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://007v3ch3boci" path="res://prefabs/force_field.tscn" id="8_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://dnnm8xqx3p8d8" path="res://prefabs/celestial-objects/venus.tscn" id="8_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://bo6622dr8frdf" path="res://prefabs/celestial-objects/earth.tscn" id="9_jbj1t"]
-[ext_resource type="Script" uid="uid://4tbq48ndnmc6" path="res://scripts/EnemySpawner.cs" id="10_dp3eg"]
+[ext_resource type="Script" uid="uid://4tbq48ndnmc6" path="res://scripts/enemy/spawning/EnemySpawner.cs" id="10_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://2818y43n8d7y" path="res://prefabs/celestial-objects/mars.tscn" id="10_muem4"]
-[ext_resource type="Script" uid="uid://1l418l3h53n8" path="res://scripts/EnemyBatch.cs" id="11_0ld40"]
+[ext_resource type="Script" uid="uid://1l418l3h53n8" path="res://scripts/enemy/spawning/EnemyBatch.cs" id="11_0ld40"]
 [ext_resource type="PackedScene" uid="uid://dlldgqfqnvl0q" path="res://prefabs/celestial-objects/jupiter.tscn" id="11_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://cn808o1jpmbwa" path="res://prefabs/celestial-objects/saturn.tscn" id="12_0ld40"]
-[ext_resource type="Script" uid="uid://b05min55rm673" path="res://scripts/EnemyQueue.cs" id="12_gqmmt"]
+[ext_resource type="Script" uid="uid://b05min55rm673" path="res://scripts/enemy/spawning/EnemyQueue.cs" id="12_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://bmuu5u7qal6a8" path="res://prefabs/celestial-objects/neptune.tscn" id="13_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://dbfsuq7ogcr5g" path="res://prefabs/celestial-objects/uranus.tscn" id="14_yc10j"]
 [ext_resource type="Script" uid="uid://cawp6yrxef4p6" path="res://scripts/PauseManager.cs" id="20_gqmmt"]
@@ -131,67 +131,67 @@ metadata/_edit_lock_ = true
 Radius = 5000.0
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
 position = Vector2(4330.13, 0)
 shape = SubResource("CapsuleShape2D_gqmmt")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D7"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -2512.5, -21.6506, -2487.5, -21.6506, 2487.5, 21.6506, 2512.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
 position = Vector2(2165.06, 3750)
 rotation = 1.0472
 shape = SubResource("CapsuleShape2D_gqmmt")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D2"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D8"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -2512.5, -21.6506, -2487.5, -21.6506, 2487.5, 21.6506, 2512.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
 position = Vector2(-2165.06, 3750)
 rotation = 2.0944
 shape = SubResource("CapsuleShape2D_gqmmt")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D3"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D9"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -2512.5, -21.6506, -2487.5, -21.6506, 2487.5, 21.6506, 2512.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
 position = Vector2(-4330.13, -0.000378552)
 rotation = 3.14159
 shape = SubResource("CapsuleShape2D_gqmmt")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D4"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D10"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -2512.5, -21.6506, -2487.5, -21.6506, 2487.5, 21.6506, 2512.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
 position = Vector2(-2165.06, -3750)
 rotation = 4.18879
 shape = SubResource("CapsuleShape2D_gqmmt")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D5"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D11"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -2512.5, -21.6506, -2487.5, -21.6506, 2487.5, 21.6506, 2512.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
 position = Vector2(2165.06, -3750)
 rotation = 5.23599
 shape = SubResource("CapsuleShape2D_gqmmt")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D6"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D12"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -2512.5, -21.6506, -2487.5, -21.6506, 2487.5, 21.6506, 2512.5)
 metadata/_edit_lock_ = true
@@ -200,67 +200,67 @@ metadata/_edit_lock_ = true
 Radius = 10000.0
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
 position = Vector2(8660.25, 0)
 shape = SubResource("CapsuleShape2D_yc10j")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D7"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -5012.5, -21.6506, -4987.5, -21.6506, 4987.5, 21.6506, 5012.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
 position = Vector2(4330.13, 7500)
 rotation = 1.0472
 shape = SubResource("CapsuleShape2D_yc10j")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D2"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D8"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -5012.5, -21.6506, -4987.5, -21.6506, 4987.5, 21.6506, 5012.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
 position = Vector2(-4330.13, 7500)
 rotation = 2.0944
 shape = SubResource("CapsuleShape2D_yc10j")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D3"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D9"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -5012.5, -21.6506, -4987.5, -21.6506, 4987.5, 21.6506, 5012.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
 position = Vector2(-8660.25, -0.000757103)
 rotation = 3.14159
 shape = SubResource("CapsuleShape2D_yc10j")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D4"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D10"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -5012.5, -21.6506, -4987.5, -21.6506, 4987.5, 21.6506, 5012.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
 position = Vector2(-4330.13, -7500)
 rotation = 4.18879
 shape = SubResource("CapsuleShape2D_yc10j")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D5"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D11"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -5012.5, -21.6506, -4987.5, -21.6506, 4987.5, 21.6506, 5012.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
 position = Vector2(4330.13, -7500)
 rotation = 5.23599
 shape = SubResource("CapsuleShape2D_yc10j")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D6"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D12"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -5012.5, -21.6506, -4987.5, -21.6506, 4987.5, 21.6506, 5012.5)
 metadata/_edit_lock_ = true
@@ -269,67 +269,67 @@ metadata/_edit_lock_ = true
 Radius = 15000.0
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
 position = Vector2(12990.4, 0)
 shape = SubResource("CapsuleShape2D_jscy8")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D7"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -7512.5, -21.6506, -7487.5, -21.6506, 7487.5, 21.6506, 7512.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
 position = Vector2(6495.19, 11250)
 rotation = 1.0472
 shape = SubResource("CapsuleShape2D_jscy8")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D2"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D8"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -7512.5, -21.6506, -7487.5, -21.6506, 7487.5, 21.6506, 7512.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
 position = Vector2(-6495.19, 11250)
 rotation = 2.0944
 shape = SubResource("CapsuleShape2D_jscy8")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D3"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D9"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -7512.5, -21.6506, -7487.5, -21.6506, 7487.5, 21.6506, 7512.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
 position = Vector2(-12990.4, -0.00113566)
 rotation = 3.14159
 shape = SubResource("CapsuleShape2D_jscy8")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D4"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D10"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -7512.5, -21.6506, -7487.5, -21.6506, 7487.5, 21.6506, 7512.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
 position = Vector2(-6495.19, -11250)
 rotation = 4.18879
 shape = SubResource("CapsuleShape2D_jscy8")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D5"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D11"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -7512.5, -21.6506, -7487.5, -21.6506, 7487.5, 21.6506, 7512.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
 position = Vector2(6495.19, -11250)
 rotation = 5.23599
 shape = SubResource("CapsuleShape2D_jscy8")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D6"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D12"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -7512.5, -21.6506, -7487.5, -21.6506, 7487.5, 21.6506, 7512.5)
 metadata/_edit_lock_ = true
@@ -338,67 +338,67 @@ metadata/_edit_lock_ = true
 Radius = 20000.0
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
 position = Vector2(17320.5, 0)
 shape = SubResource("CapsuleShape2D_pm3ni")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D7"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -10012.5, -21.6506, -9987.5, -21.6506, 9987.5, 21.6506, 10012.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
 position = Vector2(8660.25, 15000)
 rotation = 1.0472
 shape = SubResource("CapsuleShape2D_pm3ni")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D2"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D8"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -10012.5, -21.6506, -9987.5, -21.6506, 9987.5, 21.6506, 10012.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
 position = Vector2(-8660.25, 15000)
 rotation = 2.0944
 shape = SubResource("CapsuleShape2D_pm3ni")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D3"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D9"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -10012.5, -21.6506, -9987.5, -21.6506, 9987.5, 21.6506, 10012.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
 position = Vector2(-17320.5, -0.00151421)
 rotation = 3.14159
 shape = SubResource("CapsuleShape2D_pm3ni")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D4"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D10"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -10012.5, -21.6506, -9987.5, -21.6506, 9987.5, 21.6506, 10012.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
 position = Vector2(-8660.25, -15000)
 rotation = 4.18879
 shape = SubResource("CapsuleShape2D_pm3ni")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D5"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D11"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -10012.5, -21.6506, -9987.5, -21.6506, 9987.5, 21.6506, 10012.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
 position = Vector2(8660.25, -15000)
 rotation = 5.23599
 shape = SubResource("CapsuleShape2D_pm3ni")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D6"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D12"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -10012.5, -21.6506, -9987.5, -21.6506, 9987.5, 21.6506, 10012.5)
 metadata/_edit_lock_ = true
@@ -407,67 +407,67 @@ metadata/_edit_lock_ = true
 Radius = 25000.0
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
 position = Vector2(21650.6, 0)
 shape = SubResource("CapsuleShape2D_y6deb")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D7"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -12512.5, -21.6506, -12487.5, -21.6506, 12487.5, 21.6506, 12512.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
 position = Vector2(10825.3, 18750)
 rotation = 1.0472
 shape = SubResource("CapsuleShape2D_y6deb")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D2"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D8"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -12512.5, -21.6506, -12487.5, -21.6506, 12487.5, 21.6506, 12512.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
 position = Vector2(-10825.3, 18750)
 rotation = 2.0944
 shape = SubResource("CapsuleShape2D_y6deb")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D3"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D9"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -12512.5, -21.6506, -12487.5, -21.6506, 12487.5, 21.6506, 12512.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
 position = Vector2(-21650.6, -0.00189276)
 rotation = 3.14159
 shape = SubResource("CapsuleShape2D_y6deb")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D4"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D10"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -12512.5, -21.6506, -12487.5, -21.6506, 12487.5, 21.6506, 12512.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
 position = Vector2(-10825.3, -18750)
 rotation = 4.18879
 shape = SubResource("CapsuleShape2D_y6deb")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D5"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D11"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -12512.5, -21.6506, -12487.5, -21.6506, 12487.5, 21.6506, 12512.5)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
 position = Vector2(10825.3, -18750)
 rotation = 5.23599
 shape = SubResource("CapsuleShape2D_y6deb")
 metadata/_edit_lock_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D6"]
+[node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D12"]
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -12512.5, -21.6506, -12487.5, -21.6506, 12487.5, 21.6506, 12512.5)
 metadata/_edit_lock_ = true
@@ -481,7 +481,7 @@ metadata/_edit_lock_ = true
 
 [node name="EnemySpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Mercury"]
 script = ExtResource("10_dp3eg")
-_enemyQueues = Array[Resource]([SubResource("Resource_fv21b")])
+_enemyQueues = [SubResource("Resource_fv21b")]
 
 [node name="Venus" parent="Environment/Celestial Objects/Planets" instance=ExtResource("8_jkv2x")]
 position = Vector2(3549, -3597)

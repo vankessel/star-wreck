@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
-namespace StarWreck.scripts;
+namespace StarWreck.scripts.enemy.spawning;
 
 [GlobalClass]
 public partial class EnemyQueue : Resource

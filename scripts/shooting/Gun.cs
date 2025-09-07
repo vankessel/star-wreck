@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace StarWreck.scripts;
+namespace StarWreck.scripts.shooting;
 
 [GlobalClass]
 public partial class Gun : Node2D
