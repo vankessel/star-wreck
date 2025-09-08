@@ -37,6 +37,7 @@ public partial class ForceField : AnimatableBody2D
 
     private readonly List<CollisionShape2D> _collisionShapes = new(Sides);
     private readonly List<Polygon2D> _polygons = new(Sides);
+    private CapsuleShape2D _sharedCapsuleShape;
 
     private const int Sides = 6;
     private const float SideSubtendedRadians = Mathf.Tau / Sides;
@@ -70,6 +71,7 @@ public partial class ForceField : AnimatableBody2D
     {
         base._Ready();
 
+        _sharedCapsuleShape ??= new CapsuleShape2D();
         // Being a tool, things act weird. Ready is called the moment scene is dragged over viewport.
         // And again when released and added to editor's scene tree.
         // Neither has node's owner set so it complains. Defer update to another frame.
@@ -80,6 +82,7 @@ public partial class ForceField : AnimatableBody2D
     {
         if (Owner == null) return;
 
+        _sharedCapsuleShape ??= new CapsuleShape2D();
         Update();
     }
 
@@ -134,7 +137,8 @@ public partial class ForceField : AnimatableBody2D
             }
             else
             {
-                GD.PushError($"Shape2D is not CapsuleShape2D. Iter: {{i}}, Name: {collisionShape2D.Name}");
+                GD.PushError($"Shape2D is not CapsuleShape2D. Iter: {i}, Name: {collisionShape2D.Name}");
+                GD.PushError(collisionShape2D);
             }
         }
     }
@@ -154,13 +158,12 @@ public partial class ForceField : AnimatableBody2D
             }
         }
 
-        CapsuleShape2D newSharedShape = new();
         Vector2[] polygonData = [Vector2.Zero, Vector2.Zero, Vector2.Zero, Vector2.Zero];
         for (int i = 0; i < Sides; i++)
         {
             CollisionShape2D collisionShape = new();
             collisionShape.SetMeta("_edit_lock_", true);
-            collisionShape.Shape = newSharedShape;
+            collisionShape.Shape = _sharedCapsuleShape;
             AddChild(collisionShape);
             collisionShape.SetOwner(GetTree().EditedSceneRoot);
             collisionShape.Name = nameof(CollisionShape2D) + i;
