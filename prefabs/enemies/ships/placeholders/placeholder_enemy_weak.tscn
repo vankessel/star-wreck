@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://wqixl0tvnuvh"]
 
-[ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/placeholders/placeholder_enemy.tscn" id="1_lthsk"]
+[ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_lthsk"]
 
 [sub_resource type="Gradient" id="Gradient_lthsk"]
 interpolation_mode = 1

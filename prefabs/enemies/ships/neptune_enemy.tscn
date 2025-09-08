@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbcq24axt2v4p"]
+
+[ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_fxg36"]
+[ext_resource type="Texture2D" uid="uid://ck7tqwc4y64ty" path="res://sprites/Enemy_ships/neptune_ship.png" id="2_iww7i"]
+[ext_resource type="PackedScene" uid="uid://bhn3fpwpphyf0" path="res://prefabs/enemies/bullets/neptune_bullet.tscn" id="3_iww7i"]
+
+[node name="NeptuneEnemy" instance=ExtResource("1_fxg36")]
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = -0.0558505
+scale = Vector2(0.281, 0.281)
+texture = ExtResource("2_iww7i")
+offset = Vector2(7.223, 40.965)
+
+[node name="Gun" parent="GunLogic" index="0"]
+_bullet = ExtResource("3_iww7i")
+
+[editable path="HealthBar"]

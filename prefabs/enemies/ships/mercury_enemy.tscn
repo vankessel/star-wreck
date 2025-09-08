@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://doank1o4xomu7"]
+
+[ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_2oawm"]
+[ext_resource type="Texture2D" uid="uid://crqjslmn13fa6" path="res://sprites/Enemy_ships/mercury_ship.png" id="2_dpgov"]
+[ext_resource type="PackedScene" uid="uid://c5ut0mvj1l6kv" path="res://prefabs/enemies/bullets/mercury_bullet.tscn" id="3_dpgov"]
+
+[node name="MercuryEnemy" instance=ExtResource("1_2oawm")]
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.335, 0.335)
+texture = ExtResource("2_dpgov")
+offset = Vector2(23.727, 0)
+
+[node name="Gun" parent="GunLogic" index="0"]
+_bullet = ExtResource("3_dpgov")
+
+[editable path="HealthBar"]

@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dieelo3dwbmad" path="res://prefabs/background.tscn" id="1_mmyom"]
 [ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player/player_container.tscn" id="2_467br"]
-[ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/placeholders/placeholder_enemy.tscn" id="3_amuii"]
-[ext_resource type="PackedScene" uid="uid://wqixl0tvnuvh" path="res://prefabs/enemies/placeholders/placeholder_enemy_weak.tscn" id="4_g87el"]
-[ext_resource type="PackedScene" uid="uid://coo3msuspoab" path="res://prefabs/enemies/placeholders/placeholder_enemy_intermediate.tscn" id="5_q8f10"]
-[ext_resource type="PackedScene" uid="uid://cqgvxabuvesax" path="res://prefabs/enemies/placeholders/placeholder_enemy_boss.tscn" id="6_sgqq3"]
+[ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="3_amuii"]
+[ext_resource type="PackedScene" uid="uid://wqixl0tvnuvh" path="res://prefabs/enemies/ships/placeholders/placeholder_enemy_weak.tscn" id="4_g87el"]
+[ext_resource type="PackedScene" uid="uid://coo3msuspoab" path="res://prefabs/enemies/ships/placeholders/placeholder_enemy_intermediate.tscn" id="5_q8f10"]
+[ext_resource type="PackedScene" uid="uid://cqgvxabuvesax" path="res://prefabs/enemies/ships/placeholders/placeholder_enemy_boss.tscn" id="6_sgqq3"]
 [ext_resource type="PackedScene" uid="uid://007v3ch3boci" path="res://prefabs/force_field.tscn" id="7_467br"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_467br"]

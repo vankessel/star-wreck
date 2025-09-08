@@ -1,18 +1,15 @@
 [gd_scene load_steps=12 format=3 uid="uid://blk3gc0sn3d5d"]
 
 [ext_resource type="Script" uid="uid://5ttiwj4yhikt" path="res://scripts/enemy/Enemy.cs" id="1_yfjof"]
-[ext_resource type="PackedScene" uid="uid://ca4485syaahao" path="res://prefabs/enemy_debris.tscn" id="2_a7d0n"]
+[ext_resource type="PackedScene" uid="uid://ca4485syaahao" path="res://prefabs/enemies/debris/base_debris.tscn" id="2_a7d0n"]
 [ext_resource type="PackedScene" uid="uid://b63hup5adayan" path="res://prefabs/floating_health_bar.tscn" id="3_stf37"]
 [ext_resource type="Script" uid="uid://bwejv1ya3myr2" path="res://scripts/enemy/EnemyGunLogic.cs" id="4_s4k8l"]
 [ext_resource type="Script" uid="uid://cg2vikmy1lkll" path="res://scripts/shooting/Gun.cs" id="5_afksu"]
-[ext_resource type="PackedScene" uid="uid://cl4t7dhxgufj3" path="res://prefabs/bullet.tscn" id="6_fwfv4"]
+[ext_resource type="PackedScene" uid="uid://cl4t7dhxgufj3" path="res://prefabs/enemies/bullets/base_bullet.tscn" id="6_fwfv4"]
 [ext_resource type="Script" uid="uid://dlaqc4emcrrha" path="res://scripts/enemy/EnemyMotor.cs" id="7_afksu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_stf37"]
 bounce = 0.5
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_jyhfs"]
-radius = 32.0
 
 [sub_resource type="Gradient" id="Gradient_yfjof"]
 interpolation_mode = 1
@@ -25,7 +22,10 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
 
-[node name="PlaceholderEnemy" type="RigidBody2D" node_paths=PackedStringArray("_healthComponent", "_motor")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_jyhfs"]
+radius = 32.0
+
+[node name="BaseEnemy" type="RigidBody2D" node_paths=PackedStringArray("_healthComponent", "_motor")]
 collision_layer = 8
 collision_mask = 239
 physics_material_override = SubResource("PhysicsMaterial_stf37")
@@ -35,10 +35,6 @@ script = ExtResource("1_yfjof")
 _healthComponent = NodePath("HealthBar/HealthComponentParent/HealthComponent")
 _motor = NodePath("Motor")
 _enemyDebris = ExtResource("2_a7d0n")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_jyhfs")
-metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_tbgi4")
@@ -66,6 +62,10 @@ metadata/_edit_lock_ = true
 
 [node name="Motor" type="Node2D" parent="."]
 script = ExtResource("7_afksu")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jyhfs")
 metadata/_edit_lock_ = true
 
 [editable path="HealthBar"]

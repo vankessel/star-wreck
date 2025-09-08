@@ -18,7 +18,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
 
-[node name="EnemyDebris" type="RigidBody2D"]
+[node name="BaseDebris" type="RigidBody2D"]
 collision_layer = 32
 collision_mask = 239
 mass = 0.25

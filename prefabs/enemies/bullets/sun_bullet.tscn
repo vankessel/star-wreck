@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1jnp2jhggabc"]
+
+[ext_resource type="PackedScene" uid="uid://cl4t7dhxgufj3" path="res://prefabs/enemies/bullets/base_bullet.tscn" id="1_6a5ck"]
+[ext_resource type="Texture2D" uid="uid://bponfmyaubl4p" path="res://sprites/Enemy_ships_parts/Sun/sun_ship_bullet.png" id="2_xgkmm"]
+
+[node name="SunBullet" instance=ExtResource("1_6a5ck")]
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.115, 0.115)
+texture = ExtResource("2_xgkmm")

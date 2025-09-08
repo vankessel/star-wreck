@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cl4t7dhxgufj3"]
 
-[ext_resource type="Script" uid="uid://b1rkkl73obsur" path="res://scripts/shooting/Bullet.cs" id="1_fh0yl"]
+[ext_resource type="Script" uid="uid://b1rkkl73obsur" path="res://scripts/shooting/Bullet.cs" id="1_d6k1i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tefeu"]
 radius = 6.0
@@ -18,11 +18,11 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
 
-[node name="Bullet" type="Area2D"]
+[node name="BaseBullet" type="Area2D"]
 collision_layer = 16
 collision_mask = 231
 monitorable = false
-script = ExtResource("1_fh0yl")
+script = ExtResource("1_d6k1i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tefeu")

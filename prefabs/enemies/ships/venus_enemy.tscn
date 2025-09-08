@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dujno7xwoamvn"]
+
+[ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_godlf"]
+[ext_resource type="Texture2D" uid="uid://wjbsfggplpqo" path="res://sprites/Enemy_ships/venus_ship.png" id="2_8vg5w"]
+[ext_resource type="PackedScene" uid="uid://bqsvi6xut4i4s" path="res://prefabs/enemies/bullets/venus_bullet.tscn" id="3_8vg5w"]
+
+[node name="VenusEnemy" instance=ExtResource("1_godlf")]
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.441, 0.441)
+texture = ExtResource("2_8vg5w")
+offset = Vector2(-9.303, -11.602)
+
+[node name="Gun" parent="GunLogic" index="0"]
+_bullet = ExtResource("3_8vg5w")
+
+[editable path="HealthBar"]

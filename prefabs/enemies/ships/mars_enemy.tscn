@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfy2xd2oi64ul"]
+
+[ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_c6jkw"]
+[ext_resource type="Texture2D" uid="uid://gl73tusq77qx" path="res://sprites/Enemy_ships/mars_ship.png" id="2_ioh4b"]
+[ext_resource type="PackedScene" uid="uid://de440sem2vtmc" path="res://prefabs/enemies/bullets/mars_bullet.tscn" id="3_ioh4b"]
+
+[node name="MarsEnemy" instance=ExtResource("1_c6jkw")]
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = 0.125664
+scale = Vector2(0.301, 0.301)
+texture = ExtResource("2_ioh4b")
+offset = Vector2(12.579, 8.964)
+
+[node name="Gun" parent="GunLogic" index="0"]
+_bullet = ExtResource("3_ioh4b")
+
+[editable path="HealthBar"]
