@@ -161,8 +161,9 @@ public partial class ForceField : AnimatableBody2D
             CollisionShape2D collisionShape = new();
             collisionShape.SetMeta("_edit_lock_", true);
             collisionShape.Shape = newSharedShape;
-            AddChild(collisionShape, true);
+            AddChild(collisionShape);
             collisionShape.SetOwner(GetTree().EditedSceneRoot);
+            collisionShape.Name = nameof(CollisionShape2D) + i;
             _collisionShapes.Add(collisionShape);
 
             Polygon2D polygon2D = new();
