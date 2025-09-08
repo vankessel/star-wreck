@@ -22,6 +22,7 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
         KineticDamageCheck(otherVelocityChangeFraction);
 
         ApplyCentralForce(_motor.GetMotorForce(this));
+        ApplyTorque(_motor.GetMotorTorque(this));
     }
 
     public void Damage(Vector2 otherVelocityChangeFraction, TrackedRigidBody2D other)
