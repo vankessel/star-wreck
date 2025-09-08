@@ -40,6 +40,7 @@ public partial class Bullet : Area2D
         Damage = damage;
         _spawnTime = PauseManager.UnpausedSeconds;
         _despawnTime = _spawnTime + lifetimeSeconds;
+        GlobalRotation = Vector2.Down.AngleTo(velocity);
     }
 
     public override void _PhysicsProcess(double delta)
