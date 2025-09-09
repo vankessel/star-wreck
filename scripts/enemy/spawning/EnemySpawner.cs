@@ -48,7 +48,7 @@ public partial class EnemySpawner : Node2D
 
         Enemy enemy = enemyScene.Instantiate<Enemy>();
         enemy.GlobalPosition = GlobalPosition + new Vector2(x, y);
-        enemy.CollisionMask &= ~(2u << 7);
+        enemy.CollisionMask &= ~(uint)PhysicsLayer.Planets;
 
         Window root = GetTree().GetRoot();
         root.AddChild(enemy);
