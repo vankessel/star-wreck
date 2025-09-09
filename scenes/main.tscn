@@ -114,6 +114,7 @@ position = Vector2(-92, -570)
 metadata/_edit_lock_ = true
 
 [node name="Celestial Objects" type="Node2D" parent="Environment"]
+z_index = 10
 metadata/_edit_lock_ = true
 
 [node name="Sun" parent="Environment/Celestial Objects" instance=ExtResource("7_jkv2x")]
