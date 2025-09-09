@@ -1,11 +1,10 @@
-[gd_scene load_steps=38 format=3 uid="uid://dsrd3np32lxtf"]
+[gd_scene load_steps=37 format=3 uid="uid://dsrd3np32lxtf"]
 
 [ext_resource type="PackedScene" uid="uid://dieelo3dwbmad" path="res://prefabs/background.tscn" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player/player_container.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://wqixl0tvnuvh" path="res://prefabs/enemies/ships/placeholders/placeholder_enemy_weak.tscn" id="4_tefeu"]
 [ext_resource type="PackedScene" uid="uid://coo3msuspoab" path="res://prefabs/enemies/ships/placeholders/placeholder_enemy_intermediate.tscn" id="5_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://cqgvxabuvesax" path="res://prefabs/enemies/ships/placeholders/placeholder_enemy_boss.tscn" id="6_tipki"]
 [ext_resource type="PackedScene" uid="uid://c2bsoydfo38vx" path="res://prefabs/celestial-objects/mercury.tscn" id="7_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://bvefs4mw02vou" path="res://prefabs/celestial-objects/sun.tscn" id="7_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://007v3ch3boci" path="res://prefabs/force_field.tscn" id="8_jbj1t"]
@@ -29,23 +28,23 @@
 [ext_resource type="PackedScene" uid="uid://bfnnd420q30ls" path="res://prefabs/enemies/ships/uranus_enemy.tscn" id="28_kmb1v"]
 [ext_resource type="PackedScene" uid="uid://dujno7xwoamvn" path="res://prefabs/enemies/ships/venus_enemy.tscn" id="29_fuf3a"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2f3dj"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vxglm"]
 radius = 25.0
 height = 5050.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yq6so"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2f3dj"]
 radius = 25.0
 height = 10050.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fv21b"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yq6so"]
 radius = 25.0
 height = 15050.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tel4y"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fv21b"]
 radius = 25.0
 height = 20050.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qkpxi"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tel4y"]
 radius = 25.0
 height = 25050.0
 
@@ -83,43 +82,33 @@ metadata/_edit_lock_ = true
 
 [node name="Enemies" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
 
-[node name="PlaceholderEnemy" parent="Enemies" instance=ExtResource("3_sugp2")]
-position = Vector2(104, -354)
+[node name="EarthEnemy" parent="Enemies" instance=ExtResource("21_yq6so")]
+position = Vector2(-302, -555)
 
-[node name="PlaceholderEnemyWeak" parent="Enemies" instance=ExtResource("4_tefeu")]
-position = Vector2(101, -172)
+[node name="JupiterEnemy" parent="Enemies" instance=ExtResource("22_fv21b")]
+position = Vector2(6, -384)
 
-[node name="PlaceholderEnemyWeak2" parent="Enemies" instance=ExtResource("4_tefeu")]
-position = Vector2(10, -127)
+[node name="MarsEnemy" parent="Enemies" instance=ExtResource("23_tel4y")]
+position = Vector2(176, -371)
 
-[node name="PlaceholderEnemyWeak3" parent="Enemies" instance=ExtResource("4_tefeu")]
-position = Vector2(-99, -175)
+[node name="MercuryEnemy" parent="Enemies" instance=ExtResource("24_qkpxi")]
+position = Vector2(92, -565)
 
-[node name="PlaceholderEnemyWeak4" parent="Enemies" instance=ExtResource("4_tefeu")]
-position = Vector2(197, -123)
+[node name="NeptuneEnemy" parent="Enemies" instance=ExtResource("25_5q0nq")]
+position = Vector2(-76, -165)
 
-[node name="PlaceholderEnemyIntermediate" parent="Enemies" instance=ExtResource("5_o6xl0")]
-position = Vector2(9, -227)
+[node name="SaturnEnemy" parent="Enemies" instance=ExtResource("26_dgi5k")]
+position = Vector2(-191, -379)
 
-[node name="PlaceholderEnemyIntermediate2" parent="Enemies" instance=ExtResource("5_o6xl0")]
-position = Vector2(102, -261)
+[node name="SunEnemy" parent="Enemies" instance=ExtResource("27_j8jky")]
+position = Vector2(274, -554)
 
-[node name="PlaceholderEnemyIntermediate3" parent="Enemies" instance=ExtResource("5_o6xl0")]
-position = Vector2(-93, -268)
+[node name="UranusEnemy" parent="Enemies" instance=ExtResource("28_kmb1v")]
+position = Vector2(88, -165)
 
-[node name="PlaceholderEnemyWeak5" parent="Enemies" instance=ExtResource("4_tefeu")]
-position = Vector2(-188, -123)
-
-[node name="PlaceholderEnemy2" parent="Enemies" instance=ExtResource("3_sugp2")]
-position = Vector2(6, -390)
-
-[node name="PlaceholderEnemy3" parent="Enemies" instance=ExtResource("3_sugp2")]
-position = Vector2(-91, -360)
-
-[node name="PlaceholderEnemyBoss" parent="Enemies" instance=ExtResource("6_tipki")]
-position = Vector2(1, -308)
+[node name="VenusEnemy" parent="Enemies" instance=ExtResource("29_fuf3a")]
+position = Vector2(-92, -570)
 
 [node name="Environment" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -141,7 +130,7 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D0" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
 position = Vector2(4330.13, 0)
-shape = SubResource("CapsuleShape2D_2f3dj")
+shape = SubResource("CapsuleShape2D_vxglm")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D0"]
@@ -152,7 +141,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D1" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
 position = Vector2(2165.06, 3750)
 rotation = 1.0472
-shape = SubResource("CapsuleShape2D_2f3dj")
+shape = SubResource("CapsuleShape2D_vxglm")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D1"]
@@ -163,7 +152,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
 position = Vector2(-2165.06, 3750)
 rotation = 2.0944
-shape = SubResource("CapsuleShape2D_2f3dj")
+shape = SubResource("CapsuleShape2D_vxglm")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D2"]
@@ -174,7 +163,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
 position = Vector2(-4330.13, -0.000378552)
 rotation = 3.14159
-shape = SubResource("CapsuleShape2D_2f3dj")
+shape = SubResource("CapsuleShape2D_vxglm")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D8"]
@@ -185,7 +174,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
 position = Vector2(-2165.06, -3750)
 rotation = 4.18879
-shape = SubResource("CapsuleShape2D_2f3dj")
+shape = SubResource("CapsuleShape2D_vxglm")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D9"]
@@ -196,7 +185,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField"]
 position = Vector2(2165.06, -3750)
 rotation = 5.23599
-shape = SubResource("CapsuleShape2D_2f3dj")
+shape = SubResource("CapsuleShape2D_vxglm")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField/CollisionShape2D10"]
@@ -210,7 +199,7 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
 position = Vector2(8660.25, 0)
-shape = SubResource("CapsuleShape2D_yq6so")
+shape = SubResource("CapsuleShape2D_2f3dj")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D4"]
@@ -221,7 +210,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
 position = Vector2(4330.13, 7500)
 rotation = 1.0472
-shape = SubResource("CapsuleShape2D_yq6so")
+shape = SubResource("CapsuleShape2D_2f3dj")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D5"]
@@ -232,7 +221,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
 position = Vector2(-4330.13, 7500)
 rotation = 2.0944
-shape = SubResource("CapsuleShape2D_yq6so")
+shape = SubResource("CapsuleShape2D_2f3dj")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D6"]
@@ -243,7 +232,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
 position = Vector2(-8660.25, -0.000757103)
 rotation = 3.14159
-shape = SubResource("CapsuleShape2D_yq6so")
+shape = SubResource("CapsuleShape2D_2f3dj")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D7"]
@@ -254,7 +243,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
 position = Vector2(-4330.13, -7500)
 rotation = 4.18879
-shape = SubResource("CapsuleShape2D_yq6so")
+shape = SubResource("CapsuleShape2D_2f3dj")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D10"]
@@ -265,7 +254,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2"]
 position = Vector2(4330.13, -7500)
 rotation = 5.23599
-shape = SubResource("CapsuleShape2D_yq6so")
+shape = SubResource("CapsuleShape2D_2f3dj")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField2/CollisionShape2D11"]
@@ -279,7 +268,7 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
 position = Vector2(12990.4, 0)
-shape = SubResource("CapsuleShape2D_fv21b")
+shape = SubResource("CapsuleShape2D_yq6so")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D4"]
@@ -290,7 +279,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
 position = Vector2(6495.19, 11250)
 rotation = 1.0472
-shape = SubResource("CapsuleShape2D_fv21b")
+shape = SubResource("CapsuleShape2D_yq6so")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D5"]
@@ -301,7 +290,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
 position = Vector2(-6495.19, 11250)
 rotation = 2.0944
-shape = SubResource("CapsuleShape2D_fv21b")
+shape = SubResource("CapsuleShape2D_yq6so")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D6"]
@@ -312,7 +301,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
 position = Vector2(-12990.4, -0.00113566)
 rotation = 3.14159
-shape = SubResource("CapsuleShape2D_fv21b")
+shape = SubResource("CapsuleShape2D_yq6so")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D7"]
@@ -323,7 +312,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
 position = Vector2(-6495.19, -11250)
 rotation = 4.18879
-shape = SubResource("CapsuleShape2D_fv21b")
+shape = SubResource("CapsuleShape2D_yq6so")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D10"]
@@ -334,7 +323,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3"]
 position = Vector2(6495.19, -11250)
 rotation = 5.23599
-shape = SubResource("CapsuleShape2D_fv21b")
+shape = SubResource("CapsuleShape2D_yq6so")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField3/CollisionShape2D11"]
@@ -348,7 +337,7 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
 position = Vector2(17320.5, 0)
-shape = SubResource("CapsuleShape2D_tel4y")
+shape = SubResource("CapsuleShape2D_fv21b")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D4"]
@@ -359,7 +348,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
 position = Vector2(8660.25, 15000)
 rotation = 1.0472
-shape = SubResource("CapsuleShape2D_tel4y")
+shape = SubResource("CapsuleShape2D_fv21b")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D5"]
@@ -370,7 +359,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
 position = Vector2(-8660.25, 15000)
 rotation = 2.0944
-shape = SubResource("CapsuleShape2D_tel4y")
+shape = SubResource("CapsuleShape2D_fv21b")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D6"]
@@ -381,7 +370,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
 position = Vector2(-17320.5, -0.00151421)
 rotation = 3.14159
-shape = SubResource("CapsuleShape2D_tel4y")
+shape = SubResource("CapsuleShape2D_fv21b")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D7"]
@@ -392,7 +381,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
 position = Vector2(-8660.25, -15000)
 rotation = 4.18879
-shape = SubResource("CapsuleShape2D_tel4y")
+shape = SubResource("CapsuleShape2D_fv21b")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D10"]
@@ -403,7 +392,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4"]
 position = Vector2(8660.25, -15000)
 rotation = 5.23599
-shape = SubResource("CapsuleShape2D_tel4y")
+shape = SubResource("CapsuleShape2D_fv21b")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField4/CollisionShape2D11"]
@@ -417,7 +406,7 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
 position = Vector2(21650.6, 0)
-shape = SubResource("CapsuleShape2D_qkpxi")
+shape = SubResource("CapsuleShape2D_tel4y")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D4"]
@@ -428,7 +417,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
 position = Vector2(10825.3, 18750)
 rotation = 1.0472
-shape = SubResource("CapsuleShape2D_qkpxi")
+shape = SubResource("CapsuleShape2D_tel4y")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D5"]
@@ -439,7 +428,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
 position = Vector2(-10825.3, 18750)
 rotation = 2.0944
-shape = SubResource("CapsuleShape2D_qkpxi")
+shape = SubResource("CapsuleShape2D_tel4y")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D6"]
@@ -450,7 +439,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
 position = Vector2(-21650.6, -0.00189276)
 rotation = 3.14159
-shape = SubResource("CapsuleShape2D_qkpxi")
+shape = SubResource("CapsuleShape2D_tel4y")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D7"]
@@ -461,7 +450,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
 position = Vector2(-10825.3, -18750)
 rotation = 4.18879
-shape = SubResource("CapsuleShape2D_qkpxi")
+shape = SubResource("CapsuleShape2D_tel4y")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D10"]
@@ -472,7 +461,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5"]
 position = Vector2(10825.3, -18750)
 rotation = 5.23599
-shape = SubResource("CapsuleShape2D_qkpxi")
+shape = SubResource("CapsuleShape2D_tel4y")
 metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Environment/Celestial Objects/Sun/ForceFields/ForceField5/CollisionShape2D11"]
@@ -518,30 +507,3 @@ metadata/_edit_lock_ = true
 [node name="Neptune" parent="Environment/Celestial Objects/Planets" instance=ExtResource("13_gqmmt")]
 position = Vector2(1606, 15257)
 metadata/_edit_lock_ = true
-
-[node name="EarthEnemy" parent="." instance=ExtResource("21_yq6so")]
-position = Vector2(-477, -1157)
-
-[node name="JupiterEnemy" parent="." instance=ExtResource("22_fv21b")]
-position = Vector2(427, -1200)
-
-[node name="MarsEnemy" parent="." instance=ExtResource("23_tel4y")]
-position = Vector2(-707, -1101)
-
-[node name="MercuryEnemy" parent="." instance=ExtResource("24_qkpxi")]
-position = Vector2(-628, -902)
-
-[node name="NeptuneEnemy" parent="." instance=ExtResource("25_5q0nq")]
-position = Vector2(-649, -645)
-
-[node name="SaturnEnemy" parent="." instance=ExtResource("26_dgi5k")]
-position = Vector2(-454, -454)
-
-[node name="SunEnemy" parent="." instance=ExtResource("27_j8jky")]
-position = Vector2(620, -785)
-
-[node name="UranusEnemy" parent="." instance=ExtResource("28_kmb1v")]
-position = Vector2(457, -409)
-
-[node name="VenusEnemy" parent="." instance=ExtResource("29_fuf3a")]
-position = Vector2(-47, -1266)
