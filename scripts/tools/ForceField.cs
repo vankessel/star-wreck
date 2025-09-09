@@ -67,6 +67,12 @@ public partial class ForceField : AnimatableBody2D
         Update();
     }
 
+    public override void _EnterTree()
+    {
+        base._EnterTree();
+        _sharedCapsuleShape ??= new CapsuleShape2D();
+    }
+
     public override void _Ready()
     {
         base._Ready();
@@ -130,6 +136,8 @@ public partial class ForceField : AnimatableBody2D
             Vector2 position = firstPosition.Rotated(radians);
             collisionShape2D.Rotation = radians;
             collisionShape2D.Position = position;
+            _sharedCapsuleShape ??= new CapsuleShape2D();
+            collisionShape2D.Shape ??= _sharedCapsuleShape;
             if (collisionShape2D.Shape is CapsuleShape2D capsuleShape2D)
             {
                 capsuleShape2D.Height = _radius + 2f * capsuleShape2D.Radius;
