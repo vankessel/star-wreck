@@ -3,8 +3,9 @@ using StarWreck.scripts.input;
 
 namespace StarWreck.scripts;
 
-public partial class PauseManager : Node
+public partial class PauseManager : Control
 {
+    private Control _pauseScreenControl;
     public static PauseManager Instance;
     public static ulong UnpausedPhysicsTicks { get; private set; } = 0ul;
     public static float UnpausedSeconds => UnpausedPhysicsTicks / (float)Engine.PhysicsTicksPerSecond;
@@ -21,7 +22,14 @@ public partial class PauseManager : Node
         base._Input(@event);
 
         if (!@event.IsActionPressed(Action.Pause)) return;
-        GetTree().Paused = !GetTree().IsPaused();
+        if (GetTree().IsPaused())
+        {
+            Unpause();
+        }
+        else
+        {
+            Pause();
+        }
     }
 
     public override void _Process(double delta)
@@ -29,5 +37,17 @@ public partial class PauseManager : Node
         base._Process(delta);
         if (GetTree().IsPaused()) return;
         UnpausedPhysicsTicks += 1ul;
+    }
+
+    private void Pause()
+    {
+        GetTree().Paused = true;
+        Visible = true;
+    }
+
+    private void Unpause()
+    {
+        GetTree().Paused = false;
+        Visible = false;
     }
 }
