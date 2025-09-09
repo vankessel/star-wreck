@@ -67,17 +67,10 @@ public partial class ForceField : AnimatableBody2D
         Update();
     }
 
-    public override void _EnterTree()
-    {
-        base._EnterTree();
-        _sharedCapsuleShape ??= new CapsuleShape2D();
-    }
-
     public override void _Ready()
     {
         base._Ready();
 
-        _sharedCapsuleShape ??= new CapsuleShape2D();
         // Being a tool, things act weird. Ready is called the moment scene is dragged over viewport.
         // And again when released and added to editor's scene tree.
         // Neither has node's owner set so it complains. Defer update to another frame.
@@ -88,13 +81,18 @@ public partial class ForceField : AnimatableBody2D
     {
         if (Owner == null) return;
 
-        _sharedCapsuleShape ??= new CapsuleShape2D();
         Update();
     }
 
     private void Update()
     {
         if (!IsInsideTree() || GetTree().EditedSceneRoot == this) return;
+
+        // If loading project up, nodes may exist but are not in these lists yet.
+        if (_collisionShapes.Count != Sides || _polygons.Count != Sides)
+        {
+            FindChildren();
+        }
 
         bool invalid = _collisionShapes.Any(t => !t.IsPartOfEditedScene())
                        || _polygons.Any(t => !t.IsPartOfEditedScene())
@@ -125,6 +123,7 @@ public partial class ForceField : AnimatableBody2D
 
         float inradius = cos * _radius;
         Vector2 firstPosition = Vector2.Right * inradius;
+        _sharedCapsuleShape ??= new CapsuleShape2D();
         for (int i = 0; i < _collisionShapes.Count; i++)
         {
             Polygon2D polygon2D = _polygons[i];
@@ -136,7 +135,6 @@ public partial class ForceField : AnimatableBody2D
             Vector2 position = firstPosition.Rotated(radians);
             collisionShape2D.Rotation = radians;
             collisionShape2D.Position = position;
-            _sharedCapsuleShape ??= new CapsuleShape2D();
             collisionShape2D.Shape ??= _sharedCapsuleShape;
             if (collisionShape2D.Shape is CapsuleShape2D capsuleShape2D)
             {
@@ -151,6 +149,32 @@ public partial class ForceField : AnimatableBody2D
         }
     }
 
+    private void FindChildren()
+    {
+        _collisionShapes.Clear();
+        _polygons.Clear();
+        int childCount = GetChildCount();
+        for (int i = 0; i < childCount; i++)
+        {
+            Node child = GetChild(i);
+            if (child is not CollisionShape2D collisionShape2D) continue;
+            _collisionShapes.Add(collisionShape2D);
+            if (collisionShape2D.Shape is CapsuleShape2D capsuleShape2D)
+            {
+                _sharedCapsuleShape ??= capsuleShape2D;
+            }
+            int innerChildCount = collisionShape2D.GetChildCount();
+            for (int j = 0; j < innerChildCount; j++)
+            {
+                Node innerChild = collisionShape2D.GetChild(j);
+                if (innerChild is not Polygon2D polygon2D) continue;
+                _polygons.Add(polygon2D);
+                break;
+            }
+        }
+        _sharedCapsuleShape ??= new CapsuleShape2D();
+    }
+
     private void RecreateChildren()
     {
         _collisionShapes.Clear();
@@ -160,7 +184,7 @@ public partial class ForceField : AnimatableBody2D
         for (int i = 0; i < childCount; i++)
         {
             Node child = GetChild(i);
-            if (child is CollisionShape2D or Polygon2D)
+            if (child is CollisionShape2D)
             {
                 child.QueueFree();
             }
