@@ -1,14 +1,32 @@
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
+using StarWreck.scripts.health;
 
 namespace StarWreck.scripts.enemy.spawning;
 
 public partial class EnemySpawner : Node2D
 {
     [Export] private PhysicsBody2D _planet;
+    [Export] private bool _startSpawningOnReady = false;
     [Export] private float _radius = 100f;
+    [Export] private float _ejectionSpeed = 300f;
 
     [Export] private EnemyQueue[] _enemyQueues = new EnemyQueue[1];
+
+    [Signal] public delegate void SpawningStartedEventHandler();
+    [Signal] public delegate void SpawningFinishedEventHandler();
+    /// <summary>
+    /// Triggers when all spawned enemies are destroyed. Spawner may still be spawning more.
+    /// </summary>
+    [Signal] public delegate void SpawnedEnemiesDestroyedEventHandler();
+    /// <summary>
+    /// Triggers when all enemies in queue have spawned and are destroyed.
+    /// </summary>
+    [Signal] public delegate void AllEnemiesDestroyedEventHandler();
+
+    public bool IsSpawning { get; private set; } = false;
+    public bool IsFinished { get; private set; } = false;
 
     private static readonly RandomNumberGenerator Rng = new();
 
@@ -18,16 +36,73 @@ public partial class EnemySpawner : Node2D
     private int _index = 0;
     private float _lastSpawnTime = float.NegativeInfinity;
 
+    private bool _queueFinished = false;
+    private readonly HashSet<Enemy> _spawnedEnemies = [];
+
+    public int Count => _enemyQueues.Sum(queue => queue.Count);
+
+    public override void _EnterTree()
+    {
+        base._EnterTree();
+        SpawningStarted += OnSpawningStarted;
+        SpawningFinished += OnSpawningFinished;
+        SpawnedEnemiesDestroyed += OnSpawnedEnemiesDestroyed;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        SpawningStarted -= OnSpawningStarted;
+        SpawningFinished -= OnSpawningFinished;
+        SpawnedEnemiesDestroyed -= OnSpawnedEnemiesDestroyed;
+    }
+
+    public override void _Ready()
+    {
+        base._Ready();
+
+        if (!_startSpawningOnReady) return;
+        StartSpawning();
+    }
+
+    private void OnSpawningStarted()
+    {
+        IsSpawning = true;
+    }
+
+    private void OnSpawningFinished()
+    {
+        IsSpawning = false;
+        IsFinished = true;
+    }
+
+    private void OnSpawnedEnemiesDestroyed()
+    {
+        if (IsFinished) EmitSignal(SignalName.AllEnemiesDestroyed);
+    }
+
+    private void StartSpawning() => EmitSignal(SignalName.SpawningStarted);
+
+    private void FinishSpawning() => EmitSignal(SignalName.SpawningFinished);
+
     public override void _Process(double delta)
     {
         base._Process(delta);
 
+        if (!IsSpawning) return;
+
         if (_currentPriorityQueue.Count == 0)
         {
-            if (_index >= _enemyQueues.Length) return;
-            _currentEnemyQueue = _enemyQueues[_index];
-            _currentPriorityQueue = _enemyQueues[_index].GetQueue();
-            _index++;
+            if (_index < _enemyQueues.Length)
+            {
+                _currentEnemyQueue = _enemyQueues[_index];
+                _currentPriorityQueue = _enemyQueues[_index].GetQueue();
+                _index++;
+            }
+            else
+            {
+                FinishSpawning();
+            }
         }
         else
         {
@@ -41,23 +116,35 @@ public partial class EnemySpawner : Node2D
 
     private Enemy Spawn(PackedScene enemyScene)
     {
+        Enemy enemy = enemyScene.Instantiate<Enemy>();
+        _spawnedEnemies.Add(enemy);
+
+        enemy.HealthComponent.HealthFullyDepleted += EnemyOnHealthDepleted;
+        if (_planet != null) enemy.BodyExited += EnemyOnBodyExited;
+
         float radians = Rng.RandfRange(0f, Mathf.Tau);
         float radius  = Rng.RandfRange(0f, _radius);
-
-        float x = radius * Mathf.Cos(radians);
-        float y = radius * Mathf.Sin(radians);
-
-        Enemy enemy = enemyScene.Instantiate<Enemy>();
-        enemy.GlobalPosition = GlobalPosition + new Vector2(x, y);
+        Vector2 offsetDir = new(Mathf.Cos(radians), Mathf.Sin(radians));
+        Vector2 offset = radius * offsetDir;
+        enemy.GlobalPosition = GlobalPosition + offset;
+        enemy.LinearVelocity += _ejectionSpeed * offsetDir;
         enemy.CollisionMask &= ~(uint)PhysicsLayer.Planets;
-
-        if (_planet != null) enemy.BodyExited += EnemyOnBodyExited;
 
         Window root = GetTree().GetRoot();
         root.AddChild(enemy);
         enemy.Owner = root;
 
         return enemy;
+
+        void EnemyOnHealthDepleted(HealthComponent _, float __, float ___)
+        {
+            _spawnedEnemies.Remove(enemy);
+            if (_spawnedEnemies.Count == 0)
+            {
+                EmitSignal(SignalName.SpawnedEnemiesDestroyed);
+            }
+            enemy.HealthComponent.HealthFullyDepleted -= EnemyOnHealthDepleted;
+        }
 
         void EnemyOnBodyExited(Node body)
         {

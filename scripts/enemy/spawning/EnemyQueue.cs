@@ -22,6 +22,8 @@ public partial class EnemyQueue : Resource
 
     [Export] public EnemyBatch[] EnemyBatches { get; private set; } = new EnemyBatch[1];
 
+    public int Count => EnemyBatches.Sum(enemyBatch => enemyBatch.Count);
+
     public PriorityQueue<PackedScene, float> GetQueue()
     {
         PriorityQueue<PackedScene, float> queue = new();

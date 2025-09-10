@@ -49,7 +49,7 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
 
         if (0f < _healthComponent.Health) return;
 
-        CallDeferred(MethodName.SpawnDebris, Position, LinearVelocity + addedDebrisVelocity, GetParent(), 3, 5);
+        SpawnDebris(Position, LinearVelocity + addedDebrisVelocity, GetParent(), 3, 5);
 
         QueueFree();
     }
