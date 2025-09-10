@@ -470,6 +470,11 @@ color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -12512.5, -21.6506, -12487.5, -21.6506, 12487.5, 21.6506, 12512.5)
 metadata/_edit_lock_ = true
 
+[node name="SunSpawner" type="Node2D" parent="Environment/Celestial Objects/Sun" node_paths=PackedStringArray("_planet")]
+script = ExtResource("10_dp3eg")
+_planet = NodePath("..")
+_enemyQueues = [SubResource("Resource_fv21b")]
+
 [node name="Planets" type="Node2D" parent="Environment/Celestial Objects"]
 metadata/_edit_lock_ = true
 
@@ -477,34 +482,70 @@ metadata/_edit_lock_ = true
 position = Vector2(169, -1688)
 metadata/_edit_lock_ = true
 
-[node name="EnemySpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Mercury"]
+[node name="MercurySpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Mercury" node_paths=PackedStringArray("_planet")]
 script = ExtResource("10_dp3eg")
+_planet = NodePath("..")
 _enemyQueues = [SubResource("Resource_fv21b")]
 
 [node name="Venus" parent="Environment/Celestial Objects/Planets" instance=ExtResource("8_jkv2x")]
 position = Vector2(3549, -3597)
 metadata/_edit_lock_ = true
 
+[node name="VenusSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Venus" node_paths=PackedStringArray("_planet")]
+script = ExtResource("10_dp3eg")
+_planet = NodePath("..")
+_enemyQueues = [SubResource("Resource_fv21b")]
+
 [node name="Earth" parent="Environment/Celestial Objects/Planets" instance=ExtResource("9_jbj1t")]
 position = Vector2(679, 3602)
 metadata/_edit_lock_ = true
+
+[node name="EarthSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Earth" node_paths=PackedStringArray("_planet")]
+script = ExtResource("10_dp3eg")
+_planet = NodePath("..")
+_enemyQueues = [SubResource("Resource_fv21b")]
 
 [node name="Mars" parent="Environment/Celestial Objects/Planets" instance=ExtResource("10_muem4")]
 position = Vector2(-3168, 7814)
 metadata/_edit_lock_ = true
 
+[node name="MarsSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Mars" node_paths=PackedStringArray("_planet")]
+script = ExtResource("10_dp3eg")
+_planet = NodePath("..")
+_enemyQueues = [SubResource("Resource_fv21b")]
+
 [node name="Jupiter" parent="Environment/Celestial Objects/Planets" instance=ExtResource("11_dp3eg")]
 position = Vector2(4409, 6970)
 metadata/_edit_lock_ = true
+
+[node name="JupiterSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Jupiter" node_paths=PackedStringArray("_planet")]
+script = ExtResource("10_dp3eg")
+_planet = NodePath("..")
+_enemyQueues = [SubResource("Resource_fv21b")]
 
 [node name="Saturn" parent="Environment/Celestial Objects/Planets" instance=ExtResource("12_0ld40")]
 position = Vector2(11750, 3616)
 metadata/_edit_lock_ = true
 
+[node name="SaturnSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Saturn" node_paths=PackedStringArray("_planet")]
+script = ExtResource("10_dp3eg")
+_planet = NodePath("..")
+_enemyQueues = [SubResource("Resource_fv21b")]
+
 [node name="Uranus" parent="Environment/Celestial Objects/Planets" instance=ExtResource("14_yc10j")]
 position = Vector2(3881, 11256)
 metadata/_edit_lock_ = true
 
+[node name="UranusSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Uranus" node_paths=PackedStringArray("_planet")]
+script = ExtResource("10_dp3eg")
+_planet = NodePath("..")
+_enemyQueues = [SubResource("Resource_fv21b")]
+
 [node name="Neptune" parent="Environment/Celestial Objects/Planets" instance=ExtResource("13_gqmmt")]
 position = Vector2(1606, 15257)
 metadata/_edit_lock_ = true
+
+[node name="NeptuneSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Neptune" node_paths=PackedStringArray("_planet")]
+script = ExtResource("10_dp3eg")
+_planet = NodePath("..")
+_enemyQueues = [SubResource("Resource_fv21b")]

@@ -5,6 +5,7 @@ namespace StarWreck.scripts.enemy.spawning;
 
 public partial class EnemySpawner : Node2D
 {
+    [Export] private PhysicsBody2D _planet;
     [Export] private float _radius = 100f;
 
     [Export] private EnemyQueue[] _enemyQueues = new EnemyQueue[1];
@@ -50,10 +51,19 @@ public partial class EnemySpawner : Node2D
         enemy.GlobalPosition = GlobalPosition + new Vector2(x, y);
         enemy.CollisionMask &= ~(uint)PhysicsLayer.Planets;
 
+        if (_planet != null) enemy.BodyExited += EnemyOnBodyExited;
+
         Window root = GetTree().GetRoot();
         root.AddChild(enemy);
         enemy.Owner = root;
 
         return enemy;
+
+        void EnemyOnBodyExited(Node body)
+        {
+            if (body != _planet) return;
+            enemy.CollisionMask |= (uint)PhysicsLayer.Planets;
+            enemy.BodyExited -= EnemyOnBodyExited;
+        }
     }
 }
