@@ -16,7 +16,7 @@ public partial class EnemySpawner : Node2D
     private EnemyQueue _currentEnemyQueue;
     private int _remainingInQueue = 0;
     private int _index = 0;
-    private float _lastSpawnTime = 0f;
+    private float _lastSpawnTime = float.NegativeInfinity;
 
     public override void _Process(double delta)
     {
