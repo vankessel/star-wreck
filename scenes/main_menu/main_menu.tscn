@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cifs5t5dmbuyq"]
 
-[ext_resource type="Script" uid="uid://1vstq6ftlqv1" path="res://scenes/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Script" uid="uid://d253rx3jnkstf" path="res://scenes/main_menu/MainMenu.cs" id="1_0ebjn"]
 [ext_resource type="Texture2D" uid="uid://dcc8npg6k1f3t" path="res://sprites/title.png" id="1_l6cm7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekxnf"]
@@ -38,14 +38,19 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_offset = Vector2(0, 3.41)
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("_startButton", "_creditsButton", "_exitButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ekxnf")
+script = ExtResource("1_0ebjn")
+_startScene = "uid://dsrd3np32lxtf"
+_creditsScene = "uid://bryueb6jw5ir5"
+_startButton = NodePath("VBoxContainer/btn_start")
+_creditsButton = NodePath("VBoxContainer/btn_credits")
+_exitButton = NodePath("VBoxContainer/btn_exit")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -116,7 +121,3 @@ theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_l6cm7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bqqt6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
 text = "Exit"
-
-[connection signal="pressed" from="VBoxContainer/btn_start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/btn_credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="VBoxContainer/btn_exit" to="." method="_on_exit_pressed"]

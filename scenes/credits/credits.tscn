@@ -1,10 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bryueb6jw5ir5"]
+[gd_scene load_steps=7 format=3 uid="uid://bryueb6jw5ir5"]
 
-[ext_resource type="Script" uid="uid://3kh0tnsrv2ok" path="res://scenes/credits.gd" id="1_2ckv8"]
+[ext_resource type="Script" uid="uid://dtey4r50vy57n" path="res://scenes/credits/CreditsMenu.cs" id="1_c8xcy"]
 [ext_resource type="Texture2D" uid="uid://jbfqanomkm0e" path="res://sprites/credits.png" id="2_0ctdu"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2fbfq"]
-texture = ExtResource("2_0ctdu")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ckv8"]
 bg_color = Color(0.836049, 0.809603, 0.821212, 1)
@@ -38,15 +35,30 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_offset = Vector2(0, 3.41)
 
-[node name="Credits" type="Node2D"]
-script = ExtResource("1_2ckv8")
+[node name="Credits" type="Control" node_paths=PackedStringArray("_mainMenuButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c8xcy")
+_mainMenuScene = "uid://cifs5t5dmbuyq"
+_mainMenuButton = NodePath("btn_return")
 
-[node name="Panel" type="Panel" parent="."]
-offset_right = 1151.0
-offset_bottom = 655.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_2fbfq")
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0ctdu")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="btn_return" type="Button" parent="."]
+layout_mode = 0
 offset_left = 928.0
 offset_top = 563.0
 offset_right = 1099.0
@@ -66,5 +78,3 @@ theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_2ckv8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2fbfq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_8gwij")
 text = "Return"
-
-[connection signal="pressed" from="btn_return" to="." method="_on_mainmenu_pressed"]
