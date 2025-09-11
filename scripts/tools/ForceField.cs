@@ -30,6 +30,12 @@ public partial class ForceField : AnimatableBody2D
         set => SetColor(value);
     }
 
+    [Signal]
+    public delegate void EnabledEventHandler();
+
+    [Signal]
+    public delegate void DisabledEventHandler();
+
     private Color _color = new(0f, 1f, 1f, 0.5f);
 
     private float _radius = 1000f;
@@ -38,6 +44,7 @@ public partial class ForceField : AnimatableBody2D
     private readonly List<CollisionShape2D> _collisionShapes = new(Sides);
     private readonly List<Polygon2D> _polygons = new(Sides);
     private CapsuleShape2D _sharedCapsuleShape;
+    private uint _collisionLayer;
 
     private const int Sides = 6;
     private const float SideSubtendedRadians = Mathf.Tau / Sides;
@@ -67,10 +74,31 @@ public partial class ForceField : AnimatableBody2D
         Update();
     }
 
+    public void Enable()
+    {
+        Visible = true;
+        CollisionLayer = _collisionLayer;
+        EmitSignal(SignalName.Enabled);
+    }
+
+    public void Disable()
+    {
+        Visible = false;
+        if (CollisionLayer == 0) return;
+        _collisionLayer = CollisionLayer;
+        CollisionLayer = 0u;
+        EmitSignal(SignalName.Disabled);
+    }
+
+    public override void _EnterTree()
+    {
+        base._EnterTree();
+        _collisionLayer = CollisionLayer;
+    }
+
     public override void _Ready()
     {
         base._Ready();
-
         // Being a tool, things act weird. Ready is called the moment scene is dragged over viewport.
         // And again when released and added to editor's scene tree.
         // Neither has node's owner set so it complains. Defer update to another frame.
@@ -79,9 +107,7 @@ public partial class ForceField : AnimatableBody2D
 
     private void ToolReady()
     {
-        if (Owner == null) return;
-
-        Update();
+        if (Owner != null) Update();
     }
 
     private void Update()
@@ -163,6 +189,7 @@ public partial class ForceField : AnimatableBody2D
             {
                 _sharedCapsuleShape ??= capsuleShape2D;
             }
+
             int innerChildCount = collisionShape2D.GetChildCount();
             for (int j = 0; j < innerChildCount; j++)
             {
@@ -172,6 +199,7 @@ public partial class ForceField : AnimatableBody2D
                 break;
             }
         }
+
         _sharedCapsuleShape ??= new CapsuleShape2D();
     }
 
