@@ -4,7 +4,7 @@ namespace StarWreck.scenes.credits;
 
 public partial class CreditsMenu : Node
 {
-    [Export(PropertyHint.File, "*tscn")] private string _mainMenuScene;
+    [Export(PropertyHint.File, "*.tscn")] private string _mainMenuScene;
     [Export] private Button _mainMenuButton;
 
     public override void _Ready()

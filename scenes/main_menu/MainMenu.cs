@@ -4,8 +4,8 @@ namespace StarWreck.scenes.main_menu;
 
 public partial class MainMenu : Node
 {
-    [Export(PropertyHint.File, "*tscn")] private string _startScene;
-    [Export(PropertyHint.File, "*tscn")] private string _creditsScene;
+    [Export(PropertyHint.File, "*.tscn")] private string _startScene;
+    [Export(PropertyHint.File, "*.tscn")] private string _creditsScene;
     [Export] private Button _startButton;
     [Export] private Button _creditsButton;
     [Export] private Button _exitButton;
