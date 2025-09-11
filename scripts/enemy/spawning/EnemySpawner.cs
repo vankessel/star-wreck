@@ -7,13 +7,20 @@ namespace StarWreck.scripts.enemy.spawning;
 
 public partial class EnemySpawner : Node2D
 {
-    [Export] private PhysicsBody2D _planet;
     [Export] private bool _startSpawningOnReady = false;
     [Export] private float _radius = 100f;
     [Export] private float _ejectionSpeed = 300f;
 
     [Export] private EnemyQueue[] _enemyQueues = new EnemyQueue[1];
 
+    /// <summary>
+    /// Emitted immediately after enemy instantiation.
+    /// </summary>
+    [Signal] public delegate void SpawningEventHandler(Enemy enemy);
+    /// <summary>
+    /// Emitted after enemy instantiation and initialization.
+    /// </summary>
+    [Signal] public delegate void SpawnedEventHandler(Enemy enemy);
     [Signal] public delegate void SpawningStartedEventHandler();
     [Signal] public delegate void SpawningFinishedEventHandler();
     /// <summary>
@@ -120,10 +127,11 @@ public partial class EnemySpawner : Node2D
     private Enemy Spawn(PackedScene enemyScene)
     {
         Enemy enemy = enemyScene.Instantiate<Enemy>();
+        EmitSignal(SignalName.Spawning);
+
         _spawnedEnemies.Add(enemy);
 
         enemy.HealthComponent.HealthFullyDepleted += EnemyOnHealthDepleted;
-        if (_planet != null) enemy.BodyExited += EnemyOnBodyExited;
 
         float radians = Rng.RandfRange(0f, Mathf.Tau);
         float radius  = Rng.RandfRange(0f, _radius);
@@ -131,11 +139,12 @@ public partial class EnemySpawner : Node2D
         Vector2 offset = radius * offsetDir;
         enemy.GlobalPosition = GlobalPosition + offset;
         enemy.LinearVelocity += _ejectionSpeed * offsetDir;
-        enemy.CollisionMask &= ~(uint)PhysicsLayer.Planets;
 
         Window root = GetTree().GetRoot();
         root.AddChild(enemy);
         enemy.Owner = root;
+
+        EmitSignal(SignalName.Spawned);
 
         return enemy;
 
@@ -147,13 +156,6 @@ public partial class EnemySpawner : Node2D
                 EmitSignal(SignalName.SpawnedEnemiesDestroyed);
             }
             enemy.HealthComponent.HealthFullyDepleted -= EnemyOnHealthDepleted;
-        }
-
-        void EnemyOnBodyExited(Node body)
-        {
-            if (body != _planet) return;
-            enemy.CollisionMask |= (uint)PhysicsLayer.Planets;
-            enemy.BodyExited -= EnemyOnBodyExited;
         }
     }
 }

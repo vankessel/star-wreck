@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dsrd3np32lxtf"]
+[gd_scene load_steps=38 format=3 uid="uid://dsrd3np32lxtf"]
 
 [ext_resource type="PackedScene" uid="uid://dieelo3dwbmad" path="res://prefabs/background.tscn" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player/player_container.tscn" id="2_0wfyh"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dlldgqfqnvl0q" path="res://prefabs/celestial_objects/jupiter.tscn" id="11_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://cn808o1jpmbwa" path="res://prefabs/celestial_objects/saturn.tscn" id="12_0ld40"]
 [ext_resource type="Script" uid="uid://b05min55rm673" path="res://scripts/enemy/spawning/EnemyQueue.cs" id="12_gqmmt"]
+[ext_resource type="Script" uid="uid://djyj6e05srefm" path="res://scripts/CelestialObject.cs" id="13_2f3dj"]
 [ext_resource type="PackedScene" uid="uid://bmuu5u7qal6a8" path="res://prefabs/celestial_objects/neptune.tscn" id="13_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://dbfsuq7ogcr5g" path="res://prefabs/celestial_objects/uranus.tscn" id="14_yc10j"]
 [ext_resource type="PackedScene" uid="uid://dxf1cqxckgam0" path="res://prefabs/enemies/ships/earth_enemy.tscn" id="21_yq6so"]
@@ -117,8 +118,10 @@ metadata/_edit_lock_ = true
 z_index = 10
 metadata/_edit_lock_ = true
 
-[node name="Sun" parent="Environment/Celestial Objects" instance=ExtResource("7_jkv2x")]
+[node name="Sun" parent="Environment/Celestial Objects" node_paths=PackedStringArray("_enemySpawner") instance=ExtResource("7_jkv2x")]
 position = Vector2(-3750, -5457)
+script = ExtResource("13_2f3dj")
+_enemySpawner = NodePath("SunSpawner")
 metadata/_edit_lock_ = true
 
 [node name="ForceFields" type="Node2D" parent="Environment/Celestial Objects/Sun"]
@@ -470,83 +473,90 @@ color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -12512.5, -21.6506, -12487.5, -21.6506, 12487.5, 21.6506, 12512.5)
 metadata/_edit_lock_ = true
 
-[node name="SunSpawner" type="Node2D" parent="Environment/Celestial Objects/Sun" node_paths=PackedStringArray("_planet")]
+[node name="SunSpawner" type="Node2D" parent="Environment/Celestial Objects/Sun"]
 script = ExtResource("10_dp3eg")
-_planet = NodePath("..")
 _enemyQueues = [SubResource("Resource_fv21b")]
 
 [node name="Planets" type="Node2D" parent="Environment/Celestial Objects"]
 metadata/_edit_lock_ = true
 
-[node name="Mercury" parent="Environment/Celestial Objects/Planets" instance=ExtResource("7_a8y0u")]
+[node name="Mercury" parent="Environment/Celestial Objects/Planets" node_paths=PackedStringArray("_enemySpawner") instance=ExtResource("7_a8y0u")]
 position = Vector2(169, -1688)
+script = ExtResource("13_2f3dj")
+_enemySpawner = NodePath("MercurySpawner")
 metadata/_edit_lock_ = true
 
-[node name="MercurySpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Mercury" node_paths=PackedStringArray("_planet")]
+[node name="MercurySpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Mercury"]
 script = ExtResource("10_dp3eg")
-_planet = NodePath("..")
 _startSpawningOnReady = true
 _enemyQueues = [SubResource("Resource_fv21b")]
 
-[node name="Venus" parent="Environment/Celestial Objects/Planets" instance=ExtResource("8_jkv2x")]
+[node name="Venus" parent="Environment/Celestial Objects/Planets" node_paths=PackedStringArray("_enemySpawner") instance=ExtResource("8_jkv2x")]
 position = Vector2(3549, -3597)
+script = ExtResource("13_2f3dj")
+_enemySpawner = NodePath("VenusSpawner")
 metadata/_edit_lock_ = true
 
-[node name="VenusSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Venus" node_paths=PackedStringArray("_planet")]
+[node name="VenusSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Venus"]
 script = ExtResource("10_dp3eg")
-_planet = NodePath("..")
 _enemyQueues = [SubResource("Resource_fv21b")]
 
-[node name="Earth" parent="Environment/Celestial Objects/Planets" instance=ExtResource("9_jbj1t")]
+[node name="Earth" parent="Environment/Celestial Objects/Planets" node_paths=PackedStringArray("_enemySpawner") instance=ExtResource("9_jbj1t")]
 position = Vector2(679, 3602)
+script = ExtResource("13_2f3dj")
+_enemySpawner = NodePath("EarthSpawner")
 metadata/_edit_lock_ = true
 
-[node name="EarthSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Earth" node_paths=PackedStringArray("_planet")]
+[node name="EarthSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Earth"]
 script = ExtResource("10_dp3eg")
-_planet = NodePath("..")
 _enemyQueues = [SubResource("Resource_fv21b")]
 
-[node name="Mars" parent="Environment/Celestial Objects/Planets" instance=ExtResource("10_muem4")]
+[node name="Mars" parent="Environment/Celestial Objects/Planets" node_paths=PackedStringArray("_enemySpawner") instance=ExtResource("10_muem4")]
 position = Vector2(-3168, 7814)
+script = ExtResource("13_2f3dj")
+_enemySpawner = NodePath("MarsSpawner")
 metadata/_edit_lock_ = true
 
-[node name="MarsSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Mars" node_paths=PackedStringArray("_planet")]
+[node name="MarsSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Mars"]
 script = ExtResource("10_dp3eg")
-_planet = NodePath("..")
 _enemyQueues = [SubResource("Resource_fv21b")]
 
-[node name="Jupiter" parent="Environment/Celestial Objects/Planets" instance=ExtResource("11_dp3eg")]
+[node name="Jupiter" parent="Environment/Celestial Objects/Planets" node_paths=PackedStringArray("_enemySpawner") instance=ExtResource("11_dp3eg")]
 position = Vector2(4409, 6970)
+script = ExtResource("13_2f3dj")
+_enemySpawner = NodePath("JupiterSpawner")
 metadata/_edit_lock_ = true
 
-[node name="JupiterSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Jupiter" node_paths=PackedStringArray("_planet")]
+[node name="JupiterSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Jupiter"]
 script = ExtResource("10_dp3eg")
-_planet = NodePath("..")
 _enemyQueues = [SubResource("Resource_fv21b")]
 
-[node name="Saturn" parent="Environment/Celestial Objects/Planets" instance=ExtResource("12_0ld40")]
+[node name="Saturn" parent="Environment/Celestial Objects/Planets" node_paths=PackedStringArray("_enemySpawner") instance=ExtResource("12_0ld40")]
 position = Vector2(11750, 3616)
+script = ExtResource("13_2f3dj")
+_enemySpawner = NodePath("SaturnSpawner")
 metadata/_edit_lock_ = true
 
-[node name="SaturnSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Saturn" node_paths=PackedStringArray("_planet")]
+[node name="SaturnSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Saturn"]
 script = ExtResource("10_dp3eg")
-_planet = NodePath("..")
 _enemyQueues = [SubResource("Resource_fv21b")]
 
-[node name="Uranus" parent="Environment/Celestial Objects/Planets" instance=ExtResource("14_yc10j")]
+[node name="Uranus" parent="Environment/Celestial Objects/Planets" node_paths=PackedStringArray("_enemySpawner") instance=ExtResource("14_yc10j")]
 position = Vector2(3881, 11256)
+script = ExtResource("13_2f3dj")
+_enemySpawner = NodePath("UranusSpawner")
 metadata/_edit_lock_ = true
 
-[node name="UranusSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Uranus" node_paths=PackedStringArray("_planet")]
+[node name="UranusSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Uranus"]
 script = ExtResource("10_dp3eg")
-_planet = NodePath("..")
 _enemyQueues = [SubResource("Resource_fv21b")]
 
-[node name="Neptune" parent="Environment/Celestial Objects/Planets" instance=ExtResource("13_gqmmt")]
+[node name="Neptune" parent="Environment/Celestial Objects/Planets" node_paths=PackedStringArray("_enemySpawner") instance=ExtResource("13_gqmmt")]
 position = Vector2(1606, 15257)
+script = ExtResource("13_2f3dj")
+_enemySpawner = NodePath("NeptuneSpawner")
 metadata/_edit_lock_ = true
 
-[node name="NeptuneSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Neptune" node_paths=PackedStringArray("_planet")]
+[node name="NeptuneSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Neptune"]
 script = ExtResource("10_dp3eg")
-_planet = NodePath("..")
 _enemyQueues = [SubResource("Resource_fv21b")]
