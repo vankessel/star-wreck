@@ -27,6 +27,7 @@ public partial class EnemySpawner : Node2D
 
     public bool IsSpawning { get; private set; } = false;
     public bool IsFinished { get; private set; } = false;
+    public bool AreAllEnemiesDestroyed { get; private set; } = false;
 
     private static readonly RandomNumberGenerator Rng = new();
 
@@ -78,7 +79,9 @@ public partial class EnemySpawner : Node2D
 
     private void OnSpawnedEnemiesDestroyed()
     {
-        if (IsFinished) EmitSignal(SignalName.AllEnemiesDestroyed);
+        if (!IsFinished) return;
+        AreAllEnemiesDestroyed = true;
+        EmitSignal(SignalName.AllEnemiesDestroyed);
     }
 
     private void StartSpawning() => EmitSignal(SignalName.SpawningStarted);
