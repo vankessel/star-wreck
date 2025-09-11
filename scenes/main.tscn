@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dsrd3np32lxtf"]
+[gd_scene load_steps=39 format=3 uid="uid://dsrd3np32lxtf"]
 
 [ext_resource type="PackedScene" uid="uid://dieelo3dwbmad" path="res://prefabs/background.tscn" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player/player_container.tscn" id="2_0wfyh"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://qocaio67gh4v" path="res://prefabs/enemies/ships/sun_enemy.tscn" id="27_j8jky"]
 [ext_resource type="PackedScene" uid="uid://bfnnd420q30ls" path="res://prefabs/enemies/ships/uranus_enemy.tscn" id="28_kmb1v"]
 [ext_resource type="PackedScene" uid="uid://dujno7xwoamvn" path="res://prefabs/enemies/ships/venus_enemy.tscn" id="29_fuf3a"]
+[ext_resource type="PackedScene" uid="uid://b8s0fe5c1qhci" path="res://prefabs/pause_screen_ui.tscn" id="30_fv21b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vxglm"]
 radius = 25.0
@@ -560,3 +561,7 @@ metadata/_edit_lock_ = true
 [node name="NeptuneSpawner" type="Node2D" parent="Environment/Celestial Objects/Planets/Neptune"]
 script = ExtResource("10_dp3eg")
 _enemyQueues = [SubResource("Resource_fv21b")]
+
+[node name="PauseCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseManager" parent="PauseCanvasLayer" instance=ExtResource("30_fv21b")]
