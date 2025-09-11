@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bryueb6jw5ir5"]
 
 [ext_resource type="Script" uid="uid://dtey4r50vy57n" path="res://scenes/credits/CreditsMenu.cs" id="1_c8xcy"]
-[ext_resource type="Texture2D" uid="uid://jbfqanomkm0e" path="res://sprites/credits.png" id="2_0ctdu"]
+[ext_resource type="Texture2D" uid="uid://jbfqanomkm0e" path="res://sprites/screens/credits.png" id="2_0ctdu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ckv8"]
 bg_color = Color(0.836049, 0.809603, 0.821212, 1)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://de440sem2vtmc"]
 
 [ext_resource type="PackedScene" uid="uid://cl4t7dhxgufj3" path="res://prefabs/enemies/bullets/base_bullet.tscn" id="1_m86m2"]
-[ext_resource type="Texture2D" uid="uid://m6auqk1ncp87" path="res://sprites/Enemy_ships_parts/Mars/mars_ship4_bullet.png" id="2_t25fa"]
+[ext_resource type="Texture2D" uid="uid://m6auqk1ncp87" path="res://sprites/enemies/mars/mars_ship_bullet.png" id="2_t25fa"]
 
 [node name="MarsBullet" instance=ExtResource("1_m86m2")]
 

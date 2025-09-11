@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ggewqeqvxk1p"]
 
 [ext_resource type="PackedScene" uid="uid://cl4t7dhxgufj3" path="res://prefabs/enemies/bullets/base_bullet.tscn" id="1_34h27"]
-[ext_resource type="Texture2D" uid="uid://yo2nm08eyvsv" path="res://sprites/Enemy_ships_parts/Saturn/saturn_ship4_bullet.png" id="2_1bmtj"]
+[ext_resource type="Texture2D" uid="uid://yo2nm08eyvsv" path="res://sprites/enemies/saturn/saturn_ship_bullet.png" id="2_1bmtj"]
 
 [node name="SaturnBullet" instance=ExtResource("1_34h27")]
 

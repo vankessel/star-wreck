@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvefs4mw02vou"]
+
+[ext_resource type="Texture2D" uid="uid://bybry6rkm8kj3" path="res://sprites/celestial_objects/sun.png" id="1_nbt7u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jscy8"]
+radius = 1280.0
+
+[node name="Sun" type="AnimatableBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 64
+collision_mask = 127
+metadata/_edit_group_ = true
+
+[node name="AnimatableBody2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jscy8")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nbt7u")
+metadata/_edit_lock_ = true

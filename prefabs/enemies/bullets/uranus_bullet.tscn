@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://byvyds2cds3ta"]
 
 [ext_resource type="PackedScene" uid="uid://cl4t7dhxgufj3" path="res://prefabs/enemies/bullets/base_bullet.tscn" id="1_gq1q3"]
-[ext_resource type="Texture2D" uid="uid://c02bw4rnxylxc" path="res://sprites/Enemy_ships_parts/Uranus/uranus_ship_bullet.png" id="2_hnqog"]
+[ext_resource type="Texture2D" uid="uid://c02bw4rnxylxc" path="res://sprites/enemies/uranus/uranus_ship_bullet.png" id="2_hnqog"]
 
 [node name="UranusBullet" instance=ExtResource("1_gq1q3")]
 

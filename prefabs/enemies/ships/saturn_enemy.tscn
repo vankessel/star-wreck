@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_8auqm"]
 [ext_resource type="PackedScene" uid="uid://ggewqeqvxk1p" path="res://prefabs/enemies/bullets/saturn_bullet.tscn" id="2_o4svc"]
-[ext_resource type="Texture2D" uid="uid://cpglotdxi2ru8" path="res://sprites/Enemy_ships/saturn_ship.png" id="2_rj8w5"]
+[ext_resource type="Texture2D" uid="uid://cpglotdxi2ru8" path="res://sprites/enemies/saturn/saturn_ship.png" id="2_rj8w5"]
 
 [node name="SaturnEnemy" instance=ExtResource("1_8auqm")]
 

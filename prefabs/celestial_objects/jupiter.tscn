@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlldgqfqnvl0q"]
+
+[ext_resource type="Texture2D" uid="uid://by65u0s0qq7hm" path="res://sprites/celestial_objects/jupiter.png" id="1_q3nnp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dp3eg"]
+radius = 208.002
+
+[node name="Jupiter" type="AnimatableBody2D"]
+scale = Vector2(3.5, 3.5)
+collision_layer = 64
+collision_mask = 127
+metadata/_edit_group_ = true
+
+[node name="AnimatableBody2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dp3eg")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q3nnp")
+metadata/_edit_lock_ = true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxf1cqxckgam0"]
 
 [ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_34cax"]
-[ext_resource type="Texture2D" uid="uid://cuyswo263dl8q" path="res://sprites/Enemy_ships/earth_ship.png" id="2_7c07v"]
+[ext_resource type="Texture2D" uid="uid://cuyswo263dl8q" path="res://sprites/enemies/earth/earth_ship.png" id="2_7c07v"]
 [ext_resource type="PackedScene" uid="uid://cmukr2j0smeum" path="res://prefabs/enemies/bullets/earth_bullet.tscn" id="3_7c07v"]
 
 [node name="EarthEnemy" instance=ExtResource("1_34cax")]

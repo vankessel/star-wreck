@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbcq24axt2v4p"]
 
 [ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_fxg36"]
-[ext_resource type="Texture2D" uid="uid://ck7tqwc4y64ty" path="res://sprites/Enemy_ships/neptune_ship.png" id="2_iww7i"]
+[ext_resource type="Texture2D" uid="uid://ck7tqwc4y64ty" path="res://sprites/enemies/neptune/neptune_ship.png" id="2_iww7i"]
 [ext_resource type="PackedScene" uid="uid://bhn3fpwpphyf0" path="res://prefabs/enemies/bullets/neptune_bullet.tscn" id="3_iww7i"]
 
 [node name="NeptuneEnemy" instance=ExtResource("1_fxg36")]

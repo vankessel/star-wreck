@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ol2bhqo6iinj" path="res://scripts/player/PlayerCamera.cs" id="1_y260w"]
 [ext_resource type="Script" uid="uid://cawp6yrxef4p6" path="res://scripts/PauseManager.cs" id="2_0jbxs"]
-[ext_resource type="Texture2D" uid="uid://cxe8avqw1k3o8" path="res://sprites/paused2.png" id="3_511t4"]
+[ext_resource type="Texture2D" uid="uid://cxe8avqw1k3o8" path="res://sprites/screens/pause_overlay.png" id="3_511t4"]
 
 [node name="PlayerCamera" type="Camera2D"]
 ignore_rotation = false

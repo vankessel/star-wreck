@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cj6dbmdoykopn"]
 
 [ext_resource type="PackedScene" uid="uid://cl4t7dhxgufj3" path="res://prefabs/enemies/bullets/base_bullet.tscn" id="1_0gh2q"]
-[ext_resource type="Texture2D" uid="uid://bv8efo05udup4" path="res://sprites/Enemy_ships_parts/Jupiter/jupiter_ship_bullet.png" id="2_nkxeo"]
+[ext_resource type="Texture2D" uid="uid://bv8efo05udup4" path="res://sprites/enemies/jupiter/jupiter_ship_bullet.png" id="2_nkxeo"]
 
 [node name="JupiterBullet" instance=ExtResource("1_0gh2q")]
 

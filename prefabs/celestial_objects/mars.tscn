@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://2818y43n8d7y"]
+
+[ext_resource type="Texture2D" uid="uid://r8gogmycib01" path="res://sprites/celestial_objects/mars.png" id="1_fmkoh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_muem4"]
+radius = 130.0
+
+[node name="Mars" type="AnimatableBody2D"]
+scale = Vector2(1.25, 1.25)
+collision_layer = 64
+collision_mask = 127
+metadata/_edit_group_ = true
+
+[node name="AnimatableBody2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_muem4")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fmkoh")
+metadata/_edit_lock_ = true

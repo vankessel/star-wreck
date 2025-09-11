@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dieelo3dwbmad"]
 
-[ext_resource type="Texture2D" uid="uid://cuydipn50mwqd" path="res://sprites/background.png" id="1_pfihi"]
+[ext_resource type="Texture2D" uid="uid://cuydipn50mwqd" path="res://sprites/screens/background.png" id="1_pfihi"]
 
 [node name="Background" type="Node2D"]
 metadata/_edit_lock_ = true

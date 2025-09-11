@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhn3fpwpphyf0"]
 
 [ext_resource type="PackedScene" uid="uid://cl4t7dhxgufj3" path="res://prefabs/enemies/bullets/base_bullet.tscn" id="1_18jvf"]
-[ext_resource type="Texture2D" uid="uid://cfpr1dosqnhkq" path="res://sprites/Enemy_ships_parts/Neptune/neptune_ship4_bullet.png" id="2_xgsy2"]
+[ext_resource type="Texture2D" uid="uid://cfpr1dosqnhkq" path="res://sprites/enemies/neptune/neptune_ship_bullet.png" id="2_xgsy2"]
 
 [node name="NeptuneBullet" instance=ExtResource("1_18jvf")]
 

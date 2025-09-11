@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmukr2j0smeum"]
 
 [ext_resource type="PackedScene" uid="uid://cl4t7dhxgufj3" path="res://prefabs/enemies/bullets/base_bullet.tscn" id="1_fuuae"]
-[ext_resource type="Texture2D" uid="uid://djhgk10seglr" path="res://sprites/Enemy_ships_parts/Earth/earth_ship_bullet.png" id="2_vupen"]
+[ext_resource type="Texture2D" uid="uid://djhgk10seglr" path="res://sprites/enemies/earth/earth_ship_bullet.png" id="2_vupen"]
 
 [node name="EarthBullet" instance=ExtResource("1_fuuae")]
 

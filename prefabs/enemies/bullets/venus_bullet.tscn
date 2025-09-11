@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqsvi6xut4i4s"]
 
 [ext_resource type="PackedScene" uid="uid://cl4t7dhxgufj3" path="res://prefabs/enemies/bullets/base_bullet.tscn" id="1_8bmk1"]
-[ext_resource type="Texture2D" uid="uid://c1nc8q2uatya0" path="res://sprites/Enemy_ships_parts/Venus/venus_ship_bullet.png" id="2_71oqe"]
+[ext_resource type="Texture2D" uid="uid://c1nc8q2uatya0" path="res://sprites/enemies/venus/venus_ship_bullet.png" id="2_71oqe"]
 
 [node name="VenusBullet" instance=ExtResource("1_8bmk1")]
 
