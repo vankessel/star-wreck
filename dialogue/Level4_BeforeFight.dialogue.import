@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://d26mmt7p16h26"
+path="res://.godot/imported/Level4_BeforeFight.dialogue-4758772bd1c545d9280e9f2e09083224.tres"
+
+[deps]
+
+source_file="res://dialogue/Level4_BeforeFight.dialogue"
+dest_files=["res://.godot/imported/Level4_BeforeFight.dialogue-4758772bd1c545d9280e9f2e09083224.tres"]
+
+[params]
+
+defaults=true

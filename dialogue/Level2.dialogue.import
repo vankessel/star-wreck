@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://khfgv54nolvc"
+path="res://.godot/imported/Level2.dialogue-672bae52da65f85803aed101f2d7882d.tres"
+
+[deps]
+
+source_file="res://dialogue/Level2.dialogue"
+dest_files=["res://.godot/imported/Level2.dialogue-672bae52da65f85803aed101f2d7882d.tres"]
+
+[params]
+
+defaults=true

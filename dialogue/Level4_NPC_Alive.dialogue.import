@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://lw7apftiohlb"
+path="res://.godot/imported/Level4_NPC_Alive.dialogue-d449948e70fd4949ed8d3b65565648a5.tres"
+
+[deps]
+
+source_file="res://dialogue/Level4_NPC_Alive.dialogue"
+dest_files=["res://.godot/imported/Level4_NPC_Alive.dialogue-d449948e70fd4949ed8d3b65565648a5.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://uw0ro7pojrns"
+path="res://.godot/imported/Level4_NPC_Dead.dialogue-fa7b9a8b6e2005021bce061a8b7c8fae.tres"
+
+[deps]
+
+source_file="res://dialogue/Level4_NPC_Dead.dialogue"
+dest_files=["res://.godot/imported/Level4_NPC_Dead.dialogue-fa7b9a8b6e2005021bce061a8b7c8fae.tres"]
+
+[params]
+
+defaults=true
