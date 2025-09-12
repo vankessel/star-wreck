@@ -1,11 +1,4 @@
 ~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+Shadowy Figure: Hmm it looks like the brainwash has worn off. But regardless, we don’t need you anymore. You’ve cleared a path to the Sun for us. You are useless now. We will feed everyone on earth to the Sun god and at last the solar system will be ours to control.
+You: You’ve betrayed me. I will take down the Sun god and all of you down.
 => END

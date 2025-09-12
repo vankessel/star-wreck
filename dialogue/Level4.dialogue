@@ -1,11 +1,11 @@
 ~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+NPC: Dang that was scary but a great job out there. I don’t think I recognize your ship from anywhere. Where are you from? You sound a bit young to be part of the Earth Forces. Then again there are always young ones who make their own mechs and fly out unauthorized.My kid was like that too, but we haven’t heard from them since last month. I’ve been searching every day since.
+You: 
+- I don’t remember. 
+	NPC: Damn amnesia eh? That’s rough bud. Well I hope you get your memories back.
+- None of your businses.
+	NPC: Wow. Okay. Sorry I asked. 
+NPC: I'm going to continue my patrol - if you want to grab dinner on earth sometime give me a shout okay?
+	
+
 => END

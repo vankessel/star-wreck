@@ -1,11 +1,9 @@
 ~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+NPC: Wait you’re the one I was fighting with earlier. WHY are you on the enemy’s side?
+You: Enemy side? You’re the enemy. The voice in my head told me you’re all pests that I was told to get rid of. You’re all going to corrupt and destroy the solar system
+NPC: Wait wait hold on. Aren’t you human? You should be on our side. The voice in your head. Do you even know who they are? What are their goals ?
+You: They told me I have to get to the Sun. The Sun will wipe everyone away and give the solar system a fresh start. You monsters have been imprisoning the planets ruining the solar system?  
+NPC: We’re protecting the planets - hence the force fields. Are you the one who has been destroying the force fields? Are you sure they’re not the ones who are trying to take over the solar system for themselves to rule over?
+You: .....I don't know
+NPC: Kid, trust me. I know you have amnesia but these voices in your head can’t be trusted. Trust me. I still owe you that dinner for saving my back with the black hole monster. I’ll even introduce you to my family. Show a pic of family - and see themself?
 => END

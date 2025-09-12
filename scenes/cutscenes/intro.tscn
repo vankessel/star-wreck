@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://pywq6a5532yg"]
 
-[ext_resource type="Texture2D" uid="uid://dqglduvk2qwvc" path="res://sprites/screens/cockpit.png" id="1_imtbi"]
+[ext_resource type="Texture2D" uid="uid://bxw7v8mb5gjce" path="res://sprites/screens/transmission.png" id="1_imtbi"]
 
 [node name="Intro" type="Control"]
 layout_mode = 3

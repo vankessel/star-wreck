@@ -1,11 +1,9 @@
 ~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+Shadowy Figure: Great job. We lost contact with you while you were near Earth. Must be something on earth interfering with our signals. Report what happened
+You: 
+- Mention the NPC
+	You: I bumped into one of those pests you mentioned and theyre now gone.ened
+- Don’t mention the NPC
+	You: Nothing else happened sir. It was just me and the swarm of pests from Mars. 
+Shadowy Figure: Great, we are so close to Ra. Once we arrive at Ra. We can put our plan into motion, the sun will destroy those pests once and for all and the solar system will be freed from them. We are almost there. I can almost smell the solar flare coming off of Ra.
 => END
