@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dsrd3np32lxtf"]
+[gd_scene load_steps=62 format=3 uid="uid://dsrd3np32lxtf"]
 
 [ext_resource type="PackedScene" uid="uid://dieelo3dwbmad" path="res://prefabs/background.tscn" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player/player_container.tscn" id="2_0wfyh"]
@@ -25,11 +25,19 @@
 [ext_resource type="PackedScene" uid="uid://05n3w5l6rln7" path="res://prefabs/enemies/ships/saturn_enemy.tscn" id="26_dgi5k"]
 [ext_resource type="Script" uid="uid://rh6e5fw1t06p" path="res://scripts/progression/Cutscene.cs" id="27_2f3dj"]
 [ext_resource type="PackedScene" uid="uid://qocaio67gh4v" path="res://prefabs/enemies/ships/sun_enemy.tscn" id="27_j8jky"]
-[ext_resource type="PackedScene" uid="uid://pywq6a5532yg" path="res://scenes/cutscenes/intro.tscn" id="28_fv21b"]
+[ext_resource type="PackedScene" uid="uid://pywq6a5532yg" path="res://scenes/cutscenes/transmission.tscn" id="28_fv21b"]
 [ext_resource type="PackedScene" uid="uid://bfnnd420q30ls" path="res://prefabs/enemies/ships/uranus_enemy.tscn" id="28_kmb1v"]
 [ext_resource type="PackedScene" uid="uid://dujno7xwoamvn" path="res://prefabs/enemies/ships/venus_enemy.tscn" id="29_fuf3a"]
 [ext_resource type="Resource" uid="uid://bxsp7boyfuj5u" path="res://dialogue/intro.dialogue" id="29_tel4y"]
+[ext_resource type="Resource" uid="uid://dtn7g778lrh8i" path="res://dialogue/Level1.dialogue" id="30_fuf3a"]
 [ext_resource type="PackedScene" uid="uid://b8s0fe5c1qhci" path="res://prefabs/pause_screen_ui.tscn" id="30_fv21b"]
+[ext_resource type="Resource" uid="uid://khfgv54nolvc" path="res://dialogue/Level2.dialogue" id="31_pibwh"]
+[ext_resource type="Resource" uid="uid://cdjpw6ijjeku8" path="res://dialogue/Level3.dialogue" id="32_c6pm6"]
+[ext_resource type="Resource" uid="uid://b6xnr1mrax55n" path="res://dialogue/Level3B.dialogue" id="33_5he1u"]
+[ext_resource type="Resource" uid="uid://conpjbmbypfll" path="res://dialogue/Level4.dialogue" id="34_5poiv"]
+[ext_resource type="Resource" uid="uid://bmph26lecx5on" path="res://dialogue/Level4B.dialogue" id="35_2cjbq"]
+[ext_resource type="Resource" uid="uid://lw7apftiohlb" path="res://dialogue/Level4_NPC_Alive.dialogue" id="36_chjal"]
+[ext_resource type="Resource" uid="uid://d26mmt7p16h26" path="res://dialogue/Level4_BeforeFight.dialogue" id="37_pibwh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vxglm"]
 radius = 25.0
@@ -427,7 +435,7 @@ polygon = PackedVector2Array(21.6506, -10012.5, -21.6506, -9987.5, -21.6506, 998
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/SaturnAndJupiterForceField"]
-position = Vector2(-8660.25, 15000)
+position = Vector2(-8660.26, 15000)
 rotation = 2.0944
 shape = SubResource("CapsuleShape2D_fv21b")
 metadata/_edit_lock_ = true
@@ -659,20 +667,46 @@ _scene = ExtResource("28_fv21b")
 _dialogue = ExtResource("29_tel4y")
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
+[node name="TutorialCutscene" type="Node" parent="UICanvasLayer/ProgressManager/ImmediateCutscene"]
+script = ExtResource("27_2f3dj")
+_dialogue = ExtResource("30_fuf3a")
+metadata/_custom_type_script = "uid://rh6e5fw1t06p"
+
 [node name="UranusAndNeptuneCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
 script = ExtResource("27_2f3dj")
+_scene = ExtResource("28_fv21b")
+_dialogue = ExtResource("31_pibwh")
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="JupiterAndSaturnCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
 script = ExtResource("27_2f3dj")
+_scene = ExtResource("28_fv21b")
+_dialogue = ExtResource("32_c6pm6")
+metadata/_custom_type_script = "uid://rh6e5fw1t06p"
+
+[node name="MeetingNPC" type="Node" parent="UICanvasLayer/ProgressManager/JupiterAndSaturnCompletedCutscene"]
+script = ExtResource("27_2f3dj")
+_dialogue = ExtResource("33_5he1u")
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="EarthAndMarsCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
 script = ExtResource("27_2f3dj")
+_dialogue = ExtResource("34_5poiv")
+metadata/_custom_type_script = "uid://rh6e5fw1t06p"
+
+[node name="ReportToShadowyFigure" type="Node" parent="UICanvasLayer/ProgressManager/EarthAndMarsCompletedCutscene"]
+script = ExtResource("27_2f3dj")
+_dialogue = ExtResource("35_2cjbq")
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="MercuryAndVenusCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
 script = ExtResource("27_2f3dj")
+_dialogue = ExtResource("36_chjal")
+metadata/_custom_type_script = "uid://rh6e5fw1t06p"
+
+[node name="ConfrontShadowyFigure" type="Node" parent="UICanvasLayer/ProgressManager/MercuryAndVenusCompletedCutscene"]
+script = ExtResource("27_2f3dj")
+_dialogue = ExtResource("37_pibwh")
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="SunCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
