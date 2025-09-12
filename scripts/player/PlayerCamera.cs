@@ -63,7 +63,7 @@ public partial class PlayerCamera : Camera2D
         float zoomInput = Input.GetAxis(Action.ZoomOut, Action.ZoomIn);
 
         float radians = rotationInput * _rotationSpeed * dt;
-        Position = _player.GlobalPosition + (GlobalPosition - _player.GlobalPosition).Rotated(radians);
+        GlobalPosition = _player.GlobalPosition + (GlobalPosition - _player.GlobalPosition).Rotated(radians);
         Rotation += radians;
 
         Zoom *= Mathf.Max(0f, 1f + zoomInput * _zoomSpeed * dt);
