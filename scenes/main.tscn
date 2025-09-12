@@ -54,7 +54,7 @@ height = 25050.0
 [sub_resource type="Resource" id="Resource_yq6so"]
 script = ExtResource("11_0ld40")
 Enemy = ExtResource("27_j8jky")
-Count = 1
+Count = 12
 metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_fv21b"]
@@ -67,7 +67,7 @@ metadata/_custom_type_script = "uid://b05min55rm673"
 [sub_resource type="Resource" id="Resource_vchkt"]
 script = ExtResource("11_0ld40")
 Enemy = ExtResource("24_qkpxi")
-Count = 1
+Count = 3
 metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_txyw0"]
@@ -80,7 +80,7 @@ metadata/_custom_type_script = "uid://b05min55rm673"
 [sub_resource type="Resource" id="Resource_5q0nq"]
 script = ExtResource("11_0ld40")
 Enemy = ExtResource("29_fuf3a")
-Count = 1
+Count = 3
 metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_dgi5k"]
@@ -93,7 +93,7 @@ metadata/_custom_type_script = "uid://b05min55rm673"
 [sub_resource type="Resource" id="Resource_j8jky"]
 script = ExtResource("11_0ld40")
 Enemy = ExtResource("21_yq6so")
-Count = 1
+Count = 6
 metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_kmb1v"]
@@ -106,7 +106,7 @@ metadata/_custom_type_script = "uid://b05min55rm673"
 [sub_resource type="Resource" id="Resource_fuf3a"]
 script = ExtResource("11_0ld40")
 Enemy = ExtResource("23_tel4y")
-Count = 1
+Count = 4
 metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_pibwh"]
@@ -119,7 +119,7 @@ metadata/_custom_type_script = "uid://b05min55rm673"
 [sub_resource type="Resource" id="Resource_c6pm6"]
 script = ExtResource("11_0ld40")
 Enemy = ExtResource("22_fv21b")
-Count = 1
+Count = 6
 metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_5he1u"]
@@ -132,7 +132,7 @@ metadata/_custom_type_script = "uid://b05min55rm673"
 [sub_resource type="Resource" id="Resource_5poiv"]
 script = ExtResource("11_0ld40")
 Enemy = ExtResource("26_dgi5k")
-Count = 1
+Count = 6
 metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_2cjbq"]
@@ -145,7 +145,7 @@ metadata/_custom_type_script = "uid://b05min55rm673"
 [sub_resource type="Resource" id="Resource_chjal"]
 script = ExtResource("11_0ld40")
 Enemy = ExtResource("28_kmb1v")
-Count = 1
+Count = 8
 metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_cjqg0"]
@@ -158,7 +158,7 @@ metadata/_custom_type_script = "uid://b05min55rm673"
 [sub_resource type="Resource" id="Resource_tel4y"]
 script = ExtResource("11_0ld40")
 Enemy = ExtResource("25_5q0nq")
-Count = 1
+Count = 8
 metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_qkpxi"]
