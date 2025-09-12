@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://pywq6a5532yg"]
+[gd_scene load_steps=2 format=3 uid="uid://ca606aftk6cve"]
 
-[ext_resource type="Texture2D" uid="uid://bxw7v8mb5gjce" path="res://sprites/screens/transmission.png" id="1_imtbi"]
+[ext_resource type="Texture2D" uid="uid://bp0c8qnobkj8y" path="res://sprites/screens/bad_ending.png" id="1_aq6lx"]
 
-[node name="Background" type="Control"]
+[node name="Intro" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +17,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_imtbi")
+texture = ExtResource("1_aq6lx")
 expand_mode = 5
 stretch_mode = 5

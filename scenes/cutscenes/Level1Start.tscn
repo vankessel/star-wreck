@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bxw7v8mb5gjce" path="res://sprites/screens/transmission.png" id="1_3pdxj"]
 
-[node name="Intro" type="Control"]
+[node name="Intro2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
