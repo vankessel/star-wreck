@@ -8,6 +8,8 @@ public partial class CelestialObject : AnimatableBody2D
 {
     [Export] private EnemySpawner _enemySpawner;
 
+    public EnemySpawner EnemySpawner => _enemySpawner;
+
     public override void _Ready()
     {
         base._Ready();

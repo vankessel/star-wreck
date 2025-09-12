@@ -196,7 +196,7 @@ namespace DialogueManagerRuntime
                     switch (memberInfo.MemberType)
                     {
                         case MemberTypes.Field:
-                            FieldInfo fieldInfo = memberInfo as FieldInfo;
+                            FieldInfo fieldInfo = memberInfo as FieldInfo ?? throw new InvalidOperationException();
 
                             if (fieldInfo.FieldType.ToString().Contains("EventHandler"))
                             {
@@ -265,7 +265,7 @@ namespace DialogueManagerRuntime
                     }
                     catch (Exception)
                     {
-                        throw new Exception($"Constant {property} of type ${fieldInfo.GetValue(thing).GetType()} is not supported by Variant.");
+                        throw new Exception($"Constant {property} of type ${fieldInfo.GetValue(thing)?.GetType()} is not supported by Variant.");
                     }
                 }
             }
