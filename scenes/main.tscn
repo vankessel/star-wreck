@@ -185,6 +185,7 @@ metadata/_edit_lock_ = true
 
 [node name="Sun" parent="Environment/Celestial Objects" node_paths=PackedStringArray("_enemySpawner") instance=ExtResource("7_jkv2x")]
 position = Vector2(-3750, -5457)
+collision_layer = 0
 script = ExtResource("13_2f3dj")
 _enemySpawner = NodePath("SunSpawner")
 metadata/_edit_lock_ = true
