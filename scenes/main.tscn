@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://pywq6a5532yg" path="res://scenes/cutscenes/intro.tscn" id="28_fv21b"]
 [ext_resource type="PackedScene" uid="uid://bfnnd420q30ls" path="res://prefabs/enemies/ships/uranus_enemy.tscn" id="28_kmb1v"]
 [ext_resource type="PackedScene" uid="uid://dujno7xwoamvn" path="res://prefabs/enemies/ships/venus_enemy.tscn" id="29_fuf3a"]
-[ext_resource type="Resource" uid="uid://bxsp7boyfuj5u" path="res://scenes/cutscenes/intro.dialogue" id="29_tel4y"]
+[ext_resource type="Resource" uid="uid://bxsp7boyfuj5u" path="res://dialogue/intro.dialogue" id="29_tel4y"]
 [ext_resource type="PackedScene" uid="uid://b8s0fe5c1qhci" path="res://prefabs/pause_screen_ui.tscn" id="30_fv21b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vxglm"]
