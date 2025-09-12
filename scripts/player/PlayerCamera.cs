@@ -14,7 +14,7 @@ public partial class PlayerCamera : Camera2D
     [Export(PropertyHint.Range, "0,2,or_greater")]
     private float _maxZoom = 2f;
 
-    [Export(PropertyHint.Range, "0,1,0.0001")] private float _minZoom = 0.09f;
+    [Export(PropertyHint.Range, "0,1,0.0001")] private float _minZoom = 0.03f;
 
     [Export(PropertyHint.Range, "0,4,or_greater")]
     private float _zoomSpeed = 2f;
