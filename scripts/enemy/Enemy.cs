@@ -51,7 +51,6 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
 
         SpawnDebris(Position, LinearVelocity + addedDebrisVelocity, GetParent(), 3, 5);
 
-        GD.Print($"{Name}: QueueFree");
         QueueFree();
     }
 

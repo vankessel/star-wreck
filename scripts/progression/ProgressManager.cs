@@ -59,63 +59,54 @@ public partial class ProgressManager : Node
     // Planet event handlers
     public void OnNeptuneEnemiesDestroyed()
     {
-        GD.Print("OnNeptuneEnemiesDestroyed");
         NeptuneFinished = true;
         if (UranusFinished) EmitSignal(SignalName.UranusAndNeptuneCompleted);
     }
 
     public void OnUranusEnemiesDestroyed()
     {
-        GD.Print("OnUranusEnemiesDestroyed");
         UranusFinished = true;
         if (NeptuneFinished) EmitSignal(SignalName.UranusAndNeptuneCompleted);
     }
 
     public void OnSaturnEnemiesDestroyed()
     {
-        GD.Print("OnSaturnEnemiesDestroyed");
         SaturnFinished = true;
         if (JupiterFinished) EmitSignal(SignalName.JupiterAndSaturnCompleted);
     }
 
     public void OnJupiterEnemiesDestroyed()
     {
-        GD.Print("OnJupiterEnemiesDestroyed");
         JupiterFinished = true;
         if (SaturnFinished) EmitSignal(SignalName.JupiterAndSaturnCompleted);
     }
 
     public void OnMarsEnemiesDestroyed()
     {
-        GD.Print("OnMarsEnemiesDestroyed");
         MarsFinished = true;
         if (EarthFinished) EmitSignal(SignalName.EarthAndMarsCompleted);
     }
 
     public void OnEarthEnemiesDestroyed()
     {
-        GD.Print("OnEarthEnemiesDestroyed");
         EarthFinished = true;
         if (MarsFinished) EmitSignal(SignalName.EarthAndMarsCompleted);
     }
 
     public void OnVenusEnemiesDestroyed()
     {
-        GD.Print("OnVenusEnemiesDestroyed");
         VenusFinished = true;
         if (MercuryFinished) EmitSignal(SignalName.MercuryAndVenusCompleted);
     }
 
     public void OnMercuryEnemiesDestroyed()
     {
-        GD.Print("OnMercuryEnemiesDestroyed");
         MercuryFinished = true;
         if (VenusFinished) EmitSignal(SignalName.MercuryAndVenusCompleted);
     }
 
     public void OnSunEnemiesDestroyed()
     {
-        GD.Print("OnSunEnemiesDestroyed");
         SunFinished = true;
         EmitSignal(SignalName.SunCompleted);
     }
@@ -144,13 +135,11 @@ public partial class ProgressManager : Node
 
     public void OnSunCompleted()
     {
-        GD.Print("OnSunCompleted");
         _sunCompletedCutscene.Play();
     }
 
     public void OnGameCompleted()
     {
-        GD.Print("OnGameCompleted");
         GetTree().ChangeSceneToFile(_credits);
     }
 
@@ -189,7 +178,6 @@ public partial class ProgressManager : Node
 
     private void SunCompletedCutsceneOnCutsceneFinished()
     {
-        GD.Print("SunCompletedCutsceneOnCutsceneFinished");
         EmitSignal(SignalName.GameCompleted);
     }
 
