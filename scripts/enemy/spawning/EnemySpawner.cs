@@ -86,12 +86,14 @@ public partial class EnemySpawner : Node2D
 
     private void OnSpawnedEnemiesDestroyed()
     {
+        GD.Print($"{Name}: SpawnedEnemiesDestroyed");
         if (!IsFinished) return;
         AreAllEnemiesDestroyed = true;
+        GD.Print($"{Name}: AllEnemiesDestroyed");
         EmitSignal(SignalName.AllEnemiesDestroyed);
     }
 
-    private void StartSpawning() => EmitSignal(SignalName.SpawningStarted);
+    public void StartSpawning() => EmitSignal(SignalName.SpawningStarted);
 
     private void FinishSpawning() => EmitSignal(SignalName.SpawningFinished);
 
@@ -150,7 +152,9 @@ public partial class EnemySpawner : Node2D
 
         void EnemyOnHealthDepleted(HealthComponent _, float __, float ___)
         {
+            GD.Print($"{Name}: EnemyOnHealthDepleted ({_spawnedEnemies.Count})");
             _spawnedEnemies.Remove(enemy);
+            GD.Print($"{Name}: {_spawnedEnemies.Count}");
             if (_spawnedEnemies.Count == 0)
             {
                 EmitSignal(SignalName.SpawnedEnemiesDestroyed);

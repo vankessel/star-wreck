@@ -13,7 +13,6 @@ public partial class PauseManager : Control
     public override void _EnterTree()
     {
         base._EnterTree();
-        if (Instance != null) GD.PushError("More than one PauseManager!");
         Instance = this;
     }
 
