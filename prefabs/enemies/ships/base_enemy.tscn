@@ -47,8 +47,8 @@ offset_left = -60.0
 offset_top = -65.0
 offset_right = 60.0
 offset_bottom = -38.0
-_maxHealth = 1.0
-_initialHealth = 1.0
+_maxHealth = 20.0
+_initialHealth = 20.0
 
 [node name="GunLogic" type="Node2D" parent="." node_paths=PackedStringArray("_gun")]
 position = Vector2(0, 40)
