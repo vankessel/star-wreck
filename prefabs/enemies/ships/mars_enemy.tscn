@@ -1,18 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfy2xd2oi64ul"]
+[gd_scene load_steps=7 format=3 uid="uid://dfy2xd2oi64ul"]
 
 [ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_c6jkw"]
 [ext_resource type="Texture2D" uid="uid://gl73tusq77qx" path="res://sprites/enemies/mars/mars_ship.png" id="2_ioh4b"]
 [ext_resource type="PackedScene" uid="uid://de440sem2vtmc" path="res://prefabs/enemies/bullets/mars_bullet.tscn" id="3_ioh4b"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ioh4b"]
+radius = 16.0
+height = 70.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7rohx"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s32p3"]
+radius = 16.0312
+
 [node name="MarsEnemy" instance=ExtResource("1_c6jkw")]
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = 0.125664
-scale = Vector2(0.301, 0.301)
+scale = Vector2(0.335, 0.335)
 texture = ExtResource("2_ioh4b")
 offset = Vector2(12.579, 8.964)
 
 [node name="Gun" parent="GunLogic" index="0"]
 _bullet = ExtResource("3_ioh4b")
+
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2(0, 2)
+rotation = 0.0575959
+shape = SubResource("CapsuleShape2D_ioh4b")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="5"]
+position = Vector2(-31, -7)
+shape = SubResource("CircleShape2D_7rohx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." index="6"]
+position = Vector2(32, -1)
+shape = SubResource("CircleShape2D_s32p3")
 
 [editable path="HealthBar"]

@@ -1,18 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfnnd420q30ls"]
+[gd_scene load_steps=6 format=3 uid="uid://bfnnd420q30ls"]
 
 [ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_fgsy0"]
 [ext_resource type="Texture2D" uid="uid://db1f8iferjt1h" path="res://sprites/enemies/uranus/uranus_ship.png" id="2_6it7o"]
 [ext_resource type="PackedScene" uid="uid://byvyds2cds3ta" path="res://prefabs/enemies/bullets/uranus_bullet.tscn" id="3_6it7o"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nv2a5"]
+radius = 35.0143
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6it7o"]
+radius = 39.0128
+
 [node name="UranusEnemy" instance=ExtResource("1_fgsy0")]
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = -0.00523599
-scale = Vector2(0.197, 0.197)
+scale = Vector2(0.242, 0.242)
 texture = ExtResource("2_6it7o")
 offset = Vector2(4.283, 18.442)
 
 [node name="Gun" parent="GunLogic" index="0"]
 _bullet = ExtResource("3_6it7o")
+
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2(2, 9)
+shape = SubResource("CircleShape2D_nv2a5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="5"]
+position = Vector2(2, -10)
+shape = SubResource("CircleShape2D_6it7o")
+metadata/_edit_lock_ = true
 
 [editable path="HealthBar"]

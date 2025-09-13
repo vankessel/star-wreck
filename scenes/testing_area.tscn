@@ -1,12 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://enq5j8euao5h"]
+[gd_scene load_steps=14 format=3 uid="uid://enq5j8euao5h"]
 
 [ext_resource type="PackedScene" uid="uid://dieelo3dwbmad" path="res://prefabs/background.tscn" id="1_mmyom"]
 [ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player/player_container.tscn" id="2_467br"]
-[ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="3_amuii"]
-[ext_resource type="PackedScene" uid="uid://wqixl0tvnuvh" path="res://prefabs/enemies/ships/placeholders/placeholder_enemy_weak.tscn" id="4_g87el"]
-[ext_resource type="PackedScene" uid="uid://coo3msuspoab" path="res://prefabs/enemies/ships/placeholders/placeholder_enemy_intermediate.tscn" id="5_q8f10"]
-[ext_resource type="PackedScene" uid="uid://cqgvxabuvesax" path="res://prefabs/enemies/ships/placeholders/placeholder_enemy_boss.tscn" id="6_sgqq3"]
+[ext_resource type="PackedScene" uid="uid://dxf1cqxckgam0" path="res://prefabs/enemies/ships/earth_enemy.tscn" id="4_f0vol"]
+[ext_resource type="PackedScene" uid="uid://bf627antd14jo" path="res://prefabs/enemies/ships/jupiter_enemy.tscn" id="5_rfdjd"]
+[ext_resource type="PackedScene" uid="uid://dfy2xd2oi64ul" path="res://prefabs/enemies/ships/mars_enemy.tscn" id="6_eo557"]
+[ext_resource type="PackedScene" uid="uid://doank1o4xomu7" path="res://prefabs/enemies/ships/mercury_enemy.tscn" id="7_0e3nx"]
 [ext_resource type="PackedScene" uid="uid://007v3ch3boci" path="res://prefabs/force_field.tscn" id="7_467br"]
+[ext_resource type="PackedScene" uid="uid://cbcq24axt2v4p" path="res://prefabs/enemies/ships/neptune_enemy.tscn" id="8_1ichg"]
+[ext_resource type="PackedScene" uid="uid://05n3w5l6rln7" path="res://prefabs/enemies/ships/saturn_enemy.tscn" id="9_15d4k"]
+[ext_resource type="PackedScene" uid="uid://qocaio67gh4v" path="res://prefabs/enemies/ships/sun_enemy.tscn" id="10_cqpr2"]
+[ext_resource type="PackedScene" uid="uid://bfnnd420q30ls" path="res://prefabs/enemies/ships/uranus_enemy.tscn" id="11_8oqeg"]
+[ext_resource type="PackedScene" uid="uid://dujno7xwoamvn" path="res://prefabs/enemies/ships/venus_enemy.tscn" id="12_tnii8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_467br"]
 radius = 25.0
@@ -21,42 +26,6 @@ metadata/_edit_lock_ = true
 
 [node name="Enemies" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
-
-[node name="PlaceholderEnemy" parent="Enemies" instance=ExtResource("3_amuii")]
-position = Vector2(104, -354)
-
-[node name="PlaceholderEnemyWeak" parent="Enemies" instance=ExtResource("4_g87el")]
-position = Vector2(101, -172)
-
-[node name="PlaceholderEnemyWeak2" parent="Enemies" instance=ExtResource("4_g87el")]
-position = Vector2(10, -127)
-
-[node name="PlaceholderEnemyWeak3" parent="Enemies" instance=ExtResource("4_g87el")]
-position = Vector2(-99, -175)
-
-[node name="PlaceholderEnemyWeak4" parent="Enemies" instance=ExtResource("4_g87el")]
-position = Vector2(197, -123)
-
-[node name="PlaceholderEnemyIntermediate" parent="Enemies" instance=ExtResource("5_q8f10")]
-position = Vector2(9, -227)
-
-[node name="PlaceholderEnemyIntermediate2" parent="Enemies" instance=ExtResource("5_q8f10")]
-position = Vector2(102, -261)
-
-[node name="PlaceholderEnemyIntermediate3" parent="Enemies" instance=ExtResource("5_q8f10")]
-position = Vector2(-93, -268)
-
-[node name="PlaceholderEnemyWeak5" parent="Enemies" instance=ExtResource("4_g87el")]
-position = Vector2(-188, -123)
-
-[node name="PlaceholderEnemy2" parent="Enemies" instance=ExtResource("3_amuii")]
-position = Vector2(6, -390)
-
-[node name="PlaceholderEnemy3" parent="Enemies" instance=ExtResource("3_amuii")]
-position = Vector2(-91, -360)
-
-[node name="PlaceholderEnemyBoss" parent="Enemies" instance=ExtResource("6_sgqq3")]
-position = Vector2(1, -308)
 
 [node name="ForceField" parent="." instance=ExtResource("7_467br")]
 metadata/_edit_lock_ = true
@@ -125,3 +94,30 @@ metadata/_edit_lock_ = true
 color = Color(0, 1, 1, 0.5)
 polygon = PackedVector2Array(21.6506, -512.5, -21.6506, -487.5, -21.6506, 487.5, 21.6506, 512.5)
 metadata/_edit_lock_ = true
+
+[node name="EarthEnemy" parent="." instance=ExtResource("4_f0vol")]
+position = Vector2(7, -139)
+
+[node name="JupiterEnemy" parent="." instance=ExtResource("5_rfdjd")]
+position = Vector2(-122, -169)
+
+[node name="MarsEnemy" parent="." instance=ExtResource("6_eo557")]
+position = Vector2(-36, -304)
+
+[node name="MercuryEnemy" parent="." instance=ExtResource("7_0e3nx")]
+position = Vector2(131, -257)
+
+[node name="NeptuneEnemy" parent="." instance=ExtResource("8_1ichg")]
+position = Vector2(256, -145)
+
+[node name="SaturnEnemy" parent="." instance=ExtResource("9_15d4k")]
+position = Vector2(138, -113)
+
+[node name="SunEnemy" parent="." instance=ExtResource("10_cqpr2")]
+position = Vector2(-235, -83)
+
+[node name="UranusEnemy" parent="." instance=ExtResource("11_8oqeg")]
+position = Vector2(-319, -79)
+
+[node name="VenusEnemy" parent="." instance=ExtResource("12_tnii8")]
+position = Vector2(-227, -252)

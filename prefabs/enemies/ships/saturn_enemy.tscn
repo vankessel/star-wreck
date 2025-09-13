@@ -1,18 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://05n3w5l6rln7"]
+[gd_scene load_steps=6 format=3 uid="uid://05n3w5l6rln7"]
 
 [ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_8auqm"]
 [ext_resource type="PackedScene" uid="uid://ggewqeqvxk1p" path="res://prefabs/enemies/bullets/saturn_bullet.tscn" id="2_o4svc"]
 [ext_resource type="Texture2D" uid="uid://cpglotdxi2ru8" path="res://sprites/enemies/saturn/saturn_ship.png" id="2_rj8w5"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rj8w5"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o4svc"]
+radius = 39.0
+
 [node name="SaturnEnemy" instance=ExtResource("1_8auqm")]
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = -0.0139626
-scale = Vector2(0.224, 0.224)
+scale = Vector2(0.297, 0.297)
 texture = ExtResource("2_rj8w5")
 offset = Vector2(21.172, 27.267)
 
 [node name="Gun" parent="GunLogic" index="0"]
 _bullet = ExtResource("2_o4svc")
+
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2(-40, -19)
+shape = SubResource("CircleShape2D_rj8w5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="5"]
+position = Vector2(0, 36)
+shape = SubResource("CircleShape2D_rj8w5")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." index="6"]
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_o4svc")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." index="7"]
+position = Vector2(45, -17)
+shape = SubResource("CircleShape2D_rj8w5")
+metadata/_edit_lock_ = true
 
 [editable path="HealthBar"]

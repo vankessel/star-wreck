@@ -1,18 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbcq24axt2v4p"]
+[gd_scene load_steps=6 format=3 uid="uid://cbcq24axt2v4p"]
 
 [ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_fxg36"]
 [ext_resource type="Texture2D" uid="uid://ck7tqwc4y64ty" path="res://sprites/enemies/neptune/neptune_ship.png" id="2_iww7i"]
 [ext_resource type="PackedScene" uid="uid://bhn3fpwpphyf0" path="res://prefabs/enemies/bullets/neptune_bullet.tscn" id="3_iww7i"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iww7i"]
+radius = 7.05633
+height = 70.908
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y5y8u"]
+radius = 7.05633
+height = 70.908
+
 [node name="NeptuneEnemy" instance=ExtResource("1_fxg36")]
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = -0.0558505
-scale = Vector2(0.281, 0.281)
+scale = Vector2(0.249, 0.249)
 texture = ExtResource("2_iww7i")
 offset = Vector2(7.223, 40.965)
 
 [node name="Gun" parent="GunLogic" index="0"]
 _bullet = ExtResource("3_iww7i")
+
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2(10, -10)
+rotation = 1.08909
+shape = SubResource("CapsuleShape2D_iww7i")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." index="5"]
+position = Vector2(-8, -11)
+rotation = 2.05425
+shape = SubResource("CapsuleShape2D_iww7i")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="6"]
+position = Vector2(-19, 2.38419e-07)
+rotation = -0.617847
+shape = SubResource("CapsuleShape2D_y5y8u")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." index="7"]
+position = Vector2(19, 1)
+rotation = 0.63879
+shape = SubResource("CapsuleShape2D_y5y8u")
+metadata/_edit_lock_ = true
 
 [editable path="HealthBar"]
