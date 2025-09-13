@@ -5,237 +5,241 @@ namespace StarWreck.scripts.progression;
 
 public partial class ProgressManager : Node
 {
-	[Export(PropertyHint.File, "*.tscn")] private string _credits;
+    [Export(PropertyHint.File, "*.tscn")] private string _credits;
 
-	[ExportGroup("Cutscenes")]
-	[Export] private Cutscene _immediateCutscene;
-	[Export] private Cutscene _uranusAndNeptuneCompletedCutscene;
-	[Export] private Cutscene _jupiterAndSaturnCompletedCutscene;
-	[Export] private Cutscene _earthAndMarsCompletedCutscene;
-	[Export] private Cutscene _mercuryAndVenusCompletedCutscene;
-	[Export] private Cutscene _sunCompletedCutscene;
+    [ExportGroup("Cutscenes")] [Export] private Cutscene _immediateCutscene;
+    [Export] private Cutscene _uranusAndNeptuneCompletedCutscene;
+    [Export] private Cutscene _jupiterAndSaturnCompletedCutscene;
+    [Export] private Cutscene _earthAndMarsCompletedCutscene;
+    [Export] private Cutscene _mercuryAndVenusCompletedCutscene;
+    [Export] private Cutscene _sunCompletedCutscene;
 
-	[ExportGroup("Celestial Objects")]
-	[Export] private CelestialObject _neptune;
-	[Export] private CelestialObject _uranus;
-	[Export] private CelestialObject _saturn;
-	[Export] private CelestialObject _jupiter;
-	[Export] private CelestialObject _mars;
-	[Export] private CelestialObject _earth;
-	[Export] private CelestialObject _venus;
-	[Export] private CelestialObject _mercury;
-	[Export] private CelestialObject _sun;
+    [ExportGroup("Celestial Objects")] [Export]
+    private CelestialObject _neptune;
 
-	[ExportGroup("Force Fields")]
-	[Export] private ForceField _uranusAndNeptuneForceField;
-	[Export] private ForceField _jupiterAndSaturnForceField;
-	[Export] private ForceField _earthAndMarsForceField;
-	[Export] private ForceField _mercuryAndVenusForceField;
-	[Export] private ForceField _sunForceField;
+    [Export] private CelestialObject _uranus;
+    [Export] private CelestialObject _saturn;
+    [Export] private CelestialObject _jupiter;
+    [Export] private CelestialObject _mars;
+    [Export] private CelestialObject _earth;
+    [Export] private CelestialObject _venus;
+    [Export] private CelestialObject _mercury;
+    [Export] private CelestialObject _sun;
 
-	[Signal]
-	public delegate void UranusAndNeptuneCompletedEventHandler();
-	[Signal]
-	public delegate void JupiterAndSaturnCompletedEventHandler();
-	[Signal]
-	public delegate void EarthAndMarsCompletedEventHandler();
-	[Signal]
-	public delegate void MercuryAndVenusCompletedEventHandler();
-	[Signal]
-	public delegate void SunCompletedEventHandler();
-	[Signal]
-	public delegate void GameCompletedEventHandler();
+    [ExportGroup("Force Fields")] [Export] private ForceField _uranusAndNeptuneForceField;
+    [Export] private ForceField _jupiterAndSaturnForceField;
+    [Export] private ForceField _earthAndMarsForceField;
+    [Export] private ForceField _mercuryAndVenusForceField;
+    [Export] private ForceField _sunForceField;
 
-	public bool NeptuneFinished { get; private set; }
-	public bool UranusFinished { get; private set; }
-	public bool SaturnFinished { get; private set; }
-	public bool JupiterFinished { get; private set; }
-	public bool MarsFinished { get; private set; }
-	public bool EarthFinished { get; private set; }
-	public bool VenusFinished { get; private set; }
-	public bool MercuryFinished { get; private set; }
-	public bool SunFinished { get; private set; }
+    [Signal]
+    public delegate void UranusAndNeptuneCompletedEventHandler();
 
-	// Planet event handlers
-	public void OnNeptuneEnemiesDestroyed()
-	{
-		NeptuneFinished = true;
-		if (UranusFinished) EmitSignal(SignalName.UranusAndNeptuneCompleted);
-	}
+    [Signal]
+    public delegate void JupiterAndSaturnCompletedEventHandler();
 
-	public void OnUranusEnemiesDestroyed()
-	{
-		UranusFinished = true;
-		if (NeptuneFinished) EmitSignal(SignalName.UranusAndNeptuneCompleted);
-	}
+    [Signal]
+    public delegate void EarthAndMarsCompletedEventHandler();
 
-	public void OnSaturnEnemiesDestroyed()
-	{
-		SaturnFinished = true;
-		if (JupiterFinished) EmitSignal(SignalName.JupiterAndSaturnCompleted);
-	}
+    [Signal]
+    public delegate void MercuryAndVenusCompletedEventHandler();
 
-	public void OnJupiterEnemiesDestroyed()
-	{
-		JupiterFinished = true;
-		if (SaturnFinished) EmitSignal(SignalName.JupiterAndSaturnCompleted);
-	}
+    [Signal]
+    public delegate void SunCompletedEventHandler();
 
-	public void OnMarsEnemiesDestroyed()
-	{
-		MarsFinished = true;
-		if (EarthFinished) EmitSignal(SignalName.EarthAndMarsCompleted);
-	}
+    [Signal]
+    public delegate void GameCompletedEventHandler();
 
-	public void OnEarthEnemiesDestroyed()
-	{
-		EarthFinished = true;
-		if (MarsFinished) EmitSignal(SignalName.EarthAndMarsCompleted);
-	}
+    public bool NeptuneFinished { get; private set; }
+    public bool UranusFinished { get; private set; }
+    public bool SaturnFinished { get; private set; }
+    public bool JupiterFinished { get; private set; }
+    public bool MarsFinished { get; private set; }
+    public bool EarthFinished { get; private set; }
+    public bool VenusFinished { get; private set; }
+    public bool MercuryFinished { get; private set; }
+    public bool SunFinished { get; private set; }
 
-	public void OnVenusEnemiesDestroyed()
-	{
-		VenusFinished = true;
-		if (MercuryFinished) EmitSignal(SignalName.MercuryAndVenusCompleted);
-	}
+    // Planet event handlers
+    public void OnNeptuneEnemiesDestroyed()
+    {
+        NeptuneFinished = true;
+        if (UranusFinished) EmitSignal(SignalName.UranusAndNeptuneCompleted);
+    }
 
-	public void OnMercuryEnemiesDestroyed()
-	{
-		MercuryFinished = true;
-		if (VenusFinished) EmitSignal(SignalName.MercuryAndVenusCompleted);
-	}
+    public void OnUranusEnemiesDestroyed()
+    {
+        UranusFinished = true;
+        if (NeptuneFinished) EmitSignal(SignalName.UranusAndNeptuneCompleted);
+    }
 
-	public void OnSunEnemiesDestroyed()
-	{
-		SunFinished = true;
-		EmitSignal(SignalName.SunCompleted);
-	}
+    public void OnSaturnEnemiesDestroyed()
+    {
+        SaturnFinished = true;
+        if (JupiterFinished) EmitSignal(SignalName.JupiterAndSaturnCompleted);
+    }
 
-	// Combined planet event handlers
+    public void OnJupiterEnemiesDestroyed()
+    {
+        JupiterFinished = true;
+        if (SaturnFinished) EmitSignal(SignalName.JupiterAndSaturnCompleted);
+    }
 
-	public void OnUranusAndNeptuneCompleted()
-	{
-		_uranusAndNeptuneCompletedCutscene.Play();
-	}
+    public void OnMarsEnemiesDestroyed()
+    {
+        MarsFinished = true;
+        if (EarthFinished) EmitSignal(SignalName.EarthAndMarsCompleted);
+    }
 
-	public void OnJupiterAndSaturnCompleted()
-	{
-		_jupiterAndSaturnCompletedCutscene.Play();
-	}
+    public void OnEarthEnemiesDestroyed()
+    {
+        EarthFinished = true;
+        if (MarsFinished) EmitSignal(SignalName.EarthAndMarsCompleted);
+    }
 
-	public void OnEarthAndMarsCompleted()
-	{
-		_earthAndMarsCompletedCutscene.Play();
-	}
+    public void OnVenusEnemiesDestroyed()
+    {
+        VenusFinished = true;
+        if (MercuryFinished) EmitSignal(SignalName.MercuryAndVenusCompleted);
+    }
 
-	public void OnMercuryAndVenusCompleted()
-	{
-		_mercuryAndVenusCompletedCutscene.Play();
-	}
+    public void OnMercuryEnemiesDestroyed()
+    {
+        MercuryFinished = true;
+        if (VenusFinished) EmitSignal(SignalName.MercuryAndVenusCompleted);
+    }
 
-	public void OnSunCompleted()
-	{
-		_sunCompletedCutscene.Play();
-	}
+    public void OnSunEnemiesDestroyed()
+    {
+        SunFinished = true;
+        EmitSignal(SignalName.SunCompleted);
+    }
 
-	public void OnGameCompleted()
-	{
-		GetTree().ChangeSceneToFile(_credits);
-	}
+    // Combined planet event handlers
 
-	private void ImmediateCutsceneOnCutsceneFinished()
-	{
-		_neptune.EnemySpawner.StartSpawning();
-		_uranus.EnemySpawner.StartSpawning();
-	}
+    public void OnUranusAndNeptuneCompleted()
+    {
+        _uranusAndNeptuneCompletedCutscene.Play();
+    }
 
-	private void UranusAndNeptuneCompletedCutsceneOnCutsceneFinished()
-	{
-		_jupiterAndSaturnForceField.Disable();
-		_saturn.EnemySpawner.StartSpawning();
-		_jupiter.EnemySpawner.StartSpawning();
-	}
+    public void OnJupiterAndSaturnCompleted()
+    {
+        _jupiterAndSaturnCompletedCutscene.Play();
+    }
 
-	private void JupiterAndSaturnCompletedCutsceneOnCutsceneFinished()
-	{
-		_earthAndMarsForceField.Disable();
-		_mars.EnemySpawner.StartSpawning();
-		_earth.EnemySpawner.StartSpawning();
-	}
+    public void OnEarthAndMarsCompleted()
+    {
+        _earthAndMarsCompletedCutscene.Play();
+    }
 
-	private void EarthAndMarsCompletedCutsceneOnCutsceneFinished()
-	{
-		_mercuryAndVenusForceField.Disable();
-		_venus.EnemySpawner.StartSpawning();
-		_mercury.EnemySpawner.StartSpawning();
-	}
+    public void OnMercuryAndVenusCompleted()
+    {
+        _mercuryAndVenusCompletedCutscene.Play();
+    }
 
-	private void MercuryAndVenusCompletedCutsceneOnCutsceneFinished()
-	{
-		_sunForceField.Disable();
-		_sun.EnemySpawner.StartSpawning();
-	}
+    public void OnSunCompleted()
+    {
+        _sunCompletedCutscene.Play();
+    }
 
-	private void SunCompletedCutsceneOnCutsceneFinished()
-	{
-		EmitSignal(SignalName.GameCompleted);
-	}
+    public void OnGameCompleted()
+    {
+        GetTree().ChangeSceneToFile(_credits);
+    }
 
-	public override void _Ready()
-	{
-		base._Ready();
-		_neptune.EnemySpawner.AllEnemiesDestroyed += OnNeptuneEnemiesDestroyed;
-		_uranus.EnemySpawner.AllEnemiesDestroyed += OnUranusEnemiesDestroyed;
-		_saturn.EnemySpawner.AllEnemiesDestroyed += OnSaturnEnemiesDestroyed;
-		_jupiter.EnemySpawner.AllEnemiesDestroyed += OnJupiterEnemiesDestroyed;
-		_mars.EnemySpawner.AllEnemiesDestroyed += OnMarsEnemiesDestroyed;
-		_earth.EnemySpawner.AllEnemiesDestroyed += OnEarthEnemiesDestroyed;
-		_venus.EnemySpawner.AllEnemiesDestroyed += OnVenusEnemiesDestroyed;
-		_mercury.EnemySpawner.AllEnemiesDestroyed += OnMercuryEnemiesDestroyed;
-		_sun.EnemySpawner.AllEnemiesDestroyed += OnSunEnemiesDestroyed;
+    private void ImmediateCutsceneOnCutsceneFinished()
+    {
+        _neptune.EnemySpawner.StartSpawning();
+        _uranus.EnemySpawner.StartSpawning();
+    }
 
-		UranusAndNeptuneCompleted += OnUranusAndNeptuneCompleted;
-		JupiterAndSaturnCompleted += OnJupiterAndSaturnCompleted;
-		EarthAndMarsCompleted += OnEarthAndMarsCompleted;
-		MercuryAndVenusCompleted += OnMercuryAndVenusCompleted;
-		SunCompleted += OnSunCompleted;
-		GameCompleted += OnGameCompleted;
+    private void UranusAndNeptuneCompletedCutsceneOnCutsceneFinished()
+    {
+        _jupiterAndSaturnForceField.Disable();
+        _saturn.EnemySpawner.StartSpawning();
+        _jupiter.EnemySpawner.StartSpawning();
+    }
 
-		_immediateCutscene.CutsceneFinished += ImmediateCutsceneOnCutsceneFinished;
-		_uranusAndNeptuneCompletedCutscene.CutsceneFinished += UranusAndNeptuneCompletedCutsceneOnCutsceneFinished;
-		_jupiterAndSaturnCompletedCutscene.CutsceneFinished += JupiterAndSaturnCompletedCutsceneOnCutsceneFinished;
-		_earthAndMarsCompletedCutscene.CutsceneFinished += EarthAndMarsCompletedCutsceneOnCutsceneFinished;
-		_mercuryAndVenusCompletedCutscene.CutsceneFinished += MercuryAndVenusCompletedCutsceneOnCutsceneFinished;
-		_sunCompletedCutscene.CutsceneFinished += SunCompletedCutsceneOnCutsceneFinished;
+    private void JupiterAndSaturnCompletedCutsceneOnCutsceneFinished()
+    {
+        _earthAndMarsForceField.Disable();
+        _mars.EnemySpawner.StartSpawning();
+        _earth.EnemySpawner.StartSpawning();
+    }
 
-		_immediateCutscene.Play();
-	}
+    private void EarthAndMarsCompletedCutsceneOnCutsceneFinished()
+    {
+        _mercuryAndVenusForceField.Disable();
+        _venus.EnemySpawner.StartSpawning();
+        _mercury.EnemySpawner.StartSpawning();
+    }
 
-	public override void _ExitTree()
-	{
-		base._ExitTree();
-		_neptune.EnemySpawner.AllEnemiesDestroyed -= OnNeptuneEnemiesDestroyed;
-		_uranus.EnemySpawner.AllEnemiesDestroyed -= OnUranusEnemiesDestroyed;
-		_saturn.EnemySpawner.AllEnemiesDestroyed -= OnSaturnEnemiesDestroyed;
-		_jupiter.EnemySpawner.AllEnemiesDestroyed -= OnJupiterEnemiesDestroyed;
-		_mars.EnemySpawner.AllEnemiesDestroyed -= OnMarsEnemiesDestroyed;
-		_earth.EnemySpawner.AllEnemiesDestroyed -= OnEarthEnemiesDestroyed;
-		_venus.EnemySpawner.AllEnemiesDestroyed -= OnVenusEnemiesDestroyed;
-		_mercury.EnemySpawner.AllEnemiesDestroyed -= OnMercuryEnemiesDestroyed;
-		_sun.EnemySpawner.AllEnemiesDestroyed -= OnSunEnemiesDestroyed;
+    private void MercuryAndVenusCompletedCutsceneOnCutsceneFinished()
+    {
+        _sunForceField.Disable();
+        _sun.EnemySpawner.StartSpawning();
+    }
 
-		UranusAndNeptuneCompleted -= OnUranusAndNeptuneCompleted;
-		JupiterAndSaturnCompleted -= OnJupiterAndSaturnCompleted;
-		EarthAndMarsCompleted -= OnEarthAndMarsCompleted;
-		MercuryAndVenusCompleted -= OnMercuryAndVenusCompleted;
-		SunCompleted -= OnSunCompleted;
-		GameCompleted -= OnGameCompleted;
+    private void SunCompletedCutsceneOnCutsceneFinished()
+    {
+        EmitSignal(SignalName.GameCompleted);
+    }
 
-		_immediateCutscene.CutsceneFinished -= ImmediateCutsceneOnCutsceneFinished;
-		_uranusAndNeptuneCompletedCutscene.CutsceneFinished -= UranusAndNeptuneCompletedCutsceneOnCutsceneFinished;
-		_jupiterAndSaturnCompletedCutscene.CutsceneFinished -= JupiterAndSaturnCompletedCutsceneOnCutsceneFinished;
-		_earthAndMarsCompletedCutscene.CutsceneFinished -= EarthAndMarsCompletedCutsceneOnCutsceneFinished;
-		_mercuryAndVenusCompletedCutscene.CutsceneFinished -= MercuryAndVenusCompletedCutsceneOnCutsceneFinished;
-		_sunCompletedCutscene.CutsceneFinished -= SunCompletedCutsceneOnCutsceneFinished;
-	}
+    public override void _Ready()
+    {
+        base._Ready();
+        _neptune.EnemySpawner.AllEnemiesDestroyed += OnNeptuneEnemiesDestroyed;
+        _uranus.EnemySpawner.AllEnemiesDestroyed += OnUranusEnemiesDestroyed;
+        _saturn.EnemySpawner.AllEnemiesDestroyed += OnSaturnEnemiesDestroyed;
+        _jupiter.EnemySpawner.AllEnemiesDestroyed += OnJupiterEnemiesDestroyed;
+        _mars.EnemySpawner.AllEnemiesDestroyed += OnMarsEnemiesDestroyed;
+        _earth.EnemySpawner.AllEnemiesDestroyed += OnEarthEnemiesDestroyed;
+        _venus.EnemySpawner.AllEnemiesDestroyed += OnVenusEnemiesDestroyed;
+        _mercury.EnemySpawner.AllEnemiesDestroyed += OnMercuryEnemiesDestroyed;
+        _sun.EnemySpawner.AllEnemiesDestroyed += OnSunEnemiesDestroyed;
+
+        UranusAndNeptuneCompleted += OnUranusAndNeptuneCompleted;
+        JupiterAndSaturnCompleted += OnJupiterAndSaturnCompleted;
+        EarthAndMarsCompleted += OnEarthAndMarsCompleted;
+        MercuryAndVenusCompleted += OnMercuryAndVenusCompleted;
+        SunCompleted += OnSunCompleted;
+        GameCompleted += OnGameCompleted;
+
+        _immediateCutscene.CutsceneFinished += ImmediateCutsceneOnCutsceneFinished;
+        _uranusAndNeptuneCompletedCutscene.CutsceneFinished += UranusAndNeptuneCompletedCutsceneOnCutsceneFinished;
+        _jupiterAndSaturnCompletedCutscene.CutsceneFinished += JupiterAndSaturnCompletedCutsceneOnCutsceneFinished;
+        _earthAndMarsCompletedCutscene.CutsceneFinished += EarthAndMarsCompletedCutsceneOnCutsceneFinished;
+        _mercuryAndVenusCompletedCutscene.CutsceneFinished += MercuryAndVenusCompletedCutsceneOnCutsceneFinished;
+        _sunCompletedCutscene.CutsceneFinished += SunCompletedCutsceneOnCutsceneFinished;
+
+        _immediateCutscene.Play();
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        _neptune.EnemySpawner.AllEnemiesDestroyed -= OnNeptuneEnemiesDestroyed;
+        _uranus.EnemySpawner.AllEnemiesDestroyed -= OnUranusEnemiesDestroyed;
+        _saturn.EnemySpawner.AllEnemiesDestroyed -= OnSaturnEnemiesDestroyed;
+        _jupiter.EnemySpawner.AllEnemiesDestroyed -= OnJupiterEnemiesDestroyed;
+        _mars.EnemySpawner.AllEnemiesDestroyed -= OnMarsEnemiesDestroyed;
+        _earth.EnemySpawner.AllEnemiesDestroyed -= OnEarthEnemiesDestroyed;
+        _venus.EnemySpawner.AllEnemiesDestroyed -= OnVenusEnemiesDestroyed;
+        _mercury.EnemySpawner.AllEnemiesDestroyed -= OnMercuryEnemiesDestroyed;
+        _sun.EnemySpawner.AllEnemiesDestroyed -= OnSunEnemiesDestroyed;
+
+        UranusAndNeptuneCompleted -= OnUranusAndNeptuneCompleted;
+        JupiterAndSaturnCompleted -= OnJupiterAndSaturnCompleted;
+        EarthAndMarsCompleted -= OnEarthAndMarsCompleted;
+        MercuryAndVenusCompleted -= OnMercuryAndVenusCompleted;
+        SunCompleted -= OnSunCompleted;
+        GameCompleted -= OnGameCompleted;
+
+        _immediateCutscene.CutsceneFinished -= ImmediateCutsceneOnCutsceneFinished;
+        _uranusAndNeptuneCompletedCutscene.CutsceneFinished -= UranusAndNeptuneCompletedCutsceneOnCutsceneFinished;
+        _jupiterAndSaturnCompletedCutscene.CutsceneFinished -= JupiterAndSaturnCompletedCutsceneOnCutsceneFinished;
+        _earthAndMarsCompletedCutscene.CutsceneFinished -= EarthAndMarsCompletedCutsceneOnCutsceneFinished;
+        _mercuryAndVenusCompletedCutscene.CutsceneFinished -= MercuryAndVenusCompletedCutsceneOnCutsceneFinished;
+        _sunCompletedCutscene.CutsceneFinished -= SunCompletedCutsceneOnCutsceneFinished;
+    }
 }
