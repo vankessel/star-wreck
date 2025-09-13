@@ -9,7 +9,7 @@ public partial class PlayerCamera : Camera2D
     [Export] private Player _player;
 
     [Export(PropertyHint.Range, "0,3.1415926536")]
-    private float _rotationSpeed = 3f;
+    private float _rotationSpeed = 1f;
 
     [Export(PropertyHint.Range, "0,2,or_greater")]
     private float _maxZoom = 2f;
