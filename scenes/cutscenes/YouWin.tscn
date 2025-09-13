@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cqfofxaxmm42m"]
 
-[ext_resource type="Texture2D" uid="uid://bxw7v8mb5gjce" path="res://sprites/screens/transmission.png" id="1_raige"]
+[ext_resource type="Texture2D" uid="uid://bb81dbepffgdr" path="res://sprites/screens/good_ending.png" id="1_raige"]
 
 [node name="Intro" type="Control"]
 layout_mode = 3

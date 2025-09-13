@@ -1,8 +1,10 @@
 ~ start
 Shadowy Figure: Uranus and Saturn are now free from the clutches of our enemy. The higher ups are really happy with your progress. Soon the solar system will be ours and we will stand united against those pests who are trying to take what is ours. Unfortunately, we’ve lost our scouts near on the other side of the asteroid belt near Earth Mars Venus Mercury. Before we lost contact - they said the forcefields are now surrounding those 4 planets. The higher ups agreed that you are more than capable to investigate what happened to our scouts. Report back if you find anything
 You: 
+~ Dialogue
 - Who are these pests? 
-	Shawdowy Figure: Do not worry about them. They are just lifeforms that are impossible to get rid of but we have a plan. We just need to reach the Sun
-- Who are these pests
-	Shadowy Figure:  We have no idea. They went to scout Earth and have not reported back.
+	Shawdowy Figure: Do not worry about them. They are just lifeforms that are impossible to get rid of but we have a plan. We just need to reach the Sun => Dialogue
+- What happened to the scouts?
+	Shadowy Figure:  We have no idea. They went to scout Earth and have not reported back. => Dialogue
+- End => END
 => END
