@@ -5,8 +5,8 @@ namespace DialogueManagerRuntime
 {
   public partial class ExampleBalloon : CanvasLayer
   {
-    [Export] public string NextAction = "ui_accept";
-    [Export] public string SkipAction = "ui_cancel";
+    [Export] public string NextAction = "ProgressDialogue";
+    [Export] public string SkipAction = "ProgressDialogue";
 
 
     Control balloon;

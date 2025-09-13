@@ -13,4 +13,5 @@ public static class Action
     public static readonly StringName ZoomIn = new("ZoomIn");
     public static readonly StringName ZoomOut = new("ZoomOut");
     public static readonly StringName Pause = new("Pause");
+    public static readonly StringName ProgressDialogue = new("ProgressDialogue");
 }

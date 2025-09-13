@@ -2,10 +2,10 @@ class_name DialogueManagerExampleBalloon extends CanvasLayer
 ## A basic dialogue balloon for use with Dialogue Manager.
 
 ## The action to use for advancing the dialogue
-@export var next_action: StringName = &"ui_accept"
+@export var next_action: StringName = &"ProgressDialogue"
 
 ## The action to use to skip typing the dialogue
-@export var skip_action: StringName = &"ui_cancel"
+@export var skip_action: StringName = &"ProgressDialogue"
 
 ## The dialogue resource
 var resource: DialogueResource
