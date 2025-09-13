@@ -628,6 +628,8 @@ _enemyQueues = [SubResource("Resource_qkpxi")]
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="PauseManager" parent="UICanvasLayer" instance=ExtResource("30_fv21b")]
+
 [node name="ProgressManager" type="Node" parent="UICanvasLayer" node_paths=PackedStringArray("_immediateCutscene", "_uranusAndNeptuneCompletedCutscene", "_jupiterAndSaturnCompletedCutscene", "_earthAndMarsCompletedCutscene", "_mercuryAndVenusCompletedCutscene", "_sunCompletedCutscene", "_neptune", "_uranus", "_saturn", "_jupiter", "_mars", "_earth", "_venus", "_mercury", "_sun", "_uranusAndNeptuneForceField", "_jupiterAndSaturnForceField", "_earthAndMarsForceField", "_mercuryAndVenusForceField", "_sunForceField")]
 script = ExtResource("12_yq6so")
 _credits = "uid://bryueb6jw5ir5"
@@ -707,5 +709,3 @@ metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 [node name="SunCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
 script = ExtResource("27_2f3dj")
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
-
-[node name="PauseManager" parent="UICanvasLayer" instance=ExtResource("30_fv21b")]
