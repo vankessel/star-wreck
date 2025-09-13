@@ -28,8 +28,10 @@ public partial class Bullet : Area2D
 
     private void OnBodyEntered(Node2D body)
     {
-        if (body is not IShootable shootable) return;
-        shootable.GetShot(this);
+        if (body is IShootable shootable)
+        {
+            shootable.GetShot(this);
+        }
         QueueFree();
     }
 

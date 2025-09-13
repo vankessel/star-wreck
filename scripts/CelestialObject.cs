@@ -1,6 +1,7 @@
 using Godot;
 using StarWreck.scripts.enemy;
 using StarWreck.scripts.enemy.spawning;
+using StarWreck.scripts.shooting;
 
 namespace StarWreck.scripts;
 

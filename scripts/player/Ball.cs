@@ -4,7 +4,7 @@ using StarWreck.scripts.shooting;
 
 namespace StarWreck.scripts.player;
 
-public partial class Ball : TrackedRigidBody2D, IShootable
+public partial class Ball : TrackedRigidBody2D
 {
     private bool _checkedBreakables;
     private readonly List<IBreakable> _breakables = new(4);
@@ -66,9 +66,5 @@ public partial class Ball : TrackedRigidBody2D, IShootable
             float normalizedWeight = weights[i] * inverseWeightSum;
             breakable.Damage(normalizedWeight * VelocityChange, this);
         }
-    }
-
-    public void GetShot(shooting.Bullet bullet)
-    {
     }
 }
