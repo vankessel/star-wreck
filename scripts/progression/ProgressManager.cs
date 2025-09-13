@@ -147,40 +147,40 @@ public partial class ProgressManager : Node
         GetTree().ChangeSceneToFile(_credits);
     }
 
-    private void ImmediateCutsceneOnCutsceneFinished()
+    private void ImmediateCutsceneOnCutsceneSequenceFinished()
     {
         _neptune.EnemySpawner.StartSpawning();
         _uranus.EnemySpawner.StartSpawning();
     }
 
-    private void UranusAndNeptuneCompletedCutsceneOnCutsceneFinished()
+    private void UranusAndNeptuneCompletedCutsceneOnCutsceneSequenceFinished()
     {
         _jupiterAndSaturnForceField.Disable();
         _saturn.EnemySpawner.StartSpawning();
         _jupiter.EnemySpawner.StartSpawning();
     }
 
-    private void JupiterAndSaturnCompletedCutsceneOnCutsceneFinished()
+    private void JupiterAndSaturnCompletedCutsceneOnCutsceneSequenceFinished()
     {
         _earthAndMarsForceField.Disable();
         _mars.EnemySpawner.StartSpawning();
         _earth.EnemySpawner.StartSpawning();
     }
 
-    private void EarthAndMarsCompletedCutsceneOnCutsceneFinished()
+    private void EarthAndMarsCompletedCutsceneOnCutsceneSequenceFinished()
     {
         _mercuryAndVenusForceField.Disable();
         _venus.EnemySpawner.StartSpawning();
         _mercury.EnemySpawner.StartSpawning();
     }
 
-    private void MercuryAndVenusCompletedCutsceneOnCutsceneFinished()
+    private void MercuryAndVenusCompletedCutsceneOnCutsceneSequenceFinished()
     {
         _sunForceField.Disable();
         _sun.EnemySpawner.StartSpawning();
     }
 
-    private void SunCompletedCutsceneOnCutsceneFinished()
+    private void SunCompletedCutsceneOnCutsceneSequenceFinished()
     {
         EmitSignal(SignalName.GameCompleted);
     }
@@ -205,12 +205,12 @@ public partial class ProgressManager : Node
         SunCompleted += OnSunCompleted;
         GameCompleted += OnGameCompleted;
 
-        _immediateCutscene.CutsceneFinished += ImmediateCutsceneOnCutsceneFinished;
-        _uranusAndNeptuneCompletedCutscene.CutsceneFinished += UranusAndNeptuneCompletedCutsceneOnCutsceneFinished;
-        _jupiterAndSaturnCompletedCutscene.CutsceneFinished += JupiterAndSaturnCompletedCutsceneOnCutsceneFinished;
-        _earthAndMarsCompletedCutscene.CutsceneFinished += EarthAndMarsCompletedCutsceneOnCutsceneFinished;
-        _mercuryAndVenusCompletedCutscene.CutsceneFinished += MercuryAndVenusCompletedCutsceneOnCutsceneFinished;
-        _sunCompletedCutscene.CutsceneFinished += SunCompletedCutsceneOnCutsceneFinished;
+        _immediateCutscene.CutsceneSequenceFinished += ImmediateCutsceneOnCutsceneSequenceFinished;
+        _uranusAndNeptuneCompletedCutscene.CutsceneSequenceFinished += UranusAndNeptuneCompletedCutsceneOnCutsceneSequenceFinished;
+        _jupiterAndSaturnCompletedCutscene.CutsceneSequenceFinished += JupiterAndSaturnCompletedCutsceneOnCutsceneSequenceFinished;
+        _earthAndMarsCompletedCutscene.CutsceneSequenceFinished += EarthAndMarsCompletedCutsceneOnCutsceneSequenceFinished;
+        _mercuryAndVenusCompletedCutscene.CutsceneSequenceFinished += MercuryAndVenusCompletedCutsceneOnCutsceneSequenceFinished;
+        _sunCompletedCutscene.CutsceneSequenceFinished += SunCompletedCutsceneOnCutsceneSequenceFinished;
 
         _immediateCutscene.Play();
     }
@@ -235,11 +235,11 @@ public partial class ProgressManager : Node
         SunCompleted -= OnSunCompleted;
         GameCompleted -= OnGameCompleted;
 
-        _immediateCutscene.CutsceneFinished -= ImmediateCutsceneOnCutsceneFinished;
-        _uranusAndNeptuneCompletedCutscene.CutsceneFinished -= UranusAndNeptuneCompletedCutsceneOnCutsceneFinished;
-        _jupiterAndSaturnCompletedCutscene.CutsceneFinished -= JupiterAndSaturnCompletedCutsceneOnCutsceneFinished;
-        _earthAndMarsCompletedCutscene.CutsceneFinished -= EarthAndMarsCompletedCutsceneOnCutsceneFinished;
-        _mercuryAndVenusCompletedCutscene.CutsceneFinished -= MercuryAndVenusCompletedCutsceneOnCutsceneFinished;
-        _sunCompletedCutscene.CutsceneFinished -= SunCompletedCutsceneOnCutsceneFinished;
+        _immediateCutscene.CutsceneSequenceFinished -= ImmediateCutsceneOnCutsceneSequenceFinished;
+        _uranusAndNeptuneCompletedCutscene.CutsceneSequenceFinished -= UranusAndNeptuneCompletedCutsceneOnCutsceneSequenceFinished;
+        _jupiterAndSaturnCompletedCutscene.CutsceneSequenceFinished -= JupiterAndSaturnCompletedCutsceneOnCutsceneSequenceFinished;
+        _earthAndMarsCompletedCutscene.CutsceneSequenceFinished -= EarthAndMarsCompletedCutsceneOnCutsceneSequenceFinished;
+        _mercuryAndVenusCompletedCutscene.CutsceneSequenceFinished -= MercuryAndVenusCompletedCutsceneOnCutsceneSequenceFinished;
+        _sunCompletedCutscene.CutsceneSequenceFinished -= SunCompletedCutsceneOnCutsceneSequenceFinished;
     }
 }

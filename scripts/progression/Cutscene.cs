@@ -12,12 +12,23 @@ public partial class Cutscene : Node
 
     [Signal] public delegate void CutsceneStartedEventHandler();
     [Signal] public delegate void CutsceneFinishedEventHandler();
+    [Signal] public delegate void CutsceneSequenceStartedEventHandler();
+    [Signal] public delegate void CutsceneSequenceFinishedEventHandler();
 
     private Node _instancedScene;
+    private Cutscene _previousCutsceneInSequence;
+    private Cutscene _nextCutsceneInSequence;
 
     public override void _Ready()
     {
         base._Ready();
+
+        _nextCutsceneInSequence = GetChildOrNull<Cutscene>(0);
+        if (_nextCutsceneInSequence != null)
+        {
+            _nextCutsceneInSequence._previousCutsceneInSequence = this;
+        }
+
         DialogueManager.DialogueStarted += DialogueStarted;
         DialogueManager.DialogueEnded += DialogueEnded;
         CutsceneFinished += OnCutsceneFinished;
@@ -48,9 +59,32 @@ public partial class Cutscene : Node
         EmitSignal(SignalName.CutsceneFinished);
     }
 
+    private void OnCutsceneStarted()
+    {
+        if (_previousCutsceneInSequence != null) return;
+        Cutscene currentCutscene = this;
+        while (currentCutscene != null)
+        {
+            currentCutscene.EmitSignal(SignalName.CutsceneSequenceStarted);
+            currentCutscene = currentCutscene._nextCutsceneInSequence;
+        }
+    }
+
     private void OnCutsceneFinished()
     {
-        GetChildOrNull<Cutscene>(0)?.Play();
+        if (_nextCutsceneInSequence != null)
+        {
+            _nextCutsceneInSequence.Play();
+        }
+        else
+        {
+            Cutscene currentCutscene = this;
+            while (currentCutscene != null)
+            {
+                currentCutscene.EmitSignal(SignalName.CutsceneSequenceFinished);
+                currentCutscene = currentCutscene._previousCutsceneInSequence;
+            }
+        }
     }
 
     public void Play()
