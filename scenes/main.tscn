@@ -668,6 +668,7 @@ metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="TutorialCutscene" type="Node" parent="UICanvasLayer/ProgressManager/ImmediateCutscene"]
 script = ExtResource("27_2f3dj")
+_pause = false
 _dialogue = ExtResource("30_fuf3a")
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
