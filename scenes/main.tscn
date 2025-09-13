@@ -437,7 +437,7 @@ polygon = PackedVector2Array(21.6506, -10012.5, -21.6506, -9987.5, -21.6506, 998
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/SaturnAndJupiterForceField"]
-position = Vector2(-8660.26, 15000)
+position = Vector2(-8660.25, 15000)
 rotation = 2.0944
 shape = SubResource("CapsuleShape2D_fv21b")
 metadata/_edit_lock_ = true
