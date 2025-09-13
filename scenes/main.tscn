@@ -160,7 +160,7 @@ metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_cjqg0"]
 script = ExtResource("12_gqmmt")
-SpawnRate = 1.0
+SpawnRate = 0.2
 Order = 0
 EnemyBatches = [SubResource("Resource_chjal")]
 metadata/_custom_type_script = "uid://b05min55rm673"
@@ -173,7 +173,7 @@ metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_qkpxi"]
 script = ExtResource("12_gqmmt")
-SpawnRate = 1.0
+SpawnRate = 0.2
 Order = 0
 EnemyBatches = [SubResource("Resource_tel4y")]
 metadata/_custom_type_script = "uid://b05min55rm673"
