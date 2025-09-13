@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using StarWreck.scripts.health;
+using StarWreck.scripts.player;
 
 namespace StarWreck.scripts.enemy.spawning;
 
 public partial class EnemySpawner : Node2D
 {
     [Export] private bool _startSpawningOnReady = false;
-    [Export] private float _radius = 100f;
     [Export] private float _ejectionSpeed = 300f;
 
     [Export] private EnemyQueue[] _enemyQueues = new EnemyQueue[1];
@@ -31,6 +31,8 @@ public partial class EnemySpawner : Node2D
     /// Triggers when all enemies in queue have spawned and are destroyed.
     /// </summary>
     [Signal] public delegate void AllEnemiesDestroyedEventHandler();
+
+    public float radius = 100f;
 
     public bool IsSpawning { get; private set; } = false;
     public bool IsFinished { get; private set; } = false;
@@ -137,12 +139,18 @@ public partial class EnemySpawner : Node2D
 
         EmitSignal(SignalName.Spawning);
 
-        float radians = Rng.RandfRange(0f, Mathf.Tau);
-        float radius  = Rng.RandfRange(0f, _radius);
-        Vector2 offsetDir = new(Mathf.Cos(radians), Mathf.Sin(radians));
-        Vector2 offset = radius * offsetDir;
+        Vector2 dirToPlayer = (Player.Instance.GlobalPosition - GlobalPosition).Normalized();
+
+        const float thirtyDegrees = Mathf.Pi / 6f;
+        float radians = Rng.RandfRange(-thirtyDegrees, thirtyDegrees);
+        // float randRadius  = Rng.RandfRange(0f, radius);
+        float randRadius  = radius;
+
+        Vector2 spawnDir = dirToPlayer.Rotated(radians);
+
+        Vector2 offset = randRadius * spawnDir;
         enemy.GlobalPosition = GlobalPosition + offset;
-        enemy.LinearVelocity += _ejectionSpeed * offsetDir;
+        enemy.LinearVelocity += _ejectionSpeed * spawnDir;
 
         Window root = GetTree().GetRoot();
         root.AddChild(enemy);

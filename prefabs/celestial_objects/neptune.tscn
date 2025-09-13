@@ -1,17 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmuu5u7qal6a8"]
+[gd_scene load_steps=4 format=3 uid="uid://bmuu5u7qal6a8"]
 
+[ext_resource type="Script" uid="uid://djyj6e05srefm" path="res://scripts/CelestialObject.cs" id="1_8ma2c"]
 [ext_resource type="Texture2D" uid="uid://dj7e1fhy1nco8" path="res://sprites/celestial_objects/Neptune.png" id="1_wp8yw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gqmmt"]
 radius = 130.0
 
-[node name="Neptune" type="AnimatableBody2D"]
+[node name="Neptune" type="AnimatableBody2D" node_paths=PackedStringArray("_collisionShape")]
 scale = Vector2(2.3, 2.3)
 collision_layer = 64
 collision_mask = 127
+script = ExtResource("1_8ma2c")
+_collisionShape = NodePath("CollisionShape2D")
 metadata/_edit_group_ = true
 
-[node name="AnimatableBody2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gqmmt")
 metadata/_edit_lock_ = true
 

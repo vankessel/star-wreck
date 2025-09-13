@@ -1,17 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbfsuq7ogcr5g"]
+[gd_scene load_steps=4 format=3 uid="uid://dbfsuq7ogcr5g"]
 
 [ext_resource type="Texture2D" uid="uid://cayqgwiotw4qf" path="res://sprites/celestial_objects/uranus.png" id="1_lnqcv"]
+[ext_resource type="Script" uid="uid://djyj6e05srefm" path="res://scripts/CelestialObject.cs" id="1_yh0do"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jkv2x"]
 radius = 110.0
 
-[node name="Uranus" type="AnimatableBody2D"]
+[node name="Uranus" type="AnimatableBody2D" node_paths=PackedStringArray("_collisionShape")]
 scale = Vector2(2.8, 2.8)
 collision_layer = 64
 collision_mask = 127
+script = ExtResource("1_yh0do")
+_collisionShape = NodePath("CollisionShape2D")
 metadata/_edit_group_ = true
 
-[node name="AnimatableBody2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, -6)
 shape = SubResource("CircleShape2D_jkv2x")
 metadata/_edit_lock_ = true

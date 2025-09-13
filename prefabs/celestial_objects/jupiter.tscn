@@ -1,17 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlldgqfqnvl0q"]
+[gd_scene load_steps=4 format=3 uid="uid://dlldgqfqnvl0q"]
 
+[ext_resource type="Script" uid="uid://djyj6e05srefm" path="res://scripts/CelestialObject.cs" id="1_74585"]
 [ext_resource type="Texture2D" uid="uid://by65u0s0qq7hm" path="res://sprites/celestial_objects/jupiter.png" id="1_q3nnp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dp3eg"]
 radius = 208.002
 
-[node name="Jupiter" type="AnimatableBody2D"]
+[node name="Jupiter" type="AnimatableBody2D" node_paths=PackedStringArray("_collisionShape")]
 scale = Vector2(3.5, 3.5)
 collision_layer = 64
 collision_mask = 127
+script = ExtResource("1_74585")
+_collisionShape = NodePath("CollisionShape2D")
 metadata/_edit_group_ = true
 
-[node name="AnimatableBody2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dp3eg")
 metadata/_edit_lock_ = true
 

@@ -1,17 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2bsoydfo38vx"]
+[gd_scene load_steps=4 format=3 uid="uid://c2bsoydfo38vx"]
 
 [ext_resource type="Texture2D" uid="uid://bmku8qidgfo5l" path="res://sprites/celestial_objects/mercury.png" id="1_671qh"]
+[ext_resource type="Script" uid="uid://djyj6e05srefm" path="res://scripts/CelestialObject.cs" id="1_un2mc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ya4ey"]
 radius = 130.0
 
-[node name="Mercury" type="AnimatableBody2D"]
+[node name="Mercury" type="AnimatableBody2D" node_paths=PackedStringArray("_collisionShape")]
 collision_layer = 64
 collision_mask = 127
+script = ExtResource("1_un2mc")
+_collisionShape = NodePath("CollisionShape2D")
 metadata/_edit_group_ = true
 
-[node name="AnimatableBody2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ya4ey")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_671qh")
+metadata/_edit_lock_ = true
