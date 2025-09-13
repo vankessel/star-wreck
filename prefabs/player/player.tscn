@@ -12,7 +12,6 @@ points = PackedVector2Array(0, -28, -30, 19, 30, 19)
 [sub_resource type="CircleShape2D" id="CircleShape2D_72ieh"]
 
 [node name="Player" type="RigidBody2D" node_paths=PackedStringArray("_healthComponent")]
-position = Vector2(4, 4)
 collision_layer = 2
 collision_mask = 255
 mass = 50.0
