@@ -20,6 +20,7 @@ public partial class Cutscene : Node
         base._Ready();
         DialogueManager.DialogueStarted += DialogueStarted;
         DialogueManager.DialogueEnded += DialogueEnded;
+        CutsceneFinished += OnCutsceneFinished;
     }
 
     public override void _ExitTree()
@@ -27,6 +28,7 @@ public partial class Cutscene : Node
         base._ExitTree();
         DialogueManager.DialogueStarted -= DialogueStarted;
         DialogueManager.DialogueEnded -= DialogueEnded;
+        CutsceneFinished -= OnCutsceneFinished;
     }
 
     private void DialogueStarted(Resource dialogueResource)
@@ -46,19 +48,31 @@ public partial class Cutscene : Node
         EmitSignal(SignalName.CutsceneFinished);
     }
 
+    private void OnCutsceneFinished()
+    {
+        GetChildOrNull<Cutscene>(0)?.Play();
+    }
+
     public void Play()
     {
-        if (_scene != null && _dialogue != null)
+        if (_dialogue != null)
         {
-            _instancedScene = _scene.Instantiate();
-            _instancedScene.ProcessMode = ProcessModeEnum.Always;
-            AddChild(_instancedScene);
-            _instancedScene.Owner = GetTree().Root;
+            if (_scene != null)
+            {
+                _instancedScene = _scene.Instantiate();
+                _instancedScene.ProcessMode = ProcessModeEnum.Always;
+                AddChild(_instancedScene);
+                _instancedScene.Owner = GetTree().Root;
+
+                GetTree().Paused = true;
+            }
+            else
+            {
+                GetTree().Paused = _pause;
+            }
 
             Node node = DialogueManager.ShowDialogueBalloon(_dialogue);
             node.ProcessMode = ProcessModeEnum.Always;
-
-            GetTree().Paused = _pause;
         }
         else
         {
