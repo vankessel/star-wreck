@@ -91,7 +91,11 @@ public partial class EnemySpawner : Node2D
         EmitSignal(SignalName.AllEnemiesDestroyed);
     }
 
-    public void StartSpawning() => EmitSignal(SignalName.SpawningStarted);
+    public void StartSpawning()
+    {
+        _lastSpawnTime = PauseManager.UnpausedSeconds;
+        EmitSignal(SignalName.SpawningStarted);
+    }
 
     private void FinishSpawning() => EmitSignal(SignalName.SpawningFinished);
 
