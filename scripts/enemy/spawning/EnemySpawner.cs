@@ -47,7 +47,7 @@ public partial class EnemySpawner : Node2D
     private float _lastSpawnTime = float.NegativeInfinity;
 
     private bool _queueFinished = false;
-    private readonly HashSet<Enemy> _spawnedEnemies = [];
+    public readonly HashSet<Enemy> spawnedEnemies = [];
 
     public int Count => _enemyQueues.Sum(queue => queue.Count);
 
@@ -84,6 +84,8 @@ public partial class EnemySpawner : Node2D
     {
         IsSpawning = false;
         IsFinished = true;
+        if (spawnedEnemies.Count != 0 || AreAllEnemiesDestroyed) return;
+        EmitSignal(SignalName.AllEnemiesDestroyed);
     }
 
     private void OnSpawnedEnemiesDestroyed()
@@ -99,7 +101,7 @@ public partial class EnemySpawner : Node2D
         EmitSignal(SignalName.SpawningStarted);
     }
 
-    private void FinishSpawning() => EmitSignal(SignalName.SpawningFinished);
+    public void FinishSpawning() => EmitSignal(SignalName.SpawningFinished);
 
     public override void _Process(double delta)
     {
@@ -134,7 +136,7 @@ public partial class EnemySpawner : Node2D
     {
         Enemy enemy = enemyScene.Instantiate<Enemy>();
 
-        _spawnedEnemies.Add(enemy);
+        spawnedEnemies.Add(enemy);
         enemy.HealthComponent.HealthFullyDepleted += EnemyOnHealthDepleted;
 
         EmitSignal(SignalName.Spawning);
@@ -162,8 +164,8 @@ public partial class EnemySpawner : Node2D
 
         void EnemyOnHealthDepleted(HealthComponent _, float __, float ___)
         {
-            _spawnedEnemies.Remove(enemy);
-            if (_spawnedEnemies.Count == 0)
+            spawnedEnemies.Remove(enemy);
+            if (spawnedEnemies.Count == 0)
             {
                 EmitSignal(SignalName.SpawnedEnemiesDestroyed);
             }

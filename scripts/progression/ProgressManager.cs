@@ -1,4 +1,8 @@
+using System.Collections.Generic;
 using Godot;
+using StarWreck.scripts.enemy;
+using StarWreck.scripts.enemy.spawning;
+using StarWreck.scripts.input;
 using StarWreck.scripts.tools;
 
 namespace StarWreck.scripts.progression;
@@ -49,6 +53,11 @@ public partial class ProgressManager : Node
 
     [Signal]
     public delegate void GameCompletedEventHandler();
+
+    [Signal]
+    private delegate void ExitTreeEventHandler();
+
+    private readonly HashSet<EnemySpawner> _currentSpawners = [];
 
     public bool NeptuneFinished { get; private set; }
     public bool UranusFinished { get; private set; }
@@ -149,35 +158,35 @@ public partial class ProgressManager : Node
 
     private void ImmediateCutsceneOnCutsceneSequenceFinished()
     {
-        _neptune.EnemySpawner.StartSpawning();
-        _uranus.EnemySpawner.StartSpawning();
+        StartSpawner(_neptune.EnemySpawner);
+        StartSpawner(_uranus.EnemySpawner);
     }
 
     private void UranusAndNeptuneCompletedCutsceneOnCutsceneSequenceFinished()
     {
         _jupiterAndSaturnForceField.Disable();
-        _saturn.EnemySpawner.StartSpawning();
-        _jupiter.EnemySpawner.StartSpawning();
+        StartSpawner(_saturn.EnemySpawner);
+        StartSpawner(_jupiter.EnemySpawner);
     }
 
     private void JupiterAndSaturnCompletedCutsceneOnCutsceneSequenceFinished()
     {
         _earthAndMarsForceField.Disable();
-        _mars.EnemySpawner.StartSpawning();
-        _earth.EnemySpawner.StartSpawning();
+        StartSpawner(_mars.EnemySpawner);
+        StartSpawner(_earth.EnemySpawner);
     }
 
     private void EarthAndMarsCompletedCutsceneOnCutsceneSequenceFinished()
     {
         _mercuryAndVenusForceField.Disable();
-        _venus.EnemySpawner.StartSpawning();
-        _mercury.EnemySpawner.StartSpawning();
+        StartSpawner(_venus.EnemySpawner);
+        StartSpawner(_mercury.EnemySpawner);
     }
 
     private void MercuryAndVenusCompletedCutsceneOnCutsceneSequenceFinished()
     {
         _sunForceField.Disable();
-        _sun.EnemySpawner.StartSpawning();
+        StartSpawner(_sun.EnemySpawner);
     }
 
     private void SunCompletedCutsceneOnCutsceneSequenceFinished()
@@ -218,6 +227,9 @@ public partial class ProgressManager : Node
     public override void _ExitTree()
     {
         base._ExitTree();
+
+        EmitSignal(SignalName.ExitTree);
+
         _neptune.EnemySpawner.AllEnemiesDestroyed -= OnNeptuneEnemiesDestroyed;
         _uranus.EnemySpawner.AllEnemiesDestroyed -= OnUranusEnemiesDestroyed;
         _saturn.EnemySpawner.AllEnemiesDestroyed -= OnSaturnEnemiesDestroyed;
@@ -241,5 +253,35 @@ public partial class ProgressManager : Node
         _earthAndMarsCompletedCutscene.CutsceneSequenceFinished -= EarthAndMarsCompletedCutsceneOnCutsceneSequenceFinished;
         _mercuryAndVenusCompletedCutscene.CutsceneSequenceFinished -= MercuryAndVenusCompletedCutsceneOnCutsceneSequenceFinished;
         _sunCompletedCutscene.CutsceneSequenceFinished -= SunCompletedCutsceneOnCutsceneSequenceFinished;
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (!@event.IsActionPressed(Action.DebugSkip) || !OS.HasFeature("editor")) return;
+
+        foreach (EnemySpawner spawner in _currentSpawners)
+        {
+            spawner.FinishSpawning();
+            foreach (Enemy enemy in spawner.spawnedEnemies)
+            {
+                enemy.HealthComponent.Health = 0f;
+            }
+        }
+    }
+
+    private void StartSpawner(EnemySpawner spawner)
+    {
+        spawner.StartSpawning();
+        _currentSpawners.Add(spawner);
+        spawner.AllEnemiesDestroyed += SpawnerOnAllEnemiesDestroyed;
+        ExitTree += () => spawner.AllEnemiesDestroyed -= SpawnerOnAllEnemiesDestroyed;
+        return;
+
+        void SpawnerOnAllEnemiesDestroyed()
+        {
+            _currentSpawners.Remove(spawner);
+        }
     }
 }
