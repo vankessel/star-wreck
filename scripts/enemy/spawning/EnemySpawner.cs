@@ -131,11 +131,11 @@ public partial class EnemySpawner : Node2D
     private Enemy Spawn(PackedScene enemyScene)
     {
         Enemy enemy = enemyScene.Instantiate<Enemy>();
-        EmitSignal(SignalName.Spawning);
 
         _spawnedEnemies.Add(enemy);
-
         enemy.HealthComponent.HealthFullyDepleted += EnemyOnHealthDepleted;
+
+        EmitSignal(SignalName.Spawning);
 
         float radians = Rng.RandfRange(0f, Mathf.Tau);
         float radius  = Rng.RandfRange(0f, _radius);
