@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://cigi1tjbaehx2"]
+
+[ext_resource type="Texture2D" uid="uid://cra8vnnvty8nl" path="res://sprites/screens/controls.png" id="1_s5bgm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj8m0"]
+bg_color = Color(0.836049, 0.809603, 0.821212, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfemk"]
+bg_color = Color(0.644041, 0.599975, 0.619568, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gm2b7"]
+bg_color = Color(0.746446, 0.709232, 0.725673, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23x71"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_offset = Vector2(0, 3.41)
+
+[node name="Howtoplay" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -3.0
+offset_top = -242.0
+offset_right = 1155.0
+offset_bottom = 830.0
+texture = ExtResource("1_s5bgm")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="btn_return" type="Button" parent="."]
+offset_left = 975.0
+offset_top = 589.0
+offset_right = 1146.0
+offset_bottom = 639.0
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_constants/align_to_largest_stylebox = 2
+theme_override_constants/line_spacing = 1
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_tj8m0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_qfemk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_tj8m0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gm2b7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_23x71")
+text = "Return"
