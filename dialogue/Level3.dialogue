@@ -1,5 +1,5 @@
 ~ start
-Shadowy Figure: Uranus and Saturn are now free from the clutches of our enemy. The higher ups are really happy with your progress. Soon the solar system will be ours and we will stand united against those pests who are trying to take what is ours. Unfortunately, we’ve lost our scouts near on the other side of the asteroid belt near Earth Mars Venus Mercury. Before we lost contact. The higher ups agreed that you are more than capable to investigate what happened to our scouts. Report back if you find anything
+Shadowy Figure: Uranus and Saturn are now free from the clutches of our enemy. The higher ups are really happy with your progress. Soon the solar system will be ours and we will stand united against those pests who are trying to take what is ours. Unfortunately, we’ve lost our scouts near on the other side of the asteroid belt near Earth Mars. Before we lost contact. The higher ups agreed that you are more than capable to investigate what happened to our scouts. Report back if you find anything
 You: 
 ~ Dialogue
 - Who are these pests? 
@@ -7,6 +7,6 @@ You:
 - What happened to the scouts?
 	Shadowy Figure:  We have no idea. They went to scout Earth and have not reported back. => Dialogue
 - How come I don't have guns on my ship? 
-	Shadowy Figure: Physical damage does more damage than measly lasers. It's super effective. We measured the power level to be over 9000. => Dialogue
+	Shadowy Figure: Physical damage does more damage than measly lasers. When you first joined and we measured the power level of your ship, it was over 9000. => Dialogue
 - End => END
 => END
