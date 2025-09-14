@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://dsrd3np32lxtf"]
+[gd_scene load_steps=67 format=3 uid="uid://dsrd3np32lxtf"]
 
 [ext_resource type="PackedScene" uid="uid://dieelo3dwbmad" path="res://prefabs/background.tscn" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player/player_container.tscn" id="2_0wfyh"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dxf1cqxckgam0" path="res://prefabs/enemies/ships/earth_enemy.tscn" id="21_yq6so"]
 [ext_resource type="PackedScene" uid="uid://bf627antd14jo" path="res://prefabs/enemies/ships/jupiter_enemy.tscn" id="22_fv21b"]
 [ext_resource type="PackedScene" uid="uid://dfy2xd2oi64ul" path="res://prefabs/enemies/ships/mars_enemy.tscn" id="23_tel4y"]
+[ext_resource type="PackedScene" uid="uid://c33i4jwr6kcg1" path="res://prefabs/enemies/ships/common_enemy.tscn" id="24_5poiv"]
 [ext_resource type="PackedScene" uid="uid://doank1o4xomu7" path="res://prefabs/enemies/ships/mercury_enemy.tscn" id="24_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://cbcq24axt2v4p" path="res://prefabs/enemies/ships/neptune_enemy.tscn" id="25_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://05n3w5l6rln7" path="res://prefabs/enemies/ships/saturn_enemy.tscn" id="26_dgi5k"]
@@ -152,6 +153,12 @@ Order = 0
 EnemyBatches = [SubResource("Resource_5poiv")]
 metadata/_custom_type_script = "uid://b05min55rm673"
 
+[sub_resource type="Resource" id="Resource_nvyfr"]
+script = ExtResource("11_0ld40")
+Enemy = ExtResource("24_5poiv")
+Count = 4
+metadata/_custom_type_script = "uid://1l418l3h53n8"
+
 [sub_resource type="Resource" id="Resource_chjal"]
 script = ExtResource("11_0ld40")
 Enemy = ExtResource("28_kmb1v")
@@ -161,9 +168,15 @@ metadata/_custom_type_script = "uid://1l418l3h53n8"
 [sub_resource type="Resource" id="Resource_cjqg0"]
 script = ExtResource("12_gqmmt")
 SpawnRate = 0.2
-Order = 0
-EnemyBatches = [SubResource("Resource_chjal")]
+Order = 1
+EnemyBatches = [SubResource("Resource_nvyfr"), SubResource("Resource_chjal")]
 metadata/_custom_type_script = "uid://b05min55rm673"
+
+[sub_resource type="Resource" id="Resource_vc5cj"]
+script = ExtResource("11_0ld40")
+Enemy = ExtResource("24_5poiv")
+Count = 4
+metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_tel4y"]
 script = ExtResource("11_0ld40")
@@ -174,8 +187,8 @@ metadata/_custom_type_script = "uid://1l418l3h53n8"
 [sub_resource type="Resource" id="Resource_qkpxi"]
 script = ExtResource("12_gqmmt")
 SpawnRate = 0.2
-Order = 0
-EnemyBatches = [SubResource("Resource_tel4y")]
+Order = 1
+EnemyBatches = [SubResource("Resource_vc5cj"), SubResource("Resource_tel4y")]
 metadata/_custom_type_script = "uid://b05min55rm673"
 
 [node name="Node" type="Node"]
