@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bk0ihqawg1p07"
-path="res://.godot/imported/alien_debris_1.png-9c3dc847563c27d23dec367908c53623.ctex"
+path="res://.godot/imported/alien_ship_debris_1.png-2bca6eb2de77dc5830a8c0cea619e3a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/enemies/alien/alien_debris_1.png"
-dest_files=["res://.godot/imported/alien_debris_1.png-9c3dc847563c27d23dec367908c53623.ctex"]
+source_file="res://sprites/enemies/alien/alien_ship_debris_1.png"
+dest_files=["res://.godot/imported/alien_ship_debris_1.png-2bca6eb2de77dc5830a8c0cea619e3a4.ctex"]
 
 [params]
 

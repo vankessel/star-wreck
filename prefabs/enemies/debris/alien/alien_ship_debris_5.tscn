@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b53y88los146i"]
+
+[ext_resource type="PackedScene" uid="uid://ca4485syaahao" path="res://prefabs/enemies/debris/base_debris.tscn" id="1_31l7k"]
+[ext_resource type="Texture2D" uid="uid://by02dnincxb43" path="res://sprites/enemies/alien/alien_ship_debris_5.png" id="2_ayewk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ayewk"]
+radius = 15.6022
+height = 53.84
+
+[node name="BaseDebris" instance=ExtResource("1_31l7k")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(2.22, -11.204)
+rotation = 0.495674
+shape = SubResource("CapsuleShape2D_ayewk")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_ayewk")
+offset = Vector2(-5.309, 26.853)

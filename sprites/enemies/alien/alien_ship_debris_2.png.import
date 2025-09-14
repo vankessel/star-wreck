@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba56y8jtygr7v"
-path="res://.godot/imported/alien.png-9857563a1e317577cccc5695d2edf910.ctex"
+uid="uid://c802m5r6k8esc"
+path="res://.godot/imported/alien_ship_debris_2.png-709aed2b682066c2b8bf89fcb6828a69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/enemies/alien/alien.png"
-dest_files=["res://.godot/imported/alien.png-9857563a1e317577cccc5695d2edf910.ctex"]
+source_file="res://sprites/enemies/alien/alien_ship_debris_2.png"
+dest_files=["res://.godot/imported/alien_ship_debris_2.png-709aed2b682066c2b8bf89fcb6828a69.ctex"]
 
 [params]
 
