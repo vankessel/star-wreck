@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxf1cqxckgam0"]
+[gd_scene load_steps=11 format=3 uid="uid://dxf1cqxckgam0"]
 
 [ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_34cax"]
 [ext_resource type="Texture2D" uid="uid://cuyswo263dl8q" path="res://sprites/enemies/earth/earth_ship.png" id="2_7c07v"]
+[ext_resource type="PackedScene" uid="uid://ca7r7hplretv8" path="res://prefabs/enemies/debris/earth/earth_ship_debris_1.tscn" id="2_dv1tl"]
 [ext_resource type="PackedScene" uid="uid://cmukr2j0smeum" path="res://prefabs/enemies/bullets/earth_bullet.tscn" id="3_7c07v"]
+[ext_resource type="PackedScene" uid="uid://lilssjoyamum" path="res://prefabs/enemies/debris/earth/earth_ship_debris_2.tscn" id="3_vcb0v"]
+[ext_resource type="PackedScene" uid="uid://dryc4tum06u7k" path="res://prefabs/enemies/debris/earth/earth_ship_debris_3.tscn" id="4_63yi2"]
+[ext_resource type="PackedScene" uid="uid://ckspt3u3qq78d" path="res://prefabs/enemies/debris/earth/earth_ship_debris_4.tscn" id="5_ljcqk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7c07v"]
 radius = 13.1529
@@ -16,6 +20,7 @@ radius = 8.0
 height = 78.0
 
 [node name="EarthEnemy" instance=ExtResource("1_34cax")]
+_enemyDebris = Array[PackedScene]([ExtResource("2_dv1tl"), ExtResource("3_vcb0v"), ExtResource("4_63yi2"), ExtResource("5_ljcqk")])
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = 0.102974

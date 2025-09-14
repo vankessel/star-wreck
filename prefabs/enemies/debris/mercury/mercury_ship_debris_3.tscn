@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://pxan0r3aksx0"]
+
+[ext_resource type="PackedScene" uid="uid://ca4485syaahao" path="res://prefabs/enemies/debris/base_debris.tscn" id="1_g3xct"]
+[ext_resource type="Texture2D" uid="uid://6pqfegnt7c8t" path="res://sprites/enemies/mercury/mercury_ship_debris_3.png" id="2_h5gd8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h5gd8"]
+radius = 64.1392
+
+[node name="BaseDebris" instance=ExtResource("1_g3xct")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_h5gd8")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_h5gd8")
+offset = Vector2(35.326, 20.661)

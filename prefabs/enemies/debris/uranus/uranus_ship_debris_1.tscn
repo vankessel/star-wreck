@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyvi8x7mkf4e1"]
+
+[ext_resource type="PackedScene" uid="uid://ca4485syaahao" path="res://prefabs/enemies/debris/base_debris.tscn" id="1_e8eeg"]
+[ext_resource type="Texture2D" uid="uid://cheqpwq66cy7" path="res://sprites/enemies/uranus/uranus_ship_debris_1.png" id="2_ekhd4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8eeg"]
+radius = 22.282
+height = 193.952
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ekhd4"]
+radius = 34.104
+
+[node name="BaseDebris" instance=ExtResource("1_e8eeg")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-30.877, 19.031)
+rotation = 0.715585
+shape = SubResource("CapsuleShape2D_e8eeg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(53.782, -0.81)
+rotation = 0.715585
+shape = SubResource("CircleShape2D_ekhd4")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_ekhd4")
+offset = Vector2(128.602, 47.401)

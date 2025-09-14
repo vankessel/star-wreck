@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://mr1gk2yj0gnb"]
+
+[ext_resource type="PackedScene" uid="uid://ca4485syaahao" path="res://prefabs/enemies/debris/base_debris.tscn" id="1_scev5"]
+[ext_resource type="Texture2D" uid="uid://canytxdfd3ur4" path="res://sprites/enemies/jupiter/jupiter_ship_debris_3.png" id="2_scev5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_scev5"]
+radius = 118.229
+
+[node name="BaseDebris" instance=ExtResource("1_scev5")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_scev5")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_scev5")
+offset = Vector2(24.465, 31.918)

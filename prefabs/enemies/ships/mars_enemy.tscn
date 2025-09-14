@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfy2xd2oi64ul"]
+[gd_scene load_steps=11 format=3 uid="uid://dfy2xd2oi64ul"]
 
 [ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_c6jkw"]
+[ext_resource type="PackedScene" uid="uid://fci0lb7bw4f6" path="res://prefabs/enemies/debris/mars/mars_ship_debris_1.tscn" id="2_5yha8"]
 [ext_resource type="Texture2D" uid="uid://gl73tusq77qx" path="res://sprites/enemies/mars/mars_ship.png" id="2_ioh4b"]
+[ext_resource type="PackedScene" uid="uid://cge2dfvrnho4c" path="res://prefabs/enemies/debris/mars/mars_ship_debris_2.tscn" id="3_gju1q"]
 [ext_resource type="PackedScene" uid="uid://de440sem2vtmc" path="res://prefabs/enemies/bullets/mars_bullet.tscn" id="3_ioh4b"]
+[ext_resource type="PackedScene" uid="uid://22aj65nueyq7" path="res://prefabs/enemies/debris/mars/mars_ship_debris_3.tscn" id="4_4kaby"]
+[ext_resource type="PackedScene" uid="uid://bn1urf5vonb6n" path="res://prefabs/enemies/debris/mars/mars_ship_debris_4.tscn" id="5_2xxi8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ioh4b"]
 radius = 16.0
@@ -15,6 +19,7 @@ radius = 16.0
 radius = 16.0312
 
 [node name="MarsEnemy" instance=ExtResource("1_c6jkw")]
+_enemyDebris = Array[PackedScene]([ExtResource("2_5yha8"), ExtResource("3_gju1q"), ExtResource("4_4kaby"), ExtResource("5_2xxi8")])
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = 0.125664

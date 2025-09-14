@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://qocaio67gh4v"]
+[gd_scene load_steps=12 format=3 uid="uid://qocaio67gh4v"]
 
 [ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_4nfk4"]
 [ext_resource type="Texture2D" uid="uid://c11am7g1mmgqw" path="res://sprites/enemies/sun/sun_ship.png" id="2_3idji"]
+[ext_resource type="PackedScene" uid="uid://buji4p0a60qqw" path="res://prefabs/enemies/debris/sun/sun_ship_debris_1.tscn" id="2_psmh2"]
 [ext_resource type="PackedScene" uid="uid://c1jnp2jhggabc" path="res://prefabs/enemies/bullets/sun_bullet.tscn" id="3_3idji"]
+[ext_resource type="PackedScene" uid="uid://b5tbufdhx72qw" path="res://prefabs/enemies/debris/sun/sun_ship_debris_2.tscn" id="3_5b0cc"]
+[ext_resource type="PackedScene" uid="uid://dayxwsxr1ew6p" path="res://prefabs/enemies/debris/sun/sun_ship_debris_3.tscn" id="4_he1oy"]
+[ext_resource type="PackedScene" uid="uid://c83puwhmdr78s" path="res://prefabs/enemies/debris/sun/sun_ship_debris_4.tscn" id="5_ya0b8"]
+[ext_resource type="PackedScene" uid="uid://cmdlvxr7ts5hg" path="res://prefabs/enemies/debris/sun/sun_ship_debris_5.tscn" id="6_ipn26"]
+[ext_resource type="PackedScene" uid="uid://bkobwxkisl4ej" path="res://prefabs/enemies/debris/sun/sun_ship_debris_6.tscn" id="7_xnaxs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3idji"]
 radius = 15.674
@@ -12,6 +18,7 @@ radius = 55.0
 height = 164.394
 
 [node name="SunEnemy" instance=ExtResource("1_4nfk4")]
+_enemyDebris = Array[PackedScene]([ExtResource("2_psmh2"), ExtResource("3_5b0cc"), ExtResource("4_he1oy"), ExtResource("5_ya0b8"), ExtResource("6_ipn26"), ExtResource("7_xnaxs")])
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = 0.0418879

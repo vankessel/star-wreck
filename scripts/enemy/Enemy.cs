@@ -7,7 +7,8 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
 {
     [Export] private HealthComponent _healthComponent;
     [Export] private BaseMotor _motor;
-    [Export] private PackedScene _enemyDebris;
+    [Export] private PackedScene[] _enemyDebris;
+    [Export] private Sprite2D _sprite;
 
     public HealthComponent HealthComponent => _healthComponent;
 
@@ -49,21 +50,30 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
 
         if (0f < _healthComponent.Health) return;
 
-        SpawnDebris(Position, LinearVelocity + addedDebrisVelocity, GetParent(), 3, 5);
+        SpawnDebris(Position, LinearVelocity + addedDebrisVelocity, GetParent());
 
         QueueFree();
     }
 
-    private void SpawnDebris(Vector2 position, Vector2 velocity, Node parent, int min = 3, int max = 5)
+    private void SpawnDebris(Vector2 position, Vector2 velocity, Node parent)
     {
         RandomNumberGenerator r = new();
         const float velocitySd = 0.1f;
         const float positionSd = 3f;
         const float radiansSd = 10f * Mathf.Pi / 180f;
-        int count = r.RandiRange(min, max);
-        for (int i = 0; i < count; i++)
+        foreach (PackedScene debrisScene in _enemyDebris)
         {
-            RigidBody2D debris = _enemyDebris.Instantiate<RigidBody2D>();
+            Debris debris = debrisScene.Instantiate<Debris>();
+            int childCount = debris.GetChildCount();
+            for (int i = 0; i < childCount; i++)
+            {
+                Node2D child = debris.GetChildOrNull<Node2D>(i);
+                if (child != null)
+                {
+                    child.GlobalScale = _sprite.GlobalScale;
+                    child.Position *= _sprite.Scale;
+                }
+            }
             parent.AddChild(debris);
             Vector2 positionDelta = Vector2.Right.Rotated(r.Randfn() * Mathf.Pi) * r.Randfn(0f, positionSd);
             debris.Position = position + positionDelta;

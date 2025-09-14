@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://beb1w5do4ajtw"]
+
+[ext_resource type="PackedScene" uid="uid://ca4485syaahao" path="res://prefabs/enemies/debris/base_debris.tscn" id="1_xnvsi"]
+[ext_resource type="Texture2D" uid="uid://bvk4vqax7aeof" path="res://sprites/enemies/uranus/uranus_ship_debris_4.png" id="2_xnvsi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xnvsi"]
+radius = 102.396
+
+[node name="BaseDebris" instance=ExtResource("1_xnvsi")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_xnvsi")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_xnvsi")
+offset = Vector2(-63.108, 18.543)

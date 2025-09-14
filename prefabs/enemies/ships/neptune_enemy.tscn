@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbcq24axt2v4p"]
+[gd_scene load_steps=10 format=3 uid="uid://cbcq24axt2v4p"]
 
 [ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_fxg36"]
 [ext_resource type="Texture2D" uid="uid://ck7tqwc4y64ty" path="res://sprites/enemies/neptune/neptune_ship.png" id="2_iww7i"]
+[ext_resource type="PackedScene" uid="uid://3by8ganv03m4" path="res://prefabs/enemies/debris/neptune/neptune_ship_debris_1.tscn" id="2_rlfbo"]
+[ext_resource type="PackedScene" uid="uid://c2meia3o1vtuj" path="res://prefabs/enemies/debris/neptune/neptune_ship_debris_2.tscn" id="3_5djxp"]
 [ext_resource type="PackedScene" uid="uid://bhn3fpwpphyf0" path="res://prefabs/enemies/bullets/neptune_bullet.tscn" id="3_iww7i"]
+[ext_resource type="PackedScene" uid="uid://dslo8aoyqcdb7" path="res://prefabs/enemies/debris/neptune/neptune_ship_debris_3.tscn" id="4_btibo"]
+[ext_resource type="PackedScene" uid="uid://b3sbwkidcxyg4" path="res://prefabs/enemies/debris/neptune/neptune_ship_debris_4.tscn" id="5_lrrn0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iww7i"]
 radius = 7.05633
@@ -13,6 +17,7 @@ radius = 7.05633
 height = 70.908
 
 [node name="NeptuneEnemy" instance=ExtResource("1_fxg36")]
+_enemyDebris = Array[PackedScene]([ExtResource("2_rlfbo"), ExtResource("3_5djxp"), ExtResource("4_btibo"), ExtResource("5_lrrn0")])
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = -0.0558505
