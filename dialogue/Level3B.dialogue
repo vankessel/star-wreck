@@ -1,6 +1,6 @@
 ~ start
-NPC: Hey soldier. Are you okay? It looks like you’re in trouble. I’m here to provide backup if you need it.
+NPC: Hey you. It looks like we're in trouble. My name is Commander Fields. I've been taking care of these aliens that have took over some Earth's ships. Let's work together to get rid of them.
 You: 
-- I’ll trust you 
+- Let's do this!
 - Stay out of this. I’m fighting solo! 
 => END
