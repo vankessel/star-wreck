@@ -1,10 +1,16 @@
 ~ start
-NPC: Dang that was more enemy ships that I anticipated but a great job out there. I don’t think I recognize your ship from anywhere. Where are you from? You sound a bit young to be part of the Earth Forces. Then again there are always young ones who make their own ships and fly out unauthorized. My kid was like that too, but we haven’t heard from them since last month. I’ve been searching every day since.
+Commander Fields: Dang that was more enemy ships that I anticipated but a great job out there. You really came in like a wrecking ball. I don’t think I recognize your ship from anywhere. 
 You: 
+- Thanks I guess. You did good too. 
+Commander Fields: So why the wrecking ball? Weird choice for a weapon. 
+You: 
+- I was told physical damage is more effective.
+Commander Fields: Where are you from? You sound a bit young to be part of the Earth Forces. Then again there are always young ones who make their own ships and fly out unauthorized. My kid was like that too, but we haven’t heard from them since last month. I’ve been searching every day since.
+You:
 - I don’t remember. 
-	NPC: Damn amnesia eh? That’s rough. Well I hope you get your memories back.
+	Commander Fields: Damn amnesia eh? That’s rough. Well I hope you get your memories back.
 - None of your businses.
-	NPC: Wow. Okay. Sorry I asked. 
-NPC: I'm going to continue my patrol - if you want to grab dinner on earth sometime give me a shout okay?
+	Commander Fields: Wow. Okay. Sorry I asked. 
+Commander Fields: I'm going to continue my patrol - if you want to grab dinner on earth sometime give me a shout okay?
 	
 => END

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b6201i47c1hfd"
+path="res://.godot/imported/goodending.dialogue-81f041fc8ec69284830c7c16d8cd8ca0.tres"
+
+[deps]
+
+source_file="res://dialogue/goodending.dialogue"
+dest_files=["res://.godot/imported/goodending.dialogue-81f041fc8ec69284830c7c16d8cd8ca0.tres"]
+
+[params]
+
+defaults=true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dsrd3np32lxtf"]
+[gd_scene load_steps=64 format=3 uid="uid://dsrd3np32lxtf"]
 
 [ext_resource type="PackedScene" uid="uid://dieelo3dwbmad" path="res://prefabs/background.tscn" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player/player_container.tscn" id="2_0wfyh"]
@@ -39,6 +39,7 @@
 [ext_resource type="Resource" uid="uid://lw7apftiohlb" path="res://dialogue/Level4_NPC_Alive.dialogue" id="36_chjal"]
 [ext_resource type="Resource" uid="uid://d26mmt7p16h26" path="res://dialogue/Level4_BeforeFight.dialogue" id="37_pibwh"]
 [ext_resource type="PackedScene" uid="uid://bjxyoyjkecrep" path="res://scenes/cutscenes/transmission2.tscn" id="38_2cjbq"]
+[ext_resource type="PackedScene" uid="uid://cqfofxaxmm42m" path="res://scenes/cutscenes/YouWin.tscn" id="40_5he1u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vxglm"]
 radius = 25.0
@@ -692,11 +693,13 @@ metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="ReportToShadowyFigure" type="Node" parent="UICanvasLayer/ProgressManager/EarthAndMarsCompletedCutscene"]
 script = ExtResource("27_2f3dj")
+_scene = ExtResource("28_fv21b")
 _dialogue = ExtResource("35_2cjbq")
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="MercuryAndVenusCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
 script = ExtResource("27_2f3dj")
+_scene = ExtResource("33_5poiv")
 _dialogue = ExtResource("36_chjal")
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
@@ -708,4 +711,5 @@ metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="SunCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
 script = ExtResource("27_2f3dj")
+_scene = ExtResource("40_5he1u")
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
