@@ -49,7 +49,7 @@ public partial class Gun : Node2D
 
     public void Shoot(Vector2 direction)
     {
-        if (!CanShoot) return;
+        if (!CanShoot || !_shooterRigidBody.Visible) return;
         CanShoot = false;
         _nextShotTime = PauseManager.UnpausedSeconds + SecondsPerBullet;
 
