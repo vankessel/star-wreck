@@ -1,7 +1,7 @@
 using Godot;
 using StarWreck.scripts.input;
 
-namespace StarWreck.scenes.credits;
+namespace StarWreck.scenes.main_menu;
 
 public partial class MainSubmenu : Node
 {
