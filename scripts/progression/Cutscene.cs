@@ -1,3 +1,4 @@
+using System;
 using DialogueManagerRuntime;
 using Godot;
 
@@ -11,6 +12,15 @@ public partial class Cutscene : Node
 
 	[Export(PropertyHint.File, "*.dialogue")]
 	private Resource _dialogue;
+
+	[Export(PropertyHint.Range, "0,10,or_greater")]
+	private float _waitBefore = 0f;
+
+	[Export(PropertyHint.Range, "0,10,or_greater")]
+	private float _holdNoDialogueSceneFor = 5f;
+
+	[Export(PropertyHint.Range, "0,10,or_greater")]
+	private float _waitAfter = 0f;
 
 	[Signal]
 	public delegate void CutsceneStartedEventHandler();
@@ -38,34 +48,22 @@ public partial class Cutscene : Node
 			_nextCutsceneInSequence._previousCutsceneInSequence = this;
 		}
 
-		DialogueManager.DialogueStarted += DialogueStarted;
-		DialogueManager.DialogueEnded += DialogueEnded;
+		DialogueManager.DialogueEnded += OnDialogueEnded;
 		CutsceneFinished += OnCutsceneFinished;
 	}
 
 	public override void _ExitTree()
 	{
 		base._ExitTree();
-		DialogueManager.DialogueStarted -= DialogueStarted;
-		DialogueManager.DialogueEnded -= DialogueEnded;
+		DialogueManager.DialogueEnded -= OnDialogueEnded;
 		CutsceneFinished -= OnCutsceneFinished;
 	}
 
-	private void DialogueStarted(Resource dialogueResource)
-	{
-		if (dialogueResource != _dialogue) return;
-		EmitSignal(SignalName.CutsceneStarted);
-	}
-
-	private void DialogueEnded(Resource dialogueResource)
+	private void OnDialogueEnded(Resource dialogueResource)
 	{
 		if (dialogueResource != _dialogue) return;
 
-		_instancedScene?.QueueFree();
-
-		GetTree().Paused = false;
-
-		EmitSignal(SignalName.CutsceneFinished);
+		AfterCutsceneContent();
 	}
 
 	private void OnCutsceneStarted()
@@ -96,7 +94,34 @@ public partial class Cutscene : Node
 		}
 	}
 
+	private void AfterSeconds(float seconds, Action action)
+	{
+		if (seconds > 0f)
+		{
+			Timer timer = new();
+			timer.WaitTime = seconds;
+			timer.Timeout += () =>
+			{
+				action.Invoke();
+			};
+			timer.Autostart = true;
+			timer.OneShot = true;
+			AddChild(timer);
+		}
+		else
+		{
+			action.Invoke();
+		}
+	}
+
 	public void Play()
+	{
+		EmitSignal(SignalName.CutsceneStarted);
+
+		AfterSeconds(_waitBefore, Start);
+	}
+
+	private void Start()
 	{
 		if (_dialogue != null)
 		{
@@ -119,8 +144,43 @@ public partial class Cutscene : Node
 		}
 		else
 		{
-			EmitSignal(SignalName.CutsceneFinished);
-			GD.PushWarning($"No dialogue set for {Name}");
+			ProcessModeEnum prevProcessMode = ProcessMode;
+			ProcessMode = ProcessModeEnum.Always;
+			if (_scene != null)
+			{
+
+				_instancedScene = _scene.Instantiate();
+				_instancedScene.ProcessMode = ProcessModeEnum.Always;
+				AddChild(_instancedScene);
+				_instancedScene.Owner = GetTree().Root;
+
+				GetTree().Paused = true;
+			}
+			else
+			{
+				GD.PushError($"No dialogue or scene for Cutscene! {Name}");
+				GetTree().Paused = _pause;
+			}
+
+			AfterSeconds(_holdNoDialogueSceneFor, () =>
+			{
+				AfterCutsceneContent();
+				ProcessMode = prevProcessMode;
+			});
 		}
+	}
+
+	private void AfterCutsceneContent()
+	{
+		_instancedScene?.QueueFree();
+
+		GetTree().Paused = false;
+
+		AfterSeconds(_waitAfter, Finish);
+	}
+
+	private void Finish()
+	{
+		EmitSignal(SignalName.CutsceneFinished);
 	}
 }

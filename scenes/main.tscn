@@ -672,24 +672,28 @@ _sunForceField = NodePath("../../Environment/Celestial Objects/Sun/ForceFields/S
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("28_fv21b")
 _dialogue = ExtResource("29_tel4y")
+_waitBefore = 2.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="TutorialCutscene" type="Node" parent="UICanvasLayer/ProgressManager/ImmediateCutscene"]
 script = ExtResource("27_2f3dj")
 _pause = false
 _dialogue = ExtResource("30_fuf3a")
+_waitBefore = 0.5
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="UranusAndNeptuneCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("28_fv21b")
 _dialogue = ExtResource("31_pibwh")
+_waitBefore = 4.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="JupiterAndSaturnCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("28_fv21b")
 _dialogue = ExtResource("32_c6pm6")
+_waitBefore = 4.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="MeetingNPC" type="Node" parent="UICanvasLayer/ProgressManager/JupiterAndSaturnCompletedCutscene"]
@@ -702,6 +706,7 @@ metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("33_5poiv")
 _dialogue = ExtResource("34_5poiv")
+_waitBefore = 4.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="ReportToShadowyFigure" type="Node" parent="UICanvasLayer/ProgressManager/EarthAndMarsCompletedCutscene"]
@@ -714,6 +719,7 @@ metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("33_5poiv")
 _dialogue = ExtResource("36_chjal")
+_waitBefore = 4.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="ConfrontShadowyFigure" type="Node" parent="UICanvasLayer/ProgressManager/MercuryAndVenusCompletedCutscene"]
@@ -725,4 +731,5 @@ metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 [node name="SunCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("40_5he1u")
+_waitBefore = 4.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
