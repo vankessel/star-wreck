@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dxf1cqxckgam0" path="res://prefabs/enemies/ships/earth_enemy.tscn" id="21_yq6so"]
 [ext_resource type="PackedScene" uid="uid://bf627antd14jo" path="res://prefabs/enemies/ships/jupiter_enemy.tscn" id="22_fv21b"]
 [ext_resource type="PackedScene" uid="uid://dfy2xd2oi64ul" path="res://prefabs/enemies/ships/mars_enemy.tscn" id="23_tel4y"]
-[ext_resource type="PackedScene" path="res://prefabs/enemies/ships/common_enemy.tscn" id="24_5poiv"]
+[ext_resource type="PackedScene" uid="uid://c33i4jwr6kcg1" path="res://prefabs/enemies/ships/common_enemy.tscn" id="24_5poiv"]
 [ext_resource type="PackedScene" uid="uid://doank1o4xomu7" path="res://prefabs/enemies/ships/mercury_enemy.tscn" id="24_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://cbcq24axt2v4p" path="res://prefabs/enemies/ships/neptune_enemy.tscn" id="25_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://05n3w5l6rln7" path="res://prefabs/enemies/ships/saturn_enemy.tscn" id="26_dgi5k"]
@@ -449,7 +449,7 @@ polygon = PackedVector2Array(21.6506, -10012.5, -21.6506, -9987.5, -21.6506, 998
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Celestial Objects/Sun/ForceFields/SaturnAndJupiterForceField"]
-position = Vector2(-8660.26, 15000)
+position = Vector2(-8660.25, 15000)
 rotation = 2.0944
 shape = SubResource("CapsuleShape2D_fv21b")
 metadata/_edit_lock_ = true
@@ -672,24 +672,28 @@ _sunForceField = NodePath("../../Environment/Celestial Objects/Sun/ForceFields/S
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("28_fv21b")
 _dialogue = ExtResource("29_tel4y")
+_waitBefore = 2.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="TutorialCutscene" type="Node" parent="UICanvasLayer/ProgressManager/ImmediateCutscene"]
 script = ExtResource("27_2f3dj")
 _pause = false
 _dialogue = ExtResource("30_fuf3a")
+_waitBefore = 0.5
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="UranusAndNeptuneCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("28_fv21b")
 _dialogue = ExtResource("31_pibwh")
+_waitBefore = 4.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="JupiterAndSaturnCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("28_fv21b")
 _dialogue = ExtResource("32_c6pm6")
+_waitBefore = 4.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="MeetingNPC" type="Node" parent="UICanvasLayer/ProgressManager/JupiterAndSaturnCompletedCutscene"]
@@ -702,6 +706,7 @@ metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("33_5poiv")
 _dialogue = ExtResource("34_5poiv")
+_waitBefore = 4.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="ReportToShadowyFigure" type="Node" parent="UICanvasLayer/ProgressManager/EarthAndMarsCompletedCutscene"]
@@ -714,6 +719,7 @@ metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("33_5poiv")
 _dialogue = ExtResource("36_chjal")
+_waitBefore = 4.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="ConfrontShadowyFigure" type="Node" parent="UICanvasLayer/ProgressManager/MercuryAndVenusCompletedCutscene"]
@@ -725,4 +731,5 @@ metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 [node name="SunCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("40_5he1u")
+_waitBefore = 4.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
