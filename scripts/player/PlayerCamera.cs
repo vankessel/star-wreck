@@ -39,12 +39,20 @@ public partial class PlayerCamera : Camera2D
         if (@event is not InputEventMouseButton) return;
 
         if (@event.IsActionPressed(Action.ZoomOut))
-            Zoom *= Mathf.Max(0f, 1f - _zoomSpeed * _zoomMouseWheelSensitivity);
-        else if (@event.IsActionPressed(Action.ZoomIn)) Zoom *= Mathf.Max(0f, 1f + _zoomSpeed * _zoomMouseWheelSensitivity);
+        {
+            SetZoomClamped(Zoom * Mathf.Max(0f, 1f - _zoomSpeed * _zoomMouseWheelSensitivity));
+        }
+        else if (@event.IsActionPressed(Action.ZoomIn))
+        {
+            SetZoomClamped(Zoom * Mathf.Max(0f, 1f + _zoomSpeed * _zoomMouseWheelSensitivity));
+        }
+    }
 
+    private void SetZoomClamped(Vector2 zoom)
+    {
         // Makes background texture filtering more sparkly this way
         float phi = 0.5f * (1f + Mathf.Sqrt(5f));
-        Zoom = Zoom.Clamp(_minZoom + _minZoom * phi * 0.001f, _maxZoom);
+        Zoom = zoom.Clamp(_minZoom + _minZoom * phi * 0.001f, _maxZoom);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -66,7 +74,7 @@ public partial class PlayerCamera : Camera2D
         GlobalPosition = _player.GlobalPosition + (GlobalPosition - _player.GlobalPosition).Rotated(radians);
         Rotation += radians;
 
-        Zoom *= Mathf.Max(0f, 1f + zoomInput * _zoomSpeed * dt);
+        SetZoomClamped(Zoom * Mathf.Max(0f, 1f + zoomInput * _zoomSpeed * dt));
     }
 
     private void Track(Node2D node2D, float dt)
