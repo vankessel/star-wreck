@@ -14,6 +14,18 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
     public HealthComponent HealthComponent => _healthComponent;
 
     private Vector2 _otherVelocityChangeFraction = Vector2.Zero;
+    private bool _attached;
+    private bool _healthDepleted;
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+
+        if (_attached)
+        {
+            _streamPlayer2D.Finished -= StreamPlayer2DOnFinished;
+        }
+    }
 
     public override void _PhysicsProcess(double delta)
     {
@@ -53,13 +65,19 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
             _healthComponent.Hurt(damage);
         }
 
-        if (0f < _healthComponent.Health) return;
+        if (0f < _healthComponent.Health || _healthDepleted) return;
+        _healthDepleted = true;
 
         SpawnDebris(Position, LinearVelocity + addedDebrisVelocity, GetParent());
 
-        if (_streamPlayer2D.IsPlaying())
+        if (_streamPlayer2D.IsPlaying() && !_attached)
         {
+            Visible = false;
+            Freeze = true;
+            FreezeMode = FreezeModeEnum.Static;
+            CollisionLayer = CollisionMask = 0u;
             _streamPlayer2D.Finished += StreamPlayer2DOnFinished;
+            _attached = true;
         }
         else
         {
@@ -69,8 +87,7 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
 
     private void StreamPlayer2DOnFinished()
     {
-        _streamPlayer2D.Finished -= StreamPlayer2DOnFinished;
-        Free();
+        QueueFree();
     }
 
     private void SpawnDebris(Vector2 position, Vector2 velocity, Node parent)
