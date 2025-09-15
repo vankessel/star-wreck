@@ -42,6 +42,8 @@ public partial class Player : RigidBody2D, IShootable
 
     [Export] private HealthComponent _healthComponent;
 
+    public HealthComponent HealthComponent => _healthComponent;
+
     public override void _EnterTree()
     {
         base._EnterTree();

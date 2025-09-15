@@ -4,6 +4,7 @@ using StarWreck.scripts.autoloads;
 using StarWreck.scripts.enemy;
 using StarWreck.scripts.enemy.spawning;
 using StarWreck.scripts.input;
+using StarWreck.scripts.player;
 using StarWreck.scripts.tools;
 
 namespace StarWreck.scripts.progression;
@@ -166,6 +167,7 @@ public partial class ProgressManager : Node
 	private void UranusAndNeptuneCompletedCutsceneOnCutsceneSequenceFinished()
 	{
 		_jupiterAndSaturnForceField.Disable();
+		Player.Instance.HealthComponent.Health = Player.Instance.HealthComponent.MaxHealth;
 		StartSpawner(_saturn.EnemySpawner);
 		StartSpawner(_jupiter.EnemySpawner);
 	}
@@ -173,6 +175,7 @@ public partial class ProgressManager : Node
 	private void JupiterAndSaturnCompletedCutsceneOnCutsceneSequenceFinished()
 	{
 		_earthAndMarsForceField.Disable();
+		Player.Instance.HealthComponent.Health = Player.Instance.HealthComponent.MaxHealth;
 		StartSpawner(_mars.EnemySpawner);
 		StartSpawner(_earth.EnemySpawner);
 	}
@@ -180,6 +183,7 @@ public partial class ProgressManager : Node
 	private void EarthAndMarsCompletedCutsceneOnCutsceneSequenceFinished()
 	{
 		_mercuryAndVenusForceField.Disable();
+		Player.Instance.HealthComponent.Health = Player.Instance.HealthComponent.MaxHealth;
 		StartSpawner(_venus.EnemySpawner);
 		StartSpawner(_mercury.EnemySpawner);
 	}
@@ -193,6 +197,7 @@ public partial class ProgressManager : Node
 	{
 		AudioManager.Instance.BossPlayer.FadeIn(4f);
 		_sunForceField.Disable();
+		Player.Instance.HealthComponent.Health = Player.Instance.HealthComponent.MaxHealth;
 		StartSpawner(_sun.EnemySpawner);
 	}
 
