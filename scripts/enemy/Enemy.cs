@@ -1,5 +1,6 @@
 using Godot;
 using StarWreck.scripts.health;
+using StarWreck.scripts.player;
 
 namespace StarWreck.scripts.enemy;
 
@@ -36,6 +37,7 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
         _otherVelocityChangeFraction = Vector2.Zero;
         KineticDamageCheck(otherVelocityChangeFraction);
 
+        if (!IsInstanceValid(Player.Instance)) return;
         ApplyCentralForce(_motor.GetMotorForce(this));
         ApplyTorque(_motor.GetMotorTorque(this));
     }

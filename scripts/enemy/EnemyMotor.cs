@@ -1,4 +1,5 @@
 using Godot;
+using StarWreck.scripts.player;
 
 namespace StarWreck.scripts.enemy;
 
@@ -29,17 +30,9 @@ public partial class EnemyMotor : BaseMotor
 	[Export(PropertyHint.Range, "0,2,or_greater")]
 	private float _rotationDampingRatio = 0.3333333333f;
 
-	private player.Player _player;
-
-	public override void _Ready()
-	{
-		base._Ready();
-		_player = player.Player.Instance;
-	}
-
 	public override Vector2 GetMotorForce(RigidBody2D rigidBody2D)
 	{
-		Vector2 offsetToPlayer = _player.GlobalPosition - GlobalPosition;
+		Vector2 offsetToPlayer = Player.Instance.GlobalPosition - GlobalPosition;
 		Vector2 dirToPlayer = offsetToPlayer.Normalized();
 		Vector2 velocity = rigidBody2D.LinearVelocity;
 		float speedInDirection = dirToPlayer.Dot(velocity);
@@ -69,7 +62,7 @@ public partial class EnemyMotor : BaseMotor
 		// Spring acceleration calculated with fake inertia
 		float damping = _rotationDampingRatio * 2f * Mathf.Sqrt(_rotationSpringConstant / _rotationSpringInertia);
 
-		float angleDelta = rigidBody2D.GlobalTransform[1].AngleTo(_player.GlobalPosition - GlobalPosition);
+		float angleDelta = rigidBody2D.GlobalTransform[1].AngleTo(Player.Instance.GlobalPosition - GlobalPosition);
 		// Multiply spring acceleration by real inertia to get force
 		float torque = inertia * (_rotationSpringConstant / _rotationSpringInertia * angleDelta - damping * rigidBody2D.AngularVelocity);
 		return torque;

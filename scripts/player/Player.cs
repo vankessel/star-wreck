@@ -1,4 +1,5 @@
 using Godot;
+using StarWreck.scripts.autoloads;
 using StarWreck.scripts.health;
 using StarWreck.scripts.shooting;
 using Action = StarWreck.scripts.input.Action;
@@ -53,6 +54,7 @@ public partial class Player : RigidBody2D, IShootable
 
     private void HealthComponentOnHealthFullyDepleted(HealthComponent healthComponent, float cappedLoss, float overkill)
     {
+        AudioManager.Instance.GameplayPlayer.FadeOut(1f);
         GetTree().ChangeSceneToFile(_mainMenuScene);
     }
 
