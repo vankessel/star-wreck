@@ -15,6 +15,8 @@ radius = 56.7186
 _enemyDebris = Array[PackedScene]([ExtResource("2_cgya6"), ExtResource("3_qugrv"), ExtResource("4_yc4aw"), ExtResource("5_4hd2f"), ExtResource("6_t2qua")])
 
 [node name="Sprite2D" parent="." index="0"]
+rotation = -0.66148
+scale = Vector2(3, 3)
 texture = ExtResource("2_4f56i")
 offset = Vector2(17.48, -8.208)
 
@@ -23,11 +25,13 @@ _maxHealth = 100.0
 _initialHealth = 100.0
 
 [node name="Gun" parent="GunLogic" index="0"]
-SecondsPerBullet = 2.0
-_bulletSpeed = 300.0
+position = Vector2(0, 76.428)
+SecondsPerBullet = 0.426
+_bulletSpeed = 600.0
 
 [node name="CollisionShape2D" parent="." index="4"]
-position = Vector2(2.246, 2.073)
+position = Vector2(6.738, 6.219)
+scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_4f56i")
 
 [editable path="HealthBar"]

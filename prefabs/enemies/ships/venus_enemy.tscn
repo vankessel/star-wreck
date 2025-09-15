@@ -23,7 +23,13 @@ scale = Vector2(0.451, 0.451)
 texture = ExtResource("2_8vg5w")
 offset = Vector2(-9.303, -11.602)
 
+[node name="HealthComponent" parent="HealthBar/HealthComponentParent" index="0"]
+_maxHealth = 35.0
+_initialHealth = 35.0
+
 [node name="Gun" parent="GunLogic" index="0"]
+SecondsPerBullet = 2.0
+_bulletSpeed = 300.0
 _bullet = ExtResource("3_8vg5w")
 
 [node name="CollisionShape2D" parent="." index="4"]

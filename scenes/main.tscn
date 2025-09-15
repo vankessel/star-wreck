@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://dsrd3np32lxtf"]
+[gd_scene load_steps=76 format=3 uid="uid://dsrd3np32lxtf"]
 
 [ext_resource type="PackedScene" uid="uid://dieelo3dwbmad" path="res://prefabs/background.tscn" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://b65k21s135m71" path="res://prefabs/player/player_container.tscn" id="2_0wfyh"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bvefs4mw02vou" path="res://prefabs/celestial_objects/sun.tscn" id="7_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://007v3ch3boci" path="res://prefabs/force_field.tscn" id="8_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://dnnm8xqx3p8d8" path="res://prefabs/celestial_objects/venus.tscn" id="8_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://d0ew4el0nodfd" path="res://prefabs/enemies/ships/alien_enemy.tscn" id="9_2cjbq"]
 [ext_resource type="PackedScene" uid="uid://bo6622dr8frdf" path="res://prefabs/celestial_objects/earth.tscn" id="9_jbj1t"]
 [ext_resource type="Script" uid="uid://4tbq48ndnmc6" path="res://scripts/enemy/spawning/EnemySpawner.cs" id="10_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://2818y43n8d7y" path="res://prefabs/celestial_objects/mars.tscn" id="10_muem4"]
@@ -75,56 +76,93 @@ Order = 0
 EnemyBatches = [SubResource("Resource_yq6so")]
 metadata/_custom_type_script = "uid://b05min55rm673"
 
+[sub_resource type="Resource" id="Resource_0loja"]
+script = ExtResource("11_0ld40")
+Enemy = ExtResource("9_2cjbq")
+Count = 1
+metadata/_custom_type_script = "uid://1l418l3h53n8"
+
+[sub_resource type="Resource" id="Resource_ids8r"]
+script = ExtResource("12_gqmmt")
+SpawnRate = 0.05
+Order = 0
+EnemyBatches = [SubResource("Resource_0loja")]
+metadata/_custom_type_script = "uid://b05min55rm673"
+
+[sub_resource type="Resource" id="Resource_dnhof"]
+script = ExtResource("11_0ld40")
+Enemy = ExtResource("24_5poiv")
+Count = 7
+metadata/_custom_type_script = "uid://1l418l3h53n8"
+
 [sub_resource type="Resource" id="Resource_vchkt"]
 script = ExtResource("11_0ld40")
 Enemy = ExtResource("24_qkpxi")
-Count = 3
+Count = 5
 metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_txyw0"]
 script = ExtResource("12_gqmmt")
 SpawnRate = 1.0
-Order = 0
-EnemyBatches = [SubResource("Resource_vchkt")]
+Order = 1
+EnemyBatches = [SubResource("Resource_dnhof"), SubResource("Resource_vchkt")]
 metadata/_custom_type_script = "uid://b05min55rm673"
+
+[sub_resource type="Resource" id="Resource_o7ddy"]
+script = ExtResource("11_0ld40")
+Enemy = ExtResource("24_5poiv")
+Count = 7
+metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_5q0nq"]
 script = ExtResource("11_0ld40")
 Enemy = ExtResource("29_fuf3a")
-Count = 3
+Count = 5
 metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_dgi5k"]
 script = ExtResource("12_gqmmt")
 SpawnRate = 1.0
-Order = 0
-EnemyBatches = [SubResource("Resource_5q0nq")]
+Order = 2
+EnemyBatches = [SubResource("Resource_o7ddy"), SubResource("Resource_5q0nq")]
 metadata/_custom_type_script = "uid://b05min55rm673"
 
 [sub_resource type="Resource" id="Resource_j8jky"]
 script = ExtResource("11_0ld40")
 Enemy = ExtResource("21_yq6so")
-Count = 6
+Count = 8
+metadata/_custom_type_script = "uid://1l418l3h53n8"
+
+[sub_resource type="Resource" id="Resource_bu4jf"]
+script = ExtResource("11_0ld40")
+Enemy = ExtResource("24_5poiv")
+Count = 8
 metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_kmb1v"]
 script = ExtResource("12_gqmmt")
-SpawnRate = 1.0
-Order = 0
-EnemyBatches = [SubResource("Resource_j8jky")]
+SpawnRate = 1.5
+Order = 1
+EnemyBatches = [SubResource("Resource_j8jky"), SubResource("Resource_bu4jf")]
 metadata/_custom_type_script = "uid://b05min55rm673"
+
+[sub_resource type="Resource" id="Resource_bjg73"]
+script = ExtResource("11_0ld40")
+Enemy = ExtResource("24_5poiv")
+Count = 8
+metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_fuf3a"]
 script = ExtResource("11_0ld40")
 Enemy = ExtResource("23_tel4y")
-Count = 4
+Count = 6
 metadata/_custom_type_script = "uid://1l418l3h53n8"
 
 [sub_resource type="Resource" id="Resource_pibwh"]
 script = ExtResource("12_gqmmt")
-SpawnRate = 1.0
-Order = 0
-EnemyBatches = [SubResource("Resource_fuf3a")]
+SpawnRate = 2.0
+Order = 2
+EnemyBatches = [SubResource("Resource_bjg73"), SubResource("Resource_fuf3a")]
 metadata/_custom_type_script = "uid://b05min55rm673"
 
 [sub_resource type="Resource" id="Resource_c6pm6"]
@@ -133,11 +171,17 @@ Enemy = ExtResource("22_fv21b")
 Count = 6
 metadata/_custom_type_script = "uid://1l418l3h53n8"
 
+[sub_resource type="Resource" id="Resource_ty1g6"]
+script = ExtResource("11_0ld40")
+Enemy = ExtResource("24_5poiv")
+Count = 4
+metadata/_custom_type_script = "uid://1l418l3h53n8"
+
 [sub_resource type="Resource" id="Resource_5he1u"]
 script = ExtResource("12_gqmmt")
 SpawnRate = 1.0
 Order = 0
-EnemyBatches = [SubResource("Resource_c6pm6")]
+EnemyBatches = [SubResource("Resource_c6pm6"), SubResource("Resource_ty1g6")]
 metadata/_custom_type_script = "uid://b05min55rm673"
 
 [sub_resource type="Resource" id="Resource_5poiv"]
@@ -146,11 +190,17 @@ Enemy = ExtResource("26_dgi5k")
 Count = 6
 metadata/_custom_type_script = "uid://1l418l3h53n8"
 
+[sub_resource type="Resource" id="Resource_j2jfr"]
+script = ExtResource("11_0ld40")
+Enemy = ExtResource("24_5poiv")
+Count = 4
+metadata/_custom_type_script = "uid://1l418l3h53n8"
+
 [sub_resource type="Resource" id="Resource_2cjbq"]
 script = ExtResource("12_gqmmt")
 SpawnRate = 1.0
 Order = 0
-EnemyBatches = [SubResource("Resource_5poiv")]
+EnemyBatches = [SubResource("Resource_5poiv"), SubResource("Resource_j2jfr")]
 metadata/_custom_type_script = "uid://b05min55rm673"
 
 [sub_resource type="Resource" id="Resource_nvyfr"]
@@ -563,7 +613,7 @@ metadata/_edit_lock_ = true
 
 [node name="SunSpawner" type="Node2D" parent="Environment/Celestial Objects/Sun"]
 script = ExtResource("10_dp3eg")
-_enemyQueues = [SubResource("Resource_fv21b")]
+_enemyQueues = [SubResource("Resource_fv21b"), SubResource("Resource_ids8r")]
 
 [node name="Planets" type="Node2D" parent="Environment/Celestial Objects"]
 metadata/_edit_lock_ = true

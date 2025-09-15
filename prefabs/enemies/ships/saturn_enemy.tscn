@@ -23,6 +23,10 @@ scale = Vector2(0.297, 0.297)
 texture = ExtResource("2_rj8w5")
 offset = Vector2(21.172, 27.267)
 
+[node name="HealthComponent" parent="HealthBar/HealthComponentParent" index="0"]
+_maxHealth = 30.0
+_initialHealth = 30.0
+
 [node name="Gun" parent="GunLogic" index="0"]
 _bullet = ExtResource("2_o4svc")
 

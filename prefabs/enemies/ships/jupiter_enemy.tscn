@@ -24,6 +24,10 @@ _enemyDebris = Array[PackedScene]([ExtResource("2_oym2k"), ExtResource("3_b0njs"
 scale = Vector2(0.326, 0.326)
 texture = ExtResource("2_epnl1")
 
+[node name="HealthComponent" parent="HealthBar/HealthComponentParent" index="0"]
+_maxHealth = 35.0
+_initialHealth = 35.0
+
 [node name="Gun" parent="GunLogic" index="0"]
 _bullet = ExtResource("3_ukhpq")
 
