@@ -6,8 +6,10 @@ namespace StarWreck.scenes.main_menu;
 public partial class MainMenu : Node
 {
 	[Export(PropertyHint.File, "*.tscn")] private string _startScene;
+	[Export(PropertyHint.File, "*.tscn")] private string _controlsScene;
 	[Export(PropertyHint.File, "*.tscn")] private string _creditsScene;
 	[Export] private Button _startButton;
+	[Export] private Button _controlsButton;
 	[Export] private Button _creditsButton;
 	[Export] private Button _exitButton;
 
@@ -19,6 +21,7 @@ public partial class MainMenu : Node
 		AudioManager.Instance.MenuPlayer.FadeIn(4);
 
 		_startButton.Pressed += StartButtonOnPressed;
+		_controlsButton.Pressed += ControlsButtonOnPressed;
 		_creditsButton.Pressed += CreditsButtonOnPressed;
 		_exitButton.Pressed += ExitButtonOnPressed;
 	}
@@ -34,6 +37,11 @@ public partial class MainMenu : Node
 	private void StartButtonOnPressed()
 	{
 		GetTree().ChangeSceneToFile(_startScene);
+	}
+
+	private void ControlsButtonOnPressed()
+	{
+		GetTree().ChangeSceneToFile(_controlsScene);
 	}
 
 	private void CreditsButtonOnPressed()

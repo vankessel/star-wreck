@@ -35,7 +35,7 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_offset = Vector2(0, 3.41)
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("_startButton", "_creditsButton", "_exitButton")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("_startButton", "_controlsButton", "_creditsButton", "_exitButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,8 +44,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0ebjn")
 _startScene = "uid://dsrd3np32lxtf"
+_controlsScene = "uid://cigi1tjbaehx2"
 _creditsScene = "uid://bryueb6jw5ir5"
 _startButton = NodePath("VBoxContainer/btn_start")
+_controlsButton = NodePath("VBoxContainer/btn_howtoplay")
 _creditsButton = NodePath("VBoxContainer/btn_credits")
 _exitButton = NodePath("VBoxContainer/btn_exit")
 
