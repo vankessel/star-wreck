@@ -1,8 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://cb6j7aqls5im"]
+[gd_scene load_steps=7 format=3 uid="uid://cb6j7aqls5im"]
 
 [ext_resource type="Script" uid="uid://m56bpg21460d" path="res://scripts/autoloads/DebrisSettings.cs" id="1_8tepf"]
+[ext_resource type="AudioStream" uid="uid://dc7d7m45ohsr" path="res://music/Gameplay Music (Brave Space Explorers).ogg" id="2_icn6a"]
+[ext_resource type="Script" uid="uid://c8xqtm5017avb" path="res://scripts/autoloads/AudioManager.cs" id="2_x7kam"]
+[ext_resource type="AudioStream" uid="uid://beo3blrd6dfu1" path="res://music/Main Menu Music (deep-abstract-ambient_snowcap-401656).mp3" id="3_6rue7"]
+[ext_resource type="Script" uid="uid://804pb2nge37j" path="res://scripts/SmartAudioStreamPlayer.cs" id="4_hi0pb"]
+[ext_resource type="AudioStream" uid="uid://c424ejnbprgru" path="res://music/Boss Music (mockster-387618).mp3" id="4_x7kam"]
 
 [node name="Autoloads" type="Node"]
 
 [node name="DebrisManager" type="Node" parent="."]
 script = ExtResource("1_8tepf")
+
+[node name="Audio" type="Node" parent="." node_paths=PackedStringArray("_menuPlayer", "_gameplayPlayer", "_bossPlayer")]
+process_mode = 3
+script = ExtResource("2_x7kam")
+_menuPlayer = NodePath("MenuAudioStreamPlayer")
+_gameplayPlayer = NodePath("GameplayAudioStreamPlayer")
+_bossPlayer = NodePath("BossAudioStreamPlayer")
+
+[node name="MenuAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_6rue7")
+volume_db = -14.165
+autoplay = true
+parameters/looping = true
+script = ExtResource("4_hi0pb")
+
+[node name="GameplayAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("2_icn6a")
+volume_db = -15.647
+parameters/looping = true
+script = ExtResource("4_hi0pb")
+
+[node name="BossAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_x7kam")
+volume_db = -6.287
+parameters/looping = true
+script = ExtResource("4_hi0pb")

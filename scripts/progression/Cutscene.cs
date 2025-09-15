@@ -7,6 +7,7 @@ namespace StarWreck.scripts.progression;
 [GlobalClass]
 public partial class Cutscene : Node
 {
+
 	[Export] private bool _pause = true;
 	[Export] private PackedScene _scene;
 
@@ -33,6 +34,9 @@ public partial class Cutscene : Node
 
 	[Signal]
 	public delegate void CutsceneSequenceFinishedEventHandler();
+
+	public Cutscene PreviousCutsceneInSequence => _previousCutsceneInSequence;
+	public Cutscene NextCutsceneInSequence => _nextCutsceneInSequence;
 
 	private Node _instancedScene;
 	private Cutscene _previousCutsceneInSequence;
@@ -100,10 +104,7 @@ public partial class Cutscene : Node
 		{
 			Timer timer = new();
 			timer.WaitTime = seconds;
-			timer.Timeout += () =>
-			{
-				action.Invoke();
-			};
+			timer.Timeout += action.Invoke;
 			timer.Autostart = true;
 			timer.OneShot = true;
 			AddChild(timer);

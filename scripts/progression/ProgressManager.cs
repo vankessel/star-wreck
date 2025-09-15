@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using StarWreck.scripts.autoloads;
 using StarWreck.scripts.enemy;
 using StarWreck.scripts.enemy.spawning;
 using StarWreck.scripts.input;
@@ -221,8 +222,18 @@ public partial class ProgressManager : Node
 		_mercuryAndVenusCompletedCutscene.CutsceneSequenceFinished += MercuryAndVenusCompletedCutsceneOnCutsceneSequenceFinished;
 		_sunCompletedCutscene.CutsceneSequenceFinished += SunCompletedCutsceneOnCutsceneSequenceFinished;
 
+		AudioManager audioManager = AudioManager.Instance;
+		SmartAudioStreamPlayer audioManagerMenuPlayer = audioManager.MenuPlayer;
+		audioManagerMenuPlayer.FadeOut(4f);
+		_immediateCutscene.NextCutsceneInSequence.CutsceneStarted += SecondCutsceneInImmediateSequenceOnCutsceneStarted;
 		_immediateCutscene.Play();
 	}
+
+	private void SecondCutsceneInImmediateSequenceOnCutsceneStarted()
+	{
+		AudioManager.Instance.GameplayPlayer.FadeIn(4f);
+	}
+
 
 	public override void _ExitTree()
 	{
@@ -253,6 +264,8 @@ public partial class ProgressManager : Node
 		_earthAndMarsCompletedCutscene.CutsceneSequenceFinished -= EarthAndMarsCompletedCutsceneOnCutsceneSequenceFinished;
 		_mercuryAndVenusCompletedCutscene.CutsceneSequenceFinished -= MercuryAndVenusCompletedCutsceneOnCutsceneSequenceFinished;
 		_sunCompletedCutscene.CutsceneSequenceFinished -= SunCompletedCutsceneOnCutsceneSequenceFinished;
+
+		_immediateCutscene.NextCutsceneInSequence.CutsceneStarted -= SecondCutsceneInImmediateSequenceOnCutsceneStarted;
 	}
 
 	public override void _Input(InputEvent @event)
