@@ -4,4 +4,10 @@
         <EnableDynamicLoading>true</EnableDynamicLoading>
         <RootNamespace>StarWreck</RootNamespace>
     </PropertyGroup>
+    <ItemGroup>
+      <Compile Remove="addons\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Remove="addons\**" />
+    </ItemGroup>
 </Project>
