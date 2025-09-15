@@ -9,6 +9,7 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
     [Export] private BaseMotor _motor;
     [Export] private PackedScene[] _enemyDebris;
     [Export] private Sprite2D _sprite;
+    [Export] private AudioStreamPlayer2D _streamPlayer2D;
 
     public HealthComponent HealthComponent => _healthComponent;
 
@@ -46,13 +47,30 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
     {
         float multiplier = 1f / (divisor * (1f + PhysicsMaterialOverride?.Bounce ?? 0f));
         float damage = impulseMagnitude * multiplier;
-        if (damage > 2f) _healthComponent.Hurt(damage);
+        if (damage > 2f)
+        {
+            _streamPlayer2D.Play();
+            _healthComponent.Hurt(damage);
+        }
 
         if (0f < _healthComponent.Health) return;
 
         SpawnDebris(Position, LinearVelocity + addedDebrisVelocity, GetParent());
 
-        QueueFree();
+        if (_streamPlayer2D.IsPlaying())
+        {
+            _streamPlayer2D.Finished += StreamPlayer2DOnFinished;
+        }
+        else
+        {
+            QueueFree();
+        }
+    }
+
+    private void StreamPlayer2DOnFinished()
+    {
+        _streamPlayer2D.Finished -= StreamPlayer2DOnFinished;
+        Free();
     }
 
     private void SpawnDebris(Vector2 position, Vector2 velocity, Node parent)
