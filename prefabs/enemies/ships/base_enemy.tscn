@@ -70,10 +70,11 @@ script = ExtResource("4_s4k8l")
 _gun = NodePath("Gun")
 metadata/_edit_lock_ = true
 
-[node name="Gun" type="Node2D" parent="GunLogic"]
+[node name="Gun" type="Node2D" parent="GunLogic" node_paths=PackedStringArray("_shooterRigidBody")]
 position = Vector2(0, -16)
 script = ExtResource("5_afksu")
 _bullet = ExtResource("6_fwfv4")
+_shooterRigidBody = NodePath("../..")
 metadata/_edit_lock_ = true
 
 [node name="Motor" type="Node2D" parent="."]

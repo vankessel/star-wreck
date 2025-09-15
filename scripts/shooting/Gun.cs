@@ -10,6 +10,7 @@ public partial class Gun : Node2D
     [Export] private float _bulletSpeed = 200f;
     [Export] private float _bulletDamage = 10f;
     [Export] private PackedScene _bullet;
+    [Export] private RigidBody2D _shooterRigidBody;
 
     private float _nextShotTime;
 
@@ -53,7 +54,9 @@ public partial class Gun : Node2D
         _nextShotTime = PauseManager.UnpausedSeconds + SecondsPerBullet;
 
         Bullet bullet = _bullet.Instantiate<Bullet>();
-        bullet.Init(GlobalPosition, direction.Normalized() * _bulletSpeed, _bulletDamage);
+        Vector2 dir = direction.Normalized();
+        float boost = dir.Dot(_shooterRigidBody.LinearVelocity);
+        bullet.Init(GlobalPosition, dir * (_bulletSpeed + boost), _bulletDamage);
         GetTree().Root.AddChild(bullet);
     }
 
