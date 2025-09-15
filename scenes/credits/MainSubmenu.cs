@@ -1,8 +1,9 @@
 using Godot;
+using StarWreck.scripts.input;
 
 namespace StarWreck.scenes.credits;
 
-public partial class CreditsMenu : Node
+public partial class MainSubmenu : Node
 {
     [Export(PropertyHint.File, "*.tscn")] private string _mainMenuScene;
     [Export] private Button _mainMenuButton;
@@ -22,5 +23,17 @@ public partial class CreditsMenu : Node
     private void StartButtonOnPressed()
     {
         GetTree().ChangeSceneToFile(_mainMenuScene);
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (@event is InputEventMouseButton) return;
+
+        if (@event.IsActionPressed(Action.ProgressDialogue))
+        {
+            _mainMenuButton.EmitSignal(BaseButton.SignalName.Pressed);
+        }
     }
 }
