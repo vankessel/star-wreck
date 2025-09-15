@@ -184,8 +184,14 @@ public partial class ProgressManager : Node
 		StartSpawner(_mercury.EnemySpawner);
 	}
 
+	private static void MercuryAndVenusCompletedCutsceneOnCutsceneStarted()
+	{
+		AudioManager.Instance.GameplayPlayer.FadeOut(12f);
+	}
+
 	private void MercuryAndVenusCompletedCutsceneOnCutsceneSequenceFinished()
 	{
+		AudioManager.Instance.BossPlayer.FadeIn(4f);
 		_sunForceField.Disable();
 		StartSpawner(_sun.EnemySpawner);
 	}
@@ -219,12 +225,14 @@ public partial class ProgressManager : Node
 		_uranusAndNeptuneCompletedCutscene.CutsceneSequenceFinished += UranusAndNeptuneCompletedCutsceneOnCutsceneSequenceFinished;
 		_jupiterAndSaturnCompletedCutscene.CutsceneSequenceFinished += JupiterAndSaturnCompletedCutsceneOnCutsceneSequenceFinished;
 		_earthAndMarsCompletedCutscene.CutsceneSequenceFinished += EarthAndMarsCompletedCutsceneOnCutsceneSequenceFinished;
+		_mercuryAndVenusCompletedCutscene.CutsceneStarted += MercuryAndVenusCompletedCutsceneOnCutsceneStarted;
 		_mercuryAndVenusCompletedCutscene.CutsceneSequenceFinished += MercuryAndVenusCompletedCutsceneOnCutsceneSequenceFinished;
 		_sunCompletedCutscene.CutsceneSequenceFinished += SunCompletedCutsceneOnCutsceneSequenceFinished;
 
 		AudioManager audioManager = AudioManager.Instance;
-		SmartAudioStreamPlayer audioManagerMenuPlayer = audioManager.MenuPlayer;
-		audioManagerMenuPlayer.FadeOut(4f);
+		audioManager.MenuPlayer.FadeOut(4f);
+		audioManager.GameplayPlayer.FadeOut(0.1f);
+		audioManager.BossPlayer.FadeOut(4f);
 		_immediateCutscene.NextCutsceneInSequence.CutsceneStarted += SecondCutsceneInImmediateSequenceOnCutsceneStarted;
 		_immediateCutscene.Play();
 	}

@@ -680,6 +680,7 @@ script = ExtResource("27_2f3dj")
 _pause = false
 _dialogue = ExtResource("30_fuf3a")
 _waitBefore = 0.5
+_waitAfter = 2.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="UranusAndNeptuneCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
@@ -687,6 +688,7 @@ script = ExtResource("27_2f3dj")
 _scene = ExtResource("28_fv21b")
 _dialogue = ExtResource("31_pibwh")
 _waitBefore = 4.0
+_waitAfter = 2.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="JupiterAndSaturnCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
@@ -700,6 +702,7 @@ metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("33_5poiv")
 _dialogue = ExtResource("33_5he1u")
+_waitAfter = 2.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="EarthAndMarsCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
@@ -713,6 +716,7 @@ metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("28_fv21b")
 _dialogue = ExtResource("35_2cjbq")
+_waitAfter = 2.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="MercuryAndVenusCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
@@ -726,6 +730,7 @@ metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("38_2cjbq")
 _dialogue = ExtResource("37_pibwh")
+_waitAfter = 2.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="SunCompletedCutscene" type="Node" parent="UICanvasLayer/ProgressManager"]
