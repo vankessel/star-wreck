@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Star Wreck"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="uid://cifs5t5dmbuyq"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://cs0ihyjdq6uk7"
 
 [autoload]
 
