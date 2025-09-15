@@ -673,7 +673,6 @@ _sunForceField = NodePath("../../Environment/Celestial Objects/Sun/ForceFields/S
 script = ExtResource("27_2f3dj")
 _scene = ExtResource("28_fv21b")
 _dialogue = ExtResource("29_tel4y")
-_waitBefore = 2.0
 metadata/_custom_type_script = "uid://rh6e5fw1t06p"
 
 [node name="TutorialCutscene" type="Node" parent="UICanvasLayer/ProgressManager/ImmediateCutscene"]
