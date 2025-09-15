@@ -1,5 +1,5 @@
 ~ start
-NPC: Hey you. It looks like we're in trouble. My name is Commander Fields. I've been taking care of these aliens that have took over some Earth's ships. Let's work together to get rid of them.
-You: 
+Fields: Hey you. It looks like we're in trouble. My name is Commander Fields. I've been taking care of these aliens that have took over some Earth's ships. Let's work together to get rid of them.
+You:
 - Let's do this!
 => END
