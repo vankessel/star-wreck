@@ -17,6 +17,7 @@ collision_mask = 255
 mass = 50.0
 script = ExtResource("1_4dohe")
 _healthComponent = NodePath("CanvasLayer/HealthComponent")
+_mainMenuScene = "uid://cifs5t5dmbuyq"
 metadata/_edit_group_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

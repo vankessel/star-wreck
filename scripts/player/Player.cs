@@ -41,6 +41,7 @@ public partial class Player : RigidBody2D, IShootable
     private float _rotationDampingRatio = 0.3333333333f;
 
     [Export] private HealthComponent _healthComponent;
+    [Export(PropertyHint.File, "*.tscn")] private string _mainMenuScene;
 
     public HealthComponent HealthComponent => _healthComponent;
 
@@ -50,10 +51,22 @@ public partial class Player : RigidBody2D, IShootable
         Instance = this;
     }
 
+    private void HealthComponentOnHealthFullyDepleted(HealthComponent healthComponent, float cappedLoss, float overkill)
+    {
+        GetTree().ChangeSceneToFile(_mainMenuScene);
+    }
+
     public override void _Ready()
     {
         base._Ready();
         if (_camera == null) GD.PushWarning("Player camera not set.");
+        _healthComponent.HealthFullyDepleted += HealthComponentOnHealthFullyDepleted;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        _healthComponent.HealthFullyDepleted -= HealthComponentOnHealthFullyDepleted;
     }
 
     public void GetShot(shooting.Bullet bullet)
