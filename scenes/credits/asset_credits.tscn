@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bryueb6jw5ir5"]
+[gd_scene load_steps=7 format=3 uid="uid://cxq7hv7ayp3ke"]
 
-[ext_resource type="Script" uid="uid://dtey4r50vy57n" path="res://scenes/main_menu/MainSubmenu.cs" id="1_c8xcy"]
-[ext_resource type="Texture2D" uid="uid://jbfqanomkm0e" path="res://sprites/screens/credits.png" id="2_0ctdu"]
+[ext_resource type="Script" uid="uid://dtey4r50vy57n" path="res://scenes/main_menu/MainSubmenu.cs" id="1_pl2y5"]
+[ext_resource type="Texture2D" uid="uid://capf5f5gnftlt" path="res://sprites/screens/asset_credits.png" id="2_pl2y5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ckv8"]
 bg_color = Color(0.836049, 0.809603, 0.821212, 1)
@@ -42,8 +42,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_c8xcy")
-_nextScene = "uid://cxq7hv7ayp3ke"
+script = ExtResource("1_pl2y5")
+_nextScene = "uid://cifs5t5dmbuyq"
 _mainMenuButton = NodePath("btn_return")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -51,9 +51,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -35.351
+offset_bottom = 25.705
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_0ctdu")
+texture = ExtResource("2_pl2y5")
 expand_mode = 5
 stretch_mode = 5
 
@@ -77,4 +79,4 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_0ctdu")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_2ckv8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2fbfq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_8gwij")
-text = "Next"
+text = "Return"

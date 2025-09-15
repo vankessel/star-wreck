@@ -5,7 +5,7 @@ namespace StarWreck.scenes.credits;
 
 public partial class MainSubmenu : Node
 {
-    [Export(PropertyHint.File, "*.tscn")] private string _mainMenuScene;
+    [Export(PropertyHint.File, "*.tscn")] private string _nextScene;
     [Export] private Button _mainMenuButton;
 
     public override void _Ready()
@@ -22,7 +22,7 @@ public partial class MainSubmenu : Node
 
     private void StartButtonOnPressed()
     {
-        GetTree().ChangeSceneToFile(_mainMenuScene);
+        GetTree().ChangeSceneToFile(_nextScene);
     }
 
     public override void _Input(InputEvent @event)

@@ -43,7 +43,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tj8m0")
-_mainMenuScene = "uid://cifs5t5dmbuyq"
+_nextScene = "uid://cifs5t5dmbuyq"
 _mainMenuButton = NodePath("btn_return")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -60,6 +60,7 @@ expand_mode = 5
 stretch_mode = 5
 
 [node name="btn_return" type="Button" parent="."]
+layout_mode = 0
 offset_left = 973.0
 offset_top = 589.0
 offset_right = 1144.0
