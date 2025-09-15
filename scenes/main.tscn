@@ -641,6 +641,7 @@ script = ExtResource("10_dp3eg")
 _enemyQueues = [SubResource("Resource_qkpxi")]
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="PauseManager" parent="UICanvasLayer" instance=ExtResource("30_fv21b")]
 
