@@ -61,6 +61,8 @@ public partial class ProgressManager : Node
 
 	private readonly HashSet<EnemySpawner> _currentSpawners = [];
 
+	public static ProgressManager Instance { get; private set; }
+
 	public bool NeptuneFinished { get; private set; }
 	public bool UranusFinished { get; private set; }
 	public bool SaturnFinished { get; private set; }
@@ -235,6 +237,7 @@ public partial class ProgressManager : Node
 		_sunCompletedCutscene.CutsceneSequenceFinished += SunCompletedCutsceneOnCutsceneSequenceFinished;
 
 		AudioManager audioManager = AudioManager.Instance;
+		Instance = this;
 		audioManager.MenuPlayer.FadeOut(4f);
 		audioManager.GameplayPlayer.FadeOut(0.1f);
 		audioManager.BossPlayer.FadeOut(4f);
@@ -287,9 +290,17 @@ public partial class ProgressManager : Node
 
 		if (!@event.IsActionPressed(Action.DebugSkip) || !OS.HasFeature("editor")) return;
 
+		DestroyEnemies();
+	}
+
+	public void DestroyEnemies(bool finishSpawning = true)
+	{
 		foreach (EnemySpawner spawner in _currentSpawners)
 		{
-			spawner.FinishSpawning();
+			if (finishSpawning)
+			{
+				spawner.FinishSpawning();
+			}
 			foreach (Enemy enemy in spawner.spawnedEnemies)
 			{
 				enemy.HealthComponent.Health = 0f;

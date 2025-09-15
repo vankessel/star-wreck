@@ -1,6 +1,7 @@
 using Godot;
 using StarWreck.scripts.autoloads;
 using StarWreck.scripts.health;
+using StarWreck.scripts.progression;
 using StarWreck.scripts.shooting;
 using Action = StarWreck.scripts.input.Action;
 
@@ -55,7 +56,6 @@ public partial class Player : RigidBody2D, IShootable
     private void HealthComponentOnHealthFullyDepleted(HealthComponent healthComponent, float cappedLoss, float overkill)
     {
         AudioManager.Instance.GameplayPlayer.FadeOut(1f);
-        GetTree().ChangeSceneToFile(_mainMenuScene);
     }
 
     public override void _Ready()
@@ -63,6 +63,16 @@ public partial class Player : RigidBody2D, IShootable
         base._Ready();
         if (_camera == null) GD.PushWarning("Player camera not set.");
         _healthComponent.HealthFullyDepleted += HealthComponentOnHealthFullyDepleted;
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+
+        if (HealthComponent.Health > 0f) return;
+
+        ProgressManager.Instance.DestroyEnemies(false);
+        GetTree().ChangeSceneToFile(_mainMenuScene);
     }
 
     public override void _ExitTree()

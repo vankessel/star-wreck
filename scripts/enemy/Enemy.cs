@@ -24,14 +24,21 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
 
         if (_attached)
         {
-            _streamPlayer2D.Finished -= StreamPlayer2DOnFinished;
+            // _streamPlayer2D.Finished -= StreamPlayer2DOnFinished;
         }
     }
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        if (_healthDepleted) return;
+        if (_healthDepleted)
+        {
+            if (!_streamPlayer2D.IsPlaying())
+            {
+                QueueFree();
+            }
+            return;
+        }
 
         Vector2 otherVelocityChangeFraction = _otherVelocityChangeFraction;
         _otherVelocityChangeFraction = Vector2.Zero;
@@ -79,7 +86,7 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
             Freeze = true;
             FreezeMode = FreezeModeEnum.Static;
             CollisionLayer = CollisionMask = 0u;
-            _streamPlayer2D.Finished += StreamPlayer2DOnFinished;
+            // _streamPlayer2D.Finished += StreamPlayer2DOnFinished;
             _attached = true;
         }
         else
@@ -88,10 +95,10 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
         }
     }
 
-    private void StreamPlayer2DOnFinished()
-    {
-        QueueFree();
-    }
+    // private void StreamPlayer2DOnFinished()
+    // {
+    //     QueueFree();
+    // }
 
     private void SpawnDebris(Vector2 position, Vector2 velocity, Node parent)
     {
