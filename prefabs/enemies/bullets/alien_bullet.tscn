@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbrm6ioijai3f"]
+
+[ext_resource type="PackedScene" uid="uid://cl4t7dhxgufj3" path="res://prefabs/enemies/bullets/base_bullet.tscn" id="1_kauwf"]
+[ext_resource type="Texture2D" uid="uid://c7kavgmfwm48j" path="res://sprites/enemies/alien/alien_bullet.png" id="2_nu5bq"]
+
+[node name="BaseBullet" instance=ExtResource("1_kauwf")]
+
+[node name="Sprite2D" parent="." index="1"]
+rotation = -0.565487
+scale = Vector2(0.443, 0.443)
+texture = ExtResource("2_nu5bq")
+offset = Vector2(14.773, -8.603)

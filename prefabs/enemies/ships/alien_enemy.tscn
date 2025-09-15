@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0ew4el0nodfd"]
+[gd_scene load_steps=10 format=3 uid="uid://d0ew4el0nodfd"]
 
 [ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_lw4du"]
 [ext_resource type="Texture2D" uid="uid://ba56y8jtygr7v" path="res://sprites/enemies/alien/alien_ship.png" id="2_4f56i"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://gtpohthp0uuq" path="res://prefabs/enemies/debris/alien/alien_ship_debris_3.tscn" id="4_yc4aw"]
 [ext_resource type="PackedScene" uid="uid://cy7l3psiw1v7s" path="res://prefabs/enemies/debris/alien/alien_ship_debris_4.tscn" id="5_4hd2f"]
 [ext_resource type="PackedScene" uid="uid://b53y88los146i" path="res://prefabs/enemies/debris/alien/alien_ship_debris_5.tscn" id="6_t2qua"]
+[ext_resource type="PackedScene" uid="uid://bbrm6ioijai3f" path="res://prefabs/enemies/bullets/alien_bullet.tscn" id="8_qugrv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4f56i"]
 radius = 56.7186
@@ -28,6 +29,7 @@ _initialHealth = 100.0
 position = Vector2(0, 76.428)
 SecondsPerBullet = 0.426
 _bulletSpeed = 600.0
+_bullet = ExtResource("8_qugrv")
 
 [node name="CollisionShape2D" parent="." index="4"]
 position = Vector2(6.738, 6.219)

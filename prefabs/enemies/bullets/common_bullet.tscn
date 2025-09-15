@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6nwbt0k3elfc"]
+
+[ext_resource type="PackedScene" uid="uid://cl4t7dhxgufj3" path="res://prefabs/enemies/bullets/base_bullet.tscn" id="1_d77fp"]
+[ext_resource type="Texture2D" uid="uid://csmnmwda7vg3o" path="res://sprites/enemies/common/common_ship_bullet.png" id="2_y4swu"]
+
+[node name="BaseBullet" instance=ExtResource("1_d77fp")]
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.248, 0.248)
+texture = ExtResource("2_y4swu")
+offset = Vector2(-3.272, 43.706)

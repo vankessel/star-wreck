@@ -31,7 +31,8 @@ _maxHealth = 50.0
 _initialHealth = 50.0
 
 [node name="Gun" parent="GunLogic" index="0"]
-_bulletSpeed = 500.0
+SecondsPerBullet = 5.0
+_bulletSpeed = 450.0
 _bullet = ExtResource("3_3idji")
 
 [node name="CollisionShape2D" parent="." index="4"]

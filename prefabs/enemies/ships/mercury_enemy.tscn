@@ -20,7 +20,7 @@ texture = ExtResource("2_dpgov")
 offset = Vector2(23.727, 0)
 
 [node name="Gun" parent="GunLogic" index="0"]
-SecondsPerBullet = 1.0
+SecondsPerBullet = 1.5
 _bulletSpeed = 300.0
 _bullet = ExtResource("3_dpgov")
 
