@@ -6,15 +6,8 @@ namespace StarWreck.scripts;
 public partial class PauseManager : Control
 {
     private Control _pauseScreenControl;
-    public static PauseManager Instance;
     public static ulong UnpausedPhysicsTicks { get; private set; } = 0ul;
     public static float UnpausedSeconds => UnpausedPhysicsTicks / (float)Engine.PhysicsTicksPerSecond;
-
-    public override void _EnterTree()
-    {
-        base._EnterTree();
-        Instance = this;
-    }
 
     public override void _Input(InputEvent @event)
     {
