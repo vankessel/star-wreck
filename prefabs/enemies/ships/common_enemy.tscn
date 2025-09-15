@@ -1,24 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://c33i4jwr6kcg1"]
+[gd_scene load_steps=9 format=3 uid="uid://c33i4jwr6kcg1"]
 
 [ext_resource type="PackedScene" uid="uid://blk3gc0sn3d5d" path="res://prefabs/enemies/ships/base_enemy.tscn" id="1_8t6mc"]
-[ext_resource type="PackedScene" uid="uid://dm3ipn5o0036w" path="res://prefabs/enemies/debris/common/common_ship_debris_1.tscn" id="2_72tt1"]
-[ext_resource type="Texture2D" uid="uid://nmfdombnafok" path="res://sprites/enemies/common/common_ship.png" id="2_x2gc2"]
-[ext_resource type="PackedScene" uid="uid://p0u4crx2f6r5" path="res://prefabs/enemies/debris/common/common_ship_debris_2.tscn" id="3_6yx5u"]
-[ext_resource type="PackedScene" uid="uid://d3p2frmwmtapn" path="res://prefabs/enemies/debris/common/common_ship_debris_3.tscn" id="4_slxoh"]
-[ext_resource type="PackedScene" uid="uid://du4n70vj2opqs" path="res://prefabs/enemies/debris/common/common_ship_debris_4.tscn" id="5_t22u0"]
-[ext_resource type="PackedScene" uid="uid://di6e2cu8w6gtm" path="res://prefabs/enemies/debris/common/common_ship_debris_5.tscn" id="6_j1prc"]
-[ext_resource type="PackedScene" uid="uid://b6nwbt0k3elfc" path="res://prefabs/enemies/bullets/common_bullet.tscn" id="8_6yx5u"]
+[ext_resource type="PackedScene" uid="uid://54r0n8jsirdr" path="res://prefabs/enemies/debris/mercury/mercury_ship_debris_1.tscn" id="2_72tt1"]
+[ext_resource type="PackedScene" uid="uid://bqjadejoqeexo" path="res://prefabs/enemies/debris/mercury/mercury_ship_debris_2.tscn" id="3_6yx5u"]
+[ext_resource type="PackedScene" uid="uid://pxan0r3aksx0" path="res://prefabs/enemies/debris/mercury/mercury_ship_debris_3.tscn" id="4_slxoh"]
+[ext_resource type="PackedScene" uid="uid://dv4llo0u7sf0h" path="res://prefabs/enemies/debris/mercury/mercury_ship_debris_4.tscn" id="5_t22u0"]
+[ext_resource type="Texture2D" uid="uid://crqjslmn13fa6" path="res://sprites/enemies/mercury/mercury_ship.png" id="7_6yx5u"]
+[ext_resource type="PackedScene" uid="uid://c5ut0mvj1l6kv" path="res://prefabs/enemies/bullets/mercury_bullet.tscn" id="8_6yx5u"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_72tt1"]
-radius = 41.74
+[sub_resource type="CircleShape2D" id="CircleShape2D_dpgov"]
+radius = 35.1141
 
 [node name="CommonEnemy" instance=ExtResource("1_8t6mc")]
-_enemyDebris = Array[PackedScene]([ExtResource("2_72tt1"), ExtResource("3_6yx5u"), ExtResource("4_slxoh"), ExtResource("5_t22u0"), ExtResource("6_j1prc")])
+_enemyDebris = Array[PackedScene]([ExtResource("2_72tt1"), ExtResource("3_6yx5u"), ExtResource("4_slxoh"), ExtResource("5_t22u0")])
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("2_x2gc2")
-offset = Vector2(-2.368, 41.233)
+scale = Vector2(0.298, 0.298)
+texture = ExtResource("7_6yx5u")
+offset = Vector2(23.727, 0)
 
 [node name="HealthComponent" parent="HealthBar/HealthComponentParent" index="0"]
 _maxHealth = 10.0
@@ -29,7 +28,7 @@ SecondsPerBullet = 6.0
 _bullet = ExtResource("8_6yx5u")
 
 [node name="CollisionShape2D" parent="." index="4"]
-position = Vector2(0.061, 10.86)
-shape = SubResource("CircleShape2D_72tt1")
+position = Vector2(3, 2)
+shape = SubResource("CircleShape2D_dpgov")
 
 [editable path="HealthBar"]
