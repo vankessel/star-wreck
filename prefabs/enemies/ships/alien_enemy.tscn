@@ -27,8 +27,8 @@ _initialHealth = 100.0
 
 [node name="Gun" parent="GunLogic" index="0"]
 position = Vector2(0, 76.428)
-SecondsPerBullet = 0.426
-_bulletSpeed = 600.0
+SecondsPerBullet = 0.851
+_bulletSpeed = 700.0
 _bullet = ExtResource("8_qugrv")
 
 [node name="CollisionShape2D" parent="." index="4"]
