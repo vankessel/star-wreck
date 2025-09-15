@@ -30,6 +30,7 @@ public partial class Enemy : TrackedRigidBody2D, IBreakable
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
+        if (_healthDepleted) return;
 
         Vector2 otherVelocityChangeFraction = _otherVelocityChangeFraction;
         _otherVelocityChangeFraction = Vector2.Zero;
