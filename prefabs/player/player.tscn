@@ -58,4 +58,7 @@ theme_override_constants/margin_bottom = 16
 [node name="ProgressBar" parent="CanvasLayer/HealthComponent" index="0"]
 _alwaysShow = true
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
 [editable path="CanvasLayer/HealthComponent"]
